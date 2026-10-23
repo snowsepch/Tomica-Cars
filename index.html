@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>TOMICA 多美小汽車・個人掌上典藏圖鑑與採購防呆手冊</title>
+  
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    :root {
+      /* 暖骨白與炭黑色彩系統 (Monograph 黃金標竿規範) */
+      --bg-canvas: #FAFAF8;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #FDFDFB;
+      --border-subtle: #E8E8E5;
+      --border-medium: #D8D8D4;
+      --border-dark: #27272A;
+      --text-primary: #18181B;
+      --text-secondary: #52525B;
+      --text-muted: #71717A;
+      --accent-black: #09090B;
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      --alert-red: #DC2626;
+      --alert-red-bg: #FEF2F2;
+      --alert-red-border: #FCA5A5;
+      --success-green: #15803D;
+      --success-green-bg: #F0FDF4;
+      --success-green-border: #86EFAC;
+    }
+
+    /* 原生 CSS 基礎保障，嚴禁任何破版 */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Noto Sans TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.75;
+      letter-spacing: 0.015em;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 繁體中文排版規範：嚴格禁止負字距與小於 1.3 的行高 */
+    .heading-display {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang TC", "Noto Sans TC", sans-serif;
+      font-size: clamp(1.25rem, 4vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.38;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+    }
+
+    /* 頂端導航與浮動工具欄 */
+    .header-bar {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(250, 250, 248, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .page-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* 圖鑑卡片基礎樣式 */
+    .pokedex-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s ease, border-color 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      cursor: pointer;
+    }
+    .pokedex-card:active {
+      transform: scale(0.985);
+    }
+    @media (hover: hover) {
+      .pokedex-card:hover {
+        border-color: var(--border-medium);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        background: var(--bg-card-hover);
+      }
+    }
+    .pokedex-card.is-duplicate {
+      border-color: #F87171;
+      background: #FFFDFD;
+    }
+
+    /* 圖鑑展示展台窗口 */
+    .car-stage {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F3 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .car-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
+    }
+    .pokedex-card:hover .car-stage img {
+      transform: scale(1.04);
+    }
+
+    /* 圖鑑專屬金屬編號名牌 */
+    .compendium-badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+      background: var(--accent-black);
+      color: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* 分類標籤樣式 */
+    .tag-badge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .tag-cars { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
+    .tag-toystory { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+    .tag-general { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
+    .tag-disney { background: #FAF5FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+    .tag-dup { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; font-weight: 700; }
+    .tag-boxed { background: #EFF6FF; color: #2563EB; border: 1px solid #DBEAFE; }
+    .tag-loose { background: #F4F4F5; color: #52525B; border: 1px solid #E4E4E7; }
+
+    /* 模式與篩選按鈕 */
+    .view-mode-btn {
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+    .view-mode-btn.active {
+      background: var(--accent-black);
+      border-color: var(--accent-black);
+      color: #FFFFFF;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+    }
+
+    .filter-pill {
+      padding: 0.42rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      color: var(--text-secondary);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .filter-pill.active {
+      background: var(--accent-black);
+      border-color: var(--accent-black);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* 圖鑑抽屜/彈窗 Modal */
+    .detail-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(9, 9, 11, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .detail-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .detail-modal-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(20px) scale(0.98);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .detail-modal-overlay.active .detail-modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Lightbox 全螢幕圖片放大 */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(9, 9, 11, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .lightbox-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-img {
+      max-width: 95vw;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    /* 浮動快速置頂按鈕 */
+    .floating-top-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.25rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--accent-black);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.15);
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .floating-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .floating-top-btn:active {
+      transform: scale(0.92);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+  <!-- ============================================================ -->
+  <!-- 1. 圖鑑典藏頂欄 (Sticky Compendium Header)                      -->
+  <!-- ============================================================ -->
+  <header class="header-bar sticky top-0 z-40 px-3.5 py-3">
+    <div class="page-container">
+      
+      <!-- 頂部品牌與精準統計 -->
+      <div class="flex items-center justify-between gap-2 mb-2.5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-lg shadow-sm">
+            🚗
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <h1 class="text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
+            </div>
+            <p class="text-[11px] text-zinc-500 font-medium">✨ 官方高畫質＋實拍雙對照・採購防呆手冊</p>
+          </div>
+        </div>
+
+        <!-- 登錄數字徽章 -->
+        <div class="flex items-center gap-1.5 text-right">
+          <div class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-right shadow-2xs">
+            <div class="text-[11px] font-bold text-zinc-900">
+              在冊 <span id="statUniqueCount" class="text-red-600">47</span> 款
+            </div>
+            <div class="text-[10px] text-zinc-500">
+              共 <span id="statTotalPieces" class="font-bold text-zinc-800">72</span> 台
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 採購即時防呆搜尋條 (Instant Search Bar) -->
+      <div class="relative mb-2">
+        <input 
+          id="searchInput"
+          type="search"
+          placeholder="🔍 輸入編號（C-20、C-11）、角色（士官長/路霸/麥坤）秒比對..."
+          class="w-full pl-3.5 pr-10 py-2.5 bg-white border border-zinc-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium"
+          autocomplete="off"
+        >
+        <button 
+          id="clearSearchBtn"
+          class="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden"
+          aria-label="清除搜尋"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- 即時採購防呆警戒條 (Anti-Duplicate Alert Banner) -->
+      <div id="checkerAlertBanner" class="hidden rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm"></div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- 2. 圖鑑儀表板與控制列 (Compendium Control Deck)               -->
+  <!-- ============================================================ -->
+  <section class="page-container pt-3 pb-1">
+    
+    <!-- 圖鑑統計 Bento Bar (簡潔收集進度卡) -->
+    <div class="grid grid-cols-4 gap-2 mb-3">
+      <div class="bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs">
+        <div class="text-[10px] text-zinc-500 font-medium">Cars 系列</div>
+        <div class="text-sm font-extrabold text-zinc-900" id="bentoCarsCount">35</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs">
+        <div class="text-[10px] text-zinc-500 font-medium">玩具總動員</div>
+        <div class="text-sm font-extrabold text-blue-700" id="bentoToyCount">3</div>
+      </div>
+      <div class="bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs">
+        <div class="text-[10px] text-zinc-500 font-medium">經典/迪士尼</div>
+        <div class="text-sm font-extrabold text-purple-700" id="bentoDisneyCount">9</div>
+      </div>
+      <div class="bg-red-50/80 p-2.5 rounded-xl border border-red-200 text-center shadow-2xs">
+        <div class="text-[10px] text-red-600 font-bold">⚠️ 重複款</div>
+        <div class="text-sm font-extrabold text-red-700" id="bentoDupCount">3</div>
+      </div>
+    </div>
+
+    <!-- 雙重視角切換與照片來源開關 -->
+    <div class="flex items-center justify-between gap-2 py-1 mb-2.5 flex-wrap">
+      
+      <!-- 視角切換：網格圖鑑 vs 詳細清單 -->
+      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-xl">
+        <button id="viewGridBtn" class="view-mode-btn active" title="海報圖鑑網格模式（隨身翻閱）">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          <span>圖鑑海報</span>
+        </button>
+        <button id="viewListBtn" class="view-mode-btn" title="雙照深度對照清單模式">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          <span>雙照清單</span>
+        </button>
+      </div>
+
+      <!-- 網格模式專用：官方展示圖 / 實拍照 一鍵切換 -->
+      <div id="photoSourceToggleContainer" class="flex items-center bg-white border border-zinc-200 rounded-xl p-0.5 shadow-2xs">
+        <span class="text-[11px] font-bold text-zinc-400 px-2">圖源：</span>
+        <button id="photoSourceOfficial" class="px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white">
+          🌟 官方圖
+        </button>
+        <button id="photoSourceReal" class="px-2.5 py-1 rounded-lg text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
+          📸 實拍照
+        </button>
+      </div>
+
+    </div>
+
+    <!-- 分類橫向捲動標籤 (Filter Pills) -->
+    <div class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none text-xs">
+      <button class="filter-pill active" data-filter="all">全部 (<span id="countAll">47</span>)</button>
+      <button class="filter-pill text-red-600 font-bold border-red-200 hover:border-red-400" data-filter="duplicate">⚠️ 已重複款 (<span id="countDuplicate">3</span>)</button>
+      <button class="filter-pill" data-filter="cars">🏎️ Cars (<span id="countCars">35</span>)</button>
+      <button class="filter-pill" data-filter="toystory">🤠 玩具總動員 (<span id="countToyStory">3</span>)</button>
+      <button class="filter-pill" data-filter="general">🚗 經典/多美組 (<span id="countGeneral">4</span>)</button>
+      <button class="filter-pill" data-filter="other_disney">🏰 迪士尼系列 (<span id="countDisney">5</span>)</button>
+    </div>
+
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. 圖鑑核心展示主區 (Compendium Main Grid / List)             -->
+  <!-- ============================================================ -->
+  <main class="page-container pt-1">
+    
+    <!-- 結果數量提示 -->
+    <div class="flex items-center justify-between text-xs text-zinc-500 py-1 mb-2 px-1">
+      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">47</strong> 款車輛</div>
+      <div class="text-[11px] text-zinc-400">💡 點擊任一卡片可展開全圖鑑資料卡</div>
+    </div>
+
+    <!-- 卡片容器 (動態切換 grid / list 樣式) -->
+    <div id="compendiumContainer" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"></div>
+
+    <!-- 無搜尋結果提示 -->
+    <div id="emptyNotice" class="hidden text-center py-16 px-4">
+      <div class="text-5xl mb-3">🔍</div>
+      <h3 class="text-base font-bold text-zinc-800 mb-1">查無相符的車輛圖鑑</h3>
+      <p class="text-xs text-zinc-500 mb-4">資料庫中目前沒有此關鍵字的收藏紀錄，可以安心於實體店採購！</p>
+      <button id="resetSearchBtn" class="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition">
+        重設搜尋條件
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- 4. 圖鑑互動詳細抽屜/彈窗 (Compendium Detail Modal)           -->
+  <!-- ============================================================ -->
+  <div id="detailModalOverlay" class="detail-modal-overlay">
+    <div class="detail-modal-card p-5 relative" onclick="event.stopPropagation()">
+      
+      <!-- 關閉按鈕 -->
+      <button id="closeModalBtn" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 flex items-center justify-center font-bold text-sm transition z-10" aria-label="關閉">
+        ✕
+      </button>
+
+      <!-- 彈窗內容容器 (JS 動態填入) -->
+      <div id="detailModalContent"></div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 5. 全螢幕手勢放大燈箱 (Fullscreen Lightbox)                   -->
+  <!-- ============================================================ -->
+  <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
+    <button class="absolute top-4 right-4 text-white/80 hover:text-white text-2xl p-2 font-bold z-10" aria-label="關閉">
+      ✕
+    </button>
+    <img id="lightboxImg" class="lightbox-img shadow-2xl mb-3" src="" alt="高解析放大檢視">
+    <div id="lightboxCaption" class="text-white/90 text-sm font-medium px-4 py-1.5 bg-black/60 rounded-full backdrop-blur-md text-center max-w-md"></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 6. 浮動快速置頂按鈕 (Floating Back to Top)                    -->
+  <!-- ============================================================ -->
+  <button id="floatingTopBtn" class="floating-top-btn" aria-label="回到頁首">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
+  <!-- ============================================================ -->
+  <!-- 7. 典藏資料庫與核心運作邏輯 (Database & Engine)                -->
+  <!-- ============================================================ -->
+  <script>
+    // 注入原始完整無缺資料庫
+    const CARS_DATABASE = [
+      // ==========================================
+      // 一、 Cars 汽車總動員系列 (cars)
+      // ==========================================
+      {
+        id: "C-01",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "閃電麥坤（標準型 / 初代微笑版）",
+        jpName: "ライトニング・マックィーン（スタンダードタイプ）",
+        releaseDate: "2008-07-31",
+        prototype: "NASCAR 概念賽車（混和 Corvette C6 與 GT40 線條）",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-01 C01 麥坤 閃電麥坤 95 紅色 紅 原作 微笑 cars1 第一集",
+        images: [
+          { url: "tomica_official_images/C-01_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-01_cars1_mcqueen.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "皮克斯動畫《汽車總動員 1》主角最經典的起點式樣！艷紅烤漆、車側黃橘雙色 95 號電光拉花、引擎蓋圓形 Rust-eze 大圓標與招牌微笑雙眼。"
+      },
+      {
+        id: "C-02",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "閃電麥坤（Dinoco 藍色恐龍塗裝版）",
+        jpName: "ライトニング・マックィーン（ディノコタイプ）",
+        releaseDate: "2008-07-31（初版） / 2021（改版）",
+        prototype: "NASCAR 原型賽車",
+        boxed: 1,
+        loose: 1,
+        isDuplicate: true,
+        keywords: "C-02 C02 麥坤 藍色 恐龍 迪諾哥 Dinoco 43 95 天藍色 白日夢",
+        images: [
+          { url: "tomica_official_images/C-02_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-02_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【⚠️已重複 2 台】取材自麥坤渴望獲得傳奇恐龍石油（Dinoco）代言的白日夢場景！全車換裝夢幻天藍烤漆、專屬恐龍廠徽與天藍框胎。"
+      },
+      {
+        id: "C-04",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "拖線（標準型原色款）",
+        jpName: "メーター（スタンダードタイプ）",
+        releaseDate: "2008-07-31",
+        prototype: "1951 Chevrolet 拖車與 1957 International 吊車融合體",
+        boxed: 1,
+        loose: 1,
+        isDuplicate: true,
+        keywords: "C-04 C04 拖線 板車 吊車 咖啡色 棕色 生鏽 暴牙 油車水鎮",
+        images: [
+          { url: "tomica_official_images/C-04_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-04_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【⚠️已重複 2 台】油車水鎮第一活寶、麥坤摯友！忠實還原咖啡色斑駁鐵鏽烤漆、獨眼車燈、外露大門牙與可動起重吊臂，美式老車味十足。"
+      },
+      {
+        id: "SP-MCQUEEN-HOLIDAY",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "閃電麥坤（聖誕倒數月曆限定 假日版）",
+        jpName: "ライトニング・マックィーン（ホリデータイプ）",
+        releaseDate: "聖誕降臨曆限定",
+        prototype: "NASCAR 概念賽車（車頂冬青聖誕花圈裝飾）",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "麥坤 聖誕 假日 ホリデー 倒數月曆 冬青 花圈 紅果 綠葉 降臨曆 限定",
+        images: [
+          { url: "tomica_official_images/C-01_official.jpg", label: "🌟 麥坤原型對照" },
+          { url: "tomica_images/SP-06_holiday_mcqueen.jpg", label: "🏎️ 家中無盒實拍（車頂冬青聖誕裝飾）" }
+        ],
+        description: "【日本限定發售・カーズ トミカ アドベントカレンダー（聖誕倒數月曆）特仕車】車頂特別點綴了聖誕冬青葉與紅漿果裝飾，全車保持經典 Rust-eze 95 塗裝，為冬日節慶特仕限定版。"
+      },
+      {
+        id: "C-07",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "路易吉（標準型）",
+        jpName: "ルイジ（スタンダードタイプ）",
+        releaseDate: "2008-07-31",
+        prototype: "1959 義大利飛雅特（Fiat 500 Nuova）",
+        boxed: 0,
+        loose: 2,
+        isDuplicate: true,
+        keywords: "C-07 C07 路易吉 黃色 飛雅特 500 輪胎 斜塔輪胎 義大利",
+        images: [
+          { url: "tomica_official_images/C-07_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-07_luigi_loose.jpg", label: "🏎️ 雙台路易吉實拍（已重複）" }
+        ],
+        description: "【⚠️無盒重複 2 台】斜塔輪胎店老闆、法拉利狂熱車迷！亮黃色圓潤經典車體。地毯展示區已有 2 台一模一樣款式，請勿重複入手。"
+      },
+      {
+        id: "C-09",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "警長（標準型）",
+        jpName: "シェリフ（スタンダードタイプ）",
+        releaseDate: "2008-07-31",
+        prototype: "1949 水星八號警車（Mercury Eight）",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-09 C09 警長 警察 黑白 66號公路 水星 老爺車 保安官",
+        images: [
+          { url: "tomica_official_images/C-09_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-09_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "油車水鎮的秩序捍衛者！經典黑白美式警車塗裝、飽滿復古線條，車頂鑲嵌電鍍座紅警燈，車門帶有金色 SHERIFF 警徽。"
+      },
+      {
+        id: "C-10",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "傳奇賽車手 冠軍（The King / 史派威 Strip Weathers）",
+        jpName: "キング（スタンダードタイプ）",
+        releaseDate: "2008-07-31",
+        prototype: "1970 Plymouth Superbird（向 Richard Petty 致敬）",
+        boxed: 2,
+        loose: 0,
+        isDuplicate: true,
+        keywords: "C-10 C10 冠軍 傳奇賽車手 國王 The King 史派威 43 藍色 高尾翼 Plymouth Superbird",
+        images: [
+          { url: "tomica_official_images/C-10_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-10_box.jpg", label: "📦 家中原盒實拍（共2盒）" }
+        ],
+        description: "【⚠️盒裝重複 2 盒】活塞盃 7 屆冠軍傳奇王者「冠軍（Strip Weathers）」！復刻 1970 年代空氣動力學神獸，極高聳的天藍倒 U 尾翼與尖頭車鼻，家中已有 2 個全新盒裝未拆。"
+      },
+      {
+        id: "C-11",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "TOMICA 汽車總動員 C-11 路霸",
+        jpName: "カーズ トミカ C-11 チック・ヒックス（スタンダードタイプ）",
+        releaseDate: "2008-09-25",
+        prototype: "1980 Buick Regal 改裝房車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-11 C11 DS31443 路霸 チック・ヒックス Chick Hicks 綠色 86 鬍子 反派 htB 贊助商",
+        images: [
+          { url: "tomica_official_images/C-11_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-11_chick_hicks.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【台灣代理商官方版 / 貨號 DS31443】全車滿版贊助商貼紙與經典亮綠塗裝，車頭帶有招牌黑色大鬍子水箱罩與 86 號號碼，忠實還原初代狂妄反派經典樣貌。"
+      },
+      {
+        id: "C-12",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "大紅（標準型消防車）",
+        jpName: "レッド（スタンダードタイプ）",
+        releaseDate: "2008-09-25",
+        prototype: "1960 American LaFrance 美式封閉雙門消防車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-12 C12 大紅 消防車 紅色 雲梯 水帶 澆花",
+        images: [
+          { url: "tomica_official_images/C-12_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-12_red_fire_engine.jpg", label: "🏎️ 家中大紅消防車實拍" }
+        ],
+        description: "溫柔善良的水箱溫泉鎮守護者！車身全合金壓鑄份量扎實沉重，頂部配有精緻可升降灰色雲梯與消防水槍裝備。"
+      },
+      {
+        id: "C-13",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "奇諾（標準型堆高機）",
+        jpName: "グイド（スタンダードタイプ）",
+        releaseDate: "2008-09-25",
+        prototype: "義大利客製化三輪堆高機（Guido）",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-13 C13 奇諾 卡布 グイド Guido 堆高機 藍色 叉車 換胎 天線 義大利",
+        images: [
+          { url: "tomica_official_images/C-13_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-13_guido_loose.jpg", label: "🏎️ 家中奇諾小車實拍" }
+        ],
+        description: "斜塔輪胎店世界紀錄級神技師「奇諾（Guido）」！天藍色小巧身軀、雙天線與微幅可動雙叉臂，曾締造決賽秒換四輪的名場面。"
+      },
+      {
+        id: "C-14",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-14 脫線（20週年紀念版）",
+        jpName: "メーター（20周年記念タイプ）",
+        releaseDate: "2026-06-20",
+        prototype: "特製紀念款拖車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-14 C14 拖線 20週年 紀念 湖水綠 碧藍 綠松石 金屬漆 2026 新品",
+        images: [
+          { url: "tomica_official_images/C-14_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-14_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "慶祝《Cars》電影上映 20 週年推出的 2026 全新頂級紀念款！施以閃耀光澤的金屬湖水碧藍漆面與紀念徽印。"
+      },
+      {
+        id: "C-15",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-15 克魯茲·拉米雷斯（公路巡警版）",
+        jpName: "クルーズ・ラミレス（道路パトロールカータイプ）",
+        releaseDate: "2025-07-26",
+        prototype: "現代流線型跑車原型",
+        boxed: 1,
+        loose: 1,
+        isDuplicate: true,
+        keywords: "C-15 C15 酷姐 拉米瑞茲 道路巡邏 警車 黃色 警燈 紅白條紋",
+        images: [
+          { url: "tomica_official_images/C-15_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-15_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【⚠️已重複 2 台】黃色酷姐化為高速巡警工程車，車頂安裝紅色旋轉排燈，機蓋有金盾警徽與防撞斜紋條。"
+      },
+      {
+        id: "C-20",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "TOMICA 汽車總動員 C-20 士官長(標準版)",
+        jpName: "カーズ トミカ C-20 サージ（スタンダードタイプ）",
+        releaseDate: "2020-03-28",
+        prototype: "1941 Willys MB 軍用吉普車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-20 C20 DS16605 士官長 サージ Sarge 吉普車 軍綠色 綠色 迷彩 二戰 星星",
+        images: [
+          { url: "tomica_official_images/C-20_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-20_sarge.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【台灣代理商官方版 / 貨號 DS16605】軍綠色消光越野吉普車，車頭引擎蓋印有醒目白色五角星與美軍編號 984673，車門搭配士官長軍階臂章，展現二戰老兵硬派作風。（現行官方番號正式為 C-20）。"
+      },
+      {
+        id: "C-17",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-17 超哥 / 法蘭斯高（標準版）",
+        jpName: "フランチェスコ・ベルヌーイ（スタンダードタイプ）",
+        releaseDate: "2011-07-16",
+        prototype: "現代 F1 開輪式超級方程式賽車（Francesco Bernoulli）",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-17 C17 超哥 法蘭斯高 伯努利 408444 方程式 F1 賽車 義大利 綠白紅 1號",
+        images: [
+          { url: "tomica_official_images/C-17_official.jpg", label: "🌟 台灣代理商官方正圖 (貨號 408444)" },
+          { url: "tomica_images/C-17_francesco.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【台灣官方代理正名：超哥（貨號 408444）】《Cars 2》世界大賽（World Grand Prix）義大利 1 號超級方程式賽車「超哥（Francesco Bernoulli）」！全車披上義大利綠白紅國旗三色塗裝、車身印有 1 號號碼與開輪式跑車懸吊，是麥坤在歐洲賽道最強勁的對手。"
+      },
+      {
+        id: "C-19",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-19 阿飛 / 費爾摩（消防救援版）",
+        jpName: "フィルモア（消防指揮車タイプ）",
+        releaseDate: "2024-12-21",
+        prototype: "1960 Volkswagen T1 麵包車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-19 C19 費爾摩 消防指揮車 福斯 T1 麵包車 紅色 警燈 天線",
+        images: [
+          { url: "tomica_official_images/C-19_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-19_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "嬉皮麵包車搖身一變為消防指揮座駕，紅白消防塗裝搭配車頂旋轉警燈與長天線。"
+      },
+      {
+        id: "C-22-FINN",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "麥克飛彈（標準型 / 皇家特務車）",
+        jpName: "フィン・マックミサイル（スタンダードタイプ）",
+        releaseDate: "2011-06-18（絕版）",
+        prototype: "1958 Aston Martin DB4 / Peerless GT",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-22 C22 麥克飛彈 特務 英國 007 銀藍色 魚鰭尾翼 絕版",
+        images: [
+          { url: "tomica_official_images/C-22_finn_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-22_box.jpg", label: "📦 家中原盒實拍（絕版）" }
+        ],
+        description: "冷冽銀灰藍烤漆、高挑立體魚鰭尾鰭，散發 007 英倫紳士特務風采，絕版珍藏。"
+      },
+      {
+        id: "C-22-MATER",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "拖線（冰上賽車版）",
+        jpName: "メーター（アイスレーシングタイプ）",
+        releaseDate: "2024-02-17",
+        prototype: "雪地競速改裝拖車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-22 C22 拖線 冰上 冰雪 淺藍 水藍 雪白 輪胎 機械增壓",
+        images: [
+          { url: "tomica_official_images/C-22_mater_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-22_mater_ice.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "極地冰上大獎賽系列！通透冰晶淺藍色車身、雪白色吊臂與防滑雪地胎。"
+      },
+      {
+        id: "C-23-MAX",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-23 麥帥 / 麥斯·修奈爾（標準版）",
+        jpName: "マックス・シュネル（スタンダードタイプ）",
+        releaseDate: "2011-10-15（絕版）",
+        prototype: "DTM AMG C-Class 賽車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-23 C23 麥斯 德國 4號 黑紅黃 DTM 賽車 碳纖維 絕版",
+        images: [
+          { url: "tomica_official_images/C-23_max_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-23_box.jpg", label: "📦 家中原盒實拍（絕版）" }
+        ],
+        description: "身披德國黑紅黃三色國旗條紋拉花與碳纖維紋理車頂，日耳曼精密工藝絕版之作。"
+      },
+      {
+        id: "C-23-GUIDO",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "奇諾（救護車版）",
+        jpName: "グイド（救急車タイプ）",
+        releaseDate: "2024-10-19",
+        prototype: "緊急救護改裝堆高機（Guido）",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-23 C23 奇諾 卡布 グイド Guido 救護車 堆高機 白色 藍色 十字 警燈",
+        images: [
+          { url: "tomica_official_images/C-23_guido_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-23_guido_ambulance.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "2024 緊急醫療救援小組「奇諾（Guido）救護版」！換裝白底帶藍色急救線條的義大利醫療防護塗裝，雙側帶有生命之星與紅十字標記。"
+      },
+      {
+        id: "C-24",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "閃電麥坤（冰上賽車版）",
+        jpName: "ライトニング・マックィーン（アイスレーシングタイプ）",
+        releaseDate: "2024-01-20",
+        prototype: "極地競速 NASCAR 賽車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-24 C24 麥坤 冰上 冰雪 紅色 雪花 冰藍 藍色輪圈 莫斯科",
+        images: [
+          { url: "tomica_official_images/C-24_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-24_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "莫斯科冰雪賽道式樣！艷紅底色上覆蓋如冰晶破裂般的白藍冰霜拉花，配四輪天藍雪地胎。"
+      },
+      {
+        id: "C-26",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "雷蒙（標準型紫金火焰版）",
+        jpName: "ラモーン（スタンダードタイプ）",
+        releaseDate: "2009-05-30",
+        prototype: "1959 Chevrolet Impala Lowrider",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-26 C26 雷蒙 紫色 火焰 烤漆 Lowrider 低底盤 跳跳車",
+        images: [
+          { url: "tomica_official_images/C-26_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-26_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "電鍍深紫亮粉金屬漆面、車側黃橘烈焰火焰拉花，完美詮釋西海岸低底盤跳跳車文化。"
+      },
+      {
+        id: "C-28",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-28 瘋狂邁絲（標準版）",
+        jpName: "ミス・フリッター（スタンダードタイプ）",
+        releaseDate: "2017-07-15",
+        prototype: "美式重裝長頭黃色校車改裝車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-28 C28 C-29 瘋狂邁絲 邁絲 校車 Miss Fritter DS18945 泥地 瘋狂8 Crazy8 芙蓉",
+        images: [
+          { url: "tomica_official_images/C-28_official.jpg", label: "🌟 台灣代理商 Funbox 官方正圖 (貨號 DS18945)" },
+          { url: "tomica_images/C-28_miss_fritter.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【台灣官方代理 Funbox 貨號：DS18945】《汽車總動員3》雷霆山泥地瘋狂8號賽（Crazy 8）毀滅霸主「瘋狂邁絲（Miss Fritter）」！車頭焊裝一對金屬大牛角、雙直立火焰煙囪，車身掛滿對手的戰利品車牌。"
+      },
+      {
+        id: "C-30",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-30 閃電麥坤（公路旅行 警長版）",
+        jpName: "ライトニング・マックィーン（シェリフタイプ）",
+        releaseDate: "2023-10-21",
+        prototype: "NASCAR 概念賽車（油車水鎮警長副手特別雙色塗裝）",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-30 C30 麥坤 公路旅行 警長版 代理警長 副警長 警長 卡其色 雙色 警燈 警徽 治安官 油車水鎮 Cars on the Road",
+        images: [
+          { url: "tomica_official_images/C-30_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-30_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【台灣 Funbox 官方代理正名：閃電麥坤 (公路旅行 警長版)】取材自 Disney+ 影集《汽車總動員：公路旅行》（Cars on the Road）！麥坤換上經典大地卡其警長巡警塗裝，全車換裝經典大地卡其與警車雙色塗裝，車頂裝設警車紅藍雙色旋轉警報燈，車身側面印有油車水鎮治安官副手『DEPUTY』金星徽章！"
+      },
+      {
+        id: "C-33",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-33 陶德 / 披薩星球卡車（標準版）",
+        jpName: "トッド（スタンダードタイプ）",
+        releaseDate: "2022-08-20",
+        prototype: "1978 Gyoza Mark VII Lite 皮克斯全宇宙彩蛋車",
+        boxed: 2,
+        loose: 1,
+        isDuplicate: true,
+        keywords: "C-33 C33 托德 披薩 披薩星球 卡車 皮卡 黃色 火箭 YO 彩蛋",
+        images: [
+          { url: "tomica_official_images/C-33_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-33_box1_box.jpg", label: "📦 家中原盒實拍（共2盒）" }
+        ],
+        description: "【⚠️⚠️重度重複 3 台】全皮克斯宇宙最強彩蛋！黃色斑駁貨卡、白色後斗車棚、頂部紅白火箭外送招牌。目前已有 2 盒全新與 1 台無盒，嚴禁再買！"
+      },
+      {
+        id: "C-34",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "閃電麥坤（GRC 全球賽車盃版）",
+        jpName: "ライトニング・マックィーン（GRCタイプ）",
+        releaseDate: "2025-10-18",
+        prototype: "現代 GT3 規格賽道賽車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-34 C34 麥坤 GRC 全球賽車 黑引擎蓋 紅白黑 幾何閃電 GT尾翼",
+        images: [
+          { url: "tomica_official_images/C-34_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-34_grc_mcqueen.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "前衛消光黑擾流機蓋，黑紅白幾何科技線條，搭配高下壓力雙層碳纖維大尾翼。"
+      },
+      {
+        id: "C-38",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "拖線（消防車版）",
+        jpName: "メーター（消防車タイプ）",
+        releaseDate: "2024-06-15",
+        prototype: "消防改裝救援拖吊車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-38 C38 拖線 消防車 消防員 紅色 頭盔 雲梯 水帶 吹牛",
+        images: [
+          { url: "tomica_official_images/C-38_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-38_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "出自短篇《拖線狂想曲・救援拖線》！拖線戴電鍍消防鋼盔，車體漆上鮮豔消防紅，後斗改裝救火雲梯與高壓水槍，原盒全新保存。"
+      },
+      {
+        id: "C-39",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "路易吉（救護車版）",
+        jpName: "ルイジ（救急車タイプ）",
+        releaseDate: "2024-10-19",
+        prototype: "緊急醫療改裝飛雅特 500",
+        boxed: 1,
+        loose: 1,
+        isDuplicate: true,
+        keywords: "C-39 C39 路易吉 救護車 義大利 白色 警燈 綠白紅 飛雅特",
+        images: [
+          { url: "tomica_official_images/C-39_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-39_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【⚠️已重複 2 台】路易吉披上急救白袍，車側印有義大利國旗飾條與急救紅十字，車頂搭載微型雙色警報燈。"
+      },
+      {
+        id: "C-40",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-40 雷蒙（公路巡警版）",
+        jpName: "ラモーン（道路パトロールカータイプ）",
+        releaseDate: "2024-12-21",
+        prototype: "高速公路巡警工程改裝車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "C-40 C40 雷蒙 道路巡邏 工程車 黃色 反光條 斜紋 警燈",
+        images: [
+          { url: "tomica_official_images/C-40_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/C-40_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "工程黃防護底漆，前後保桿飾有黑黃安全警示反光條，車頂搭載橘黃工程旋轉排燈。"
+      },
+      {
+        id: "SP-DOC-2020",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "韓大夫 附金色活塞盃（麥坤日 2020 特別仕樣）",
+        jpName: "ドック・ハドソン ピストン・カップ付き（ライトニング・マックィーンデイ 2020特別仕様）",
+        releaseDate: "2020-09-05",
+        prototype: "1951 Fabulous Hudson Hornet",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "韓大夫 哈德遜 活塞盃 獎盃 2020 麥坤日 藍色 金字 Fabulous 限定",
+        images: [
+          { url: "tomica_official_images/SP-DOC-2026_official.jpg", label: "🌟 官方發售宣傳大圖" },
+          { url: "tomica_images/doc_hudson_2026.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "深藍金屬鏡面烤漆，車側金字草寫，【內附獨立純金活塞盃冠軍獎盃】，傳世頂級典藏品。"
+      },
+      {
+        id: "SP-MATER-2023",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "拖線（麥坤日 2023 特別仕樣）",
+        jpName: "メーター（ライトニング・マックィーンデイ 2023特別仕様）",
+        releaseDate: "2023-09-02",
+        prototype: "皇家寶藍金屬改裝拖車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "拖線 麥坤日 2023 寶藍色 金屬藍 銀引擎 機械增壓 限定 95",
+        images: [
+          { url: "tomica_official_images/SP-MATER-2023_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/SP-02_mater_2023.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "高光澤「皇家寶藍金屬漆」，引擎蓋裝載電鍍銀色機械增壓進氣閥與專屬紀念銘牌。"
+      },
+      {
+        id: "C-36",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-36 閃電麥坤（日本警察巡邏車版）",
+        jpName: "カーズ トミカ C-36 ライトニング・マックィーン（パトカータイプ）",
+        releaseDate: "2019-11-16",
+        prototype: "日本警視廳超跑巡邏車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-36 麥坤 警車 日本 警視廳 黑白 旭日金章 POLICE V型警燈 巡邏",
+        images: [
+          { url: "tomica_official_images/C-36_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/SP-03_police_mcqueen.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【日本緊急車輛原創限定款】黑白熊貓雙色經典警車塗裝，前機蓋鑲嵌金色警察旭日金盾徽（JPN RESCUE），車頂配備紅色警光燈，車尾高尾翼印有清晰 POLICE 字樣。"
+      },
+      {
+        id: "C-27",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-27 韓大夫（日本警視廳 巡邏車版）",
+        jpName: "カーズ トミカ C-27 ドック・ハドソン（パトカータイプ）",
+        releaseDate: "2020-03-28",
+        prototype: "1951 Hudson Hornet 日本警視廳巡邏車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-27 韓大夫 警車 警長 日本 警視廳 旭日金章 巡邏 哈德遜大黃蜂",
+        images: [
+          { url: "tomica_official_images/C-27_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/SP-04_police_sheriff.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【日本緊急車輛原創限定款】經典 1951 Hudson Hornet 韓大夫換裝日本警視廳式樣！車身側門印有舊字體「警視庁」，車頂配備復古圓柱型單筒旋轉警光燈，前機蓋搭配 JPN RESCUE 警徽。"
+      },
+      {
+        id: "SP-MCQUEEN-CHERRY",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "閃電麥坤（Cars 3 Rust-eze 金屬櫻桃酒紅限定版 / Mattel 1:55）",
+        jpName: "ライトニング・マックィーン（メタリックタイプ / Rust-eze Racing Center）",
+        releaseDate: "Cars 3 紀念限定",
+        prototype: "Mattel 1:55 合金車（Cars 3 特仕金屬櫻桃紅烤漆）",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "麥坤 酒紅 暗紅 櫻桃紅 金屬 珠光 金字 95 Rust-eze Mattel 美泰兒",
+        images: [
+          { url: "tomica_official_images/SP-MCQUEEN-CHERRY_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/SP-05_cherry_red.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【美泰兒 Mattel 1:55 特仕珍藏款】《Cars 3》Rust-eze Racing Center 專屬深邃金屬櫻桃酒紅烤漆！機蓋、車頂與尾翼飾以全金色 Rust-eze 標誌與 95 號電光拉花，搭配專屬暗紅輪框與 Lightyear 賽車胎。"
+      },
+      {
+        id: "C-14-CAVE",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "C-14 閃電麥坤（洞穴版）",
+        jpName: "ライトニング・マックィーン（ケイブタイプ）",
+        releaseDate: "公路旅行限定版",
+        prototype: "原始史前恐龍石器洞穴改裝賽車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "C-14 C14 DS18949 麥坤 洞穴版 恐龍 原始人 骨頭 木柵 史前 Cars on the Road ケイブ",
+        images: [
+          { url: "tomica_official_images/C-14_cave_official.jpg", label: "🌟 台灣代理商 Funbox 官方正圖 (貨號 DS18949)" },
+          { url: "tomica_images/C-14_cave_loose.jpg", label: "🏎️ 家中無盒實拍" }
+        ],
+        description: "【台灣官方代理 Funbox 貨號：DS18949】取材自 Disney+ 影集《汽車總動員：公路旅行》（Cars on the Road）史前洞穴原始冒險特仕款！車身採用粗糙石器暗紅素色泥土塗裝，擋風玻璃為疲憊半瞇眼原始眼神，車尾後甲板帶有一排骨頭/恐龍肋骨木樁構造。"
+      },
+      {
+        id: "MACK-01",
+        category: "cars",
+        categoryName: "Cars 汽車總動員",
+        name: "TOMICA 麥克貨櫃拖車（Cars 3 長車）",
+        jpName: "カーズ トミカ マック（カーズ3タイプ）",
+        releaseDate: "2017-07",
+        prototype: "Mack Super-Liner 長頭重型卡車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "麥克 貨櫃車 長車 合金車 Cars3 95 拖車頭 尾門開啟",
+        images: [
+          { url: "tomica_official_images/MACK-01_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/MACK-01_mini_mack.jpg", label: "🚛 家中實拍" }
+        ],
+        description: "與標準 Tomica 同比例的合金貨櫃長車！後方長貨櫃印有 Cars 3 最新 95 號塗裝，尾門可開。"
+      },
+
+      // ==========================================
+      // 二、 🤠 玩具總動員系列 (toystory)
+      // ==========================================
+      {
+        id: "TS-WOODY-CLASSIC",
+        category: "toystory",
+        categoryName: "玩具總動員",
+        name: "高帽經典老爺車 胡迪（Disney Motors）",
+        jpName: "ディズニーモータース ハイハットクラシック ウッディ",
+        releaseDate: "2019-04-20（初版） / 2026-06-20（特仕）",
+        prototype: "1930 年代雙門古董禮帽老爺車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "胡迪 老爺車 高帽 經典 玩具總動員 牛仔 禮帽 乳牛 藍褲 迪士尼",
+        images: [
+          { url: "tomica_official_images/TS-WOODY-CLASSIC_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/DISNEY-01_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "將牛仔胡迪化為 1930 年代雙門古董老爺車！車頂為胡迪棕色牛仔高沿禮帽，車門披上黑白乳牛背心斑紋，盒裝保存極佳。"
+      },
+      {
+        id: "TS-TSUM-WOODY",
+        category: "toystory",
+        categoryName: "玩具總動員",
+        name: "Tsum Tsum 疊疊車：胡迪警長款",
+        jpName: "ツムツム トミカ ウッディ",
+        releaseDate: "Tsum Tsum 系列",
+        prototype: "角色造型合金疊疊車",
+        boxed: 0,
+        loose: 2,
+        isDuplicate: true,
+        keywords: "胡迪 疊疊車 TsumTsum 牛仔帽 乳牛 棕色",
+        images: [
+          { url: "tomica_official_images/TS-TSUM-WOODY_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🤠 家中實拍（已重複2台）" }
+        ],
+        description: "【⚠️已重複 2 台】圓滾滾金屬車身彩繪胡迪牛仔帽、黑白乳牛背心與領巾，車頂凹槽可讓其他疊疊車穩固疊放。"
+      },
+
+      // ==========================================
+      // 三、 🚙 一般款 (general)
+      // ==========================================
+      {
+        id: "GEN-FOOD-SET",
+        category: "general",
+        categoryName: "一般款",
+        name: "TOMICA 美食移動販賣車 4 台組（トミカのたべもの屋さんセット）",
+        jpName: "トミカのたべもの屋さんセット（4台セット）",
+        releaseDate: "常販精緻套裝",
+        prototype: "日本街頭移動餐車組合",
+        boxed: 4,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "美食車 披薩車 霜淇淋車 豬頭大阪燒 蕎麥麵 移動販賣 套裝",
+        images: [
+          { url: "tomica_official_images/GEN-FOOD-SET_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/SET_food_trucks_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【全新盒裝 4 台組】：1. 豐田 Hiace 披薩外送餐車 2. Suzuki Carry 霜淇淋車 3. 豬頭造型大阪燒餐車 4. 豐田 TownAce 手打蕎麥麵攤車。"
+      },
+      {
+        id: "GEN-DORAEMON",
+        category: "general",
+        categoryName: "一般款",
+        name: "Dream TOMICA No.165 哆啦A夢",
+        jpName: "ドリームトミカ No.165 ドラえもん",
+        releaseDate: "2022-02-19",
+        prototype: "國民動漫角色概念小車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "哆啦A夢 小叮噹 165 藍色 竹蜻蜓 鈴鐺 貓 Dream Tomica 盒裝",
+        images: [
+          { url: "tomica_official_images/GEN-DORAEMON_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/NO-165_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "全車水藍金屬烤漆，立體大笑的哆啦A夢萌臉，車頂天窗飾有標誌性的黃色竹蜻蜓，盒裝保存極佳。"
+      },
+      {
+        id: "GEN-LONG-TRAILERS",
+        category: "general",
+        categoryName: "一般款",
+        name: "重型長車系列（Long Tomica / 超長拖車隊）",
+        jpName: "ロングタイプトミカ シリーズ",
+        releaseDate: "常規 Long 系列",
+        prototype: "重型卡車、特種搬運與長途冷藏車",
+        boxed: 0,
+        loose: 7,
+        isDuplicate: false,
+        keywords: "長車 牧場運牛車 市原市 消防搬送 熊貓車 冷藏車 樁打機 吊車 板車",
+        images: [
+          { url: "tomica_images/REG_long_tomica_trailers.jpg", label: "🚛 超長拖車隊實拍" }
+        ],
+        description: "收錄 No.135 牧場運牛車、千葉縣市原市消防救助搬送車、重型機械黑色板車、熊貓野生動物運輸卡車、橋樑護欄工程車、日野超長銀色冷藏車、長臂吊車拖車。"
+      },
+      {
+        id: "SP-711-PLAINME-BREAD",
+        category: "general",
+        categoryName: "7-11聯名(非Tomica)",
+        name: "【7-11 × 統一麵包 × plain-me 聯名】麵包小汽車盲盒",
+        jpName: "統一麵包 × jnp by plain-me 跨界聯名（非 TOMICA 原廠）",
+        releaseDate: "超商限定企劃",
+        prototype: "統一超商 7-11 × 統一麵包 × plain-me 跨界聯名合金小車",
+        boxed: 0,
+        loose: 2,
+        isDuplicate: true,
+        keywords: "7-11 統一麵包 plain-me JNP 聯名 盲盒 麵包小汽車 可頌 熱狗 肉鬆堡 非Tomica 重複 JNP3945-262",
+        images: [
+          { url: "tomica_official_images/plain_me_bread_car_official.jpg", label: "🌟 plain-me 官方型錄棚拍 (SKU JNP3945-262)" },
+          { url: "tomica_images/REG_bread_food_trucks.jpg", label: "🥖 家中實拍（⚠️重複 2 台）" }
+        ],
+        description: "【⚠️非 TOMICA・超商跨界聯名合金車・重複 2 台】7-ELEVEN 與 plain-me 旗下品牌 JNP 跨界聯名限定盲盒合金小車（貨號 JNP3945-262）。車頂載有立體長條麵包與丹麥可頌，車身印有專屬經典 Logo。目前藏品持有 2 台（海苔肉鬆長條麵包款與丹麥可頌款），非日本 TAKARA TOMY TOMICA 原廠車款！"
+      },
+
+      // ==========================================
+      // 四、 ✨ 其他 Disney 系列 (other_disney)
+      // ==========================================
+      {
+        id: "DIS-DONALD-POPCORN",
+        category: "other_disney",
+        categoryName: "其他 Disney 系列",
+        name: "唐老鴨爆米花專賣店（附三輪外送餐車）",
+        jpName: "ドリームトミカ SP ディズニーモータース ドナルドのポップコーンショップ",
+        releaseDate: "官方原裝場景盒裝",
+        prototype: "迪士尼樂園爆米花店鋪與外送三輪車",
+        boxed: 1,
+        loose: 0,
+        isDuplicate: false,
+        keywords: "唐老鴨 爆米花 爆米花店 迪士尼 三輪車 藍白 店鋪 盒裝 SP",
+        images: [
+          { url: "tomica_official_images/DIS-DONALD-POPCORN_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/SET_donald_popcorn_box.jpg", label: "📦 家中原盒實拍" }
+        ],
+        description: "【全新盒裝】：內含一棟可展開把玩的唐老鴨主題藍白條紋爆米花專門店，以及一台車頂滿載立體爆米花的唐老鴨三輪外送餐車（ポピンズ）！"
+      },
+      {
+        id: "DIS-TSUM-OSWALD",
+        category: "other_disney",
+        categoryName: "其他 Disney 系列",
+        name: "TSUM 幸運兔奧斯華（台灣代理商正版疊疊車）",
+        jpName: "ディズニーモータース ツムツム オズワルド・ザ・ラッキー・ラビット つむつむ",
+        releaseDate: "2015-11-20",
+        prototype: "1927年華特迪士尼元祖角色 幸運兔奧斯華",
+        boxed: 0,
+        loose: 2,
+        isDuplicate: true,
+        keywords: "奧斯華 幸運兔 兔子 迪士尼元祖 藍黑 黑白 長耳朵 TsumTsum 疊疊車 重複 4904810851080",
+        images: [
+          { url: "tomica_official_images/DIS-TSUM-OSWALD_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🐰 家中實拍（⚠️重複 2 台）" }
+        ],
+        description: "【⚠️無盒重複 2 台】華特迪士尼在創造米奇之前的元祖經典角色「幸運兔奧斯華」！經典藍色車身、黑色車頭、招牌大長耳輪廓與無辜圓眼。收藏區最後排已有 2 台一模一樣奧斯華，採購切勿再重複入手！"
+      },
+      {
+        id: "DIS-TSUM-OLAF",
+        category: "other_disney",
+        categoryName: "其他 Disney 系列",
+        name: "Tsum Tsum 疊疊車：冰雪奇緣 雪寶（Olaf）",
+        jpName: "ツムツム トミカ オラフ",
+        releaseDate: "Tsum Tsum 系列",
+        prototype: "角色造型合金疊疊車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "雪寶 奧拉夫 冰雪奇緣 TsumTsum 白色 樹枝 胡蘿蔔",
+        images: [
+          { url: "tomica_official_images/DIS-TSUM-OLAF_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "⛄ 家中實拍" }
+        ],
+        description: "金屬純白車身、頭頂小樹枝、立體亮橘色胡蘿蔔小鼻子與呆萌門牙，位於金字塔最前列。"
+      },
+      {
+        id: "DIS-TSUM-POOH",
+        category: "other_disney",
+        categoryName: "其他 Disney 系列",
+        name: "Tsum Tsum 疊疊車：小熊維尼 ＆ 小豬",
+        jpName: "ツムツム トミカ くまのプーさん ＆ ピグレット",
+        releaseDate: "Tsum Tsum 系列",
+        prototype: "角色造型合金疊疊車",
+        boxed: 0,
+        loose: 2,
+        isDuplicate: false,
+        keywords: "小熊維尼 維尼 小豬 蜂蜜 黃色 粉紅色 TsumTsum",
+        images: [
+          { url: "tomica_official_images/DIS-TSUM-POOH_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🍯 家中實拍" }
+        ],
+        description: "溫暖黃底紅衣小熊維尼，搭配粉嫩條紋小豬（Piglet），百畝森林最溫暖的雙搭檔。"
+      },
+      {
+        id: "DIS-TSUM-MICKEY",
+        category: "other_disney",
+        categoryName: "其他 Disney 系列",
+        name: "Tsum Tsum 疊疊車：經典米奇（Mickey Mouse）",
+        jpName: "ツムツム トミカ ミッキーマウス",
+        releaseDate: "Tsum Tsum 系列",
+        prototype: "角色造型合金疊疊車",
+        boxed: 0,
+        loose: 1,
+        isDuplicate: false,
+        keywords: "米奇 米老鼠 黑紅 圓耳 迪士尼 經典 TsumTsum",
+        images: [
+          { url: "tomica_official_images/DIS-TSUM-MICKEY_official.jpg", label: "🌟 官方高清展示圖" },
+          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🐭 家中實拍" }
+        ],
+        description: "亮黑車身搭配下半部紅色短褲與白色雙圓扣，迪士尼不朽的傳奇象徵。"
+      }
+    ];
+
+    // 狀態變數
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let currentViewMode = 'grid'; // 'grid' | 'list'
+    let currentPhotoSource = 'official'; // 'official' | 'real'
+
+    // DOM 快取
+    const compendiumContainer = document.getElementById('compendiumContainer');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const checkerAlertBanner = document.getElementById('checkerAlertBanner');
+    const emptyNotice = document.getElementById('emptyNotice');
+    const resetSearchBtn = document.getElementById('resetSearchBtn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const viewGridBtn = document.getElementById('viewGridBtn');
+    const viewListBtn = document.getElementById('viewListBtn');
+    const photoSourceToggleContainer = document.getElementById('photoSourceToggleContainer');
+    const photoSourceOfficial = document.getElementById('photoSourceOfficial');
+    const photoSourceReal = document.getElementById('photoSourceReal');
+    const detailModalOverlay = document.getElementById('detailModalOverlay');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const detailModalContent = document.getElementById('detailModalContent');
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const floatingTopBtn = document.getElementById('floatingTopBtn');
+    const currentShownCount = document.getElementById('currentShownCount');
+
+    // 初始化統計數值
+    function initStatistics() {
+      const totalUnique = CARS_DATABASE.length;
+      let totalPieces = 0;
+      let dupKinds = 0;
+      let countCars = 0;
+      let countToy = 0;
+      let countGeneral = 0;
+      let countDisney = 0;
+
+      CARS_DATABASE.forEach(car => {
+        totalPieces += (car.boxed + car.loose);
+        if (car.isDuplicate || (car.boxed + car.loose) >= 2) dupKinds++;
+        if (car.category === 'cars') countCars++;
+        if (car.category === 'toystory') countToy++;
+        if (car.category === 'general') countGeneral++;
+        if (car.category === 'other_disney') countDisney++;
+      });
+
+      document.getElementById('statUniqueCount').textContent = totalUnique;
+      document.getElementById('statTotalPieces').textContent = totalPieces;
+      document.getElementById('bentoCarsCount').textContent = countCars;
+      document.getElementById('bentoToyCount').textContent = countToy;
+      document.getElementById('bentoDisneyCount').textContent = countGeneral + countDisney;
+      document.getElementById('bentoDupCount').textContent = dupKinds;
+
+      document.getElementById('countAll').textContent = totalUnique;
+      document.getElementById('countDuplicate').textContent = dupKinds;
+      document.getElementById('countCars').textContent = countCars;
+      document.getElementById('countToyStory').textContent = countToy;
+      document.getElementById('countGeneral').textContent = countGeneral;
+      document.getElementById('countDisney').textContent = countDisney;
+    }
+
+    // 核心渲染主函式
+    function renderCompendium() {
+      const query = searchQuery.trim().toLowerCase();
+
+      const filtered = CARS_DATABASE.filter(car => {
+        const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+        if (currentFilter === 'duplicate' && !isDup) return false;
+        if (currentFilter !== 'all' && currentFilter !== 'duplicate' && car.category !== currentFilter) return false;
+
+        if (query) {
+          const matchId = car.id.toLowerCase().includes(query);
+          const matchName = car.name.toLowerCase().includes(query);
+          const matchJp = car.jpName.toLowerCase().includes(query);
+          const matchKw = car.keywords.toLowerCase().includes(query);
+          const matchDesc = car.description.toLowerCase().includes(query);
+          const matchCat = car.categoryName.toLowerCase().includes(query);
+          return matchId || matchName || matchJp || matchKw || matchDesc || matchCat;
+        }
+        return true;
+      });
+
+      currentShownCount.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        compendiumContainer.innerHTML = '';
+        emptyNotice.classList.remove('hidden');
+      } else {
+        emptyNotice.classList.add('hidden');
+        if (currentViewMode === 'grid') {
+          compendiumContainer.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4';
+          compendiumContainer.innerHTML = filtered.map(car => generateGridCardHtml(car)).join('');
+        } else {
+          compendiumContainer.className = 'grid grid-cols-1 gap-4';
+          compendiumContainer.innerHTML = filtered.map(car => generateListCardHtml(car)).join('');
+        }
+      }
+
+      updateCheckerAlert(query, filtered);
+    }
+
+    // 產生海報圖鑑網格卡片 (Grid Card)
+    function generateGridCardHtml(car) {
+      const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+      const total = car.boxed + car.loose;
+
+      // 選擇圖源
+      let displayImg = car.images && car.images[0] ? car.images[0].url : '';
+      let displayLabel = car.images && car.images[0] ? car.images[0].label : '';
+
+      if (currentPhotoSource === 'real') {
+        // 若有第二張實拍照則優先選用
+        if (car.images && car.images.length > 1) {
+          displayImg = car.images[1].url;
+          displayLabel = car.images[1].label;
+        }
+      }
+
+      let catBadgeClass = 'tag-cars';
+      if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
+      if (car.category === 'general') catBadgeClass = 'tag-general';
+      if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
+
+      return `
+        <article 
+          class="pokedex-card ${isDup ? 'is-duplicate' : ''}"
+          onclick="openCarDetail('${car.id}')"
+          title="點擊查看詳細資料"
+        >
+          <!-- 車輛展示舞台 -->
+          <div class="car-stage h-36 sm:h-44 p-3">
+            <span class="absolute top-2 left-2 compendium-badge z-10">
+              ${car.id}
+            </span>
+            <div class="absolute top-2 right-2 flex flex-col items-end gap-1 z-10">
+              ${isDup ? `
+                <span class="tag-badge tag-dup shadow-2xs">
+                  ⚠️ 重複 ×${total}
+                </span>
+              ` : `
+                <span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'} shadow-2xs">
+                  ${car.boxed > 0 ? '盒裝全新' : '無盒散車'}
+                </span>
+              `}
+            </div>
+            
+            <img 
+              src="${displayImg}" 
+              alt="${car.name}" 
+              loading="lazy"
+              onerror="this.style.opacity='0.2'"
+            >
+
+            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded backdrop-blur-xs pointer-events-none">
+              ${displayLabel.includes('官方') ? '🌟 官方圖' : '📸 實拍照'}
+            </span>
+          </div>
+
+          <!-- 卡片文字資訊 -->
+          <div class="p-3 flex flex-col justify-between flex-grow bg-white">
+            <div>
+              <div class="flex items-center gap-1 mb-1">
+                <span class="tag-badge ${catBadgeClass} text-[9px] py-0 px-1.5">
+                  ${car.categoryName.replace('系列', '')}
+                </span>
+                ${car.releaseDate ? `<span class="text-[10px] text-zinc-400 font-mono">${car.releaseDate.substring(0, 4)}</span>` : ''}
+              </div>
+              <h2 class="text-xs sm:text-sm font-bold text-zinc-900 leading-snug line-clamp-2">
+                ${car.name}
+              </h2>
+            </div>
+
+            <div class="mt-2 pt-2 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-500">
+              <span class="font-mono truncate max-w-[65%] text-[10px] text-zinc-400">
+                ${car.prototype ? car.prototype.split('（')[0] : car.jpName}
+              </span>
+              <span class="font-bold text-zinc-800 shrink-0">
+                持有 ${total} 台
+              </span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // 產生雙照深度對照清單卡片 (List Card)
+    function generateListCardHtml(car) {
+      const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+      const total = car.boxed + car.loose;
+
+      let catBadgeClass = 'tag-cars';
+      if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
+      if (car.category === 'general') catBadgeClass = 'tag-general';
+      if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
+
+      let imagesDualHtml = '';
+      if (car.images && car.images.length > 0) {
+        const isDual = car.images.length > 1;
+        imagesDualHtml = `
+          <div class="grid ${isDual ? 'grid-cols-2' : 'grid-cols-1'} gap-2 my-2.5">
+            ${car.images.map(img => `
+              <div 
+                class="car-stage h-36 sm:h-44 rounded-xl border border-zinc-200/90 shadow-2xs cursor-zoom-in"
+                onclick="event.stopPropagation(); openLightbox('${img.url}', '${car.name} - ${img.label}')"
+              >
+                <img 
+                  src="${img.url}" 
+                  alt="${car.name}" 
+                  class="p-2.5"
+                  loading="lazy"
+                  onerror="this.style.opacity='0.2'"
+                >
+                <span class="absolute bottom-1.5 right-1.5 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs pointer-events-none">
+                  ${img.label}
+                </span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      return `
+        <article class="pokedex-card p-4 sm:p-5 ${isDup ? 'is-duplicate' : ''}" onclick="openCarDetail('${car.id}')">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="compendium-badge">
+                ${car.id}
+              </span>
+              <span class="tag-badge ${catBadgeClass}">
+                ${car.categoryName}
+              </span>
+              ${isDup ? `<span class="tag-badge tag-dup">⚠️ 重複收藏款</span>` : ''}
+            </div>
+
+            <div class="text-right shrink-0">
+              <span class="text-xs font-bold text-zinc-800">
+                持有 ${total} 台
+              </span>
+              <div class="text-[10px] text-zinc-500 font-mono">
+                盒裝 ×${car.boxed} ｜ 無盒 ×${car.loose}
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-base sm:text-lg font-bold text-zinc-950 mt-1 mb-0.5 leading-snug">
+            ${car.name}
+          </h2>
+          <div class="text-xs text-zinc-500 font-mono mb-2">
+            ${car.jpName}
+          </div>
+
+          <!-- 雙圖並列展示 -->
+          ${imagesDualHtml}
+
+          <!-- 考證與詳細資訊 -->
+          <div class="mt-2.5 pt-2.5 border-t border-zinc-100 flex flex-col gap-1.5 text-xs text-zinc-600">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-bold text-zinc-700">原型考證：</span>
+              <span class="bg-zinc-100 px-2 py-0.5 rounded text-zinc-700 font-mono">${car.prototype || '官方特規原創'}</span>
+              <span class="text-zinc-400">｜</span>
+              <span class="font-bold text-zinc-700">發售時間：</span>
+              <span class="text-zinc-600">${car.releaseDate || '限定款'}</span>
+            </div>
+            <p class="text-zinc-600 leading-relaxed mt-1">
+              ${car.description}
+            </p>
+          </div>
+        </article>
+      `;
+    }
+
+    // 開啟圖鑑詳情互動抽屜/彈窗 (Modal)
+    function openCarDetail(carId) {
+      const car = CARS_DATABASE.find(c => c.id === carId);
+      if (!car) return;
+
+      const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+      const total = car.boxed + car.loose;
+
+      let catBadgeClass = 'tag-cars';
+      if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
+      if (car.category === 'general') catBadgeClass = 'tag-general';
+      if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
+
+      let imagesModalHtml = '';
+      if (car.images && car.images.length > 0) {
+        imagesModalHtml = `
+          <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-2 my-3">
+            ${car.images.map(img => `
+              <div 
+                class="car-stage h-40 sm:h-52 rounded-xl border border-zinc-200 cursor-zoom-in relative"
+                onclick="openLightbox('${img.url}', '${car.name} - ${img.label}')"
+              >
+                <img src="${img.url}" alt="${car.name}" class="p-3">
+                <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-xs pointer-events-none">
+                  ${img.label}
+                </span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      detailModalContent.innerHTML = `
+        <!-- 標頭編號與狀態 -->
+        <div class="flex items-center justify-between gap-2 mb-2 pr-8">
+          <div class="flex items-center gap-2">
+            <span class="compendium-badge text-sm py-1 px-2.5">
+              ${car.id}
+            </span>
+            <span class="tag-badge ${catBadgeClass}">
+              ${car.categoryName}
+            </span>
+          </div>
+          <div>
+            ${isDup ? `
+              <span class="tag-badge tag-dup text-xs">
+                ⚠️ 重複持有 ${total} 台
+              </span>
+            ` : `
+              <span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'} text-xs">
+                ${car.boxed > 0 ? '盒裝全新 ×' + car.boxed : '無盒散車 ×' + car.loose}
+              </span>
+            `}
+          </div>
+        </div>
+
+        <!-- 標題名稱 -->
+        <h2 class="text-lg sm:text-xl font-bold text-zinc-950 leading-snug">
+          ${car.name}
+        </h2>
+        <div class="text-xs text-zinc-500 font-mono mt-0.5">
+          ${car.jpName}
+        </div>
+
+        <!-- 照片區域 -->
+        ${imagesModalHtml}
+
+        <!-- 採購防呆建議提示框 -->
+        <div class="p-3 rounded-xl mb-3 text-xs leading-relaxed ${isDup ? 'bg-red-50 border border-red-200 text-red-900' : 'bg-zinc-50 border border-zinc-200 text-zinc-700'}">
+          <div class="font-bold mb-0.5 flex items-center gap-1.5">
+            ${isDup ? '🚫 採購防呆警戒：嚴禁再次購買！' : '💡 採購庫存建議：'}
+          </div>
+          <div>
+            ${isDup ? 
+              `您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款！` : 
+              `目前庫存持有 <strong>${total} 台</strong>（${car.boxed > 0 ? '盒裝完整' : '無盒散車'}）。${car.boxed === 0 ? '若在實體店遇到便宜盒裝款可考慮補盒，否則無須再買。' : '盒況完好，無需重複採購。'}`
+            }
+          </div>
+        </div>
+
+        <!-- 考證與車輛屬性清單 -->
+        <div class="bg-zinc-50/70 rounded-xl p-3 border border-zinc-200/80 text-xs text-zinc-700 space-y-1.5 mb-3">
+          <div class="flex justify-between items-center py-0.5 border-b border-zinc-200/60">
+            <span class="text-zinc-500 font-medium">原型車款</span>
+            <span class="font-bold text-zinc-900 font-mono">${car.prototype || '官方特規原創款'}</span>
+          </div>
+          <div class="flex justify-between items-center py-0.5 border-b border-zinc-200/60">
+            <span class="text-zinc-500 font-medium">官方發售日期</span>
+            <span class="font-bold text-zinc-900 font-mono">${car.releaseDate || '特仕限定'}</span>
+          </div>
+          <div class="flex justify-between items-center py-0.5 border-b border-zinc-200/60">
+            <span class="text-zinc-500 font-medium">收藏實況</span>
+            <span class="font-bold text-zinc-900">盒裝 ×${car.boxed} ｜ 無盒 ×${car.loose}（合計 ${total} 台）</span>
+          </div>
+        </div>
+
+        <!-- 詳細故事背景描述 -->
+        <div class="text-xs text-zinc-600 leading-relaxed">
+          <div class="font-bold text-zinc-800 mb-1">【典藏手冊詳細介紹】</div>
+          <p>${car.description}</p>
+        </div>
+      `;
+
+      detailModalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCarDetail() {
+      detailModalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // 即時採購防呆橫幅比對器
+    function updateCheckerAlert(query, results) {
+      if (!query || query.length < 1) {
+        checkerAlertBanner.className = 'hidden';
+        checkerAlertBanner.innerHTML = '';
+        return;
+      }
+
+      // 清除特殊字元以比對 ID
+      const cleanQ = query.replace(/[^a-z0-9-]/gi, '').toLowerCase();
+      const exactMatch = results.find(c => c.id.toLowerCase() === cleanQ || c.id.toLowerCase() === `c-${cleanQ}`);
+      const matched = exactMatch || (results.length === 1 ? results[0] : null);
+
+      if (matched) {
+        const total = matched.boxed + matched.loose;
+        if (matched.isDuplicate || total >= 2) {
+          checkerAlertBanner.className = 'rounded-xl p-3 bg-red-100/95 border border-red-300 text-red-950 flex items-start gap-2 shadow-sm animate-pulse';
+          checkerAlertBanner.innerHTML = `
+            <span class="text-xl">🚫</span>
+            <div>
+              <div class="font-bold text-sm">【嚴禁購買】已重度重複持有！</div>
+              <div>您已擁有 <strong>${matched.name}</strong> 共 <span class="font-bold text-red-600 underline">${total} 台</span>（盒裝 ×${matched.boxed}、無盒 ×${matched.loose}），千萬別再重複花費！</div>
+            </div>
+          `;
+        } else if (total === 1) {
+          checkerAlertBanner.className = 'rounded-xl p-3 bg-amber-100/95 border border-amber-300 text-amber-950 flex items-start gap-2 shadow-sm';
+          checkerAlertBanner.innerHTML = `
+            <span class="text-xl">⚠️</span>
+            <div>
+              <div class="font-bold text-sm">【請注意】圖鑑中已有 1 台！</div>
+              <div>您已收藏 <strong>${matched.name}</strong>（${matched.boxed > 0 ? '盒裝全新' : '無盒散車'}）。除非想要補盒，否則不建議重複購買！</div>
+            </div>
+          `;
+        }
+      } else if (results.length === 0) {
+        checkerAlertBanner.className = 'rounded-xl p-3 bg-emerald-100/95 border border-emerald-300 text-emerald-950 flex items-start gap-2 shadow-sm';
+        checkerAlertBanner.innerHTML = `
+          <span class="text-xl">✅</span>
+          <div>
+            <div class="font-bold text-sm">【尚未收藏】可以安心採購！</div>
+            <div>目前圖鑑資料庫中查無「<strong>${query}</strong>」的收藏紀錄，不用擔心買到重複款！</div>
+          </div>
+        `;
+      } else {
+        checkerAlertBanner.className = 'rounded-xl p-2.5 bg-zinc-100 border border-zinc-200 text-zinc-700 text-xs flex items-center justify-between';
+        checkerAlertBanner.innerHTML = `
+          <span>找到 <strong>${results.length}</strong> 台相符車款，點擊卡片可檢視照片與持有狀態</span>
+        `;
+      }
+    }
+
+    // Lightbox 全螢幕檢視
+    function openLightbox(url, caption) {
+      lightboxImg.src = url;
+      lightboxCaption.textContent = caption;
+      lightboxOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightboxOverlay.classList.remove('active');
+      if (!detailModalOverlay.classList.contains('active')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    // 事件監聽綁定
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.trim().length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      renderCompendium();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      searchInput.focus();
+      renderCompendium();
+    });
+
+    resetSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      currentFilter = 'all';
+      filterPills.forEach(b => b.classList.remove('active'));
+      document.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+      renderCompendium();
+    });
+
+    // 分類標籤切換
+    filterPills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterPills.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.getAttribute('data-filter');
+        renderCompendium();
+      });
+    });
+
+    // 視角切換：網格 vs 清單
+    viewGridBtn.addEventListener('click', () => {
+      currentViewMode = 'grid';
+      viewGridBtn.classList.add('active');
+      viewListBtn.classList.remove('active');
+      photoSourceToggleContainer.classList.remove('hidden');
+      renderCompendium();
+    });
+
+    viewListBtn.addEventListener('click', () => {
+      currentViewMode = 'list';
+      viewListBtn.classList.add('active');
+      viewGridBtn.classList.remove('active');
+      photoSourceToggleContainer.classList.add('hidden');
+      renderCompendium();
+    });
+
+    // 照片來源切換 (官方圖 / 實拍)
+    photoSourceOfficial.addEventListener('click', () => {
+      currentPhotoSource = 'official';
+      photoSourceOfficial.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white';
+      photoSourceReal.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
+      renderCompendium();
+    });
+
+    photoSourceReal.addEventListener('click', () => {
+      currentPhotoSource = 'real';
+      photoSourceReal.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white';
+      photoSourceOfficial.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
+      renderCompendium();
+    });
+
+    // 彈窗關閉
+    closeModalBtn.addEventListener('click', closeCarDetail);
+    detailModalOverlay.addEventListener('click', closeCarDetail);
+
+    // 鍵盤 ESC 支援
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeCarDetail();
+      }
+    });
+
+    // 快速置頂浮動按鈕
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 260) {
+        floatingTopBtn.classList.add('visible');
+      } else {
+        floatingTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    floatingTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 啟動圖鑑
+    initStatistics();
+    renderCompendium();
+  </script>
+</body>
+</html>
