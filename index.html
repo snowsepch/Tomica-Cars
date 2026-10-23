@@ -64,9 +64,10 @@
     /* 頂端導航與浮動工具欄 */
     .header-bar {
       border-bottom: 1px solid var(--border-subtle);
-      background: rgba(250, 250, 248, 0.94);
+      background: rgba(250, 250, 248, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      padding-top: max(0.6rem, env(safe-area-inset-top));
     }
     .page-container {
       max-width: 1120px;
@@ -157,7 +158,7 @@
     .tag-boxed { background: #EFF6FF; color: #2563EB; border: 1px solid #DBEAFE; }
     .tag-loose { background: #F4F4F5; color: #52525B; border: 1px solid #E4E4E7; }
 
-    /* 模式與篩選按鈕 */
+    /* 模式切換按鈕 */
     .view-mode-btn {
       padding: 0.45rem 0.8rem;
       border-radius: 8px;
@@ -179,46 +180,30 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.12);
     }
 
-    .filter-pill {
-      padding: 0.42rem 0.85rem;
-      border-radius: 9999px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-      color: var(--text-secondary);
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .filter-pill.active {
-      background: var(--accent-black);
-      border-color: var(--accent-black);
-      color: #FFFFFF;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-
-    /* 圖鑑抽屜/彈窗 Modal */
+    /* 圖鑑抽屜/彈窗 Modal - 手機底部抽屜 (Bottom Sheet) ＋ 桌面居中彈窗 */
     .detail-modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(9, 9, 11, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(9, 9, 11, 0.68);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: 900;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      padding: 1rem;
+      padding: 0;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (min-width: 640px) {
+      .detail-modal-overlay {
+        align-items: center;
+        padding: 1.25rem;
+      }
     }
     .detail-modal-overlay.active {
       opacity: 1;
@@ -227,17 +212,34 @@
     .detail-modal-card {
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      border-radius: 24px 24px 0 0;
       width: 100%;
-      max-width: 620px;
-      max-height: 90vh;
+      max-width: 640px;
+      max-height: 88vh;
       overflow-y: auto;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      transform: translateY(20px) scale(0.98);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.16);
+      transform: translateY(100%);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (min-width: 640px) {
+      .detail-modal-card {
+        border-radius: 20px;
+        max-height: 90vh;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+        transform: translateY(20px) scale(0.98);
+        padding-bottom: 0;
+      }
     }
     .detail-modal-overlay.active .detail-modal-card {
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
+    }
+    @media (min-width: 640px) {
+      .detail-modal-overlay.active .detail-modal-card {
+        transform: translateY(0) scale(1);
+      }
     }
 
     /* Lightbox 全螢幕圖片放大 */
@@ -264,7 +266,7 @@
       pointer-events: auto;
     }
     .lightbox-img {
-      max-width: 95vw;
+      max-width: 92vw;
       max-height: 82vh;
       object-fit: contain;
       border-radius: 8px;
@@ -273,7 +275,7 @@
     /* 浮動快速置頂按鈕 */
     .floating-top-btn {
       position: fixed;
-      bottom: 1.5rem;
+      bottom: max(1.5rem, env(safe-area-inset-bottom));
       right: 1.25rem;
       width: 3rem;
       height: 3rem;
@@ -296,6 +298,15 @@
     }
     .floating-top-btn:active {
       transform: scale(0.92);
+    }
+
+    /* Bento 卡片可點擊回饋 */
+    .bento-clickable {
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .bento-clickable:active {
+      transform: scale(0.97);
     }
   </style>
 </head>
@@ -327,10 +338,10 @@
         <div class="flex items-center gap-1.5 text-right">
           <div class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-right shadow-2xs">
             <div class="text-[11px] font-bold text-zinc-900">
-              在冊 <span id="statUniqueCount" class="text-red-600">47</span> 款
+              在冊 <span id="statUniqueCount" class="text-red-600">46</span> 款
             </div>
             <div class="text-[10px] text-zinc-500">
-              共 <span id="statTotalPieces" class="font-bold text-zinc-800">72</span> 台
+              共 <span id="statTotalPieces" class="font-bold text-zinc-800">67</span> 台
             </div>
           </div>
         </div>
@@ -339,15 +350,15 @@
       <!-- 採購即時防呆搜尋條 (Instant Search Bar) -->
       <div class="relative mb-2">
         <input 
-          id="searchInput"
-          type="search"
-          placeholder="🔍 輸入編號（C-20、C-11）、角色（士官長/路霸/麥坤）秒比對..."
-          class="w-full pl-3.5 pr-10 py-2.5 bg-white border border-zinc-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium"
+          id="searchInput" 
+          type="search" 
+          placeholder="🔍 輸入編號（C-20、C-17）、角色（超哥/邁絲/士官長）秒比對..." 
+          class="w-full pl-3.5 pr-10 py-2.5 bg-white border border-zinc-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium" 
           autocomplete="off"
         >
         <button 
-          id="clearSearchBtn"
-          class="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden"
+          id="clearSearchBtn" 
+          class="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden" 
           aria-label="清除搜尋"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -365,23 +376,23 @@
   <!-- ============================================================ -->
   <section class="page-container pt-3 pb-1">
     
-    <!-- 圖鑑統計 Bento Bar (簡潔收集進度卡) -->
+    <!-- 圖鑑統計 Bento Bar (簡潔收集進度卡 - 點擊可直接快速篩選) -->
     <div class="grid grid-cols-4 gap-2 mb-3">
-      <div class="bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs">
+      <div id="bentoCardCars" class="bento-clickable bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看 Cars 系列">
         <div class="text-[10px] text-zinc-500 font-medium">Cars 系列</div>
         <div class="text-sm font-extrabold text-zinc-900" id="bentoCarsCount">35</div>
       </div>
-      <div class="bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs">
+      <div id="bentoCardToy" class="bento-clickable bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看玩具總動員">
         <div class="text-[10px] text-zinc-500 font-medium">玩具總動員</div>
-        <div class="text-sm font-extrabold text-blue-700" id="bentoToyCount">3</div>
+        <div class="text-sm font-extrabold text-blue-700" id="bentoToyCount">2</div>
       </div>
-      <div class="bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs">
+      <div id="bentoCardDisney" class="bento-clickable bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看經典與迪士尼">
         <div class="text-[10px] text-zinc-500 font-medium">經典/迪士尼</div>
         <div class="text-sm font-extrabold text-purple-700" id="bentoDisneyCount">9</div>
       </div>
-      <div class="bg-red-50/80 p-2.5 rounded-xl border border-red-200 text-center shadow-2xs">
+      <div id="bentoCardDup" class="bento-clickable bg-red-50/80 p-2.5 rounded-xl border border-red-200 text-center shadow-2xs hover:border-red-300" title="點擊僅查看真正重複的車款">
         <div class="text-[10px] text-red-600 font-bold">⚠️ 重複款</div>
-        <div class="text-sm font-extrabold text-red-700" id="bentoDupCount">3</div>
+        <div class="text-sm font-extrabold text-red-700" id="bentoDupCount">9</div>
       </div>
     </div>
 
@@ -413,14 +424,28 @@
 
     </div>
 
-    <!-- 分類橫向捲動標籤 (Filter Pills) -->
-    <div class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none text-xs">
-      <button class="filter-pill active" data-filter="all">全部 (<span id="countAll">47</span>)</button>
-      <button class="filter-pill text-red-600 font-bold border-red-200 hover:border-red-400" data-filter="duplicate">⚠️ 已重複款 (<span id="countDuplicate">3</span>)</button>
-      <button class="filter-pill" data-filter="cars">🏎️ Cars (<span id="countCars">35</span>)</button>
-      <button class="filter-pill" data-filter="toystory">🤠 玩具總動員 (<span id="countToyStory">3</span>)</button>
-      <button class="filter-pill" data-filter="general">🚗 經典/多美組 (<span id="countGeneral">4</span>)</button>
-      <button class="filter-pill" data-filter="other_disney">🏰 迪士尼系列 (<span id="countDisney">5</span>)</button>
+    <!-- 系列別選單按鈕 (點擊展開自訂選單，可手動調整一次想看到的系列組合) -->
+    <div class="mb-2">
+      <button 
+        id="openSeriesDrawerBtn" 
+        class="w-full flex items-center justify-between px-3.5 py-2.5 bg-white border border-zinc-200 hover:border-zinc-300 rounded-xl shadow-2xs text-xs font-semibold text-zinc-900 active:scale-[0.99] transition cursor-pointer"
+        type="button"
+        title="點擊展開自訂系列選單"
+      >
+        <div class="flex items-center gap-2 truncate">
+          <span class="text-sm">🗂️</span>
+          <span class="text-zinc-400 font-medium shrink-0">自訂顯示系列：</span>
+          <span id="selectedSeriesSummaryText" class="font-bold text-zinc-900 truncate">全部系列 (46款)</span>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+          <span id="selectedSeriesBadge" class="bg-zinc-100 text-zinc-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full">
+            4 系列全選
+          </span>
+          <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+      </button>
     </div>
 
   </section>
@@ -432,7 +457,7 @@
     
     <!-- 結果數量提示 -->
     <div class="flex items-center justify-between text-xs text-zinc-500 py-1 mb-2 px-1">
-      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">47</strong> 款車輛</div>
+      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">46</strong> 款車輛</div>
       <div class="text-[11px] text-zinc-400">💡 點擊任一卡片可展開全圖鑑資料卡</div>
     </div>
 
@@ -443,22 +468,134 @@
     <div id="emptyNotice" class="hidden text-center py-16 px-4">
       <div class="text-5xl mb-3">🔍</div>
       <h3 class="text-base font-bold text-zinc-800 mb-1">查無相符的車輛圖鑑</h3>
-      <p class="text-xs text-zinc-500 mb-4">資料庫中目前沒有此關鍵字的收藏紀錄，可以安心於實體店採購！</p>
+      <p class="text-xs text-zinc-500 mb-4">資料庫中目前沒有符合所選系列的收藏紀錄，可以安心採購！</p>
       <button id="resetSearchBtn" class="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition">
-        重設搜尋條件
+        重設篩選條件
       </button>
     </div>
 
   </main>
 
   <!-- ============================================================ -->
-  <!-- 4. 圖鑑互動詳細抽屜/彈窗 (Compendium Detail Modal)           -->
+  <!-- 4. 系列篩選自訂選單抽屜 (Series Custom Selection Drawer)       -->
+  <!-- ============================================================ -->
+  <div id="seriesDrawerOverlay" class="detail-modal-overlay">
+    <div class="detail-modal-card p-4 sm:p-6" onclick="event.stopPropagation()">
+      <!-- 手機頂部手柄 -->
+      <div class="sm:hidden w-10 h-1 bg-zinc-300 rounded-full mx-auto mb-3"></div>
+
+      <!-- 抽屜標題列 -->
+      <div class="flex items-center justify-between pb-3 border-b border-zinc-100">
+        <div>
+          <h3 class="text-base font-bold text-zinc-900">🗂️ 手動調整顯示系列</h3>
+          <p class="text-xs text-zinc-500">可自由勾選單一或多個系列，一次檢視您想要的組合</p>
+        </div>
+        <button id="closeSeriesDrawerBtn" class="w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 hover:text-zinc-800 flex items-center justify-center font-bold text-sm">
+          ✕
+        </button>
+      </div>
+
+      <!-- 快捷一鍵切換列 (Quick Actions) -->
+      <div class="my-3">
+        <div class="text-[11px] font-bold text-zinc-400 mb-1.5">一鍵快速切換：</div>
+        <div class="flex items-center gap-1.5 flex-wrap text-xs">
+          <button id="presetAllBtn" type="button" class="px-2.5 py-1 rounded-lg bg-zinc-900 text-white font-bold text-xs">全部顯示</button>
+          <button id="presetCarsBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50">僅 Cars (35)</button>
+          <button id="presetToyBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50">僅 玩具總動員 (2)</button>
+          <button id="presetGeneralBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50">僅 經典/多美組 (4)</button>
+          <button id="presetDisneyBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50">僅 迪士尼 (5)</button>
+        </div>
+      </div>
+
+      <!-- 多選系列清單 (舒適點選手感) -->
+      <div class="space-y-2 my-4">
+        <!-- 1. Cars 系列 -->
+        <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="catCheckCars" value="cars" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
+            <div>
+              <div class="text-sm font-bold text-zinc-900">🏎️ Cars 汽車總動員系列</div>
+              <div class="text-[11px] text-zinc-500 font-mono">閃電麥坤、超哥、瘋狂邁絲、士官長等</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-50 text-red-700 border border-red-200">35 款</span>
+        </label>
+
+        <!-- 2. 玩具總動員 -->
+        <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="catCheckToy" value="toystory" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
+            <div>
+              <div class="text-sm font-bold text-zinc-900">🤠 玩具總動員系列</div>
+              <div class="text-[11px] text-zinc-500 font-mono">胡迪高帽老爺車、胡迪疊疊車</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">2 款</span>
+        </label>
+
+        <!-- 3. 經典款與多美組 -->
+        <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="catCheckGeneral" value="general" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
+            <div>
+              <div class="text-sm font-bold text-zinc-900">🚗 經典模型組 / 超長拖車隊 / 7-11聯名</div>
+              <div class="text-[11px] text-zinc-500 font-mono">超長拖車隊、美食車4組、哆啦A夢、7-11麵包小車</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">4 款</span>
+        </label>
+
+        <!-- 4. 迪士尼與 Tsum Tsum -->
+        <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="catCheckDisney" value="other_disney" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
+            <div>
+              <div class="text-sm font-bold text-zinc-900">🏰 迪士尼 & Tsum Tsum 系列</div>
+              <div class="text-[11px] text-zinc-500 font-mono">奧斯華、雪寶、維尼/小豬、米奇、唐老鴨爆米花專賣店</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">5 款</span>
+        </label>
+
+        <!-- 5. 獨立開關：僅顯示真正重複的款式 -->
+        <label class="flex items-center justify-between p-3 rounded-xl border border-red-200 bg-red-50/40 hover:bg-red-50 cursor-pointer transition select-none">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="checkOnlyDuplicates" class="w-4 h-4 rounded text-red-600 focus:ring-red-600 accent-red-600">
+            <div>
+              <div class="text-sm font-bold text-red-900">⚠️ 僅篩選「已重複款」（採購防呆）</div>
+              <div class="text-[11px] text-red-600">快速比對出目前庫存超過 1 台的車輛（排除套裝組合車）</div>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-100 text-red-800">9 款</span>
+        </label>
+      </div>
+
+      <!-- 底部操作按鈕 -->
+      <div class="pt-3 border-t border-zinc-100 flex items-center gap-2">
+        <button id="resetAllSeriesBtn" type="button" class="px-4 py-2.5 rounded-xl border border-zinc-300 text-zinc-700 text-xs font-bold hover:bg-zinc-50 active:scale-95 transition">
+          重設全選
+        </button>
+        <button id="applySeriesDrawerBtn" type="button" class="flex-1 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 active:scale-98 transition shadow-sm flex items-center justify-center gap-1.5">
+          <span>完成設定（套用查看）</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 5. 圖鑑沉浸式單車詳情抽屜 (Detail Modal Drawer)                 -->
   <!-- ============================================================ -->
   <div id="detailModalOverlay" class="detail-modal-overlay">
-    <div class="detail-modal-card p-5 relative" onclick="event.stopPropagation()">
-      
-      <!-- 關閉按鈕 -->
-      <button id="closeModalBtn" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 flex items-center justify-center font-bold text-sm transition z-10" aria-label="關閉">
+    <div class="detail-modal-card p-4 sm:p-6" onclick="event.stopPropagation()">
+      <!-- 手機頂部手柄 -->
+      <div class="sm:hidden w-10 h-1 bg-zinc-300 rounded-full mx-auto mb-2"></div>
+
+      <!-- 彈窗關閉按鈕 -->
+      <button 
+        id="closeModalBtn" 
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 hover:text-zinc-800 flex items-center justify-center font-bold text-sm z-10 transition shadow-2xs"
+        aria-label="關閉圖鑑"
+      >
         ✕
       </button>
 
@@ -469,7 +606,7 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- 5. 全螢幕手勢放大燈箱 (Fullscreen Lightbox)                   -->
+  <!-- 6. 全螢幕手勢放大燈箱 (Fullscreen Lightbox)                   -->
   <!-- ============================================================ -->
   <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
     <button class="absolute top-4 right-4 text-white/80 hover:text-white text-2xl p-2 font-bold z-10" aria-label="關閉">
@@ -480,14 +617,14 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- 6. 浮動快速置頂按鈕 (Floating Back to Top)                    -->
+  <!-- 7. 浮動快速置頂按鈕 (Floating Back to Top)                    -->
   <!-- ============================================================ -->
   <button id="floatingTopBtn" class="floating-top-btn" aria-label="回到頁首">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
   </button>
 
   <!-- ============================================================ -->
-  <!-- 7. 典藏資料庫與核心運作邏輯 (Database & Engine)                -->
+  <!-- 8. 典藏資料庫與核心運作邏輯 (Database & Engine)                -->
   <!-- ============================================================ -->
   <script>
     // 注入原始完整無缺資料庫
@@ -1229,10 +1366,10 @@
         name: "【7-11 × 統一麵包 × plain-me 聯名】麵包小汽車盲盒",
         jpName: "統一麵包 × jnp by plain-me 跨界聯名（非 TOMICA 原廠）",
         releaseDate: "超商限定企劃",
-        prototype: "統一超商 7-11 × 統一麵包 × plain-me 跨界聯名合金小車",
+        prototype: "統一超商 7-11 × 統一麵包 × plain-me 跨界聯名合金小車（長條麵包款＋丹麥可頌款）",
         boxed: 0,
         loose: 2,
-        isDuplicate: true,
+        isDuplicate: false,
         keywords: "7-11 統一麵包 plain-me JNP 聯名 盲盒 麵包小汽車 可頌 熱狗 肉鬆堡 非Tomica 重複 JNP3945-262",
         images: [
           { url: "tomica_official_images/plain_me_bread_car_official.jpg", label: "🌟 plain-me 官方型錄棚拍 (SKU JNP3945-262)" },
@@ -1336,8 +1473,9 @@
       }
     ];
 
-    // 狀態變數
-    let currentFilter = 'all';
+    // 狀態變數：支援多選系列與重複獨立過濾
+    let selectedCategories = new Set(['cars', 'toystory', 'general', 'other_disney']);
+    let filterOnlyDuplicates = false;
     let searchQuery = '';
     let currentViewMode = 'grid'; // 'grid' | 'list'
     let currentPhotoSource = 'official'; // 'official' | 'real'
@@ -1349,7 +1487,6 @@
     const checkerAlertBanner = document.getElementById('checkerAlertBanner');
     const emptyNotice = document.getElementById('emptyNotice');
     const resetSearchBtn = document.getElementById('resetSearchBtn');
-    const filterPills = document.querySelectorAll('.filter-pill');
     const viewGridBtn = document.getElementById('viewGridBtn');
     const viewListBtn = document.getElementById('viewListBtn');
     const photoSourceToggleContainer = document.getElementById('photoSourceToggleContainer');
@@ -1364,38 +1501,99 @@
     const floatingTopBtn = document.getElementById('floatingTopBtn');
     const currentShownCount = document.getElementById('currentShownCount');
 
+    // 系列選單 DOM
+    const openSeriesDrawerBtn = document.getElementById('openSeriesDrawerBtn');
+    const seriesDrawerOverlay = document.getElementById('seriesDrawerOverlay');
+    const closeSeriesDrawerBtn = document.getElementById('closeSeriesDrawerBtn');
+    const applySeriesDrawerBtn = document.getElementById('applySeriesDrawerBtn');
+    const resetAllSeriesBtn = document.getElementById('resetAllSeriesBtn');
+    const selectedSeriesSummaryText = document.getElementById('selectedSeriesSummaryText');
+    const selectedSeriesBadge = document.getElementById('selectedSeriesBadge');
+
+    const catCheckCars = document.getElementById('catCheckCars');
+    const catCheckToy = document.getElementById('catCheckToy');
+    const catCheckGeneral = document.getElementById('catCheckGeneral');
+    const catCheckDisney = document.getElementById('catCheckDisney');
+    const checkOnlyDuplicates = document.getElementById('checkOnlyDuplicates');
+
+    // 快捷按鈕
+    const presetAllBtn = document.getElementById('presetAllBtn');
+    const presetCarsBtn = document.getElementById('presetCarsBtn');
+    const presetToyBtn = document.getElementById('presetToyBtn');
+    const presetGeneralBtn = document.getElementById('presetGeneralBtn');
+    const presetDisneyBtn = document.getElementById('presetDisneyBtn');
+
+    // Bento 快捷卡片
+    const bentoCardCars = document.getElementById('bentoCardCars');
+    const bentoCardToy = document.getElementById('bentoCardToy');
+    const bentoCardDisney = document.getElementById('bentoCardDisney');
+    const bentoCardDup = document.getElementById('bentoCardDup');
+
     // 初始化統計數值
     function initStatistics() {
       const totalUnique = CARS_DATABASE.length;
       let totalPieces = 0;
-      let dupKinds = 0;
       let countCars = 0;
       let countToy = 0;
       let countGeneral = 0;
       let countDisney = 0;
+      let dupKinds = 0;
 
-      CARS_DATABASE.forEach(car => {
-        totalPieces += (car.boxed + car.loose);
-        if (car.isDuplicate || (car.boxed + car.loose) >= 2) dupKinds++;
-        if (car.category === 'cars') countCars++;
-        if (car.category === 'toystory') countToy++;
-        if (car.category === 'general') countGeneral++;
-        if (car.category === 'other_disney') countDisney++;
+      CARS_DATABASE.forEach(c => {
+        totalPieces += (c.boxed + c.loose);
+        if (c.category === 'cars') countCars++;
+        if (c.category === 'toystory') countToy++;
+        if (c.category === 'general') countGeneral++;
+        if (c.category === 'other_disney') countDisney++;
+        if (c.isDuplicate) dupKinds++;
       });
 
       document.getElementById('statUniqueCount').textContent = totalUnique;
       document.getElementById('statTotalPieces').textContent = totalPieces;
+
       document.getElementById('bentoCarsCount').textContent = countCars;
       document.getElementById('bentoToyCount').textContent = countToy;
       document.getElementById('bentoDisneyCount').textContent = countGeneral + countDisney;
       document.getElementById('bentoDupCount').textContent = dupKinds;
+    }
 
-      document.getElementById('countAll').textContent = totalUnique;
-      document.getElementById('countDuplicate').textContent = dupKinds;
-      document.getElementById('countCars').textContent = countCars;
-      document.getElementById('countToyStory').textContent = countToy;
-      document.getElementById('countGeneral').textContent = countGeneral;
-      document.getElementById('countDisney').textContent = countDisney;
+    // 更新系列按鈕顯示文字與徽章
+    function updateSeriesButtonLabel() {
+      if (filterOnlyDuplicates) {
+        selectedSeriesSummaryText.textContent = '⚠️ 僅篩選已重複款 (9款)';
+        selectedSeriesBadge.textContent = '重複專區';
+        selectedSeriesBadge.className = 'bg-red-100 text-red-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full';
+        return;
+      }
+
+      selectedSeriesBadge.className = 'bg-zinc-100 text-zinc-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full';
+
+      if (selectedCategories.size === 4) {
+        selectedSeriesSummaryText.textContent = '全部系列 (46款)';
+        selectedSeriesBadge.textContent = '4 系列全選';
+      } else if (selectedCategories.size === 1) {
+        if (selectedCategories.has('cars')) {
+          selectedSeriesSummaryText.textContent = '🏎️ Cars 汽車總動員 (35款)';
+          selectedSeriesBadge.textContent = '僅 Cars';
+        } else if (selectedCategories.has('toystory')) {
+          selectedSeriesSummaryText.textContent = '🤠 玩具總動員系列 (2款)';
+          selectedSeriesBadge.textContent = '僅 玩具總動員';
+        } else if (selectedCategories.has('general')) {
+          selectedSeriesSummaryText.textContent = '🚗 經典模型與長車組 (4款)';
+          selectedSeriesBadge.textContent = '僅 經典長車';
+        } else if (selectedCategories.has('other_disney')) {
+          selectedSeriesSummaryText.textContent = '🏰 迪士尼 & Tsum Tsum (5款)';
+          selectedSeriesBadge.textContent = '僅 迪士尼';
+        }
+      } else {
+        const names = [];
+        if (selectedCategories.has('cars')) names.push('Cars');
+        if (selectedCategories.has('toystory')) names.push('玩具總動員');
+        if (selectedCategories.has('general')) names.push('經典長車');
+        if (selectedCategories.has('other_disney')) names.push('迪士尼');
+        selectedSeriesSummaryText.textContent = names.join(' ＋ ');
+        selectedSeriesBadge.textContent = `${selectedCategories.size} 系列組合`;
+      }
     }
 
     // 核心渲染主函式
@@ -1403,9 +1601,10 @@
       const query = searchQuery.trim().toLowerCase();
 
       const filtered = CARS_DATABASE.filter(car => {
-        const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
-        if (currentFilter === 'duplicate' && !isDup) return false;
-        if (currentFilter !== 'all' && currentFilter !== 'duplicate' && car.category !== currentFilter) return false;
+        // 嚴格判定：只有真正標註為重複款的車才屬於重複 (排除非重複的套裝組合車)
+        const isDup = Boolean(car.isDuplicate);
+        if (filterOnlyDuplicates && !isDup) return false;
+        if (!selectedCategories.has(car.category)) return false;
 
         if (query) {
           const matchId = car.id.toLowerCase().includes(query);
@@ -1435,12 +1634,14 @@
         }
       }
 
+      updateSeriesButtonLabel();
       updateCheckerAlert(query, filtered);
     }
 
     // 產生海報圖鑑網格卡片 (Grid Card)
     function generateGridCardHtml(car) {
-      const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+      // 只有真正的重複款才顯示重複標籤 (套裝或多台組合車顯示所屬台數，絕不標為重複)
+      const isDup = Boolean(car.isDuplicate);
       const total = car.boxed + car.loose;
 
       // 選擇圖源
@@ -1448,7 +1649,6 @@
       let displayLabel = car.images && car.images[0] ? car.images[0].label : '';
 
       if (currentPhotoSource === 'real') {
-        // 若有第二張實拍照則優先選用
         if (car.images && car.images.length > 1) {
           displayImg = car.images[1].url;
           displayLabel = car.images[1].label;
@@ -1460,27 +1660,33 @@
       if (car.category === 'general') catBadgeClass = 'tag-general';
       if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
 
+      // 徽章文字邏輯 (區分重複與組合車)
+      let statusBadgeHtml = '';
+      if (isDup) {
+        statusBadgeHtml = `<span class="tag-badge tag-dup shadow-2xs">⚠️ 重複 ×${total}</span>`;
+      } else if (car.id === 'GEN-FOOD-SET') {
+        statusBadgeHtml = `<span class="tag-badge tag-boxed shadow-2xs">盒裝 4台組</span>`;
+      } else if (car.id === 'GEN-LONG-TRAILERS') {
+        statusBadgeHtml = `<span class="tag-badge tag-loose shadow-2xs">7台拖車隊</span>`;
+      } else if (car.id === 'SP-711-PLAINME-BREAD') {
+        statusBadgeHtml = `<span class="tag-badge tag-loose shadow-2xs">2款聯名小車</span>`;
+      } else {
+        statusBadgeHtml = `<span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'} shadow-2xs">${car.boxed > 0 ? '盒裝全新' : '無盒散車'}</span>`;
+      }
+
       return `
         <article 
           class="pokedex-card ${isDup ? 'is-duplicate' : ''}"
           onclick="openCarDetail('${car.id}')"
           title="點擊查看詳細資料"
         >
-          <!-- 車輛展示舞台 -->
-          <div class="car-stage h-36 sm:h-44 p-3">
+          <!-- 車輛展示舞台 (手機黃金比例 16:11 均勻展台) -->
+          <div class="car-stage aspect-[16/11] p-3">
             <span class="absolute top-2 left-2 compendium-badge z-10">
               ${car.id}
             </span>
             <div class="absolute top-2 right-2 flex flex-col items-end gap-1 z-10">
-              ${isDup ? `
-                <span class="tag-badge tag-dup shadow-2xs">
-                  ⚠️ 重複 ×${total}
-                </span>
-              ` : `
-                <span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'} shadow-2xs">
-                  ${car.boxed > 0 ? '盒裝全新' : '無盒散車'}
-                </span>
-              `}
+              ${statusBadgeHtml}
             </div>
             
             <img 
@@ -1524,7 +1730,7 @@
 
     // 產生雙照深度對照清單卡片 (List Card)
     function generateListCardHtml(car) {
-      const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+      const isDup = Boolean(car.isDuplicate);
       const total = car.boxed + car.loose;
 
       let catBadgeClass = 'tag-cars';
@@ -1539,7 +1745,7 @@
           <div class="grid ${isDual ? 'grid-cols-2' : 'grid-cols-1'} gap-2 my-2.5">
             ${car.images.map(img => `
               <div 
-                class="car-stage h-36 sm:h-44 rounded-xl border border-zinc-200/90 shadow-2xs cursor-zoom-in"
+                class="car-stage aspect-[16/11] rounded-xl border border-zinc-200/90 shadow-2xs cursor-zoom-in"
                 onclick="event.stopPropagation(); openLightbox('${img.url}', '${car.name} - ${img.label}')"
               >
                 <img 
@@ -1598,22 +1804,22 @@
               <span class="bg-zinc-100 px-2 py-0.5 rounded text-zinc-700 font-mono">${car.prototype || '官方特規原創'}</span>
               <span class="text-zinc-400">｜</span>
               <span class="font-bold text-zinc-700">發售時間：</span>
-              <span class="text-zinc-600">${car.releaseDate || '限定款'}</span>
+              <span class="text-zinc-500 font-mono">${car.releaseDate || '常規販售'}</span>
             </div>
-            <p class="text-zinc-600 leading-relaxed mt-1">
+            <div class="leading-relaxed text-zinc-700 mt-1">
               ${car.description}
-            </p>
+            </div>
           </div>
         </article>
       `;
     }
 
-    // 開啟圖鑑詳情互動抽屜/彈窗 (Modal)
+    // 展開圖鑑沉浸式單車詳情抽屜
     function openCarDetail(carId) {
       const car = CARS_DATABASE.find(c => c.id === carId);
       if (!car) return;
 
-      const isDup = car.isDuplicate || (car.boxed + car.loose) >= 2;
+      const isDup = Boolean(car.isDuplicate);
       const total = car.boxed + car.loose;
 
       let catBadgeClass = 'tag-cars';
@@ -1621,17 +1827,17 @@
       if (car.category === 'general') catBadgeClass = 'tag-general';
       if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
 
-      let imagesModalHtml = '';
+      let modalImagesHtml = '';
       if (car.images && car.images.length > 0) {
-        imagesModalHtml = `
-          <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-2 my-3">
+        modalImagesHtml = `
+          <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3 my-4">
             ${car.images.map(img => `
               <div 
-                class="car-stage h-40 sm:h-52 rounded-xl border border-zinc-200 cursor-zoom-in relative"
+                class="car-stage aspect-[16/11] rounded-2xl border border-zinc-200 cursor-zoom-in"
                 onclick="openLightbox('${img.url}', '${car.name} - ${img.label}')"
               >
-                <img src="${img.url}" alt="${car.name}" class="p-3">
-                <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-xs pointer-events-none">
+                <img src="${img.url}" alt="${car.name}" class="p-3" loading="lazy">
+                <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">
                   ${img.label}
                 </span>
               </div>
@@ -1641,73 +1847,57 @@
       }
 
       detailModalContent.innerHTML = `
-        <!-- 標頭編號與狀態 -->
-        <div class="flex items-center justify-between gap-2 mb-2 pr-8">
-          <div class="flex items-center gap-2">
-            <span class="compendium-badge text-sm py-1 px-2.5">
-              ${car.id}
-            </span>
-            <span class="tag-badge ${catBadgeClass}">
-              ${car.categoryName}
-            </span>
-          </div>
-          <div>
-            ${isDup ? `
-              <span class="tag-badge tag-dup text-xs">
-                ⚠️ 重複持有 ${total} 台
-              </span>
-            ` : `
-              <span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'} text-xs">
-                ${car.boxed > 0 ? '盒裝全新 ×' + car.boxed : '無盒散車 ×' + car.loose}
-              </span>
-            `}
-          </div>
+        <div class="flex items-center gap-2 mb-2 flex-wrap pr-8">
+          <span class="compendium-badge text-sm">${car.id}</span>
+          <span class="tag-badge ${catBadgeClass}">${car.categoryName}</span>
+          ${isDup ? `<span class="tag-badge tag-dup">⚠️ 重複持有 ${total} 台</span>` : `<span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'}">${car.boxed > 0 ? '無盒散車 ×0 ｜ 盒裝 ×' + car.boxed : '無盒散車 ×' + car.loose}</span>`}
         </div>
 
-        <!-- 標題名稱 -->
-        <h2 class="text-lg sm:text-xl font-bold text-zinc-950 leading-snug">
+        <h2 class="text-xl font-extrabold text-zinc-950 leading-snug">
           ${car.name}
         </h2>
-        <div class="text-xs text-zinc-500 font-mono mt-0.5">
+        <p class="text-xs text-zinc-500 font-mono mb-2">
           ${car.jpName}
+        </p>
+
+        <!-- 圖片區塊 -->
+        ${modalImagesHtml}
+
+        <!-- 採購防呆避坑警報 -->
+        <div class="my-3 p-3.5 rounded-xl border ${isDup ? 'bg-red-50/80 border-red-200 text-red-900' : 'bg-amber-50/80 border-amber-200 text-amber-900'} text-xs leading-relaxed">
+          ${isDup ? `
+            <div class="font-bold flex items-center gap-1 mb-1 text-red-700">
+              <span>🚫 採購防呆警戒：嚴禁再次購買！</span>
+            </div>
+            <div>您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款！</div>
+          ` : `
+            <div class="font-bold flex items-center gap-1 mb-1 text-amber-800">
+              <span>💡 採購庫存建議：</span>
+            </div>
+            <div>目前庫存持有 <strong>${total} 台</strong>（${car.boxed > 0 ? '盒裝全新' : '無盒散車'}）。若在實體店遇到便宜盒裝款可考慮補盒，否則無須再買。</div>
+          `}
         </div>
 
-        <!-- 照片區域 -->
-        ${imagesModalHtml}
-
-        <!-- 採購防呆建議提示框 -->
-        <div class="p-3 rounded-xl mb-3 text-xs leading-relaxed ${isDup ? 'bg-red-50 border border-red-200 text-red-900' : 'bg-zinc-50 border border-zinc-200 text-zinc-700'}">
-          <div class="font-bold mb-0.5 flex items-center gap-1.5">
-            ${isDup ? '🚫 採購防呆警戒：嚴禁再次購買！' : '💡 採購庫存建議：'}
+        <!-- 規格資訊清單 -->
+        <div class="bg-zinc-50 rounded-xl p-3.5 my-3 text-xs space-y-2 border border-zinc-200/80">
+          <div class="flex items-center justify-between">
+            <span class="text-zinc-500">原型車款</span>
+            <span class="font-semibold text-zinc-800 text-right font-mono">${car.prototype || '官方概念原創車'}</span>
           </div>
-          <div>
-            ${isDup ? 
-              `您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款！` : 
-              `目前庫存持有 <strong>${total} 台</strong>（${car.boxed > 0 ? '盒裝完整' : '無盒散車'}）。${car.boxed === 0 ? '若在實體店遇到便宜盒裝款可考慮補盒，否則無須再買。' : '盒況完好，無需重複採購。'}`
-            }
+          <div class="flex items-center justify-between">
+            <span class="text-zinc-500">官方發售日期</span>
+            <span class="font-semibold text-zinc-800 font-mono">${car.releaseDate || '經典常規款'}</span>
           </div>
-        </div>
-
-        <!-- 考證與車輛屬性清單 -->
-        <div class="bg-zinc-50/70 rounded-xl p-3 border border-zinc-200/80 text-xs text-zinc-700 space-y-1.5 mb-3">
-          <div class="flex justify-between items-center py-0.5 border-b border-zinc-200/60">
-            <span class="text-zinc-500 font-medium">原型車款</span>
-            <span class="font-bold text-zinc-900 font-mono">${car.prototype || '官方特規原創款'}</span>
-          </div>
-          <div class="flex justify-between items-center py-0.5 border-b border-zinc-200/60">
-            <span class="text-zinc-500 font-medium">官方發售日期</span>
-            <span class="font-bold text-zinc-900 font-mono">${car.releaseDate || '特仕限定'}</span>
-          </div>
-          <div class="flex justify-between items-center py-0.5 border-b border-zinc-200/60">
-            <span class="text-zinc-500 font-medium">收藏實況</span>
-            <span class="font-bold text-zinc-900">盒裝 ×${car.boxed} ｜ 無盒 ×${car.loose}（合計 ${total} 台）</span>
+          <div class="flex items-center justify-between">
+            <span class="text-zinc-500">收藏實況</span>
+            <span class="font-bold text-zinc-900 font-mono">盒裝 ×${car.boxed} ｜ 無盒 ×${car.loose} (合計 ${total} 台)</span>
           </div>
         </div>
 
-        <!-- 詳細故事背景描述 -->
-        <div class="text-xs text-zinc-600 leading-relaxed">
-          <div class="font-bold text-zinc-800 mb-1">【典藏手冊詳細介紹】</div>
-          <p>${car.description}</p>
+        <!-- 典藏背景手冊與考究 -->
+        <div class="mt-3 pt-3 border-t border-zinc-100 text-xs text-zinc-700 leading-relaxed">
+          <div class="font-bold text-zinc-900 mb-1">【典藏手冊詳細介紹】</div>
+          <p class="mb-2">${car.description}</p>
         </div>
       `;
 
@@ -1720,68 +1910,111 @@
       document.body.style.overflow = '';
     }
 
-    // 即時採購防呆橫幅比對器
-    function updateCheckerAlert(query, results) {
-      if (!query || query.length < 1) {
-        checkerAlertBanner.className = 'hidden';
-        checkerAlertBanner.innerHTML = '';
+    // 展開 / 關閉系列選單抽屜
+    function openSeriesDrawer() {
+      // 同步當前勾選狀態到抽屜的 Checkbox
+      catCheckCars.checked = selectedCategories.has('cars');
+      catCheckToy.checked = selectedCategories.has('toystory');
+      catCheckGeneral.checked = selectedCategories.has('general');
+      catCheckDisney.checked = selectedCategories.has('other_disney');
+      checkOnlyDuplicates.checked = filterOnlyDuplicates;
+
+      seriesDrawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSeriesDrawer() {
+      seriesDrawerOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // 套用抽屜選單中的系列設定
+    function applySeriesSelection() {
+      selectedCategories.clear();
+      if (catCheckCars.checked) selectedCategories.add('cars');
+      if (catCheckToy.checked) selectedCategories.add('toystory');
+      if (catCheckGeneral.checked) selectedCategories.add('general');
+      if (catCheckDisney.checked) selectedCategories.add('other_disney');
+
+      // 若一個都沒勾選，自動全選防呆
+      if (selectedCategories.size === 0) {
+        selectedCategories.add('cars');
+        selectedCategories.add('toystory');
+        selectedCategories.add('general');
+        selectedCategories.add('other_disney');
+      }
+
+      filterOnlyDuplicates = checkOnlyDuplicates.checked;
+
+      closeSeriesDrawer();
+      renderCompendium();
+    }
+
+    // 即時防呆搜尋警報條更新
+    function updateCheckerAlert(query, filtered) {
+      if (!query) {
+        checkerAlertBanner.classList.add('hidden');
         return;
       }
 
-      // 清除特殊字元以比對 ID
-      const cleanQ = query.replace(/[^a-z0-9-]/gi, '').toLowerCase();
-      const exactMatch = results.find(c => c.id.toLowerCase() === cleanQ || c.id.toLowerCase() === `c-${cleanQ}`);
-      const matched = exactMatch || (results.length === 1 ? results[0] : null);
+      const exactMatch = filtered.find(c => 
+        c.id.toLowerCase() === query || 
+        c.name.toLowerCase().includes(query)
+      );
 
-      if (matched) {
-        const total = matched.boxed + matched.loose;
-        if (matched.isDuplicate || total >= 2) {
-          checkerAlertBanner.className = 'rounded-xl p-3 bg-red-100/95 border border-red-300 text-red-950 flex items-start gap-2 shadow-sm animate-pulse';
+      checkerAlertBanner.classList.remove('hidden');
+
+      if (exactMatch) {
+        const isDup = Boolean(exactMatch.isDuplicate);
+        const total = exactMatch.boxed + exactMatch.loose;
+        if (isDup) {
+          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-red-100 border border-red-300 text-red-950 font-medium';
           checkerAlertBanner.innerHTML = `
-            <span class="text-xl">🚫</span>
-            <div>
-              <div class="font-bold text-sm">【嚴禁購買】已重度重複持有！</div>
-              <div>您已擁有 <strong>${matched.name}</strong> 共 <span class="font-bold text-red-600 underline">${total} 台</span>（盒裝 ×${matched.boxed}、無盒 ×${matched.loose}），千萬別再重複花費！</div>
+            <div class="font-bold text-red-800 flex items-center gap-1.5 text-sm mb-1">
+              <span>🚫 採購防呆紅燈：您已擁有此車款！</span>
             </div>
+            <div>庫存比對成功：<strong>${exactMatch.id} ${exactMatch.name}</strong> 已收藏 <strong>${total} 台</strong>（盒裝 ×${exactMatch.boxed}、散車 ×${exactMatch.loose}），<span class="underline font-bold">現場請勿重複購買！</span></div>
           `;
-        } else if (total === 1) {
-          checkerAlertBanner.className = 'rounded-xl p-3 bg-amber-100/95 border border-amber-300 text-amber-950 flex items-start gap-2 shadow-sm';
+        } else {
+          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-amber-50 border border-amber-300 text-amber-950 font-medium';
           checkerAlertBanner.innerHTML = `
-            <span class="text-xl">⚠️</span>
-            <div>
-              <div class="font-bold text-sm">【請注意】圖鑑中已有 1 台！</div>
-              <div>您已收藏 <strong>${matched.name}</strong>（${matched.boxed > 0 ? '盒裝全新' : '無盒散車'}）。除非想要補盒，否則不建議重複購買！</div>
+            <div class="font-bold text-amber-800 flex items-center gap-1.5 text-sm mb-1">
+              <span>⚠️ 採購提醒：已有此車款（${exactMatch.boxed > 0 ? '原盒 1 台' : '無盒 1 台'}）</span>
             </div>
+            <div>若在現場看到的是盒裝且您想升級原盒，可考慮補盒；若也是散車則建議跳過。</div>
           `;
         }
-      } else if (results.length === 0) {
-        checkerAlertBanner.className = 'rounded-xl p-3 bg-emerald-100/95 border border-emerald-300 text-emerald-950 flex items-start gap-2 shadow-sm';
+      } else if (filtered.length > 0) {
+        checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-blue-50 border border-blue-200 text-blue-950 font-medium';
         checkerAlertBanner.innerHTML = `
-          <span class="text-xl">✅</span>
-          <div>
-            <div class="font-bold text-sm">【尚未收藏】可以安心採購！</div>
-            <div>目前圖鑑資料庫中查無「<strong>${query}</strong>」的收藏紀錄，不用擔心買到重複款！</div>
+          <div class="font-bold text-blue-900 flex items-center gap-1 mb-0.5">
+            <span>🔍 找到 ${filtered.length} 款相符的收藏車輛</span>
           </div>
+          <div class="text-[11px] text-blue-700">請比對下方卡片，核對車身特徵與番號。</div>
         `;
       } else {
-        checkerAlertBanner.className = 'rounded-xl p-2.5 bg-zinc-100 border border-zinc-200 text-zinc-700 text-xs flex items-center justify-between';
+        checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-emerald-50 border border-emerald-300 text-emerald-950 font-medium';
         checkerAlertBanner.innerHTML = `
-          <span>找到 <strong>${results.length}</strong> 台相符車款，點擊卡片可檢視照片與持有狀態</span>
+          <div class="font-bold text-emerald-800 flex items-center gap-1.5 text-sm mb-1">
+            <span>🎉 採購綠燈：查無此收藏！</span>
+          </div>
+          <div>您的典藏資料庫中目前<strong>沒有這款車</strong>，若在實體店見到喜歡的價格，可放心入手擴充圖鑑！</div>
         `;
       }
     }
 
-    // Lightbox 全螢幕檢視
+    // Lightbox 大圖檢視
     function openLightbox(url, caption) {
       lightboxImg.src = url;
-      lightboxCaption.textContent = caption;
+      lightboxCaption.textContent = caption || '';
       lightboxOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
       lightboxOverlay.classList.remove('active');
-      if (!detailModalOverlay.classList.contains('active')) {
+      lightboxImg.src = '';
+      if (!detailModalOverlay.classList.contains('active') && !seriesDrawerOverlay.classList.contains('active')) {
         document.body.style.overflow = '';
       }
     }
@@ -1789,7 +2022,7 @@
     // 事件監聽綁定
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value;
-      if (searchQuery.trim().length > 0) {
+      if (searchQuery.trim()) {
         clearSearchBtn.classList.remove('hidden');
       } else {
         clearSearchBtn.classList.add('hidden');
@@ -1801,31 +2034,20 @@
       searchInput.value = '';
       searchQuery = '';
       clearSearchBtn.classList.add('hidden');
-      searchInput.focus();
       renderCompendium();
+      searchInput.focus();
     });
 
     resetSearchBtn.addEventListener('click', () => {
       searchInput.value = '';
       searchQuery = '';
       clearSearchBtn.classList.add('hidden');
-      currentFilter = 'all';
-      filterPills.forEach(b => b.classList.remove('active'));
-      document.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+      selectedCategories = new Set(['cars', 'toystory', 'general', 'other_disney']);
+      filterOnlyDuplicates = false;
       renderCompendium();
     });
 
-    // 分類標籤切換
-    filterPills.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterPills.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.getAttribute('data-filter');
-        renderCompendium();
-      });
-    });
-
-    // 視角切換：網格 vs 清單
+    // 視角切換
     viewGridBtn.addEventListener('click', () => {
       currentViewMode = 'grid';
       viewGridBtn.classList.add('active');
@@ -1842,7 +2064,7 @@
       renderCompendium();
     });
 
-    // 照片來源切換 (官方圖 / 實拍)
+    // 圖源一鍵切換
     photoSourceOfficial.addEventListener('click', () => {
       currentPhotoSource = 'official';
       photoSourceOfficial.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white';
@@ -1857,7 +2079,86 @@
       renderCompendium();
     });
 
-    // 彈窗關閉
+    // 系列選單抽屜操作
+    openSeriesDrawerBtn.addEventListener('click', openSeriesDrawer);
+    closeSeriesDrawerBtn.addEventListener('click', closeSeriesDrawer);
+    seriesDrawerOverlay.addEventListener('click', closeSeriesDrawer);
+    applySeriesDrawerBtn.addEventListener('click', applySeriesSelection);
+
+    resetAllSeriesBtn.addEventListener('click', () => {
+      catCheckCars.checked = true;
+      catCheckToy.checked = true;
+      catCheckGeneral.checked = true;
+      catCheckDisney.checked = true;
+      checkOnlyDuplicates.checked = false;
+    });
+
+    // 快捷預設按鈕
+    presetAllBtn.addEventListener('click', () => {
+      catCheckCars.checked = true;
+      catCheckToy.checked = true;
+      catCheckGeneral.checked = true;
+      catCheckDisney.checked = true;
+      checkOnlyDuplicates.checked = false;
+    });
+
+    presetCarsBtn.addEventListener('click', () => {
+      catCheckCars.checked = true;
+      catCheckToy.checked = false;
+      catCheckGeneral.checked = false;
+      catCheckDisney.checked = false;
+      checkOnlyDuplicates.checked = false;
+    });
+
+    presetToyBtn.addEventListener('click', () => {
+      catCheckCars.checked = false;
+      catCheckToy.checked = true;
+      catCheckGeneral.checked = false;
+      catCheckDisney.checked = false;
+      checkOnlyDuplicates.checked = false;
+    });
+
+    presetGeneralBtn.addEventListener('click', () => {
+      catCheckCars.checked = false;
+      catCheckToy.checked = false;
+      catCheckGeneral.checked = true;
+      catCheckDisney.checked = false;
+      checkOnlyDuplicates.checked = false;
+    });
+
+    presetDisneyBtn.addEventListener('click', () => {
+      catCheckCars.checked = false;
+      catCheckToy.checked = false;
+      catCheckGeneral.checked = false;
+      catCheckDisney.checked = true;
+      checkOnlyDuplicates.checked = false;
+    });
+
+    // Bento 快捷卡片點擊
+    bentoCardCars.addEventListener('click', () => {
+      selectedCategories = new Set(['cars']);
+      filterOnlyDuplicates = false;
+      renderCompendium();
+    });
+
+    bentoCardToy.addEventListener('click', () => {
+      selectedCategories = new Set(['toystory']);
+      filterOnlyDuplicates = false;
+      renderCompendium();
+    });
+
+    bentoCardDisney.addEventListener('click', () => {
+      selectedCategories = new Set(['general', 'other_disney']);
+      filterOnlyDuplicates = false;
+      renderCompendium();
+    });
+
+    bentoCardDup.addEventListener('click', () => {
+      filterOnlyDuplicates = !filterOnlyDuplicates;
+      renderCompendium();
+    });
+
+    // 單車詳情彈窗關閉
     closeModalBtn.addEventListener('click', closeCarDetail);
     detailModalOverlay.addEventListener('click', closeCarDetail);
 
@@ -1866,6 +2167,7 @@
       if (e.key === 'Escape') {
         closeLightbox();
         closeCarDetail();
+        closeSeriesDrawer();
       }
     });
 
