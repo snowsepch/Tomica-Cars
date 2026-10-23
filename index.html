@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>TOMICA 多美小汽車・個人掌上典藏圖鑑與採購防呆手冊</title>
+  <title>TOMICA 多美小汽車・個人掌上典藏圖鑑</title>
   
   <!-- Tailwind CSS Engine -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -330,7 +330,7 @@
               <h1 class="text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
               <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
             </div>
-            <p class="text-[11px] text-zinc-500 font-medium">✨ 官方高畫質＋實拍雙對照・採購防呆手冊</p>
+            <p class="text-[11px] text-zinc-500 font-medium">✨ 官方高畫質＋實拍雙對照・隨身典藏指南</p>
           </div>
         </div>
 
@@ -347,7 +347,7 @@
         </div>
       </div>
 
-      <!-- 採購即時防呆搜尋條 (Instant Search Bar) -->
+      <!-- 採購即時比對搜尋條 (Instant Search Bar) -->
       <div class="relative mb-2">
         <input 
           id="searchInput" 
@@ -365,7 +365,7 @@
         </button>
       </div>
 
-      <!-- 即時採購防呆警戒條 (Anti-Duplicate Alert Banner) -->
+      <!-- 即時採購庫存警戒條 (Anti-Duplicate Alert Banner) -->
       <div id="checkerAlertBanner" class="hidden rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm"></div>
 
     </div>
@@ -562,7 +562,7 @@
           <div class="flex items-center gap-3">
             <input type="checkbox" id="checkOnlyDuplicates" class="w-4 h-4 rounded text-red-600 focus:ring-red-600 accent-red-600">
             <div>
-              <div class="text-sm font-bold text-red-900">⚠️ 僅篩選「已重複款」（採購防呆）</div>
+              <div class="text-sm font-bold text-red-900">⚠️ 僅篩選「已重複款」（避免重複採購）</div>
               <div class="text-[11px] text-red-600">快速比對出目前庫存超過 1 台的車輛（排除套裝組合車）</div>
             </div>
           </div>
@@ -1521,7 +1521,7 @@
         keywords: "長車 拖車 貨櫃 聯結車 重卡 油罐車 大卡車 超長 散車",
         images: [
           { url: "tomica_official_images/MACK-01_official.jpg", label: "🌟 官方長車規格示意圖" },
-          { url: "tomica_images/REG_long_trailers.jpg", label: "🚛 超長拖車車隊散車實拍（共7台）" }
+          { url: "tomica_images/REG_long_tomica_trailers.jpg", label: "🚛 超長拖車車隊散車實拍（共7台）" }
         ],
         description: "【重型運輸車隊・共7款不同車型】包含各式油罐車、商船三井 / 川崎汽船貨櫃聯結車、多軸平板自卸重卡，展示工業重機之美。"
       },
@@ -2159,11 +2159,11 @@
         <!-- 圖片區塊 -->
         ${modalImagesHtml}
 
-        <!-- 採購防呆避坑警報 -->
+        <!-- 重複持有避坑警報 -->
         <div class="my-3 p-3.5 rounded-xl border ${isDup ? 'bg-red-50/80 border-red-200 text-red-900' : 'bg-amber-50/80 border-amber-200 text-amber-900'} text-xs leading-relaxed">
           ${isDup ? `
             <div class="font-bold flex items-center gap-1 mb-1 text-red-700">
-              <span>🚫 採購防呆警戒：嚴禁再次購買！</span>
+              <span>🚫 重複持有警戒：切勿重複購買！</span>
             </div>
             <div>您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款！</div>
           ` : `
@@ -2232,7 +2232,7 @@
       if (catCheckGeneral.checked) selectedCategories.add('general');
       if (catCheckDisney.checked) selectedCategories.add('other_disney');
 
-      // 若一個都沒勾選，自動全選防呆
+      // 若一個都沒勾選，自動全選容錯處理
       if (selectedCategories.size === 0) {
         selectedCategories.add('cars');
         selectedCategories.add('toystory');
@@ -2246,7 +2246,7 @@
       renderCompendium();
     }
 
-    // 即時防呆搜尋警報條更新
+    // 即時搜尋庫存警報條更新
     function updateCheckerAlert(query, filtered) {
       if (!query) {
         checkerAlertBanner.classList.add('hidden');
@@ -2267,7 +2267,7 @@
           checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-red-100 border border-red-300 text-red-950 font-medium';
           checkerAlertBanner.innerHTML = `
             <div class="font-bold text-red-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>🚫 採購防呆紅燈：您已擁有此車款！</span>
+              <span>🚫 重複庫存警示：您已擁有此車款！</span>
             </div>
             <div>庫存比對成功：<strong>${exactMatch.id} ${exactMatch.name}</strong> 已收藏 <strong>${total} 台</strong>（盒裝 ×${exactMatch.boxed}、散車 ×${exactMatch.loose}），<span class="underline font-bold">現場請勿重複購買！</span></div>
           `;
