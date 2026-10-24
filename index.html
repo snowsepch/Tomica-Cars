@@ -5270,7 +5270,12 @@
             "loose": 0,
             "isDuplicate": false,
             "keywords": "Mattel 美泰兒 F1 三車套 麥坤 超哥 奇諾 窗盒 非Tomica Formula 1",
-            "images": [],
+            "images": [
+              {
+                "url": "tomica_official_images/NTC-MATTEL-F1-SET.jpg",
+                "label": "📷 藏品實拍"
+              }
+            ],
             "description": "【⚠️ 非 TOMICA 系列】美泰兒（Mattel）原廠正版 F1 Formula 1 賽車窗盒 3 入套組，包含麥坤、超哥（法蘭斯高）與奇諾。",
             "owned": true,
             "displayNumber": "非 Tomica",
@@ -5288,7 +5293,12 @@
             "loose": 0,
             "isDuplicate": false,
             "keywords": "回力車 3入 套裝 Storm McQueen Cruz 風暴傑克森 麥坤 克魯茲 非Tomica pullback",
-            "images": [],
+            "images": [
+              {
+                "url": "tomica_official_images/NTC-PULLBACK-3PACK.jpg",
+                "label": "📷 藏品實拍"
+              }
+            ],
             "description": "【⚠️ 非 TOMICA 系列】正版授權 PULLBACK DIE CAST 3-PACK 回力合金車 3 入套組，包含風暴傑克森、閃電麥坤與克魯茲。",
             "owned": true,
             "displayNumber": "非 Tomica",
@@ -5306,7 +5316,12 @@
             "loose": 1,
             "isDuplicate": false,
             "keywords": "大型 塑膠 閃電麥坤 LMQ 非1:64 非Tomica McQueen",
-            "images": [],
+            "images": [
+              {
+                "url": "tomica_official_images/NTC-LARGE-PLASTIC-MCQUEEN.jpg",
+                "label": "📷 藏品實拍"
+              }
+            ],
             "description": "【⚠️ 非 TOMICA 系列】大型塑膠閃電麥坤車模，體積大於標準 1:64 Tomica 小車，材質為堅固塑膠。",
             "owned": true,
             "displayNumber": "非 Tomica",
@@ -5324,7 +5339,12 @@
             "loose": 1,
             "isDuplicate": false,
             "keywords": "Choro-Q Q版 大輪 變形比例 麥坤 非Tomica",
-            "images": [],
+            "images": [
+              {
+                "url": "tomica_official_images/NTC-CHOROQ-STYLE-MCQUEEN.jpg",
+                "label": "📷 藏品實拍"
+              }
+            ],
             "description": "【⚠️ 非 TOMICA 系列】Q版變形比例閃電麥坤，車身短軸帶大輪造型，類似 Choro-Q 逗趣風格。",
             "owned": true,
             "displayNumber": "非 Tomica",
@@ -5342,7 +5362,12 @@
             "loose": 1,
             "isDuplicate": false,
             "keywords": "大型 塑膠 拖線 Mater 非Tomica",
-            "images": [],
+            "images": [
+              {
+                "url": "tomica_official_images/NTC-LARGE-PLASTIC-MATER.jpg",
+                "label": "📷 藏品實拍"
+              }
+            ],
             "description": "【⚠️ 非 TOMICA 系列】大型塑膠拖線（Mater）模型，吊鉤與細節比例大於標準 Tomica 合金小車。",
             "owned": true,
             "displayNumber": "非 Tomica",
@@ -5360,7 +5385,12 @@
             "loose": 1,
             "isDuplicate": false,
             "keywords": "大型 塑膠 Mack 麥克 拖車 貨櫃 非Tomica",
-            "images": [],
+            "images": [
+              {
+                "url": "tomica_official_images/NTC-LARGE-PLASTIC-MACK.jpg",
+                "label": "📷 藏品實拍"
+              }
+            ],
             "description": "【⚠️ 非 TOMICA 系列】大型塑膠麥克（Mack）拖車，車身長度與貨櫃體積明顯大於標準 Tomica 載車組。",
             "owned": true,
             "displayNumber": "非 Tomica",
@@ -6057,6 +6087,7 @@
       // 展台圖片與標籤 (非 Tomica 且無官方圖時呈現專屬佔位標記)
       let stageContentHtml = '';
       if (hasImages) {
+        const imageTagLabel = (car.category === 'cars_non_tomica') ? '📷 藏品實拍' : '🌟 官方圖';
         stageContentHtml = `
             <img 
               src="${displayImg}" 
@@ -6066,7 +6097,7 @@
               onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none\'><span class=\'text-2xl\'>📷</span><span class=\'text-xs font-bold tracking-wider\'>暫無官方圖</span></div>';"
             >
             <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded backdrop-blur-xs pointer-events-none">
-              🌟 官方圖
+              ${imageTagLabel}
             </span>
         `;
       } else if (car.category === 'cars_non_tomica') {
