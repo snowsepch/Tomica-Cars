@@ -160,9 +160,9 @@
 
     /* 模式切換按鈕 */
     .view-mode-btn {
-      padding: 0.45rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.78rem;
+      padding: 0.28rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
       font-weight: 600;
       background: #FFFFFF;
       border: 1px solid var(--border-medium);
@@ -170,8 +170,17 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.25rem;
       transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    @media (min-width: 640px) {
+      .view-mode-btn {
+        padding: 0.45rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.78rem;
+        gap: 0.35rem;
+      }
     }
     .view-mode-btn.active {
       background: var(--accent-black);
@@ -321,31 +330,31 @@
   <!-- ============================================================ -->
   <!-- 1. 圖鑑典藏頂欄 (Sticky Compendium Header)                      -->
   <!-- ============================================================ -->
-  <header class="header-bar sticky top-0 z-40 px-3.5 py-3">
+  <header class="header-bar sticky top-0 z-40 px-2.5 sm:px-4 py-2 sm:py-3">
     <div class="page-container">
       
       <!-- 頂部品牌與精準統計 -->
-      <div class="flex items-center justify-between gap-2 mb-2.5">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-lg shadow-sm">
+      <div class="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-zinc-900 text-white flex items-center justify-center text-base sm:text-lg shadow-sm shrink-0">
             🚗
           </div>
           <div>
             <div class="flex items-center gap-1.5">
-              <h1 class="text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
-              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
+              <h1 class="text-sm sm:text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
+              <span class="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
             </div>
-            <p class="text-[11px] text-zinc-500 font-medium">✨ 官方高畫質＋實拍雙對照・隨身典藏指南</p>
+            <p class="text-[10px] sm:text-[11px] text-zinc-500 font-medium leading-tight">✨ 官方高畫質＋實拍雙照・隨身典藏指南</p>
           </div>
         </div>
 
         <!-- 登錄數字徽章 -->
-        <div class="flex items-center gap-1.5 text-right">
-          <div class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-right shadow-2xs">
-            <div class="text-[11px] font-bold text-zinc-900">
-              在冊 <span id="statUniqueCount" class="text-red-600">62</span> 款
+        <div class="flex items-center gap-1.5 text-right shrink-0">
+          <div class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-white border border-zinc-200 text-right shadow-2xs">
+            <div class="text-[10.5px] sm:text-[11px] font-bold text-zinc-900 leading-tight">
+              在冊 <span id="statUniqueCount" class="text-red-600">63</span> 款
             </div>
-            <div class="text-[10px] text-zinc-500">
+            <div class="text-[9.5px] sm:text-[10px] text-zinc-500 leading-tight">
               共 <span id="statTotalPieces" class="font-bold text-zinc-800">86</span> 台
             </div>
           </div>
@@ -353,17 +362,17 @@
       </div>
 
       <!-- 採購即時比對搜尋條 (Instant Search Bar) -->
-      <div class="relative mb-2">
+      <div class="relative mb-1 sm:mb-2">
         <input 
           id="searchInput" 
           type="search" 
-          placeholder="🔍 輸入編號（C-20、C-17）、角色（超哥/邁絲/士官長）秒比對..." 
-          class="w-full pl-3.5 pr-10 py-2.5 bg-white border border-zinc-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium" 
+          placeholder="🔍 搜尋編號、品名或角色（如 C-37、麥坤、拖線）..." 
+          class="w-full pl-3 pr-8 py-1.5 sm:py-2.5 bg-white border border-zinc-300 rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium" 
           autocomplete="off"
         >
         <button 
           id="clearSearchBtn" 
-          class="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden" 
+          class="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden" 
           aria-label="清除搜尋"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -371,7 +380,7 @@
       </div>
 
       <!-- 即時採購庫存警戒條 (Anti-Duplicate Alert Banner) -->
-      <div id="checkerAlertBanner" class="hidden rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm"></div>
+      <div id="checkerAlertBanner" class="hidden rounded-xl p-2.5 sm:p-3 text-xs leading-relaxed transition-all shadow-sm"></div>
 
     </div>
   </header>
@@ -379,50 +388,50 @@
   <!-- ============================================================ -->
   <!-- 2. 圖鑑儀表板與控制列 (Compendium Control Deck)               -->
   <!-- ============================================================ -->
-  <section class="page-container pt-3 pb-1">
+  <section class="page-container pt-2 sm:pt-3 pb-1">
     
     <!-- 圖鑑統計 Bento Bar (簡潔收集進度卡 - 點擊可直接快速篩選) -->
-    <div class="grid grid-cols-4 gap-2 mb-3">
-      <div id="bentoCardCars" class="bento-clickable bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看 Cars 系列">
-        <div class="text-[10px] text-zinc-500 font-medium">Cars 系列</div>
-        <div class="text-sm font-extrabold text-zinc-900" id="bentoCarsCount">42</div>
+    <div class="grid grid-cols-4 gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+      <div id="bentoCardCars" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看 Cars 系列">
+        <div class="text-[9.5px] sm:text-[10px] text-zinc-500 font-medium truncate">Cars 系列</div>
+        <div class="text-xs sm:text-sm font-extrabold text-zinc-900" id="bentoCarsCount">43</div>
       </div>
-      <div id="bentoCardToy" class="bento-clickable bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看玩具總動員">
-        <div class="text-[10px] text-zinc-500 font-medium">玩具總動員</div>
-        <div class="text-sm font-extrabold text-blue-700" id="bentoToyCount">4</div>
+      <div id="bentoCardToy" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看玩具總動員">
+        <div class="text-[9.5px] sm:text-[10px] text-zinc-500 font-medium truncate">玩具總動員</div>
+        <div class="text-xs sm:text-sm font-extrabold text-blue-700" id="bentoToyCount">4</div>
       </div>
-      <div id="bentoCardDisney" class="bento-clickable bg-white p-2.5 rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看經典與迪士尼">
-        <div class="text-[10px] text-zinc-500 font-medium">經典/迪士尼</div>
-        <div class="text-sm font-extrabold text-purple-700" id="bentoDisneyCount">16</div>
+      <div id="bentoCardDisney" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看經典與迪士尼">
+        <div class="text-[9.5px] sm:text-[10px] text-zinc-500 font-medium truncate">經典/迪士尼</div>
+        <div class="text-xs sm:text-sm font-extrabold text-purple-700" id="bentoDisneyCount">16</div>
       </div>
-      <div id="bentoCardDup" class="bento-clickable bg-red-50/80 p-2.5 rounded-xl border border-red-200 text-center shadow-2xs hover:border-red-300" title="點擊僅查看真正重複的車款">
-        <div class="text-[10px] text-red-600 font-bold">⚠️ 重複款</div>
-        <div class="text-sm font-extrabold text-red-700" id="bentoDupCount">12</div>
+      <div id="bentoCardDup" class="bento-clickable bg-red-50/80 p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-red-200 text-center shadow-2xs hover:border-red-300" title="點擊僅查看真正重複的車款">
+        <div class="text-[9.5px] sm:text-[10px] text-red-600 font-bold truncate">⚠️ 重複款</div>
+        <div class="text-xs sm:text-sm font-extrabold text-red-700" id="bentoDupCount">12</div>
       </div>
     </div>
 
-    <!-- 雙重視角切換與照片來源開關 -->
-    <div class="flex items-center justify-between gap-2 py-1 mb-2.5 flex-wrap">
+    <!-- 雙重視角切換與照片來源開關（單行並排） -->
+    <div class="flex items-center justify-between gap-1.5 sm:gap-2 py-0.5 mb-2">
       
-      <!-- 視角切換：網格圖鑑 vs 詳細清單 -->
-      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-xl">
+      <!-- 視角切換：海報 vs 清單 -->
+      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-lg sm:rounded-xl shrink-0">
         <button id="viewGridBtn" class="view-mode-btn active" title="海報圖鑑網格模式（隨身翻閱）">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-          <span>圖鑑海報</span>
+          <span>海報</span>
         </button>
         <button id="viewListBtn" class="view-mode-btn" title="雙照深度對照清單模式">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-          <span>雙照清單</span>
+          <span>清單</span>
         </button>
       </div>
 
       <!-- 網格模式專用：官方展示圖 / 實拍照 一鍵切換 -->
-      <div id="photoSourceToggleContainer" class="flex items-center bg-white border border-zinc-200 rounded-xl p-0.5 shadow-2xs">
-        <span class="text-[11px] font-bold text-zinc-400 px-2">圖源：</span>
-        <button id="photoSourceOfficial" class="px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white">
+      <div id="photoSourceToggleContainer" class="flex items-center bg-white border border-zinc-200 rounded-lg sm:rounded-xl p-0.5 shadow-2xs shrink-0">
+        <span class="text-[10px] sm:text-[11px] font-bold text-zinc-400 pl-1.5 pr-1 hidden sm:inline">圖源:</span>
+        <button id="photoSourceOfficial" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-bold transition bg-zinc-900 text-white">
           🌟 官方圖
         </button>
-        <button id="photoSourceReal" class="px-2.5 py-1 rounded-lg text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
+        <button id="photoSourceReal" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
           📸 實拍照
         </button>
       </div>
@@ -430,23 +439,23 @@
     </div>
 
     <!-- 系列別選單按鈕 (點擊展開自訂選單，可手動調整一次想看到的系列組合) -->
-    <div class="mb-2">
+    <div class="mb-1.5 sm:mb-2">
       <button 
         id="openSeriesDrawerBtn" 
-        class="w-full flex items-center justify-between px-3.5 py-2.5 bg-white border border-zinc-200 hover:border-zinc-300 rounded-xl shadow-2xs text-xs font-semibold text-zinc-900 active:scale-[0.99] transition cursor-pointer"
+        class="w-full flex items-center justify-between px-2.5 sm:px-3.5 py-1.5 sm:py-2.5 bg-white border border-zinc-200 hover:border-zinc-300 rounded-lg sm:rounded-xl shadow-2xs text-[11px] sm:text-xs font-semibold text-zinc-900 active:scale-[0.99] transition cursor-pointer"
         type="button"
         title="點擊展開自訂系列選單"
       >
-        <div class="flex items-center gap-2 truncate">
-          <span class="text-sm">🗂️</span>
+        <div class="flex items-center gap-1.5 sm:gap-2 truncate">
+          <span class="text-xs sm:text-sm">🗂️</span>
           <span class="text-zinc-400 font-medium shrink-0">自訂顯示系列：</span>
-          <span id="selectedSeriesSummaryText" class="font-bold text-zinc-900 truncate">全部系列 (62款)</span>
+          <span id="selectedSeriesSummaryText" class="font-bold text-zinc-900 truncate">全部系列 (63款)</span>
         </div>
-        <div class="flex items-center gap-1.5 shrink-0">
-          <span id="selectedSeriesBadge" class="bg-zinc-100 text-zinc-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full">
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+          <span id="selectedSeriesBadge" class="bg-zinc-100 text-zinc-700 text-[9.5px] sm:text-[10px] font-bold font-mono px-1.5 sm:px-2 py-0.5 rounded-full">
             4 系列全選
           </span>
-          <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </div>
@@ -461,9 +470,9 @@
   <main class="page-container pt-1">
     
     <!-- 結果數量提示 -->
-    <div class="flex items-center justify-between text-xs text-zinc-500 py-1 mb-2 px-1">
-      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">62</strong> 款車輛</div>
-      <div class="text-[11px] text-zinc-400">💡 點擊任一卡片可展開全圖鑑資料卡</div>
+    <div class="flex items-center justify-between text-[11px] sm:text-xs text-zinc-500 py-0.5 mb-1.5 px-0.5">
+      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">63</strong> 款車輛</div>
+      <div class="text-[10px] sm:text-[11px] text-zinc-400">💡 點擊任一卡片可展開全圖鑑資料卡</div>
     </div>
 
     <!-- 卡片容器 (動態切換 grid / list 樣式) -->
