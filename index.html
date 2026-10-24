@@ -344,7 +344,7 @@
               <h1 class="text-sm sm:text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
               <span class="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
             </div>
-            <p class="text-[10px] sm:text-[11px] text-zinc-500 font-medium leading-tight">✨ 官方高畫質＋實拍雙照・隨身典藏指南</p>
+            <p class="text-[10px] sm:text-[11px] text-zinc-500 font-medium leading-tight">✨ 官方高畫質棚拍・隨身典藏指南</p>
           </div>
         </div>
 
@@ -419,21 +419,15 @@
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
           <span>海報</span>
         </button>
-        <button id="viewListBtn" class="view-mode-btn" title="雙照深度對照清單模式">
+        <button id="viewListBtn" class="view-mode-btn" title="清單對照模式">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           <span>清單</span>
         </button>
       </div>
 
-      <!-- 網格模式專用：官方展示圖 / 實拍照 一鍵切換 -->
-      <div id="photoSourceToggleContainer" class="flex items-center bg-white border border-zinc-200 rounded-lg sm:rounded-xl p-0.5 shadow-2xs shrink-0">
-        <span class="text-[10px] sm:text-[11px] font-bold text-zinc-400 pl-1.5 pr-1 hidden sm:inline">圖源:</span>
-        <button id="photoSourceOfficial" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-bold transition bg-zinc-900 text-white">
-          🌟 官方圖
-        </button>
-        <button id="photoSourceReal" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
-          📸 實拍照
-        </button>
+      <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-zinc-500">
+        <span class="text-xs">🌟</span>
+        <span>官方棚拍規格</span>
       </div>
 
     </div>
@@ -667,8 +661,7 @@
         isDuplicate: false,
         keywords: "C-01 C01 麥坤 閃電麥坤 95 紅色 紅 原作 微笑 cars1 第一集",
         images: [
-          { url: "tomica_official_images/C-01_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-01_cars1_mcqueen.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-01_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "皮克斯動畫《汽車總動員 1》主角最經典的起點式樣！艷紅烤漆、車側黃橘雙色 95 號電光拉花、引擎蓋圓形 Rust-eze 大圓標與招牌微笑雙眼。"
       },
@@ -685,8 +678,7 @@
         isDuplicate: true,
         keywords: "C-02 C02 麥坤 藍色 恐龍 迪諾哥 Dinoco 43 95 天藍色 白日夢",
         images: [
-          { url: "tomica_official_images/C-02_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-02_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-02_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️已重複 2 台】取材自麥坤渴望獲得傳奇恐龍石油（Dinoco）代言的白日夢場景！全車換裝夢幻天藍烤漆、專屬恐龍廠徽與天藍框胎。"
       },
@@ -703,8 +695,7 @@
         isDuplicate: true,
         keywords: "C-04 C04 拖線 板車 吊車 咖啡色 棕色 生鏽 暴牙 油車水鎮",
         images: [
-          { url: "tomica_official_images/C-04_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-04_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-04_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️已重複 2 台】油車水鎮第一活寶、麥坤摯友！忠實還原咖啡色斑駁鐵鏽烤漆、獨眼車燈、外露大門牙與可動起重吊臂，美式老車味十足。"
       },
@@ -721,8 +712,7 @@
         isDuplicate: false,
         keywords: "C-06 C06 克魯茲 恐龍 迪諾哥 Dinoco 51 黃色 經典賽車 Cars3",
         images: [
-          { url: "tomica_official_images/C-06_cruz_dinoco_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-06_cruz_dinoco_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-06_cruz_dinoco_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "《汽車總動員 3》大結局封神式樣！克魯茲正式繼承經典 Dinoco 贊助商披掛上陣，耀眼亮黃塗裝、車身 51 號 Dinoco 恐龍廠徽與黑尾翼。"
       },
@@ -739,8 +729,7 @@
         isDuplicate: true,
         keywords: "C-12 C12 路易吉 輪胎行 義大利 黃色 飛雅特 500 油車水鎮 狂熱法拉利迷",
         images: [
-          { url: "tomica_official_images/C-07_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-07_luigi_loose.jpg", label: "🏎️ 散車實拍（共2台）" }
+          { url: "tomica_official_images/C-07_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️散車重複 2 台】卡布輪胎行掌門人！亮黃色經典圓潤菲亞特車體、銀色復古輪圈，義大利熱情滿點的斜眼微笑。"
       },
@@ -757,8 +746,7 @@
         isDuplicate: false,
         keywords: "C-08 C08 韓大夫 哈德遜 傳奇 51 藍色 活塞盃 原創賽車 法比尤勒斯",
         images: [
-          { url: "tomica_official_images/C-08_fabulous_doc_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-08_fabulous_doc_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-08_fabulous_doc_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "三屆活塞盃傳奇王者青年時期的全盛榮光！深邃天藍烤漆、金黃色車側『Fabulous Hudson Hornet』復古手寫花體拉花與 51 號車標。"
       },
@@ -775,8 +763,7 @@
         isDuplicate: false,
         keywords: "C-09 C09 警長 警察 警車 水星 黑色 油車水鎮 警燈 鬍子",
         images: [
-          { url: "tomica_official_images/C-09_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-09_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-09_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "維護 66 號公路秩序的老牌治安官！沈穩黑白雙色警車塗裝、車門金色 66 號公路警徽與車頂單顆圓形紅色旋轉警燈。"
       },
@@ -793,8 +780,7 @@
         isDuplicate: true,
         keywords: "C-10 C10 國王 冠軍 藍色 恐龍 43 普利茅斯 高尾翼 活塞盃傳奇 史派威",
         images: [
-          { url: "tomica_official_images/C-10_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-10_box.jpg", label: "📦 盒裝實拍（共2盒）" }
+          { url: "tomica_official_images/C-10_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️盒裝重複 2 盒】活塞盃 7 屆冠軍傳奇王者「冠軍（Strip Weathers）」！復刻 1970 年代空氣動力學神獸，極高聳的天藍倒 U 尾翼與尖頭車鼻，目前持有 2 個全新盒裝未拆。"
       },
@@ -811,8 +797,7 @@
         isDuplicate: false,
         keywords: "C-11 C11 路霸 路霸Chick Hicks 綠色 86 鬍子 壞蛋 貼紙 贊助商 活塞盃",
         images: [
-          { url: "tomica_official_images/C-11_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-11_chick_hicks.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-11_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "電影第一集最大反派！滿身花花綠綠贊助商貼紙的綠色 86 號賽車「路霸（Chick Hicks）」，招牌黑色大鬍子水箱罩與狡黠賤笑眼神。"
       },
@@ -829,8 +814,7 @@
         isDuplicate: false,
         keywords: "C-07 C07 大紅 消防車 紅色 雲梯 水帶 害羞 油車水鎮",
         images: [
-          { url: "tomica_official_images/C-12_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-12_red_fire_engine.jpg", label: "🏎️ 大紅消防車散車實拍" }
+          { url: "tomica_official_images/C-12_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "心思細膩溫柔、最愛給水澆花的大紅！高聳車身、合金打造的亮紅分量感、精細鍍鉻前水箱罩與車側折疊消防水管、車頂銀色長梯。"
       },
@@ -847,8 +831,7 @@
         isDuplicate: false,
         keywords: "C-13 C13 奇諾 堆高機 叉車 換輪胎 藍色 換胎金牌 菲亞特 油車水鎮",
         images: [
-          { url: "tomica_official_images/C-13_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-13_guido_loose.jpg", label: "🏎️ 奇諾散車實拍" }
+          { url: "tomica_official_images/C-13_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "活塞盃最傳奇的秒速換胎之王！小巧的天藍微型堆高機身、前端配備兩支精緻可活動式換胎叉架，萌感與機能並存。"
       },
@@ -865,8 +848,7 @@
         isDuplicate: false,
         keywords: "C-14 C14 脫線 拖線 20週年 20th 紀念版 生鏽 金屬 藍綠 吊車 暴牙",
         images: [
-          { url: "tomica_official_images/C-14_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-14_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-14_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "2026 皮克斯《汽車總動員》問世 20 週年紀念款！特殊紀念包裝與更為深邃復古的金屬質感漆面，致敬經典老友拖線。"
       },
@@ -883,8 +865,7 @@
         isDuplicate: false,
         keywords: "C-14 C14 麥坤 洞穴版 恐龍版 遠古 原始 骨頭 鋸齒 石器 岩石 DS18949",
         images: [
-          { url: "tomica_official_images/C-14_cave_official.jpg", label: "🌟 台灣代理商 Funbox 官方正圖 (貨號 DS18949)" },
-          { url: "tomica_images/C-14_cave_loose.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-14_cave_official.jpg", label: "🌟 台灣代理商 Funbox 官方正圖 (貨號 DS18949)" }
         ],
         description: "出自 Disney+ 衍生影集《公路旅行（Cars on the Road）》第 2 集「恐龍公園」！麥坤誤入史前白堊紀幻想化身洞穴探險遠古賽車，全車身披岩石灰與泥土黃雙色偽裝，車側點綴遠古野獸尖牙鋸齒圖騰，尾翼改裝為骨骼支架，野性十足。"
       },
@@ -901,8 +882,7 @@
         isDuplicate: true,
         keywords: "C-15 C15 克魯茲 公路巡警 黃黑條紋 警車 巡邏車 道路維護 箭頭",
         images: [
-          { url: "tomica_official_images/C-15_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-15_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-15_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️已重複 2 台】Cars 日本原創安全執法系列！亮黃底色搭配搶眼的黑黃反光斑馬斜條紋與車頂黃色警示指示燈，極具道路工程氣勢。"
       },
@@ -919,8 +899,7 @@
         isDuplicate: false,
         keywords: "C-17 C17 超哥 法蘭斯高 貝奴意 F1 方程式 綠白紅 義大利 1號 世界大賽",
         images: [
-          { url: "tomica_official_images/C-17_official.jpg", label: "🌟 台灣代理商官方正圖 (貨號 408444)" },
-          { url: "tomica_images/C-17_francesco.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-17_official.jpg", label: "🌟 台灣代理商官方正圖 (貨號 408444)" }
         ],
         description: "台灣官方譯名『超哥』（Francesco Bernoulli）！《Cars 2 世界大賽》頭號競敵，身披義大利三色國旗塗裝的頂尖開輪式 F1 賽車，極致流線前鼻翼與寬體熱融胎。"
       },
@@ -937,8 +916,7 @@
         isDuplicate: false,
         keywords: "C-19 C19 阿飛 費爾摩 福斯 T1 麵包車 消防 指揮車 緊急救援 紅色",
         images: [
-          { url: "tomica_official_images/C-19_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-19_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-19_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "嬉皮愛好者阿飛穿上消防指揮官裝束！艷紅底色點綴白色指揮字樣、雙色車頂圓柱警燈，將和平有機風格與嚴謹消防合而為一。"
       },
@@ -955,8 +933,7 @@
         isDuplicate: false,
         keywords: "C-20 C20 士官長 薩奇 軍綠 吉普車 Willys 二戰 越野 油車水鎮",
         images: [
-          { url: "tomica_official_images/C-20_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-20_sarge.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-20_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "退役陸軍二戰老兵！經典啞光橄欖軍綠塗裝、方正剛硬的前格柵水箱罩、外露備胎與粗獷軍規越野底盤，正氣凜然。"
       },
@@ -973,9 +950,7 @@
         isDuplicate: true,
         keywords: "C-22 C22 麥克飛彈 特務 英國 007 銀藍色 魚鰭尾翼 絕版 盒裝",
         images: [
-          { url: "tomica_official_images/C-22_finn_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-22_box.jpg", label: "📦 盒裝實拍（第 1 盒）" },
-          { url: "tomica_images/C-22_finn_box2.jpg", label: "📦 盒裝實拍（第 2 盒・⚠️已重複2盒）" }
+          { url: "tomica_official_images/C-22_finn_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️已重複 2 盒全新未拆】《汽車總動員 2》英倫王牌特務！優雅冷冽的灰藍色金屬漆、背部經典火箭魚鰭尾翼與紳士氣質，二手市場極度搶手的絕版逸品，目前持有 2 盒全新未拆！"
       },
@@ -992,8 +967,7 @@
         isDuplicate: false,
         keywords: "C-22 C22 拖線 冰上 冰雪 淺藍 水藍 雪白 輪胎 機械增壓",
         images: [
-          { url: "tomica_official_images/C-22_mater_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-22_mater_ice.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-22_mater_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "脫下鐵鏽換裝極地拉力賽車服的拖線！水藍色車頂雪花塗裝、雪地專用白色胎壁防滑輪圈與引擎蓋頂置機械增壓器。"
       },
@@ -1010,8 +984,7 @@
         isDuplicate: false,
         keywords: "C-23 C23 麥帥 麥斯 德國 房車 DTM 黑色 碳纖維 09 國旗 世界大賽",
         images: [
-          { url: "tomica_official_images/C-23_max_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-23_box.jpg", label: "📦 盒裝實拍（絕版）" }
+          { url: "tomica_official_images/C-23_max_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "《Cars 2》德國世界盃代表選手「麥帥（Max Schnell）」！沉穩炭黑底色拉出黑紅金三色德國國旗風馳拉線、寬體爆龜車體與 09 號車標。"
       },
@@ -1028,8 +1001,7 @@
         isDuplicate: false,
         keywords: "C-23 C23 奇諾 救護車 義大利 白色 紅十字 警燈 堆高機",
         images: [
-          { url: "tomica_official_images/C-23_guido_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-23_guido_ambulance.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-23_guido_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "換上全白急救白袍的奇諾！車頂架設迷你紅色警光燈，車側標註義大利緊急醫療標誌與紅十字拉花，急行救護專用。"
       },
@@ -1046,8 +1018,7 @@
         isDuplicate: false,
         keywords: "C-24 C24 麥坤 冰上 冰雪 寒帶 藍色輪胎 冰霜 拉花 95",
         images: [
-          { url: "tomica_official_images/C-24_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-24_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-24_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "征戰莫斯科極寒冰雪拉力賽特仕款！經典艷紅身軀覆蓋著冰晶裂紋幾何拉花，換裝天藍色雪地競技輪圈與專屬白色冰雪胎壁。"
       },
@@ -1064,8 +1035,7 @@
         isDuplicate: false,
         keywords: "C-25 C25 克魯茲 克魯茲拉米雷斯 冰上 冰雪 寒帶 51 恐龍 天藍 白胎 冰霜",
         images: [
-          { url: "tomica_official_images/C-25_ice_cruz_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-25_ice_cruz_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-25_ice_cruz_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "Cars 3 冠軍教練克魯茲換上極地寒冷地冰上拉力塗裝！鮮黃底色覆蓋雪花冰霜幾何拉花、Dinoco 專屬天藍色輪框與冰雪白邊競速胎。"
       },
@@ -1082,8 +1052,7 @@
         isDuplicate: false,
         keywords: "C-26 C26 雷蒙 烤漆店 紫色 火焰 低趴 趴地 浮誇 油車水鎮",
         images: [
-          { url: "tomica_official_images/C-26_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-26_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-26_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "油車水鎮首席藝術家、雷蒙人體烤漆店老闆！奢華的金屬深紫底漆、引擎蓋一路延伸至側裙的耀眼黃金火焰拉花，底盤極致貼地。"
       },
@@ -1100,8 +1069,7 @@
         isDuplicate: false,
         keywords: "C-27 C27 韓大夫 哈德遜 警車 警視廳 巡邏車 黑色 警燈 旭日金章 日本限定",
         images: [
-          { url: "tomica_official_images/C-27_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/SP-04_police_sheriff.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-27_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【日本緊急救援車輛特別限定款】德高望重的黃蜂韓大夫披上日本警視廳黑白巡邏車塗裝！車頭金色旭日警盾章、車門斗大警視廳字樣，極致威嚴。"
       },
@@ -1118,8 +1086,7 @@
         isDuplicate: false,
         keywords: "C-28 C28 瘋狂邁絲 校車 狂暴 撞車大賽 尖刺 牛角 煙囪 泥巴 DS18945",
         images: [
-          { url: "tomica_official_images/C-28_official.jpg", label: "🌟 台灣代理商 Funbox 官方正圖 (貨號 DS18945)" },
-          { url: "tomica_images/C-28_miss_fritter.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-28_official.jpg", label: "🌟 台灣代理商 Funbox 官方正圖 (貨號 DS18945)" }
         ],
         description: "《汽車總動員 3》雷霆山谷撞車大賽無冕女王「瘋狂邁絲（Miss Fritter）」！黃色校車披掛重裝鋼甲、車頂金屬公牛尖角、兩側噴火大排氣管與滿身車牌戰利品。"
       },
@@ -1136,8 +1103,7 @@
         isDuplicate: false,
         keywords: "C-30 C30 麥坤 警長 警車 黑色 警燈 治安官 熊貓色 巡邏",
         images: [
-          { url: "tomica_official_images/C-30_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-30_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-30_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "麥坤向油車水鎮警長致敬的治安官換裝版！沉穩亮黑車身塗裝、車側金色巡邏徽章與車頂單顆圓潤紅警燈，散發成熟守護者氣息。"
       },
@@ -1154,8 +1120,7 @@
         isDuplicate: true,
         keywords: "C-33 C33 披薩星球 陶德 皮卡 黃色 火箭 皮克斯 彩蛋 卡車",
         images: [
-          { url: "tomica_official_images/C-33_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-33_box1_box.jpg", label: "📦 盒裝實拍（共2盒）" }
+          { url: "tomica_official_images/C-33_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️極致重複 3 台（2盒裝+1散車）】皮克斯動畫全宇宙最強客串彩蛋神車！泛黃老皮卡、車頂立體 Pizza Planet 白色火箭發射架，目前持有 2 盒全新與 1 台散車。"
       },
@@ -1172,9 +1137,7 @@
         isDuplicate: true,
         keywords: "C-34 C34 麥坤 GRC 全球賽車 黑引擎蓋 紅白黑 幾何閃電 GT尾翼 盒裝",
         images: [
-          { url: "tomica_official_images/C-34_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-34_mcqueen_grc_box.jpg", label: "📦 盒裝實拍（全新未拆）" },
-          { url: "tomica_images/C-34_grc_mcqueen.jpg", label: "🏎️ 散車實拍（⚠️盒裝+散車重複）" }
+          { url: "tomica_official_images/C-34_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️已重複 2 台（盒裝×1＋散車×1）】世界 GRC 巡迴拉力錦標賽式樣！黑色碳纖維質感引擎蓋、消光幾何黑白紅拉花、競技導流孔與大型 GT 尾翼，帥氣度破表！"
       },
@@ -1191,8 +1154,7 @@
         isDuplicate: false,
         keywords: "C-36 C36 麥坤 警車 日本 警視廳 黑白 旭日金章 POLICE V型警燈 巡邏",
         images: [
-          { url: "tomica_official_images/C-36_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/SP-03_police_mcqueen.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-36_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【日本緊急車輛原創限定款】黑白熊貓雙色經典警車塗裝，前機蓋鑲嵌金色警察旭日金盾徽（JPN RESCUE），車頂配備紅色警光燈，車尾高尾翼印有清晰 POLICE 字樣。"
       },
@@ -1209,8 +1171,7 @@
         isDuplicate: false,
         keywords: "C-37 C37 拖線 メーター プレジデント 總統 公路旅行 オンザロード Cars on the Road 藍色 吊車",
         images: [
-          { url: "tomica_official_images/C-37_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-37_loose.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/C-37_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "《カーズ・オン・ザ・ロード》中拖線獲選總統役的場景再現。藍色基調的特別塗裝，與日常生鏽款明顯不同；官方品名為メーター（プレジデントタイプ），建議售價 935 日圓（含稅），2023-06-17 發售，對象年齡 3 歲以上。"
       },
@@ -1227,8 +1188,7 @@
         isDuplicate: false,
         keywords: "C-38 C38 拖線 消防車 消防員 紅色 頭盔 雲梯 水帶 吹牛",
         images: [
-          { url: "tomica_official_images/C-38_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-38_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-38_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "出自《拖線狂想曲：消防狂人》！戴著紅色消防頭盔、通體艷紅噴漆、側載伸縮長雲梯與高壓水帶，滑稽又敬業。"
       },
@@ -1245,8 +1205,7 @@
         isDuplicate: false,
         keywords: "C-38 C38 卡拉 巴西 綠藍 08 嘉年華 勒芒 原型車 LMP 賽車",
         images: [
-          { url: "tomica_official_images/C-38_carla_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-38_carla_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-38_carla_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "《Cars 2 世界大賽》代表巴西里約熱內盧出戰的性感女性賽車手！綠藍相間里約狂歡節森巴花紋、低趴流線 LMP 原型車身與 08 號綠色車標。"
       },
@@ -1263,8 +1222,7 @@
         isDuplicate: true,
         keywords: "C-39 C39 路易吉 救護車 義大利 白色 警燈 綠白紅 飛雅特",
         images: [
-          { url: "tomica_official_images/C-39_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-39_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-39_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️已重複 2 台】白淨車身飾以義大利國旗綠白紅雙色彩條、車頂單顆搶眼紅警燈與後窗緊急醫療標誌，迷你靈動。"
       },
@@ -1281,8 +1239,7 @@
         isDuplicate: false,
         keywords: "C-39 C39 勞爾 薩魯爾 法國 06 GRC WRC 紅白藍 國旗塗裝 拉力賽車",
         images: [
-          { url: "tomica_official_images/C-39_raoul_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-39_raoul_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-39_raoul_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "《Cars 2 世界大賽》代表法國參賽的頂尖越野拉力冠軍！紅白藍法國三色動感潑墨塗裝、車身 06 號賽事編號與大型紅色擾流尾翼。"
       },
@@ -1299,8 +1256,7 @@
         isDuplicate: false,
         keywords: "C-40 C40 雷蒙 巡警 警車 道路維持 黃黑 條紋 趴地",
         images: [
-          { url: "tomica_official_images/C-40_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-40_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-40_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "Lowrider 遇上道路執法！雷蒙將鮮黃安全色與經典Impala流線線條結合，車側粗獷黑黃警示斜紋，極富玩味。"
       },
@@ -1317,8 +1273,7 @@
         isDuplicate: false,
         keywords: "C-48 C48 史莫基 史墨基 韓大夫 師傅 皮卡 橘色 貨卡 斑駁 經典老車",
         images: [
-          { url: "tomica_official_images/C-48_smokey_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/C-48_smokey_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/C-48_smokey_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "傳奇韓大夫的恩師與老賽車技師長！溫暖橘褐色車身、車門印有 Smokey's Automotive Service 招牌字樣與斑駁歷史歲月質感。"
       },
@@ -1335,8 +1290,7 @@
         isDuplicate: false,
         keywords: "SP 韓大夫 哈德遜 活塞盃 獎盃 麥坤日 2026 藍色 51 盒裝",
         images: [
-          { url: "tomica_official_images/SP-DOC-2026_official.jpg", label: "🌟 官方發售宣傳大圖" },
-          { url: "tomica_images/doc_hudson_2026.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/SP-DOC-2026_official.jpg", label: "🌟 官方發售宣傳大圖" }
         ],
         description: "極度珍稀的麥坤日限定紀念版！深藍色經典黃蜂賽車，車旁附贈一座高精度金黃色活塞盃（Piston Cup）冠軍獎盃，為所有 Cars 迷夢寐以求的殿堂逸品。"
       },
@@ -1353,9 +1307,7 @@
         isDuplicate: true,
         keywords: "SP 麥坤 閃電麥坤 活塞盃 獎盃 麥坤日 2026 特別仕樣 特仕車 95 盒裝",
         images: [
-          { url: "tomica_official_images/SP_mcqueen_day_2026_official.jpg", label: "🌟 官方發售宣傳大圖" },
-          { url: "tomica_images/SP_mcqueen_day_2026_box1.jpg", label: "📦 盒裝實拍（第 1 盒）" },
-          { url: "tomica_images/SP_mcqueen_day_2026_box2.jpg", label: "📦 盒裝實拍（第 2 盒・⚠️已重複2盒）" }
+          { url: "tomica_official_images/SP_mcqueen_day_2026_official.jpg", label: "🌟 官方發售宣傳大圖" }
         ],
         description: "【⚠️已重複 2 盒全新未拆】2026 閃電麥坤日特別仕樣！全車金屬紅質感烤漆、車側 95 號電光拉花，特別附贈極具份量的金色活塞盃（Piston Cup）冠軍獎盃，具備絕高收藏紀念價值。"
       },
@@ -1372,8 +1324,7 @@
         isDuplicate: false,
         keywords: "SP 暴風 傑克森 20週年 20th 紀念版 消光黑 金色 2.0 次世代",
         images: [
-          { url: "tomica_official_images/SP_storm_20th_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/SP_storm_20th_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/SP_storm_20th_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "皮克斯《汽車總動員》誕生 20 週年隆重推出的紀念特仕車！消光黑科技車體點綴 20th 金色徽章與幾何拉線，極致霸氣與科技收藏價值。"
       },
@@ -1392,7 +1343,7 @@
         images: [
           { url: "tomica_official_images/SP-MATER-2023_official.jpg", label: "🌟 官方高清展示圖" }
         ],
-        description: "【2023 麥坤日特別仕樣車】為紀念ライトニング・マックィーンデイ 2023，官方採特別色「メタリックブルー」（金屬藍），兩側繪有本商品原創徽章。建議售價 1,100 日圓（含稅）。※散車實拍先前誤掛此筆，實際為 C-37 プレジデントタイプ，已改掛至 C-37；目前庫存改為 0（若妳其實有麥坤日特仕實體，請再改回）。"
+        description: "【2023 麥坤日特別仕樣車】為紀念ライトニング・マックィーンデイ 2023，官方採特別色「メタリックブルー」（金屬藍），兩側繪有本商品原創徽章。建議售價 1,100 日圓（含稅）。※先前誤將 C-37 プレジデントタイプ掛入此筆，實際為 C-37 專屬車款，已修正改掛至 C-37；目前庫存標為 0（若妳其實有麥坤日特仕實體，請再調整數量）。"
       },
       {
         id: "SP-MCQUEEN-CHERRY",
@@ -1407,8 +1358,7 @@
         isDuplicate: false,
         keywords: "Mattel 美泰兒 麥坤 櫻桃紅 酒紅 賽車 金屬 1:55 特殊色 絕版 稀有",
         images: [
-          { url: "tomica_official_images/SP-MCQUEEN-CHERRY_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/SP-05_cherry_red.jpg", label: "🏎️ 散車實拍" }
+          { url: "tomica_official_images/SP-MCQUEEN-CHERRY_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "美泰兒（Mattel）原廠正版合金車！有別於 Tomica，此款為 1:55 經典收藏規格，烤漆採用極致奢華的深櫻桃金屬金蔥酒紅，在燈光下光彩奪目。"
       },
@@ -1425,8 +1375,7 @@
         isDuplicate: false,
         keywords: "長車 麥克 貨櫃 拖車 卡車 聯結車 紅色 95 閃電麥坤 基地",
         images: [
-          { url: "tomica_official_images/MACK-01_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/MACK-01_mini_mack.jpg", label: "🚛 實車實拍" }
+          { url: "tomica_official_images/MACK-01_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "閃電麥坤專屬移動基地！艷紅長頭大卡車頭與超長雙軸後貨櫃，貨櫃後門可展開，能將一般 Tomica 麥坤小車駛入裝載收納。"
       },
@@ -1447,8 +1396,7 @@
         isDuplicate: false,
         keywords: "胡迪 牛仔 警長 玩具總動員 復古 老爺車 高帽 棕色 黃色 敞篷車 Highhat Classic ハイハットクラシック DM-18 Disney Motors",
         images: [
-          { url: "tomica_official_images/TS-WOODY-CLASSIC_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DISNEY-01_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/TS-WOODY-CLASSIC_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "以警長胡迪為靈魂打造的復古敞篷老爺車！車頂戴著胡迪的深棕色牛仔高帽、車頭為乳牛花紋背心配色、車側飾以警長金色六角星芒徽章。"
       },
@@ -1465,8 +1413,7 @@
         isDuplicate: false,
         keywords: "TS-04 翠絲 玩具箱 安弟 木箱 拖車 牛仔 女牛仔 玩具總動員 Funbox",
         images: [
-          { url: "tomica_official_images/TS-04_jessie_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/TS-04_jessie_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/TS-04_jessie_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "《玩具總動員》人氣女牛仔翠絲！坐在安弟專屬的綠棕木紋玩具收納四輪小拖車中，頂部車棚上蓋可開闔，重現電影經典玩偶情境。"
       },
@@ -1483,8 +1430,7 @@
         isDuplicate: false,
         keywords: "180 No180 巴斯光年 胡迪 積木 畫架 花車 遊行 巡遊 彩車 玩具總動員",
         images: [
-          { url: "tomica_official_images/DREAM_no180_toystory_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/DREAM_no180_toystory_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DREAM_no180_toystory_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "迪士尼夢幻遊行（Disney Parade）系列 No.180！巴斯光年站在色彩繽紛的積木與胡迪畫架花車上，前後配備連結鉤，可與其他遊行花車接成一列。"
       },
@@ -1501,8 +1447,7 @@
         isDuplicate: true,
         keywords: "胡迪 Tsum 疊疊車 牛仔 圓滾滾 萌 散車 重複 玩具總動員",
         images: [
-          { url: "tomica_official_images/TS-TSUM-WOODY_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🤠 實拍照片（已重複2台）" }
+          { url: "tomica_official_images/TS-TSUM-WOODY_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️散車重複 2 台】圓滾滾的治癒系胡迪警長疊疊車！頂部設有專屬凹槽，可與其他 Tsum Tsum 夥伴垂直金字塔疊放。"
       },
@@ -1523,8 +1468,7 @@
         isDuplicate: false,
         keywords: "美食餐車 禮盒 4台組 移動販賣車 章魚燒 烏龍麵 壽司 拉麵 炸雞 貨車",
         images: [
-          { url: "tomica_official_images/GEN-FOOD-SET_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/SET_food_trucks_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/GEN-FOOD-SET_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【套裝組合・全套4款】日本極具人氣的街道美食移動販賣車 4 台套裝組！內含章魚燒攤車、手打烏龍麵攤車、極鮮壽司車與香濃拉麵餐車，每台皆有不同機關與招牌展示。"
       },
@@ -1541,8 +1485,7 @@
         isDuplicate: false,
         keywords: "哆啦A夢 小叮噹 藍色 鈴鐺 貓 機器貓 165 No.165 Dream 盒裝",
         images: [
-          { url: "tomica_official_images/GEN-DORAEMON_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/NO-165_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/GEN-DORAEMON_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "國民級動漫偶像哆啦A夢化身流線小車！蔚藍底色配上白色肚兜與車頭金色小鈴鐺，車尾俏皮點綴紅色小圓球尾巴。"
       },
@@ -1559,8 +1502,7 @@
         isDuplicate: false,
         keywords: "長車 拖車 貨櫃 聯結車 重卡 油罐車 大卡車 超長 散車",
         images: [
-          { url: "tomica_official_images/MACK-01_official.jpg", label: "🌟 官方長車規格示意圖" },
-          { url: "tomica_images/REG_long_tomica_trailers.jpg", label: "🚛 超長拖車車隊散車實拍（共7台）" }
+          { url: "tomica_official_images/MACK-01_official.jpg", label: "🌟 官方長車規格示意圖" }
         ],
         description: "【重型運輸車隊・共7款不同車型】包含各式油罐車、商船三井 / 川崎汽船貨櫃聯結車、多軸平板自卸重卡，展示工業重機之美。"
       },
@@ -1577,8 +1519,7 @@
         isDuplicate: false,
         keywords: "711 7-11 統一麵包 plain-me jnp 菠蘿 可頌 海苔肉鬆 聯名 集點 非TOMICA 非トミカ",
         images: [
-          { url: "tomica_official_images/plain_me_bread_car_official.jpg", label: "🌟 plain-me 官方型錄棚拍 (SKU JNP3945-262)" },
-          { url: "tomica_images/REG_bread_food_trucks.jpg", label: "🥖 實拍照片" }
+          { url: "tomica_official_images/plain_me_bread_car_official.jpg", label: "🌟 plain-me 官方型錄棚拍 (SKU JNP3945-262)" }
         ],
         description: "【⚠️注意：本款非 TOMICA 出品】為台灣 7-ELEVEN 攜手台灣知名設計選貨品牌「plain-me」與「統一麵包」跨界推出的限量迴力合金小車盲盒！車頂分別背著經典菠蘿麵包與草莓麵包，充滿台灣在地生活趣味。"
       },
@@ -1595,8 +1536,7 @@
         isDuplicate: false,
         keywords: "TOMICA TUNES 布丁狗 三麗鷗 工作款 藍色 敞篷車 復古車 單盒 盲盒",
         images: [
-          { url: "tomica_official_images/TUNES_pompom_work_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/TUNES_pompom_work_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/TUNES_pompom_work_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "TOMICA TUNES 三麗鷗聯名 Single Packs！認真努力工作的布丁狗化身駕駛，駕著海軍深藍色復古敞篷老車，車門貼著俏皮布丁狗貼紙，逗趣又療癒。"
       },
@@ -1613,8 +1553,7 @@
         isDuplicate: false,
         keywords: "TOMICA TUNES 布丁狗 三麗鷗 喜愛款 黃色 敞篷車 復古車 單盒 盲盒",
         images: [
-          { url: "tomica_official_images/TUNES_pompom_love_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/TUNES_pompom_love_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/TUNES_pompom_love_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "TOMICA TUNES 三麗鷗聯名 Single Packs！心情愉悅哼著歌的布丁狗！全車換裝布丁狗招牌溫暖黃色烤漆、咖啡色復古皮椅與樂譜音符塗裝。"
       },
@@ -1635,8 +1574,7 @@
         isDuplicate: false,
         keywords: "唐老鴨 爆米花 專賣店 餐車 三輪車 藍白黃 迪士尼 盒裝",
         images: [
-          { url: "tomica_official_images/DIS-DONALD-POPCORN_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/SET_donald_popcorn_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DIS-DONALD-POPCORN_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "唐老鴨主題街頭美味！藍白條紋遮陽棚造型餐車、透明爆米花櫥窗與可愛水手帽外送三輪小車，精緻度破表。"
       },
@@ -1653,8 +1591,7 @@
         isDuplicate: false,
         keywords: "179 No179 唐老鴨 露托特 ルントット 衝浪板 海軍 條紋 金龜車 迪士尼",
         images: [
-          { url: "tomica_official_images/DIS-NO179-DONALD_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DIS_no179_donald_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DIS-NO179-DONALD_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "復古流線型圓潤復古車「Runtotto」，全車以唐老鴨招牌海軍水手藍白黃配色打造，隨車附贈一尊身著水手條紋衫的立體唐老鴨公仔，車頂黃色衝浪板可拆下握於手中。"
       },
@@ -1671,8 +1608,7 @@
         isDuplicate: false,
         keywords: "米奇 露營 野炊 綠白 條紋 廂型車 Travel Collection キャンピング ディズニートラベルコレクション",
         images: [
-          { url: "tomica_official_images/DREAM_mickey_camp_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/DREAM_mickey_camp_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DREAM_mickey_camp_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "【トミカが夢のコラボレーション特仕版】米白復古露營 van，車頂為綠白經典遮陽棚條紋，車側繪有米奇大廚在營火前掌廚煎荷包蛋野炊圖案，戶外露營風情滿溢。"
       },
@@ -1689,8 +1625,7 @@
         isDuplicate: false,
         keywords: "SP 動物方城市 ズートピア 飛尼克 尼克 朱迪 麵包車 廂型車 狐狸 爪爪冰棒",
         images: [
-          { url: "tomica_official_images/DIS_zootopia_finnick_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/DIS_zootopia_finnick_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DIS_zootopia_finnick_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "《動物方城市（Zootopia）》飛尼克與尼克搭檔賣爪爪冰棒的經典愛車！橘色車身復刻車側夕陽峽谷彩繪與復古圓窗，車內可見尼克與飛尼克公仔身影。"
       },
@@ -1707,8 +1642,7 @@
         isDuplicate: false,
         keywords: "迪士尼 索拉塔 Soratta ソラッタ 春日繁花 春天 花卉 花店 貨卡 藍色 米奇 特別仕樣 專賣店 7-11限定",
         images: [
-          { url: "tomica_official_images/DIS_riratta_mickey_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/DIS_riratta_mickey_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DIS_riratta_mickey_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "日本 7-Eleven 與迪士尼專賣店特別仕様車！「索拉塔（Soratta）」車型，以春意粉藍色車身搭配米奇經典雙耳招牌，車斗後方滿載春日繁花與鬱金香盆栽，充滿明亮愉悅的春季氣息。"
       },
@@ -1725,8 +1659,7 @@
         isDuplicate: false,
         keywords: "雪寶 冰雪奇緣2 Olaf 珠寶車 首飾盒 珍珠白 行李箱 ルルトランク 機關車",
         images: [
-          { url: "tomica_official_images/DIS_jewelry_elsa_official.jpg", label: "🌟 官方特寫展示圖" },
-          { url: "tomica_images/DIS_jewelry_elsa_box.jpg", label: "📦 盒裝實拍" }
+          { url: "tomica_official_images/DIS_jewelry_elsa_official.jpg", label: "🌟 官方特寫展示圖" }
         ],
         description: "《冰雪奇緣 2》雪寶主題！夢幻珠寶車系列（Jewelry Way）經典名作。車頂為立體圓滾雪寶頭部造型，搭配冰雪水晶枝椏與皮箱滾邊設計。具備『フタを開ければ こもの入れに』開蓋機能，掀開頂蓋即可化身為隨身珠寶配件收納盒！"
       },
@@ -1743,8 +1676,7 @@
         isDuplicate: true,
         keywords: "奧斯華 幸運兔 兔子 黑色 長耳朵 迪士尼 元老 散車 重複 疊疊樂",
         images: [
-          { url: "tomica_official_images/DIS-TSUM-OSWALD_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🐰 實拍照片（已重複2台）" }
+          { url: "tomica_official_images/DIS-TSUM-OSWALD_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "【⚠️散車重複 2 台】華特迪士尼筆下歷史最悠久傳奇角色「幸運兔奧斯華」！漆黑圓滾身軀配上立體直挺長耳朵，目前持有 2 台散車無盒。"
       },
@@ -1761,8 +1693,7 @@
         isDuplicate: false,
         keywords: "雪寶 冰雪奇緣 Olaf 白色 紅蘿蔔 樹枝 散車",
         images: [
-          { url: "tomica_official_images/DIS-TSUM-OLAF_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "⛄ 實拍照片" }
+          { url: "tomica_official_images/DIS-TSUM-OLAF_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "《冰雪奇緣》第一活寶雪寶！純白雪人車體、頭頂樹枝頭髮與招牌立體胡蘿蔔鼻子，車頂設有堆疊卡榫。"
       },
@@ -1779,8 +1710,7 @@
         isDuplicate: false,
         keywords: "維尼 小熊維尼 小豬 粉紅 黃色 蜂蜜 散車",
         images: [
-          { url: "tomica_official_images/DIS-TSUM-POOH_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🍯 實拍照片" }
+          { url: "tomica_official_images/DIS-TSUM-POOH_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "百畝森林最溫暖的搭檔！包含金黃色小熊維尼與嬌小粉紅小豬兩款不同角色，相互堆疊極具療癒感。"
       },
@@ -1797,8 +1727,7 @@
         isDuplicate: false,
         keywords: "米奇 米老鼠 黑色 紅色 褲子 大耳朵 散車 元祖",
         images: [
-          { url: "tomica_official_images/DIS-TSUM-MICKEY_official.jpg", label: "🌟 官方高清展示圖" },
-          { url: "tomica_images/DISNEY_tsum_tsum_pyramid.jpg", label: "🐭 實拍照片" }
+          { url: "tomica_official_images/DIS-TSUM-MICKEY_official.jpg", label: "🌟 官方高清展示圖" }
         ],
         description: "迪士尼掌門人經典紅黑褲裝圓滾滾化！立體圓潤黑大耳與標誌性兩顆大白扣子，為 Tsum 系列最基石的核心款式。"
       }
@@ -1809,7 +1738,6 @@
     let filterOnlyDuplicates = false;
     let searchQuery = '';
     let currentViewMode = 'grid'; // 'grid' | 'list'
-    let currentPhotoSource = 'official'; // 'official' | 'real'
 
     // DOM 快取
     const compendiumContainer = document.getElementById('compendiumContainer');
@@ -1820,9 +1748,6 @@
     const resetSearchBtn = document.getElementById('resetSearchBtn');
     const viewGridBtn = document.getElementById('viewGridBtn');
     const viewListBtn = document.getElementById('viewListBtn');
-    const photoSourceToggleContainer = document.getElementById('photoSourceToggleContainer');
-    const photoSourceOfficial = document.getElementById('photoSourceOfficial');
-    const photoSourceReal = document.getElementById('photoSourceReal');
     const detailModalOverlay = document.getElementById('detailModalOverlay');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const detailModalContent = document.getElementById('detailModalContent');
@@ -1979,16 +1904,8 @@
       const isDup = Boolean(car.isDuplicate);
       const total = car.boxed + car.loose;
 
-      // 選擇圖源
-      let displayImg = car.images && car.images[0] ? car.images[0].url : '';
-      let displayLabel = car.images && car.images[0] ? car.images[0].label : '';
-
-      if (currentPhotoSource === 'real') {
-        if (car.images && car.images.length > 1) {
-          displayImg = car.images[1].url;
-          displayLabel = car.images[1].label;
-        }
-      }
+      const hasImages = car.images && car.images.length > 0;
+      const displayImg = hasImages ? car.images[0].url : '';
 
       let catBadgeClass = 'tag-cars';
       if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
@@ -2009,6 +1926,23 @@
         statusBadgeHtml = `<span class="tag-badge ${car.boxed > 0 ? 'tag-boxed' : 'tag-loose'} shadow-2xs">${car.boxed > 0 ? '盒裝全新' : '無盒散車'}</span>`;
       }
 
+      const stageContentHtml = hasImages ? `
+            <img 
+              src="${displayImg}" 
+              alt="${car.name}" 
+              loading="lazy"
+              onerror="this.style.opacity='0.2'"
+            >
+            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded backdrop-blur-xs pointer-events-none">
+              🌟 官方圖
+            </span>
+      ` : `
+            <div class="w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none">
+              <span class="text-2xl">📷</span>
+              <span class="text-xs font-bold tracking-wider">暫無官方圖</span>
+            </div>
+      `;
+
       return `
         <article 
           class="pokedex-card ${isDup ? 'is-duplicate' : ''}"
@@ -2024,16 +1958,7 @@
               ${statusBadgeHtml}
             </div>
             
-            <img 
-              src="${displayImg}" 
-              alt="${car.name}" 
-              loading="lazy"
-              onerror="this.style.opacity='0.2'"
-            >
-
-            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded backdrop-blur-xs pointer-events-none">
-              ${displayLabel.includes('官方') ? '🌟 官方圖' : '📸 實拍照'}
-            </span>
+            ${stageContentHtml}
           </div>
 
           <!-- 卡片文字資訊 -->
@@ -2097,6 +2022,13 @@
             `).join('')}
           </div>
         `;
+      } else {
+        imagesDualHtml = `
+          <div class="car-stage aspect-[16/11] rounded-xl border border-zinc-200/90 shadow-2xs flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 my-2.5">
+            <span class="text-2xl">📷</span>
+            <span class="text-xs font-bold tracking-wider">暫無官方圖</span>
+          </div>
+        `;
       }
 
       return `
@@ -2129,7 +2061,7 @@
             ${car.jpName}
           </div>
 
-          <!-- 雙圖並列展示 -->
+          <!-- 官方展示圖 -->
           ${imagesDualHtml}
 
           <!-- 考證與詳細資訊 -->
@@ -2177,6 +2109,13 @@
                 </span>
               </div>
             `).join('')}
+          </div>
+        `;
+      } else {
+        modalImagesHtml = `
+          <div class="car-stage aspect-[16/11] rounded-2xl border border-zinc-200 flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 my-4">
+            <span class="text-3xl">📷</span>
+            <span class="text-sm font-bold tracking-wider">暫無官方圖</span>
           </div>
         `;
       }
@@ -2387,7 +2326,6 @@
       currentViewMode = 'grid';
       viewGridBtn.classList.add('active');
       viewListBtn.classList.remove('active');
-      photoSourceToggleContainer.classList.remove('hidden');
       renderCompendium();
     });
 
@@ -2395,22 +2333,6 @@
       currentViewMode = 'list';
       viewListBtn.classList.add('active');
       viewGridBtn.classList.remove('active');
-      photoSourceToggleContainer.classList.add('hidden');
-      renderCompendium();
-    });
-
-    // 圖源一鍵切換
-    photoSourceOfficial.addEventListener('click', () => {
-      currentPhotoSource = 'official';
-      photoSourceOfficial.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white';
-      photoSourceReal.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
-      renderCompendium();
-    });
-
-    photoSourceReal.addEventListener('click', () => {
-      currentPhotoSource = 'real';
-      photoSourceReal.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition bg-zinc-900 text-white';
-      photoSourceOfficial.className = 'px-2.5 py-1 rounded-lg text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
       renderCompendium();
     });
 
