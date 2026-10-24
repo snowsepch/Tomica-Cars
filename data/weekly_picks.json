@@ -1,0 +1,233 @@
+{
+  "title": "東京小物・每週新品追蹤（Cars／Tomica）",
+  "builtAt": "2026-10-25T00:07:04+08:00",
+  "timezone": "Asia/Taipei (UTC+8)",
+  "scope": "Cars + Tomica limited from weekly Friday picks",
+  "site": "https://snowsepch.github.io/Tomica-Cars/",
+  "count": 8,
+  "skippedNonCarsIp": [
+    {
+      "weekOf": "2026-10-23",
+      "item": "トーマストミカ えほんパーシー",
+      "reason": "Thomas IP，非 Cars／一般 Tomica 限定車"
+    },
+    {
+      "weekOf": "2026-10-23",
+      "item": "トミカ クリスマスギフトセット",
+      "reason": "一般 Tomica 禮盒，非 Cars／通路限定車"
+    },
+    {
+      "weekOf": "2026-10-23",
+      "item": "ファミマ スヌーピーと楽しむファミマの秋（ポーチ／まめ皿／マスコット）",
+      "reason": "スヌーピー，與 Tomica-Cars 無關"
+    },
+    {
+      "weekOf": "2026-10-23",
+      "item": "タイトーくじ ミッフィー＆ボリス",
+      "reason": "ミッフィー，與 Tomica-Cars 無關"
+    },
+    {
+      "weekOf": "2026-10-16",
+      "item": "くまのがっこう ノベルティフェア／UNIQLO おさるのジョージ／ちいかわぽけっと／もこもこスタイル／パンどろぼう展",
+      "reason": "非 Tomica／Cars"
+    },
+    {
+      "weekOf": "2026-10-09",
+      "item": "MOE絵本雑貨店／えほん博／UNIQLO 絵本キルト／パンどろぼう展抽選",
+      "reason": "非 Tomica／Cars"
+    },
+    {
+      "weekOf": "2026-09-27",
+      "item": "パンどろぼう POP UP／UNIQLO パンどろぼうキルト／パンどろぼう展抽選",
+      "reason": "非 Tomica／Cars"
+    }
+  ],
+  "linkVerification": [
+    {
+      "url": "https://www.takaratomy.co.jp/products/disney/cars/",
+      "status": 200
+    },
+    {
+      "url": "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "status": 200
+    },
+    {
+      "url": "https://www.lawson.co.jp/lab/entertainment/art/20261013_toytomica.html",
+      "status": 200
+    },
+    {
+      "url": "https://takaratomymall.jp/shop/g/g4904810057994/",
+      "status": 200
+    },
+    {
+      "url": "https://www.takaratomy.co.jp/products/tomica_plarail_shop/original/",
+      "status": 200
+    },
+    {
+      "url": "https://tomicagogo.com/blog-entry-21120.html",
+      "status": 200
+    },
+    {
+      "url": "https://www.takaratomy.co.jp/products/tomica/",
+      "status": 200
+    }
+  ],
+  "entries": [
+    {
+      "id": "cars-20th-mcqueen-c3-2026-10-23",
+      "weekOf": "2026-10-23",
+      "reportedAt": "2026-10-23",
+      "nameZh": "閃電麥坤（20週年紀念版）",
+      "nameJp": "ライトニング・マックィーン（２０周年記念タイプ）",
+      "category": "cars",
+      "priceJpy": 935,
+      "releaseOrPeriod": "發售中",
+      "place": "一般玩具通路／官方未逐店列舉",
+      "sourceUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "sourceLabel": "Takara Tomy カーズ トミカ 20周年スペシャルサイト",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": false,
+      "notes": "20週年紀念 4 台之一；金屬色＋20週年標誌。registry：C-03_mcqueen_20th。",
+      "displayNumber": "C-3",
+      "registryNumber": "C-03_mcqueen_20th"
+    },
+    {
+      "id": "cars-20th-mater-c14-2026-10-23",
+      "weekOf": "2026-10-23",
+      "reportedAt": "2026-10-23",
+      "nameZh": "拖線（20週年紀念版）",
+      "nameJp": "メーター（２０周年記念タイプ）",
+      "category": "cars",
+      "priceJpy": 935,
+      "releaseOrPeriod": "發售中",
+      "place": "一般玩具通路／官方未逐店列舉",
+      "sourceUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "sourceLabel": "Takara Tomy カーズ トミカ 20周年スペシャルサイト",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": true,
+      "notes": "20週年紀念 4 台之一。registry：C-14_mater_20th（已購入）。",
+      "displayNumber": "C-14",
+      "registryNumber": "C-14_mater_20th"
+    },
+    {
+      "id": "cars-20th-cruz-sp-2026-10-23",
+      "weekOf": "2026-10-23",
+      "reportedAt": "2026-10-23",
+      "nameZh": "克魯茲・拉米瑞茲（20週年紀念版）",
+      "nameJp": "クルーズ・ラミレス（２０周年記念タイプ）",
+      "category": "cars",
+      "priceJpy": 935,
+      "releaseOrPeriod": "發售中",
+      "place": "一般玩具通路／官方未逐店列舉",
+      "sourceUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "sourceLabel": "Takara Tomy カーズ トミカ 20周年スペシャルサイト",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": false,
+      "notes": "20週年紀念 4 台之一（SP）。registry：SP_cruz_20th。",
+      "displayNumber": "SP",
+      "registryNumber": "SP_cruz_20th"
+    },
+    {
+      "id": "cars-20th-storm-sp-2026-10-23",
+      "weekOf": "2026-10-23",
+      "reportedAt": "2026-10-23",
+      "nameZh": "暴風傑克森（20週年紀念版）",
+      "nameJp": "ジャクソン・ストーム（２０周年記念タイプ）",
+      "category": "cars",
+      "priceJpy": 935,
+      "releaseOrPeriod": "發售中",
+      "place": "一般玩具通路／官方未逐店列舉",
+      "sourceUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "sourceLabel": "Takara Tomy カーズ トミカ 20周年スペシャルサイト",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": true,
+      "notes": "20週年紀念 4 台之一（SP）。registry：SP_storm_20th（已購入）。",
+      "displayNumber": "SP",
+      "registryNumber": "SP_storm_20th"
+    },
+    {
+      "id": "cars-playset-carwash-2026-10-23",
+      "weekOf": "2026-10-23",
+      "reportedAt": "2026-10-23",
+      "nameZh": "カーズ トミカ 洗車場",
+      "nameJp": "カーズ トミカ 洗車場",
+      "category": "cars_playset",
+      "priceJpy": 2640,
+      "releaseOrPeriod": "2026年11月下旬発売予定",
+      "place": "一般玩具通路／官方未逐店列舉",
+      "sourceUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "sourceLabel": "Takara Tomy カーズ トミカ 20周年スペシャルサイト",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": false,
+      "notes": "對象年齡 3歳〜；附ライトニング・マックィーン（バブルタイプ）1 台。週報曾記 11/21，官方頁為「2026年11月下旬」。registry：SET_carwash。亦可見總覽 https://www.takaratomy.co.jp/products/disney/cars/ （2026.08.07 お知らせ）。",
+      "displayNumber": null,
+      "registryNumber": "SET_carwash"
+    },
+    {
+      "id": "tomica-limited-yamada-gr86-2026-10-09",
+      "weekOf": "2026-10-09",
+      "reportedAt": "2026-10-09",
+      "nameZh": "山田電機原創 Tomica 豐田 GR 86",
+      "nameJp": "ヤマダデンキ オリジナル トミカ トヨタ GR 86",
+      "category": "tomica_limited",
+      "priceJpy": 880,
+      "releaseOrPeriod": "2026-10-17 発売（店頭；線上預約曾完售）",
+      "place": "ヤマダデンキ／ヤマダウェブコム",
+      "sourceUrl": "https://tomicagogo.com/blog-entry-21120.html",
+      "sourceLabel": "特注トミカ（新商品情報；引用山田電機通路）",
+      "sourceHttpStatus": 200,
+      "needsReservation": true,
+      "owned": null,
+      "notes": "非 Cars IP，標 tomica_limited。2026-10-09 週報首次通報（予定）；2026-10-16 週報再標「10/17発売」。山田ウェブコム單品頁目前搜尋不到（預約／販售結束），故主連結採可核之特注トミカ報導（HTTP 200）。JAN 公開資料：4904810075615。不在 Cars registry → owned=null。",
+      "displayNumber": null,
+      "registryNumber": null,
+      "alsoReportedAt": [
+        "2026-10-16"
+      ]
+    },
+    {
+      "id": "tomica-limited-lawson-mr2-2026-10-02",
+      "weekOf": "2026-10-02",
+      "reportedAt": "2026-10-02",
+      "nameZh": "Lawson 原創 Tomica 豐田 MR2",
+      "nameJp": "ローソンオリジナルトミカ トヨタ MR2",
+      "category": "tomica_limited",
+      "priceJpy": 880,
+      "releaseOrPeriod": "2026-10-24 より店頭順次発売予定（なくなり次第終了）",
+      "place": "ローソン（一部店舗）／ローソンオンラインギフト（10/26 10:00〜・送料込¥1,540・1人1点）",
+      "sourceUrl": "https://www.lawson.co.jp/lab/entertainment/art/20261013_toytomica.html",
+      "sourceLabel": "Lawson 公式",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": null,
+      "notes": "非 Cars IP，標 tomica_limited。藍色金屬限定色。週報 2026-10-02 先通報予定；Lawson 公式頁日期 2026.10.13（HTTP 200）。電話詢問庫存官方請勿。不在 Cars registry → owned=null。",
+      "displayNumber": null,
+      "registryNumber": null
+    },
+    {
+      "id": "tomica-limited-shop-2000gt-2026-09-27",
+      "weekOf": "2026-09-27",
+      "reportedAt": "2026-09-27",
+      "nameZh": "Tomica Shop 原創 豐田 2000GT",
+      "nameJp": "トミカショップオリジナル トヨタ 2000GT",
+      "category": "tomica_limited",
+      "priceJpy": 880,
+      "releaseOrPeriod": "2026-10-03 発売",
+      "place": "トミカショップ／タカラトミーモール（インターネット店）",
+      "sourceUrl": "https://takaratomymall.jp/shop/g/g4904810057994/",
+      "sourceLabel": "タカラトミーモール（トミカショップオリジナル）",
+      "sourceHttpStatus": 200,
+      "needsReservation": false,
+      "owned": null,
+      "notes": "非 Cars IP，標 tomica_limited。お1人様3個まで・数量限定。官方一覽頁亦載：https://www.takaratomy.co.jp/products/tomica_plarail_shop/original/ （HTTP 200）。不在 Cars registry → owned=null。",
+      "displayNumber": null,
+      "registryNumber": null,
+      "alternateSourceUrl": "https://www.takaratomy.co.jp/products/tomica_plarail_shop/original/"
+    }
+  ]
+}

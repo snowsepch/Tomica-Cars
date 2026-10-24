@@ -1,0 +1,3357 @@
+{
+  "title": "カーズ トミカ / Tomica Cars 編號總表",
+  "builtAt": "2026-10-25T02:44:41+08:00",
+  "timezone": "Asia/Taipei",
+  "officialProductCount": 150,
+  "registryCount": 152,
+  "ownedCount": 44,
+  "missingFromCatalogCount": 108,
+  "ownedCatalogCarsCount": 43,
+  "ambiguousReusedNumbers": {
+    "C-3": [
+      {
+        "number": "C-03_mater_cave",
+        "officialNameJp": "メーター(ケイブタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-03_mcqueen_20th",
+        "officialNameJp": "ライトニング・マックィーン(20周年記念タイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-03_mcqueen_cruising",
+        "officialNameJp": "ライトニング・マックィーン(クルージングタイプ)",
+        "owned": false
+      }
+    ],
+    "C-5": [
+      {
+        "number": "C-05_sally_standard",
+        "officialNameJp": "サリー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-05_storm_standard",
+        "officialNameJp": "ジャクソン・ストーム(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-6": [
+      {
+        "number": "C-06_cruz_dinoco",
+        "officialNameJp": "クルーズ・ラミレス(DINOCOレーシングタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-06_doc_standard",
+        "officialNameJp": "ドック・ハドソン(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-8": [
+      {
+        "number": "C-08_doc_fabulous",
+        "officialNameJp": "ドック・ハドソン(ファビュラスタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-08_ramone_standard",
+        "officialNameJp": "ラモーン(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-14": [
+      {
+        "number": "C-14_fillmore_standard",
+        "officialNameJp": "フィルモア(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-14_mater_20th",
+        "officialNameJp": "メーター(20周年記念タイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-14_mcqueen_cave",
+        "officialNameJp": "ライトニング・マックィーン(ケイブタイプ)",
+        "owned": true
+      }
+    ],
+    "C-15": [
+      {
+        "number": "C-15_cruz_road_patrol",
+        "officialNameJp": "クルーズ・ラミレス(道路パトロールカータイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-15_mack_cars3_standard",
+        "officialNameJp": "マック(カーズ3 スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-15_mcqueen_wgp",
+        "officialNameJp": "ライトニング・マックィーン(ワールドグランプリタイプ)",
+        "owned": false
+      }
+    ],
+    "C-16": [
+      {
+        "number": "C-16_finn_standard",
+        "officialNameJp": "フィン・マックミサイル(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-16_mcqueen_cars3_intro",
+        "officialNameJp": "ライトニング・マックィーン(カーズ3 イントロタイプ)",
+        "owned": false
+      }
+    ],
+    "C-18": [
+      {
+        "number": "C-18_shu_standard",
+        "officialNameJp": "シュウ・トドロキ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-18_storm",
+        "officialNameJp": "ジャクソン・ストーム(GRCタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-18_mater_hunter",
+        "officialNameJp": "メーター(ハンタータイプ)",
+        "owned": false
+      }
+    ],
+    "C-19": [
+      {
+        "number": "C-19_king_thomasville",
+        "officialNameJp": "キング(トーマスビルタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-19_tractor_standard",
+        "officialNameJp": "トラクター(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-19_fillmore_fire_command",
+        "officialNameJp": "フィルモア(消防指揮車タイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-19_brick_standard",
+        "officialNameJp": "ブリック・ヤードレィ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-19_raoul_standard",
+        "officialNameJp": "ラウール・サルール(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-20": [
+      {
+        "number": "C-20_sarge_standard",
+        "officialNameJp": "サージ(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-20_storm_patrol",
+        "officialNameJp": "ジャクソン・ストーム(パトカータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-20_flip_standard",
+        "officialNameJp": "フリップ・ドーヴァー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-20_max_standard",
+        "officialNameJp": "マックス・シュネル(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-21": [
+      {
+        "number": "C-21_j_p_standard",
+        "officialNameJp": "J・P・ドライブ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-21_holly_standard",
+        "officialNameJp": "ホリー・シフトウェル(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-21_mcqueen_cars3_standard",
+        "officialNameJp": "ライトニング・マックィーン(カーズ3 スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-22": [
+      {
+        "number": "C-22_finn_standard",
+        "officialNameJp": "フィン・マックミサイル(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-22_prof_z_standard",
+        "officialNameJp": "プロフェッサー・ゼット(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-22_mater_ice",
+        "officialNameJp": "メーター(アイスレーシングタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-22_luigi_rrc",
+        "officialNameJp": "ルイジ(RRCタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-22_louise_standard",
+        "officialNameJp": "ルイーズ・ナッシュ(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-23": [
+      {
+        "number": "C-23_guido_ambulance",
+        "officialNameJp": "グイド(救急車タイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-23_tractor_standard",
+        "officialNameJp": "トラクター(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-23_max_standard",
+        "officialNameJp": "マックス・シュネル(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-23_ramone_cars3",
+        "officialNameJp": "ラモーン(カーズ3タイプ)",
+        "owned": false
+      }
+    ],
+    "C-24": [
+      {
+        "number": "C-24_guido_rrc",
+        "officialNameJp": "グイド(RRCタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-24_flo_standard",
+        "officialNameJp": "フロー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-24_mater_stunt",
+        "officialNameJp": "メーター(スタントカータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-24_mcqueen_ice",
+        "officialNameJp": "ライトニング・マックィーン(アイスレーシングタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-24_river_standard",
+        "officialNameJp": "リバー・スコット(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-25": [
+      {
+        "number": "C-25_cruz_ice",
+        "officialNameJp": "クルーズ・ラミレス(アイスレーシングタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-25_ryan_standard",
+        "officialNameJp": "ライアン・“インサイド”・レニー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-25_mcqueen_party",
+        "officialNameJp": "ライトニング・マックィーン(パーティータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-25_mcqueen_hotrod",
+        "officialNameJp": "ライトニング・マックィーン(ホットロッドタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-25_rip_standard",
+        "officialNameJp": "リップ・クラッチゴンスキー(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-26": [
+      {
+        "number": "C-26_mater_hotrod",
+        "officialNameJp": "メーター(ホットロッドタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-26_ramone_standard",
+        "officialNameJp": "ラモーン(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-26_leroy_standard",
+        "officialNameJp": "リロイ・ヘミング(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-26_lewis_standard",
+        "officialNameJp": "ルイス・ハミルトン(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-27": [
+      {
+        "number": "C-27_jeff_standard",
+        "officialNameJp": "ジェフ・ゴルベット(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-27_danny_thomasville",
+        "officialNameJp": "ダニー・シュワヴェッツ(トーマスビルタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-27_tex_standard",
+        "officialNameJp": "テックス・ダイナコ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-27_doc_patrol",
+        "officialNameJp": "ドック・ハドソン(パトカータイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-27_flo_standard",
+        "officialNameJp": "フロー(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-28": [
+      {
+        "number": "C-28_fritter_standard",
+        "officialNameJp": "ミス・フリッター(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-28_mater_toon_mater",
+        "officialNameJp": "メーター(カーズトゥーン メーターの東京レース)",
+        "owned": false
+      }
+    ],
+    "C-29": [
+      {
+        "number": "C-29_carla_standard",
+        "officialNameJp": "カルラ・ヴェローゾ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-29_storm_ice",
+        "officialNameJp": "ジャクソン・ストーム(アイスレーシングタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-29_natalie_standard",
+        "officialNameJp": "ナタリー・サートゥン(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-29_fillmore_rrc",
+        "officialNameJp": "フィルモア(RRCタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-29_holly_standard",
+        "officialNameJp": "ホリー・シフトウェル(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-30": [
+      {
+        "number": "C-30_nigel_standard",
+        "officialNameJp": "ナイジェル・ギアスリー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-30_mcqueen_sheriff",
+        "officialNameJp": "ライトニング・マックィーン(シェリフタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-30_mcqueen_fabulous",
+        "officialNameJp": "ライトニング・マックィーン(ファビュラスタイプ)",
+        "owned": false
+      }
+    ],
+    "C-31": [
+      {
+        "number": "C-31_irvy_standard",
+        "officialNameJp": "アーヴィー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-31_woody_standard",
+        "officialNameJp": "ウッディ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-31_cruz",
+        "officialNameJp": "クルーズ・ラミレス(GRCタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-31_chase_standard",
+        "officialNameJp": "チェイス・レースロット(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-31_mcqueen_silver",
+        "officialNameJp": "ライトニング・マックィーン(シルバーレーサータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-31_mcqueen_hunter",
+        "officialNameJp": "ライトニング・マックィーン(ハンタータイプ)",
+        "owned": false
+      }
+    ],
+    "C-32": [
+      {
+        "number": "C-32_buzz_standard",
+        "officialNameJp": "バズ・ライトイヤー(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-32_mcqueen_rrc",
+        "officialNameJp": "ライトニング・マックィーン(RRCタイプ)",
+        "owned": false
+      }
+    ],
+    "C-33": [
+      {
+        "number": "C-33_gale_standard",
+        "officialNameJp": "ゲイル・ビューフォート(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-33_sarge_standard",
+        "officialNameJp": "サージ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-33_todd_standard",
+        "officialNameJp": "トッド(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-33_mater_rrc",
+        "officialNameJp": "メーター(RRCタイプ)",
+        "owned": false
+      }
+    ],
+    "C-34": [
+      {
+        "number": "C-34_mcqueen_grc",
+        "officialNameJp": "ライトニング・マックィーン(GRCタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-34_mcqueen_roadtrip",
+        "officialNameJp": "ライトニング・マックィーン(ロードトリップタイプ)",
+        "owned": false
+      }
+    ],
+    "C-35": [
+      {
+        "number": "C-35_cruz_rusteeze_dinoco",
+        "officialNameJp": "クルーズ・ラミレス(ラスティ—ズDINOCOタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-35_cruz_rusteeze_dinoco_2",
+        "officialNameJp": "クルーズ・ラミレス(ラスティ―ズDINOCOタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-35_shu",
+        "officialNameJp": "シュウ・トドロキ(GRCタイプ)",
+        "owned": false
+      }
+    ],
+    "C-36": [
+      {
+        "number": "C-36_mcqueen_toonpolice",
+        "officialNameJp": "ライトニング・マックィーン(TOONポリスタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-36_mcqueen_patrol",
+        "officialNameJp": "ライトニング・マックィーン(パトカータイプ)",
+        "owned": true
+      }
+    ],
+    "C-37": [
+      {
+        "number": "C-37_storm_thomasville",
+        "officialNameJp": "ジャクソン・ストーム(トーマスビルタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-37_junior_moon_standard",
+        "officialNameJp": "ジュニア・ムーン(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-37_miguel_standard",
+        "officialNameJp": "ミゲル・カミーノ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-37_mater_timetravel",
+        "officialNameJp": "メーター(タイムトラベルタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-37_mater_president",
+        "officialNameJp": "メーター(プレジデントタイプ)",
+        "owned": true
+      }
+    ],
+    "C-38": [
+      {
+        "number": "C-38_carla_standard",
+        "officialNameJp": "カルラ・ヴェローゾ(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-38_storm_silver",
+        "officialNameJp": "ジャクソン・ストーム(シルバーレーサータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-38_danny_standard",
+        "officialNameJp": "ダニー・シュワヴェッツ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-38_ham_standard",
+        "officialNameJp": "ハム(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-38_mater_firetruck",
+        "officialNameJp": "メーター(消防車タイプ)",
+        "owned": true
+      }
+    ],
+    "C-39": [
+      {
+        "number": "C-39_cruz_silver",
+        "officialNameJp": "クルーズ・ラミレス(シルバーレーサータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-39_jeff_cars3",
+        "officialNameJp": "ジェフ・ゴルベット(カーズ3タイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-39_topper3_standard",
+        "officialNameJp": "トッパー・デッキントン3世(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-39_dr_damage_standard",
+        "officialNameJp": "ドクター・ダメージ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-39_raoul_standard",
+        "officialNameJp": "ラウール・サルール(スタンダードタイプ)",
+        "owned": true
+      },
+      {
+        "number": "C-39_luigi_ambulance",
+        "officialNameJp": "ルイジ(救急車タイプ)",
+        "owned": true
+      }
+    ],
+    "C-40": [
+      {
+        "number": "C-40_jeff_standard",
+        "officialNameJp": "ジェフ・ゴルベット(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-40_jonas_standard",
+        "officialNameJp": "ジョナス・カーヴァース(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-40_doc_silver",
+        "officialNameJp": "ドック・ハドソン(シルバーレーサータイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-40_mack_standard",
+        "officialNameJp": "マック(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-40_ramone_road_patrol",
+        "officialNameJp": "ラモーン(道路パトロールカータイプ)",
+        "owned": true
+      }
+    ],
+    "C-42": [
+      {
+        "number": "C-42_cruz_standard",
+        "officialNameJp": "クルーズ・ラミレス(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-42_sheriff_pinstripe",
+        "officialNameJp": "シェリフ(ピンストライプタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-42_barry_standard",
+        "officialNameJp": "バリー・ディペダル(スタンダードタイプ)",
+        "owned": false
+      }
+    ],
+    "C-46": [
+      {
+        "number": "C-46_sterling_standard",
+        "officialNameJp": "スターリング(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-46_bubba_standard",
+        "officialNameJp": "バッバ・ホイールハウス(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-46_red_classic",
+        "officialNameJp": "レッド(クラシックタイプ)",
+        "owned": false
+      }
+    ],
+    "C-49": [
+      {
+        "number": "C-49_cruz_thomasville",
+        "officialNameJp": "クルーズ・ラミレス(トーマスビルタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-49_darrell_standard",
+        "officialNameJp": "ダレル・カートリップ(スタンダードタイプ)",
+        "owned": false
+      },
+      {
+        "number": "C-49_mater_young",
+        "officialNameJp": "メーター(ヤングタイプ)",
+        "owned": false
+      }
+    ],
+    "SP": [
+      {
+        "number": "SP_lightning_mcqueen_cars_3_metallic_rust_eze_racing_center",
+        "officialNameJp": "Lightning McQueen (Cars 3 Metallic Rust-eze Racing Center)",
+        "owned": true
+      },
+      {
+        "number": "SP_cruz",
+        "officialNameJp": "クルーズ・ラミレス",
+        "owned": false
+      },
+      {
+        "number": "SP_cruz_20th",
+        "officialNameJp": "クルーズ・ラミレス(20周年記念タイプ)",
+        "owned": false
+      },
+      {
+        "number": "SP_storm",
+        "officialNameJp": "ジャクソン・ストーム",
+        "owned": false
+      },
+      {
+        "number": "SP_storm_20th",
+        "officialNameJp": "ジャクソン・ストーム(20周年記念タイプ)",
+        "owned": true
+      },
+      {
+        "number": "SP_doc_piston_cup_mcqueen_2026special",
+        "officialNameJp": "ドック・ハドソン ピストン・カップ付き(ライトニング・マックィーンデイ 2026特別仕様)",
+        "owned": true
+      },
+      {
+        "number": "SP_mater_mcqueen_2023_special",
+        "officialNameJp": "メーター(ライトニング・マックィーンデイ 2023 特別仕様)",
+        "owned": true
+      },
+      {
+        "number": "SP_mcqueen_piston_cup_mcqueen_2026special",
+        "officialNameJp": "ライトニング・マックィーン ピストン・カップ付き(ライトニング・マックィーンデイ 2026特別仕様)",
+        "owned": true
+      }
+    ],
+    "マック": [
+      {
+        "number": "マック_cars3_transporter",
+        "officialNameJp": "(カーズ3 トランスポータータイプ)",
+        "owned": true
+      },
+      {
+        "number": "マック_service_trailer_mack_toon",
+        "officialNameJp": "整備トレーラーであそぼう!マック(カーズ1タイプ)",
+        "owned": false
+      },
+      {
+        "number": "マック_rescue_carrier_mack",
+        "officialNameJp": "現場へ急行!レスキューキャリアカー マック",
+        "owned": false
+      }
+    ],
+    "官方未載明": [
+      {
+        "number": "SET_deruderu_bucket_mcqueenver",
+        "officialNameJp": "でるでるバケツ ライトニング・マックィーンver.",
+        "owned": false
+      },
+      {
+        "number": "SET_advent2026",
+        "officialNameJp": "アドベントカレンダー2026",
+        "owned": false
+      },
+      {
+        "number": "SET_mcqueen_deruderu_bucket",
+        "officialNameJp": "カーズ トミカと一緒に楽しもう! ライトニング・マックィーンデザインのでるでるバケツが登場!",
+        "owned": false
+      },
+      {
+        "number": "SET_mcqueen_2026special",
+        "officialNameJp": "ライトニング・マックィーンデイ2026特別仕様のカーズ トミカが登場! 作品と一緒に楽しもう!",
+        "owned": false
+      },
+      {
+        "number": "SET_carwash",
+        "officialNameJp": "洗車場",
+        "owned": false
+      }
+    ]
+  },
+  "sources": {
+    "ownedCatalog": "https://snowsepch.github.io/Tomica-Cars/",
+    "takaraTomy": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "https://www.takaratomy.co.jp/products/disney/cars/cars_tomica_world.html"
+    ],
+    "mall": "unreachable_this_run",
+    "refreshNote": "2026-10-24T23:58+08:00 重抓：官方四頁 hash 與 2026-10-24 21:12 抓取相同；owned catalog 重抓後 Cars 仍 43 筆且欄位無差；tt_20th 首次並行抓取失敗後單次重試成功；character/toys URL 404（本包不依賴）",
+    "nameReleaseFix": {
+      "at": "2026-10-25T02:26:41+08:00",
+      "note": "2026-10-25 Tomica Cars 名稱／發售日校正；僅採可打開 URL；台灣代理卡布",
+      "takaraNews": "https://www.takaratomy.co.jp/products/tomica/new/",
+      "carsOfficial": [
+        "https://www.takaratomy.co.jp/products/disney/cars/",
+        "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+        "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+        "https://www.takaratomy.co.jp/products/disney/cars/cars_tomica_world.html"
+      ],
+      "mallExample": "https://takaratomymall.jp/shop/g/g4904810981015/",
+      "hobbySearch": "https://www.1999.co.jp/list/2547/7/1",
+      "collectorChronologyCrossCheck": "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
+    }
+  },
+  "rules": [
+    "不捏造編號或名稱；未知欄位標記「官方未載明」",
+    "同一 C 編號跨世代重用時拆成不同 number key，displayNumber 仍顯示 C-n",
+    "officialImageUrl 僅保留 https 官方網域（takaratomy.co.jp / takaratomymall.jp）",
+    "公開站優先官方圖；圖路徑用 tomica_official_images/，不要推 tomica_images/ 實拍上傳"
+  ],
+  "entries": [
+    {
+      "number": "C-01_mcqueen_standard",
+      "displayNumber": "C-1",
+      "officialNameJp": "ライトニング・マックィーン(スタンダードタイプ)",
+      "nameZh": "閃電麥坤（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/040_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-01",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-01_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-01_cars1_mcqueen.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-02_mcqueen_dinoco",
+      "displayNumber": "C-2",
+      "officialNameJp": "ライトニング・マックィーン(DINOCOタイプ)",
+      "nameZh": "閃電麥坤（Dinoco 型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/095_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-02",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-02_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-02_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-03_mater_cave",
+      "displayNumber": "C-3",
+      "officialNameJp": "メーター(ケイブタイプ)",
+      "nameZh": "脫線（洞穴版）",
+      "releaseDate": "2022-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/115_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-03 メーター（ケイブタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-03_mcqueen_20th",
+      "displayNumber": "C-3",
+      "officialNameJp": "ライトニング・マックィーン(20周年記念タイプ)",
+      "nameZh": "閃電麥坤（20週年紀念型）",
+      "releaseDate": "2026-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/fancy_01.webp",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-03 ライトニング・マックィーン(20周年記念タイプ)",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-03_mcqueen_cruising",
+      "displayNumber": "C-3",
+      "officialNameJp": "ライトニング・マックィーン(クルージングタイプ)",
+      "nameZh": "閃電麥坤（巡航型）",
+      "releaseDate": "2021-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/038_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－０３ ライトニング・マックィーン（クルージングタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-04_mater_standard",
+      "displayNumber": "C-4",
+      "officialNameJp": "メーター(スタンダードタイプ)",
+      "nameZh": "脫線（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/037_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-04",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-04_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-04_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-05_sally_standard",
+      "displayNumber": "C-5",
+      "officialNameJp": "サリー(スタンダードタイプ)",
+      "nameZh": "莎莉（標準型）",
+      "releaseDate": "2008-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/036_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-05_storm_standard",
+      "displayNumber": "C-5",
+      "officialNameJp": "ジャクソン・ストーム(スタンダードタイプ)",
+      "nameZh": "風暴傑森（標準型）",
+      "releaseDate": "2022-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/112_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-05 ジャクソン・ストーム",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-06_cruz_dinoco",
+      "displayNumber": "C-6",
+      "officialNameJp": "クルーズ・ラミレス(DINOCOレーシングタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（Dinoco 賽車型）",
+      "releaseDate": "2022-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/113_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-06-CRUZ-DINOCO",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-06_cruz_dinoco_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-06_cruz_dinoco_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-06 クルーズ・ラミレス（DINOCOレーシングタイプ）；原 registry「2017-06-24」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-06_doc_standard",
+      "displayNumber": "C-6",
+      "officialNameJp": "ドック・ハドソン(スタンダードタイプ)",
+      "nameZh": "韓大夫（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/035_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-06-DOC-STANDARD",
+      "ownedImageUrls": [],
+      "notes": "2026-10-25 Snow 實體底盤確認；公開站僅官方圖｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-07_red_standard",
+      "displayNumber": "C-7",
+      "officialNameJp": "レッド(スタンダードタイプ)",
+      "nameZh": "大紅（標準型）",
+      "releaseDate": "2008-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/034_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-07",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-12_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-12_red_fire_engine.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-08_doc_fabulous",
+      "displayNumber": "C-8",
+      "officialNameJp": "ドック・ハドソン(ファビュラスタイプ)",
+      "nameZh": "韓大夫（傳奇輝煌型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/058_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-08-FABULOUS-DOC",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-08_fabulous_doc_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-08_fabulous_doc_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-08_ramone_standard",
+      "displayNumber": "C-8",
+      "officialNameJp": "ラモーン(スタンダードタイプ)",
+      "nameZh": "雷蒙（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/033_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-09_sheriff_standard",
+      "displayNumber": "C-9",
+      "officialNameJp": "シェリフ(スタンダードタイプ)",
+      "nameZh": "警長（標準型）",
+      "releaseDate": "2008-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/032_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-09",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-09_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-09_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-10_king_standard",
+      "displayNumber": "C-10",
+      "officialNameJp": "キング(スタンダードタイプ)",
+      "nameZh": "冠軍（The King）（標準型）",
+      "releaseDate": "2008-09",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/031_01.jpg",
+      "owned": true,
+      "boxed": 2,
+      "loose": 0,
+      "catalogId": "C-10",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-10_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-10_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-11_chick_standard",
+      "displayNumber": "C-11",
+      "officialNameJp": "チック・ヒックス(スタンダードタイプ)",
+      "nameZh": "路霸（標準型）",
+      "releaseDate": "2008-09",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/030_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-11",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-11_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-11_chick_hicks.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-12_luigi_standard",
+      "displayNumber": "C-12",
+      "officialNameJp": "ルイジ(スタンダードタイプ)",
+      "nameZh": "路易吉（標準型）",
+      "releaseDate": "2009-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/029_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 2,
+      "catalogId": "C-12",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-07_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-07_luigi_loose.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-13_guido_standard",
+      "displayNumber": "C-13",
+      "officialNameJp": "グイド(スタンダードタイプ)",
+      "nameZh": "奇諾（標準型）",
+      "releaseDate": "2009-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/028_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-13",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-13_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-13_guido_loose.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-14_fillmore_standard",
+      "displayNumber": "C-14",
+      "officialNameJp": "フィルモア(スタンダードタイプ)",
+      "nameZh": "阿飛（標準型）",
+      "releaseDate": "2009-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/027_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-14_mater_20th",
+      "displayNumber": "C-14",
+      "officialNameJp": "メーター(20周年記念タイプ)",
+      "nameZh": "脫線（20週年紀念型）",
+      "releaseDate": "2026-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/fancy_03.webp",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-14",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-14_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-14_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-14 メーター(20周年記念タイプ)",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-14_mcqueen_cave",
+      "displayNumber": "C-14",
+      "officialNameJp": "ライトニング・マックィーン(ケイブタイプ)",
+      "nameZh": "閃電麥坤（洞穴版）",
+      "releaseDate": "2022-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/114_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-14-CAVE",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-14_cave_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-14_cave_loose.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-14 ライトニング・マックィーン（ケイブタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-15_cruz_road_patrol",
+      "displayNumber": "C-15",
+      "officialNameJp": "クルーズ・ラミレス(道路パトロールカータイプ)",
+      "nameZh": "克魯茲·拉米雷斯（公路巡警型）",
+      "releaseDate": "2025-07-26",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/272_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-15",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-15_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-15_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-15 クルーズ・ラミレス（道路パトロールカータイプ）；原 registry「2020-03-28」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "day"
+    },
+    {
+      "number": "C-15_mack_cars3_standard",
+      "displayNumber": "C-15",
+      "officialNameJp": "マック(カーズ3 スタンダードタイプ)",
+      "nameZh": "麥大叔（Cars 3 版）",
+      "releaseDate": "2023-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/120_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-15 マック（カーズ3 スタンダードタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-15_mcqueen_wgp",
+      "displayNumber": "C-15",
+      "officialNameJp": "ライトニング・マックィーン(ワールドグランプリタイプ)",
+      "nameZh": "閃電麥坤（世界大賽型）",
+      "releaseDate": "2011-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/026_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-16_finn_standard",
+      "displayNumber": "C-16",
+      "officialNameJp": "フィン・マックミサイル(スタンダードタイプ)",
+      "nameZh": "麥克飛彈（標準型）",
+      "releaseDate": "2011-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/025_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-16_mcqueen_cars3_intro",
+      "displayNumber": "C-16",
+      "officialNameJp": "ライトニング・マックィーン(カーズ3 イントロタイプ)",
+      "nameZh": "閃電麥坤（Cars 3 開場型）",
+      "releaseDate": "2018-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/064_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-17_francesco_standard",
+      "displayNumber": "C-17",
+      "officialNameJp": "フランチェスコ・ベルヌーイ(スタンダードタイプ)",
+      "nameZh": "法蘭斯高·伯努利（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/024_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-17",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-17_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-17_francesco.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-18_shu_standard",
+      "displayNumber": "C-18",
+      "officialNameJp": "シュウ・トドロキ(スタンダードタイプ)",
+      "nameZh": "轟修（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/023_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-18_storm",
+      "displayNumber": "C-18",
+      "officialNameJp": "ジャクソン・ストーム(GRCタイプ)",
+      "nameZh": "風暴傑森（GRC 版）",
+      "releaseDate": "2025-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/274_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 current caption 補回｜name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-18 ジャクソン・ストーム（GRCタイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-18_mater_hunter",
+      "displayNumber": "C-18",
+      "officialNameJp": "メーター(ハンタータイプ)",
+      "nameZh": "脫線（獵人型）",
+      "releaseDate": "2023-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/119_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-18 メーター（ハンタータイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-19_king_thomasville",
+      "displayNumber": "C-19",
+      "officialNameJp": "キング(トーマスビルタイプ)",
+      "nameZh": "冠軍（The King）（湯瑪斯維爾型）",
+      "releaseDate": "2019-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/083_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-19_tractor_standard",
+      "displayNumber": "C-19",
+      "officialNameJp": "トラクター(スタンダードタイプ)",
+      "nameZh": "拖拉機（標準型）",
+      "releaseDate": "2021-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/100_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－１９ トラクター（スタンダードタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-19_fillmore_fire_command",
+      "displayNumber": "C-19",
+      "officialNameJp": "フィルモア(消防指揮車タイプ)",
+      "nameZh": "阿飛（消防救援版）",
+      "releaseDate": "2024-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/270_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-19",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-19_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-19_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-19 フィルモア（消防指揮車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-19_brick_standard",
+      "displayNumber": "C-19",
+      "officialNameJp": "ブリック・ヤードレィ(スタンダードタイプ)",
+      "nameZh": "磚頭·亞德利（標準型）",
+      "releaseDate": "2017-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/059_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-19_raoul_standard",
+      "displayNumber": "C-19",
+      "officialNameJp": "ラウール・サルール(スタンダードタイプ)",
+      "nameZh": "勞爾·薩魯爾（標準型）",
+      "releaseDate": "2011-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/022_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-20_sarge_standard",
+      "displayNumber": "C-20",
+      "officialNameJp": "サージ(スタンダードタイプ)",
+      "nameZh": "士官長（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/094_01.jpg?20211221",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-20",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-20_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-20_sarge.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-20_storm_patrol",
+      "displayNumber": "C-20",
+      "officialNameJp": "ジャクソン・ストーム(パトカータイプ)",
+      "nameZh": "風暴傑森（警車型）",
+      "releaseDate": "2025-07-26",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/273_1.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-20 ジャクソン・ストーム（パトカータイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "day"
+    },
+    {
+      "number": "C-20_flip_standard",
+      "displayNumber": "C-20",
+      "officialNameJp": "フリップ・ドーヴァー(スタンダードタイプ)",
+      "nameZh": "弗利普·杜佛（標準型）",
+      "releaseDate": "2018-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/065_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-20_max_standard",
+      "displayNumber": "C-20",
+      "officialNameJp": "マックス・シュネル(スタンダードタイプ)",
+      "nameZh": "麥斯·修奈爾（標準型）",
+      "releaseDate": "2011-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/021_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-21_j_p_standard",
+      "displayNumber": "C-21",
+      "officialNameJp": "J・P・ドライブ(スタンダードタイプ)",
+      "nameZh": "J.P. 德萊夫（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/070_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日｜character-egg: Apple #84／1984 Macintosh 彩蛋已寫入 handbookBlurbZh",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown",
+      "characterEasterEggZh": "角色彩蛋：他是《Cars 3：閃電再起》中的次世代賽車手，車號為 84 號，贊助商是象徵蘋果公司的 Apple。引擎蓋上有明顯的蘋果標誌，而「84」這個號碼正是為了致敬 Apple 在 1984 年推出第一代 Macintosh（麥金塔電腦）的經典年份（皮克斯動畫工作室早年也與賈伯斯有深厚淵源）。",
+      "handbookBlurbZh": "角色彩蛋：他是《Cars 3：閃電再起》中的次世代賽車手，車號為 84 號，贊助商是象徵蘋果公司的 Apple。引擎蓋上有明顯的蘋果標誌，而「84」這個號碼正是為了致敬 Apple 在 1984 年推出第一代 Macintosh（麥金塔電腦）的經典年份（皮克斯動畫工作室早年也與賈伯斯有深厚淵源）。"
+    },
+    {
+      "number": "C-21_holly_standard",
+      "displayNumber": "C-21",
+      "officialNameJp": "ホリー・シフトウェル(スタンダードタイプ)",
+      "nameZh": "荷莉·換檔（標準型）",
+      "releaseDate": "2011-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/020_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-21_mcqueen_cars3_standard",
+      "displayNumber": "C-21",
+      "officialNameJp": "ライトニング・マックィーン(カーズ3 スタンダードタイプ)",
+      "nameZh": "閃電麥坤（Cars 3 標準型）",
+      "releaseDate": "2022-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/110_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-21 ライトニング・マックィーン（カーズ3 スタンダードタイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-22_finn_standard",
+      "displayNumber": "C-22",
+      "officialNameJp": "フィン・マックミサイル(スタンダードタイプ)",
+      "nameZh": "麥克飛彈（標準型）",
+      "releaseDate": "2020-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/096_01.jpg",
+      "owned": true,
+      "boxed": 2,
+      "loose": 0,
+      "catalogId": "C-22-FINN",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-22_finn_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-22_box.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-22_finn_box2.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-22_prof_z_standard",
+      "displayNumber": "C-22",
+      "officialNameJp": "プロフェッサー・ゼット(スタンダードタイプ)",
+      "nameZh": "杰特教授（標準型）",
+      "releaseDate": "2011-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/019_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-22_mater_ice",
+      "displayNumber": "C-22",
+      "officialNameJp": "メーター(アイスレーシングタイプ)",
+      "nameZh": "脫線（冰上賽車型）",
+      "releaseDate": "2024-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/265_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-22-MATER",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-22_mater_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-22_mater_ice.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-22 メーター（アイスレーシングタイプ）；原 registry「2018-06-16」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-22_luigi_rrc",
+      "displayNumber": "C-22",
+      "officialNameJp": "ルイジ(RRCタイプ)",
+      "nameZh": "路易吉（RRC 型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/078_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-22_louise_standard",
+      "displayNumber": "C-22",
+      "officialNameJp": "ルイーズ・ナッシュ(スタンダードタイプ)",
+      "nameZh": "路易絲·納許（標準型）",
+      "releaseDate": "2017-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/053_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-23_guido_ambulance",
+      "displayNumber": "C-23",
+      "officialNameJp": "グイド(救急車タイプ)",
+      "nameZh": "奇諾（救護救援版）",
+      "releaseDate": "2024-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/26_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-23-GUIDO",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-23_guido_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-23_guido_ambulance.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-23 グイド（救急車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-23_tractor_standard",
+      "displayNumber": "C-23",
+      "officialNameJp": "トラクター(スタンダードタイプ)",
+      "nameZh": "拖拉機（標準型）",
+      "releaseDate": "2014-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/018_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-23_max_standard",
+      "displayNumber": "C-23",
+      "officialNameJp": "マックス・シュネル(スタンダードタイプ)",
+      "nameZh": "麥斯·修奈爾（標準型）",
+      "releaseDate": "2021-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/105_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-23-MAX",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-23_max_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-23_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－２３ マックス・シュネル；原 registry「2011-06-18（絕版神物）」與公式不符，已覆寫",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-23_ramone_cars3",
+      "displayNumber": "C-23",
+      "officialNameJp": "ラモーン(カーズ3タイプ)",
+      "nameZh": "雷蒙（Cars 3 型）",
+      "releaseDate": "2018-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/069_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-24_guido_rrc",
+      "displayNumber": "C-24",
+      "officialNameJp": "グイド(RRCタイプ)",
+      "nameZh": "奇諾（RRC 型）",
+      "releaseDate": "2019-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/079_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-24_flo_standard",
+      "displayNumber": "C-24",
+      "officialNameJp": "フロー(スタンダードタイプ)",
+      "nameZh": "芙蓉（標準型）",
+      "releaseDate": "2013-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/017_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-24_mater_stunt",
+      "displayNumber": "C-24",
+      "officialNameJp": "メーター(スタントカータイプ)",
+      "nameZh": "脫線（特技車型）",
+      "releaseDate": "2020-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/097_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-24_mcqueen_ice",
+      "displayNumber": "C-24",
+      "officialNameJp": "ライトニング・マックィーン(アイスレーシングタイプ)",
+      "nameZh": "閃電麥坤（冰上賽車型）",
+      "releaseDate": "2024-01",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/263_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-24",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-24_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-24_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-24 ライトニング・マックィーン（アイスレーシングタイプ）；原 registry「2016-10-15」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-24_river_standard",
+      "displayNumber": "C-24",
+      "officialNameJp": "リバー・スコット(スタンダードタイプ)",
+      "nameZh": "里弗·史考特（標準型）",
+      "releaseDate": "2017-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/054_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-25_cruz_ice",
+      "displayNumber": "C-25",
+      "officialNameJp": "クルーズ・ラミレス(アイスレーシングタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（冰上賽車型）",
+      "releaseDate": "2024-01",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/264_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-25",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-25_ice_cruz_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-25_ice_cruz_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-25 クルーズ・ラミレス（アイスレーシングタイプ）；原 registry「2022-06」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-25_ryan_standard",
+      "displayNumber": "C-25",
+      "officialNameJp": "ライアン・“インサイド”・レニー(スタンダードタイプ)",
+      "nameZh": "萊恩「內側」雷尼（標準型）",
+      "releaseDate": "2018-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/068_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-25_mcqueen_party",
+      "displayNumber": "C-25",
+      "officialNameJp": "ライトニング・マックィーン(パーティータイプ)",
+      "nameZh": "閃電麥坤（派對型）",
+      "releaseDate": "2021-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/106_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－２５ ライトニング・マックィーン（パーティータイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-25_mcqueen_hotrod",
+      "displayNumber": "C-25",
+      "officialNameJp": "ライトニング・マックィーン(ホットロッドタイプ)",
+      "nameZh": "閃電麥坤（熱桿型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/085_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-25_rip_standard",
+      "displayNumber": "C-25",
+      "officialNameJp": "リップ・クラッチゴンスキー(スタンダードタイプ)",
+      "nameZh": "利普·離合器（標準型）",
+      "releaseDate": "2016-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/016_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-26_mater_hotrod",
+      "displayNumber": "C-26",
+      "officialNameJp": "メーター(ホットロッドタイプ)",
+      "nameZh": "脫線（熱桿型）",
+      "releaseDate": "2019-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/086_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-26_ramone_standard",
+      "displayNumber": "C-26",
+      "officialNameJp": "ラモーン(スタンダードタイプ)",
+      "nameZh": "雷蒙（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/104_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-26",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-26_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-26_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-26_leroy_standard",
+      "displayNumber": "C-26",
+      "officialNameJp": "リロイ・ヘミング(スタンダードタイプ)",
+      "nameZh": "勒羅伊·海明（標準型）",
+      "releaseDate": "2018-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/067_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-26_lewis_standard",
+      "displayNumber": "C-26",
+      "officialNameJp": "ルイス・ハミルトン(スタンダードタイプ)",
+      "nameZh": "路易斯·漢彌爾頓（標準型）",
+      "releaseDate": "2016-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/015_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-27_jeff_standard",
+      "displayNumber": "C-27",
+      "officialNameJp": "ジェフ・ゴルベット(スタンダードタイプ)",
+      "nameZh": "傑夫·高貝特（標準型）",
+      "releaseDate": "2011-11",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/014_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-27_danny_thomasville",
+      "displayNumber": "C-27",
+      "officialNameJp": "ダニー・シュワヴェッツ(トーマスビルタイプ)",
+      "nameZh": "丹尼·舒瓦茨（湯瑪斯維爾型）",
+      "releaseDate": "2019-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/082_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-27_tex_standard",
+      "displayNumber": "C-27",
+      "officialNameJp": "テックス・ダイナコ(スタンダードタイプ)",
+      "nameZh": "泰克斯·迪諾哥（標準型）",
+      "releaseDate": "2017-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/060_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-27_doc_patrol",
+      "displayNumber": "C-27",
+      "officialNameJp": "ドック・ハドソン(パトカータイプ)",
+      "nameZh": "韓大夫（警車救援版）",
+      "releaseDate": "2024-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/269_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-27",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-27_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP-04_police_sheriff.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-27 ドック・ハドソン（パトカータイプ）；原 registry「2019-09-21」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-27_flo_standard",
+      "displayNumber": "C-27",
+      "officialNameJp": "フロー(スタンダードタイプ)",
+      "nameZh": "芙蓉（標準型）",
+      "releaseDate": "2021-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/103_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-28_fritter_standard",
+      "displayNumber": "C-28",
+      "officialNameJp": "ミス・フリッター(スタンダードタイプ)",
+      "nameZh": "瘋狂邁絲（標準型）",
+      "releaseDate": "2022-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/111_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-28",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-28_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-28_miss_fritter.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-28 ミス・フリッター；原 registry「2017-06-24」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-28_mater_toon_mater",
+      "displayNumber": "C-28",
+      "officialNameJp": "メーター(カーズトゥーン メーターの東京レース)",
+      "nameZh": "脫線（Cars Toon 脫線東京大賽）",
+      "releaseDate": "2016-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/013_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-29_carla_standard",
+      "displayNumber": "C-29",
+      "officialNameJp": "カルラ・ヴェローゾ(スタンダードタイプ)",
+      "nameZh": "卡拉·維洛索（標準型）",
+      "releaseDate": "2012-01",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/012_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-29_storm_ice",
+      "displayNumber": "C-29",
+      "officialNameJp": "ジャクソン・ストーム(アイスレーシングタイプ)",
+      "nameZh": "風暴傑森（冰上賽車型）",
+      "releaseDate": "2024-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/266_1.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-29 ジャクソン・ストーム（アイスレーシングタイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-29_natalie_standard",
+      "displayNumber": "C-29",
+      "officialNameJp": "ナタリー・サートゥン(スタンダードタイプ)",
+      "nameZh": "娜塔莉·賽騰（標準型）",
+      "releaseDate": "2017-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/061_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-29_fillmore_rrc",
+      "displayNumber": "C-29",
+      "officialNameJp": "フィルモア(RRCタイプ)",
+      "nameZh": "阿飛（RRC 型）",
+      "releaseDate": "2019-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/080_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-29_holly_standard",
+      "displayNumber": "C-29",
+      "officialNameJp": "ホリー・シフトウェル(スタンダードタイプ)",
+      "nameZh": "荷莉·換檔（標準型）",
+      "releaseDate": "2020-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/098_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-30_nigel_standard",
+      "displayNumber": "C-30",
+      "officialNameJp": "ナイジェル・ギアスリー(スタンダードタイプ)",
+      "nameZh": "奈傑爾·吉爾利（標準型）",
+      "releaseDate": "2012-11",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/011_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-30_mcqueen_sheriff",
+      "displayNumber": "C-30",
+      "officialNameJp": "ライトニング・マックィーン(シェリフタイプ)",
+      "nameZh": "閃電麥坤（警長型）",
+      "releaseDate": "2023-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/122_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-30",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-30_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-30_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-30 ライトニング・マックィーン（シェリフタイプ）；原 registry「2020-03-28」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-30_mcqueen_fabulous",
+      "displayNumber": "C-30",
+      "officialNameJp": "ライトニング・マックィーン(ファビュラスタイプ)",
+      "nameZh": "閃電麥坤（傳奇輝煌型）",
+      "releaseDate": "2017-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/055_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-31_irvy_standard",
+      "displayNumber": "C-31",
+      "officialNameJp": "アーヴィー(スタンダードタイプ)",
+      "nameZh": "艾爾維（標準型）",
+      "releaseDate": "2017-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/050_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-31_woody_standard",
+      "displayNumber": "C-31",
+      "officialNameJp": "ウッディ(スタンダードタイプ)",
+      "nameZh": "胡迪（標準型）",
+      "releaseDate": "2015-09",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/010_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-31_cruz",
+      "displayNumber": "C-31",
+      "officialNameJp": "クルーズ・ラミレス(GRCタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（GRC 版）",
+      "releaseDate": "2026-01",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/276_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 current caption 補回｜name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-31 クルーズ・ラミレス（GRCタイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-31_chase_standard",
+      "displayNumber": "C-31",
+      "officialNameJp": "チェイス・レースロット(スタンダードタイプ)",
+      "nameZh": "蔡斯·雷斯洛特（標準型）",
+      "releaseDate": "2018-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/071_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-31_mcqueen_silver",
+      "displayNumber": "C-31",
+      "officialNameJp": "ライトニング・マックィーン(シルバーレーサータイプ)",
+      "nameZh": "閃電麥坤（銀色賽車型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/089_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-31_mcqueen_hunter",
+      "displayNumber": "C-31",
+      "officialNameJp": "ライトニング・マックィーン(ハンタータイプ)",
+      "nameZh": "閃電麥坤（獵人型）",
+      "releaseDate": "2023-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/118_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-31 ライトニング・マックィーン（ハンタータイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-32_buzz_standard",
+      "displayNumber": "C-32",
+      "officialNameJp": "バズ・ライトイヤー(スタンダードタイプ)",
+      "nameZh": "巴斯光年（標準型）",
+      "releaseDate": "2015-09",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/009_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-32_mcqueen_rrc",
+      "displayNumber": "C-32",
+      "officialNameJp": "ライトニング・マックィーン(RRCタイプ)",
+      "nameZh": "閃電麥坤（RRC 型）",
+      "releaseDate": "2017-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/049_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-33_gale_standard",
+      "displayNumber": "C-33",
+      "officialNameJp": "ゲイル・ビューフォート(スタンダードタイプ)",
+      "nameZh": "蓋爾·碧福特（標準型）",
+      "releaseDate": "2017-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/062_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-33_sarge_standard",
+      "displayNumber": "C-33",
+      "officialNameJp": "サージ(スタンダードタイプ)",
+      "nameZh": "士官長（標準型）",
+      "releaseDate": "2013-01",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/008_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-33_todd_standard",
+      "displayNumber": "C-33",
+      "officialNameJp": "トッド(スタンダードタイプ)",
+      "nameZh": "陶德（標準版）",
+      "releaseDate": "2023-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/123_01.jpg",
+      "owned": true,
+      "boxed": 2,
+      "loose": 1,
+      "catalogId": "C-33",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-33_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-33_box1_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-33 トッド（スタンダードタイプ）；原 registry「2018-04-21」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-33_mater_rrc",
+      "displayNumber": "C-33",
+      "officialNameJp": "メーター(RRCタイプ)",
+      "nameZh": "脫線（RRC 型）",
+      "releaseDate": "2018-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/075_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-34_mcqueen_grc",
+      "displayNumber": "C-34",
+      "officialNameJp": "ライトニング・マックィーン(GRCタイプ)",
+      "nameZh": "閃電麥坤（GRC 版）",
+      "releaseDate": "2025-10-18",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/275_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-34",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-34_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-34_mcqueen_grc_box.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-34_grc_mcqueen.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C－34 ライトニング・マックィーン(GRCタイプ) 発売日2025年10月18日；亦見 https://www.takaratomy.co.jp/products/tomica/new/2510.htm；原 registry「2020-10-17」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "day"
+    },
+    {
+      "number": "C-34_mcqueen_roadtrip",
+      "displayNumber": "C-34",
+      "officialNameJp": "ライトニング・マックィーン(ロードトリップタイプ)",
+      "nameZh": "閃電麥坤（公路旅行型）",
+      "releaseDate": "2022-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/116_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-34 ライトニング・マックィーン（ロードトリップタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-35_cruz_rusteeze_dinoco",
+      "displayNumber": "C-35",
+      "officialNameJp": "クルーズ・ラミレス(ラスティ—ズDINOCOタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（拉斯提茲 Dinoco 型）",
+      "releaseDate": "2022-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/117_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 クルーズ・ラミレス（ラスティーズDINOCOタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-35_cruz_rusteeze_dinoco_2",
+      "displayNumber": "C-35",
+      "officialNameJp": "クルーズ・ラミレス(ラスティ―ズDINOCOタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（拉斯提茲 Dinoco 型）",
+      "releaseDate": "2022-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/117_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 クルーズ・ラミレス（ラスティーズDINOCOタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-35_shu",
+      "displayNumber": "C-35",
+      "officialNameJp": "シュウ・トドロキ(GRCタイプ)",
+      "nameZh": "轟修（GRC 型）",
+      "releaseDate": "2026-01",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/277_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 current caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 シュウ・トドロキ（GRCタイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-36_mcqueen_toonpolice",
+      "displayNumber": "C-36",
+      "officialNameJp": "ライトニング・マックィーン(TOONポリスタイプ)",
+      "nameZh": "閃電麥坤（Toon 警察型）",
+      "releaseDate": "2012-08",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/005_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-36_mcqueen_patrol",
+      "displayNumber": "C-36",
+      "officialNameJp": "ライトニング・マックィーン(パトカータイプ)",
+      "nameZh": "閃電麥坤（警車救援版）",
+      "releaseDate": "2024-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/267_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-36",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-36_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP-03_police_mcqueen.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-36 ライトニング・マックィーン（パトカータイプ）；原 registry「2019-11-16」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-37_storm_thomasville",
+      "displayNumber": "C-37",
+      "officialNameJp": "ジャクソン・ストーム(トーマスビルタイプ)",
+      "nameZh": "風暴傑森（湯瑪斯維爾型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/081_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-37_junior_moon_standard",
+      "displayNumber": "C-37",
+      "officialNameJp": "ジュニア・ムーン(スタンダードタイプ)",
+      "nameZh": "小月亮（標準型）",
+      "releaseDate": "2017-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/063_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-37_miguel_standard",
+      "displayNumber": "C-37",
+      "officialNameJp": "ミゲル・カミーノ(スタンダードタイプ)",
+      "nameZh": "米格爾·卡米諾（標準型）",
+      "releaseDate": "2012-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/004_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive 補回（先前 slug 碰撞遺漏）｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-37_mater_timetravel",
+      "displayNumber": "C-37",
+      "officialNameJp": "メーター(タイムトラベルタイプ)",
+      "nameZh": "脫線（時光旅行型）",
+      "releaseDate": "2021-04",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/102_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-37_mater_president",
+      "displayNumber": "C-37",
+      "officialNameJp": "メーター(プレジデントタイプ)",
+      "nameZh": "脫線（公路旅行 總統版）",
+      "releaseDate": "2023-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/121_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-37",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-37_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-37_loose.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-37 メーター（プレジデントタイプ）",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-38_carla_standard",
+      "displayNumber": "C-38",
+      "officialNameJp": "カルラ・ヴェローゾ(スタンダードタイプ)",
+      "nameZh": "卡拉·維洛索（標準型）",
+      "releaseDate": "2021-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/108_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-38-CARLA",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-38_carla_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-38_carla_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-38_storm_silver",
+      "displayNumber": "C-38",
+      "officialNameJp": "ジャクソン・ストーム(シルバーレーサータイプ)",
+      "nameZh": "風暴傑森（銀色賽車型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/090_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-38_danny_standard",
+      "displayNumber": "C-38",
+      "officialNameJp": "ダニー・シュワヴェッツ(スタンダードタイプ)",
+      "nameZh": "丹尼·舒瓦茨（標準型）",
+      "releaseDate": "2017-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/048_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-38_ham_standard",
+      "displayNumber": "C-38",
+      "officialNameJp": "ハム(スタンダードタイプ)",
+      "nameZh": "火腿豬（標準型）",
+      "releaseDate": "2015-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/003_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-38_mater_firetruck",
+      "displayNumber": "C-38",
+      "officialNameJp": "メーター(消防車タイプ)",
+      "nameZh": "脫線（消防車型）",
+      "releaseDate": "2024-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/268_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-38",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-38_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-38_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-38 メーター（消防車タイプ）；原 registry「2019-11-16」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-39_cruz_silver",
+      "displayNumber": "C-39",
+      "officialNameJp": "クルーズ・ラミレス(シルバーレーサータイプ)",
+      "nameZh": "克魯茲·拉米雷斯（銀色賽車型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/091_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-39_jeff_cars3",
+      "displayNumber": "C-39",
+      "officialNameJp": "ジェフ・ゴルベット(カーズ3タイプ)",
+      "nameZh": "傑夫·高貝特（Cars 3 型）",
+      "releaseDate": "2018-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/076_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-39_topper3_standard",
+      "displayNumber": "C-39",
+      "officialNameJp": "トッパー・デッキントン3世(スタンダードタイプ)",
+      "nameZh": "托珀·德金頓三世（標準型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/002_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-39_dr_damage_standard",
+      "displayNumber": "C-39",
+      "officialNameJp": "ドクター・ダメージ(スタンダードタイプ)",
+      "nameZh": "傷害博士（標準型）",
+      "releaseDate": "2017-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/047_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-39_raoul_standard",
+      "displayNumber": "C-39",
+      "officialNameJp": "ラウール・サルール(スタンダードタイプ)",
+      "nameZh": "勞爾·薩魯爾（標準型）",
+      "releaseDate": "2021-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/109_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-39-RAOUL",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-39_raoul_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-39_raoul_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-39_luigi_ambulance",
+      "displayNumber": "C-39",
+      "officialNameJp": "ルイジ(救急車タイプ)",
+      "nameZh": "路易吉／卡布（救護救援版）",
+      "releaseDate": "2024-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/39_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-39",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-39_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-39_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-39 ルイジ（救急車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-40_jeff_standard",
+      "displayNumber": "C-40",
+      "officialNameJp": "ジェフ・ゴルベット(スタンダードタイプ)",
+      "nameZh": "傑夫·高貝特（標準型）",
+      "releaseDate": "2021-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/107_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－４０ ジェフ・ゴルベット",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-40_jonas_standard",
+      "displayNumber": "C-40",
+      "officialNameJp": "ジョナス・カーヴァース(スタンダードタイプ)",
+      "nameZh": "喬納斯·卡華斯（標準型）",
+      "releaseDate": "2018-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/072_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-40_doc_silver",
+      "displayNumber": "C-40",
+      "officialNameJp": "ドック・ハドソン(シルバーレーサータイプ)",
+      "nameZh": "韓大夫（銀色賽車型）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/092_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "C-40_mack_standard",
+      "displayNumber": "C-40",
+      "officialNameJp": "マック(スタンダードタイプ)",
+      "nameZh": "麥大叔（標準型）",
+      "releaseDate": "2015-03",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/001_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-40_ramone_road_patrol",
+      "displayNumber": "C-40",
+      "officialNameJp": "ラモーン(道路パトロールカータイプ)",
+      "nameZh": "雷蒙（公路巡警版）",
+      "releaseDate": "2024-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/271_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-40",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-40_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-40_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-40 ラモーン（道路パトロールカータイプ）；原 registry「2020-05-23」與公式不符，已覆寫",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-41_mcqueen_cars3_standard",
+      "displayNumber": "C-41",
+      "officialNameJp": "ライトニング・マックィーン(カーズ3 スタンダードタイプ)",
+      "nameZh": "閃電麥坤（Cars 3 標準型）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/046_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-42_cruz_standard",
+      "displayNumber": "C-42",
+      "officialNameJp": "クルーズ・ラミレス(スタンダードタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（標準型）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/045_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-42_sheriff_pinstripe",
+      "displayNumber": "C-42",
+      "officialNameJp": "シェリフ(ピンストライプタイプ)",
+      "nameZh": "警長（細條紋型）",
+      "releaseDate": "2019-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/087_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-42_barry_standard",
+      "displayNumber": "C-42",
+      "officialNameJp": "バリー・ディペダル(スタンダードタイプ)",
+      "nameZh": "巴里·迪佩達（標準型）",
+      "releaseDate": "2018-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/077_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-43_storm_standard",
+      "displayNumber": "C-43",
+      "officialNameJp": "ジャクソン・ストーム(スタンダードタイプ)",
+      "nameZh": "風暴傑森（標準型）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/044_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-44_cal_standard",
+      "displayNumber": "C-44",
+      "officialNameJp": "キャル・ウェザーズ(スタンダードタイプ)",
+      "nameZh": "卡爾·偉瑟（標準型）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/043_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-45_fritter_standard",
+      "displayNumber": "C-45",
+      "officialNameJp": "ミス・フリッター(スタンダードタイプ)",
+      "nameZh": "瘋狂邁絲（標準型）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/042_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-46_sterling_standard",
+      "displayNumber": "C-46",
+      "officialNameJp": "スターリング(スタンダードタイプ)",
+      "nameZh": "斯特林（標準型）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/041_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "自 archive caption 補回｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-46_bubba_standard",
+      "displayNumber": "C-46",
+      "officialNameJp": "バッバ・ホイールハウス(スタンダードタイプ)",
+      "nameZh": "巴巴·輪胎屋（標準型）",
+      "releaseDate": "2018-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/066_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-46_red_classic",
+      "displayNumber": "C-46",
+      "officialNameJp": "レッド(クラシックタイプ)",
+      "nameZh": "大紅（經典型）",
+      "releaseDate": "2019-12",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/088_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-47_cruz_dinoco",
+      "displayNumber": "C-47",
+      "officialNameJp": "クルーズ・ラミレス(DINOCOレーシングタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（Dinoco 賽車型）",
+      "releaseDate": "2017-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/052_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-48_smokey_standard",
+      "displayNumber": "C-48",
+      "officialNameJp": "スモーキー(スタンダードタイプ)",
+      "nameZh": "史莫基（標準型）",
+      "releaseDate": "2017-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/051_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-48-SMOKEY",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-48_smokey_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-48_smokey_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-49_cruz_thomasville",
+      "displayNumber": "C-49",
+      "officialNameJp": "クルーズ・ラミレス(トーマスビルタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（湯瑪斯維爾型）",
+      "releaseDate": "2019-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/084_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-49_darrell_standard",
+      "displayNumber": "C-49",
+      "officialNameJp": "ダレル・カートリップ(スタンダードタイプ)",
+      "nameZh": "達瑞爾·卡特里普（標準型）",
+      "releaseDate": "2017-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/056_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-49_mater_young",
+      "displayNumber": "C-49",
+      "officialNameJp": "メーター(ヤングタイプ)",
+      "nameZh": "脫線（年輕型）",
+      "releaseDate": "2021-02",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/101_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－４９ メーター（ヤングタイプ）",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "C-50_cruz_rusteeze",
+      "displayNumber": "C-50",
+      "officialNameJp": "クルーズ・ラミレス(ラスティーズレーシングタイプ)",
+      "nameZh": "克魯茲·拉米雷斯（拉斯提茲賽車型）",
+      "releaseDate": "2017-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/057_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約",
+      "sourcePage": "archive",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SP_lightning_mcqueen_cars_3_metallic_rust_eze_racing_center",
+      "displayNumber": "SP",
+      "officialNameJp": "Lightning McQueen (Cars 3 Metallic Rust-eze Racing Center)",
+      "nameZh": "閃電麥坤（Cars 3 Rust-eze 金屬限定｜非 Tomica／不在本校正範圍）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": null,
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "SP-MCQUEEN-CHERRY",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP-MCQUEEN-CHERRY_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP-05_cherry_red.jpg"
+      ],
+      "notes": "非TOMICA商品（目錄註記）；非TOMICA（Mattel）；官方 Cars トミカ頁未列｜name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；非 Tomica／排除發售日校正",
+      "sourcePage": "owned_catalog_only",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "SP_cruz",
+      "displayNumber": "SP",
+      "officialNameJp": "クルーズ・ラミレス",
+      "nameZh": "克魯茲·拉米雷斯（SP）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/280_1.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SP_cruz_20th",
+      "displayNumber": "SP",
+      "officialNameJp": "クルーズ・ラミレス(20周年記念タイプ)",
+      "nameZh": "克魯茲·拉米雷斯（20週年紀念型）",
+      "releaseDate": "2026-08",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/fancy_05.webp",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：SP クルーズ・ラミレス（20周年記念タイプ）",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SP_storm",
+      "displayNumber": "SP",
+      "officialNameJp": "ジャクソン・ストーム",
+      "nameZh": "風暴傑森（SP）",
+      "releaseDate": "2017-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/281_1.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約",
+      "sourcePage": "current",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SP_storm_20th",
+      "displayNumber": "SP",
+      "officialNameJp": "ジャクソン・ストーム(20周年記念タイプ)",
+      "nameZh": "風暴傑森（20週年紀念型）",
+      "releaseDate": "2026-08",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/fancy_07.webp",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "SP-STORM-20TH",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP_storm_20th_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP_storm_20th_box.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：SP ジャクソン・ストーム（20周年記念タイプ）；原 registry「2026年紀念」與公式不符，已覆寫",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SP_doc_piston_cup_mcqueen_2026special",
+      "displayNumber": "SP",
+      "officialNameJp": "ドック・ハドソン ピストン・カップ付き(ライトニング・マックィーンデイ 2026特別仕様)",
+      "nameZh": "閃電麥坤 附活塞盃（閃電麥坤日 2026 特別仕樣）",
+      "releaseDate": "2026-08",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/ph06.webp",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "SP-DOC-2020",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP-DOC-2026_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/doc_hudson_2026.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：ドック・ハドソン ピストン・カップ付き（マックィーンデイ2026）",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SP_mater_mcqueen_2023_special",
+      "displayNumber": "SP",
+      "officialNameJp": "メーター(ライトニング・マックィーンデイ 2023 特別仕様)",
+      "nameZh": "脫線（閃電麥坤日 2023 特別仕樣）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": null,
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": "SP-MATER-2023",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP-MATER-2023_official.jpg"
+      ],
+      "notes": "目錄有登錄但 boxed/loose 皆為 0；官方頁面此次未找到（麥坤日2023特別仕樣可能已下架）｜name-release-fix: 繁中優先對齊台灣通路標題；代理商：卡布；本回合未能以 Takara 新聞或兩源交叉鎖定發售日｜ownership-fix: owned 改 false（boxed+loose=0，不顯示已購入）",
+      "sourcePage": "owned_catalog_only",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "SP_mcqueen_piston_cup_mcqueen_2026special",
+      "displayNumber": "SP",
+      "officialNameJp": "ライトニング・マックィーン ピストン・カップ付き(ライトニング・マックィーンデイ 2026特別仕様)",
+      "nameZh": "閃電麥坤 附活塞盃（閃電麥坤日 2026 特別仕樣）",
+      "releaseDate": "2026-09",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/ph05.webp",
+      "owned": true,
+      "boxed": 2,
+      "loose": 0,
+      "catalogId": "SP-MCQUEEN-DAY-2026",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP_mcqueen_day_2026_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP_mcqueen_day_2026_box1.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP_mcqueen_day_2026_box2.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：ライトニング・マックィーン ピストン・カップ付き（マックィーンデイ2026）；原 registry「2026年限定」與公式不符，已覆寫",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "マック_cars3_transporter",
+      "displayNumber": "マック",
+      "officialNameJp": "(カーズ3 トランスポータータイプ)",
+      "nameZh": "(カーズ3 トランスポータータイプ)",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/073_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "MACK-01",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/MACK-01_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/MACK-01_mini_mack.jpg"
+      ],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組",
+      "sourcePage": "current",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "マック_service_trailer_mack_toon",
+      "displayNumber": "マック",
+      "officialNameJp": "整備トレーラーであそぼう!マック(カーズ1タイプ)",
+      "nameZh": "維修拖車好好玩！麥大叔（Cars 1 型）",
+      "releaseDate": "2021-10",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/world/028_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：整備トレーラーであそぼう！マック；遊具／套組",
+      "sourcePage": "world",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "マック_rescue_carrier_mack",
+      "displayNumber": "マック",
+      "officialNameJp": "現場へ急行!レスキューキャリアカー マック",
+      "nameZh": "趕赴現場！救援載具車 麥大叔",
+      "releaseDate": "2024-07",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/world/033_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：現場へ急行！レスキューキャリアカー マック；遊具／套組",
+      "sourcePage": "world",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SET_deruderu_bucket_mcqueenver",
+      "displayNumber": "官方未載明",
+      "officialNameJp": "でるでるバケツ ライトニング・マックィーンver.",
+      "nameZh": "倒倒樂水桶 閃電麥坤版",
+      "releaseDate": "2026-08",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/ph04.webp",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：でるでるバケツ ライトニング・マックィーンver.；遊具／套組",
+      "sourcePage": "20th+world",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SET_advent2026",
+      "displayNumber": "官方未載明",
+      "officialNameJp": "アドベントカレンダー2026",
+      "nameZh": "降臨曆 2026",
+      "releaseDate": "2026-09",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/world/042_01.jpg",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：アドベントカレンダー２０２６；遊具／套組",
+      "sourcePage": "world",
+      "releaseDatePrecision": "month"
+    },
+    {
+      "number": "SET_mcqueen_deruderu_bucket",
+      "displayNumber": "官方未載明",
+      "officialNameJp": "カーズ トミカと一緒に楽しもう! ライトニング・マックィーンデザインのでるでるバケツが登場!",
+      "nameZh": "倒倒樂水桶 閃電麥坤版",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": null,
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "SET_mcqueen_2026special",
+      "displayNumber": "官方未載明",
+      "officialNameJp": "ライトニング・マックィーンデイ2026特別仕様のカーズ トミカが登場! 作品と一緒に楽しもう!",
+      "nameZh": "閃電麥坤（デイ2026特別仕様のカーズ トミカが登場! 作品と一緒に楽しもう!）",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": null,
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組",
+      "sourcePage": "20th",
+      "releaseDatePrecision": "unknown"
+    },
+    {
+      "number": "SET_carwash",
+      "displayNumber": "官方未載明",
+      "officialNameJp": "洗車場",
+      "nameZh": "洗車場",
+      "releaseDate": "官方未載明",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/ph07_1.webp",
+      "owned": false,
+      "boxed": 0,
+      "loose": 0,
+      "catalogId": null,
+      "ownedImageUrls": [],
+      "notes": "name-release-fix: 繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組",
+      "sourcePage": "20th+world",
+      "releaseDatePrecision": "unknown"
+    }
+  ]
+}

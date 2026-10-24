@@ -1,0 +1,766 @@
+{
+  "source": "https://snowsepch.github.io/Tomica-Cars/",
+  "extractedAt": "2026-10-25T02:42:05+08:00",
+  "count": 42,
+  "entries": [
+    {
+      "number": "C-01_mcqueen_standard",
+      "displayNumber": "C-1",
+      "officialNameJp": "ライトニング・マックィーン(スタンダードタイプ)",
+      "nameZh": "閃電麥坤（標準型 / 初代微笑版）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/040_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-01",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-01_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-01_cars1_mcqueen.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-02_mcqueen_dinoco",
+      "displayNumber": "C-2",
+      "officialNameJp": "ライトニング・マックィーン(DINOCOタイプ)",
+      "nameZh": "閃電麥坤（Dinoco 藍色恐龍塗裝版）",
+      "releaseDate": "2008-07-31（初版） / 2021（改版）",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/095_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-02",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-02_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-02_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-04_mater_standard",
+      "displayNumber": "C-4",
+      "officialNameJp": "メーター(スタンダードタイプ)",
+      "nameZh": "拖線（標準型原色款）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/037_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-04",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-04_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-04_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-06_cruz_dinoco",
+      "displayNumber": "C-6",
+      "officialNameJp": "クルーズ・ラミレス(DINOCOレーシングタイプ)",
+      "nameZh": "C-06 克魯茲·拉米雷斯（Dinoco 迪諾哥賽車版）",
+      "releaseDate": "2017-06-24",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/113_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-06-CRUZ-DINOCO",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-06_cruz_dinoco_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-06_cruz_dinoco_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-07_red_standard",
+      "displayNumber": "C-7",
+      "officialNameJp": "レッド(スタンダードタイプ)",
+      "nameZh": "大紅（標準型消防車）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/034_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-07",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-12_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-12_red_fire_engine.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-08_doc_fabulous",
+      "displayNumber": "C-8",
+      "officialNameJp": "ドック・ハドソン(ファビュラスタイプ)",
+      "nameZh": "C-08 韓大夫（傳奇黃金年代 藍色法比尤勒斯版）",
+      "releaseDate": "2017-06-24",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/058_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-08-FABULOUS-DOC",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-08_fabulous_doc_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-08_fabulous_doc_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-09_sheriff_standard",
+      "displayNumber": "C-9",
+      "officialNameJp": "シェリフ(スタンダードタイプ)",
+      "nameZh": "警長（標準型）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/032_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-09",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-09_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-09_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-10_king_standard",
+      "displayNumber": "C-10",
+      "officialNameJp": "キング(スタンダードタイプ)",
+      "nameZh": "傳奇賽車手 冠軍（The King / 史派威 Strip Weathers）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/031_01.jpg",
+      "owned": true,
+      "boxed": 2,
+      "loose": 0,
+      "catalogId": "C-10",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-10_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-10_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-11_chick_standard",
+      "displayNumber": "C-11",
+      "officialNameJp": "チック・ヒックス(スタンダードタイプ)",
+      "nameZh": "TOMICA 汽車總動員 C-11 路霸",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/030_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-11",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-11_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-11_chick_hicks.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-12_luigi_standard",
+      "displayNumber": "C-12",
+      "officialNameJp": "ルイジ(スタンダードタイプ)",
+      "nameZh": "路易吉（標準型）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/029_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 2,
+      "catalogId": "C-12",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-07_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-07_luigi_loose.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-13_guido_standard",
+      "displayNumber": "C-13",
+      "officialNameJp": "グイド(スタンダードタイプ)",
+      "nameZh": "奇諾（標準型堆高機）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/028_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-13",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-13_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-13_guido_loose.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-14_mater_20th",
+      "displayNumber": "C-14",
+      "officialNameJp": "メーター(20周年記念タイプ)",
+      "nameZh": "C-14 拖線（20週年紀念版）",
+      "releaseDate": "2026-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/fancy_03.webp",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-14",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-14_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-14_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "20th"
+    },
+    {
+      "number": "C-14_mcqueen_cave",
+      "displayNumber": "C-14",
+      "officialNameJp": "ライトニング・マックィーン(ケイブタイプ)",
+      "nameZh": "C-14 閃電麥坤（洞穴版）",
+      "releaseDate": "2022-10-15",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/114_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-14-CAVE",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-14_cave_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-14_cave_loose.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "C-15_cruz_road_patrol",
+      "displayNumber": "C-15",
+      "officialNameJp": "クルーズ・ラミレス(道路パトロールカータイプ)",
+      "nameZh": "C-15 克魯茲·拉米雷斯（公路巡警版）",
+      "releaseDate": "2020-03-28",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/272_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-15",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-15_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-15_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-17_francesco_standard",
+      "displayNumber": "C-17",
+      "officialNameJp": "フランチェスコ・ベルヌーイ(スタンダードタイプ)",
+      "nameZh": "C-17 超哥 / 法蘭斯高（標準版）",
+      "releaseDate": "2011-06-18",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/024_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-17",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-17_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-17_francesco.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-19_fillmore_fire_command",
+      "displayNumber": "C-19",
+      "officialNameJp": "フィルモア(消防指揮車タイプ)",
+      "nameZh": "C-19 阿飛 / 費爾摩（消防救援版）",
+      "releaseDate": "2020-04-25",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/270_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-19",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-19_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-19_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-20_sarge_standard",
+      "displayNumber": "C-20",
+      "officialNameJp": "サージ(スタンダードタイプ)",
+      "nameZh": "TOMICA 汽車總動員 C-20 士官長(標準版)",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/094_01.jpg?20211221",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-20",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-20_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-20_sarge.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "C-22_finn_standard",
+      "displayNumber": "C-22",
+      "officialNameJp": "フィン・マックミサイル(スタンダードタイプ)",
+      "nameZh": "麥克飛彈（標準型 / 皇家特務車）",
+      "releaseDate": "2011-06-18（絕版神物）",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/096_01.jpg",
+      "owned": true,
+      "boxed": 2,
+      "loose": 0,
+      "catalogId": "C-22-FINN",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-22_finn_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-22_box.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-22_finn_box2.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "C-22_mater_ice",
+      "displayNumber": "C-22",
+      "officialNameJp": "メーター(アイスレーシングタイプ)",
+      "nameZh": "拖線（冰上賽車版）",
+      "releaseDate": "2018-06-16",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/265_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-22-MATER",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-22_mater_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-22_mater_ice.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-23_guido_ambulance",
+      "displayNumber": "C-23",
+      "officialNameJp": "グイド(救急車タイプ)",
+      "nameZh": "奇諾（救護車版）",
+      "releaseDate": "2020-04-25",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/26_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-23-GUIDO",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-23_guido_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-23_guido_ambulance.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-23_max_standard",
+      "displayNumber": "C-23",
+      "officialNameJp": "マックス・シュネル(スタンダードタイプ)",
+      "nameZh": "C-23 麥帥 / 麥斯·修奈爾（標準版）",
+      "releaseDate": "2011-06-18（絕版神物）",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/105_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-23-MAX",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-23_max_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-23_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "C-24_mcqueen_ice",
+      "displayNumber": "C-24",
+      "officialNameJp": "ライトニング・マックィーン(アイスレーシングタイプ)",
+      "nameZh": "閃電麥坤（冰上賽車版）",
+      "releaseDate": "2016-10-15",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/263_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-24",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-24_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-24_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-25_cruz_ice",
+      "displayNumber": "C-25",
+      "officialNameJp": "クルーズ・ラミレス(アイスレーシングタイプ)",
+      "nameZh": "C-25 克魯茲·拉米雷斯（冰上賽車版）",
+      "releaseDate": "2022-06",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/264_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-25",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-25_ice_cruz_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-25_ice_cruz_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-26_ramone_standard",
+      "displayNumber": "C-26",
+      "officialNameJp": "ラモーン(スタンダードタイプ)",
+      "nameZh": "雷蒙（標準型紫金火焰版）",
+      "releaseDate": "2008-07-31",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/104_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-26",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-26_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-26_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-27_doc_patrol",
+      "displayNumber": "C-27",
+      "officialNameJp": "ドック・ハドソン(パトカータイプ)",
+      "nameZh": "C-27 韓大夫（日本警視廳 巡邏車版）",
+      "releaseDate": "2019-09-21",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/269_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-27",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-27_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP-04_police_sheriff.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-28_fritter_standard",
+      "displayNumber": "C-28",
+      "officialNameJp": "ミス・フリッター(スタンダードタイプ)",
+      "nameZh": "C-28 瘋狂邁絲（標準版）",
+      "releaseDate": "2017-06-24",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/111_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-28",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-28_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-28_miss_fritter.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-30_mcqueen_sheriff",
+      "displayNumber": "C-30",
+      "officialNameJp": "ライトニング・マックィーン(シェリフタイプ)",
+      "nameZh": "C-30 閃電麥坤（公路旅行 警長版）",
+      "releaseDate": "2020-03-28",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/122_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-30",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-30_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-30_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-33_todd_standard",
+      "displayNumber": "C-33",
+      "officialNameJp": "トッド(スタンダードタイプ)",
+      "nameZh": "C-33 陶德 / 披薩星球卡車（標準版）",
+      "releaseDate": "2018-04-21",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/123_01.jpg",
+      "owned": true,
+      "boxed": 2,
+      "loose": 1,
+      "catalogId": "C-33",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-33_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-33_box1_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-34_mcqueen_grc",
+      "displayNumber": "C-34",
+      "officialNameJp": "ライトニング・マックィーン(GRCタイプ)",
+      "nameZh": "閃電麥坤（GRC 全球賽車盃版）",
+      "releaseDate": "2020-10-17",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/275_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-34",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-34_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-34_mcqueen_grc_box.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-34_grc_mcqueen.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-36_mcqueen_patrol",
+      "displayNumber": "C-36",
+      "officialNameJp": "ライトニング・マックィーン(パトカータイプ)",
+      "nameZh": "C-36 閃電麥坤（日本警察巡邏車版）",
+      "releaseDate": "2019-11-16",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/267_1.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-36",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-36_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP-03_police_mcqueen.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-37_mater_president",
+      "displayNumber": "C-37",
+      "officialNameJp": "メーター(プレジデントタイプ)",
+      "nameZh": "C-37 拖線（公路旅行 總統版）",
+      "releaseDate": "2023-06-17",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/121_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-37",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-37_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-37_loose.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-38_carla_standard",
+      "displayNumber": "C-38",
+      "officialNameJp": "カルラ・ヴェローゾ(スタンダードタイプ)",
+      "nameZh": "C-38 卡拉·維洛索（標準版 / 巴西綠藍勒芒原型賽車）",
+      "releaseDate": "Cars 2 世界大賽",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/108_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-38-CARLA",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-38_carla_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-38_carla_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "C-38_mater_firetruck",
+      "displayNumber": "C-38",
+      "officialNameJp": "メーター(消防車タイプ)",
+      "nameZh": "拖線（消防車版）",
+      "releaseDate": "2019-11-16",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/268_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-38",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-38_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-38_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-39_raoul_standard",
+      "displayNumber": "C-39",
+      "officialNameJp": "ラウール・サルール(スタンダードタイプ)",
+      "nameZh": "C-39 勞爾·薩魯爾（標準版 / 法國WRC拉力賽車）",
+      "releaseDate": "Cars 2 世界大賽",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/109_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-39-RAOUL",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-39_raoul_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-39_raoul_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "C-39_luigi_ambulance",
+      "displayNumber": "C-39",
+      "officialNameJp": "ルイジ(救急車タイプ)",
+      "nameZh": "路易吉（救護車版）",
+      "releaseDate": "2020-04-25",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/39_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 1,
+      "catalogId": "C-39",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-39_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-39_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-40_ramone_road_patrol",
+      "displayNumber": "C-40",
+      "officialNameJp": "ラモーン(道路パトロールカータイプ)",
+      "nameZh": "C-40 雷蒙（公路巡警版）",
+      "releaseDate": "2020-05-23",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/271_1.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-40",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-40_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-40_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    },
+    {
+      "number": "C-48_smokey_standard",
+      "displayNumber": "C-48",
+      "officialNameJp": "スモーキー(スタンダードタイプ)",
+      "nameZh": "C-48 史莫基（標準版 / 哈德遜老技師皮卡）",
+      "releaseDate": "2017-09-16",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/051_01.jpg",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "C-48-SMOKEY",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-48_smokey_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/C-48_smokey_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
+    },
+    {
+      "number": "SP_lightning_mcqueen_cars_3_metallic_rust_eze_racing_center",
+      "displayNumber": "SP",
+      "officialNameJp": "Lightning McQueen (Cars 3 Metallic Rust-eze Racing Center)",
+      "nameZh": "閃電麥坤（Cars 3 Rust-eze 金屬櫻桃酒紅限定版 / Mattel 1:55）【⚠️非 TOMICA 商品】",
+      "releaseDate": "美泰兒 Mattel 經典典藏",
+      "officialImageUrl": null,
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "SP-MCQUEEN-CHERRY",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP-MCQUEEN-CHERRY_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP-05_cherry_red.jpg"
+      ],
+      "notes": "非TOMICA商品（目錄註記）；非TOMICA（Mattel）；官方 Cars トミカ頁未列",
+      "sourcePage": "owned_catalog_only"
+    },
+    {
+      "number": "SP_storm_20th",
+      "displayNumber": "SP",
+      "officialNameJp": "ジャクソン・ストーム(20周年記念タイプ)",
+      "nameZh": "SP 暴風傑克森（皮克斯 Cars 20週年紀念特別版 消光黑金標）",
+      "releaseDate": "2026年紀念",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/fancy_07.webp",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "SP-STORM-20TH",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP_storm_20th_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP_storm_20th_box.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "20th"
+    },
+    {
+      "number": "SP_doc_piston_cup_mcqueen_2026special",
+      "displayNumber": "SP",
+      "officialNameJp": "ドック・ハドソン ピストン・カップ付き(ライトニング・マックィーンデイ 2026特別仕様)",
+      "nameZh": "韓大夫 附活塞盃（麥坤日 2026 特別仕樣）",
+      "releaseDate": "官方未載明／待確認（2026）",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/ph06.webp",
+      "owned": true,
+      "boxed": 1,
+      "loose": 0,
+      "catalogId": "SP-DOC-2020",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP-DOC-2026_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/doc_hudson_2026.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "20th"
+    },
+    {
+      "number": "SP_mcqueen_piston_cup_mcqueen_2026special",
+      "displayNumber": "SP",
+      "officialNameJp": "ライトニング・マックィーン ピストン・カップ付き(ライトニング・マックィーンデイ 2026特別仕様)",
+      "nameZh": "閃電麥坤 附金色活塞盃（麥坤日 2026 特別仕樣）",
+      "releaseDate": "2026年限定",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/20th/img/ph05.webp",
+      "owned": true,
+      "boxed": 2,
+      "loose": 0,
+      "catalogId": "SP-MCQUEEN-DAY-2026",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/SP_mcqueen_day_2026_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP_mcqueen_day_2026_box1.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/SP_mcqueen_day_2026_box2.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "20th"
+    },
+    {
+      "number": "マック_cars3_transporter",
+      "displayNumber": "マック",
+      "officialNameJp": "(カーズ3 トランスポータータイプ)",
+      "nameZh": "TOMICA 麥克貨櫃拖車（Cars 3 長車）",
+      "releaseDate": "2017-06-24",
+      "officialImageUrl": "https://www.takaratomy.co.jp/products/disney/cars/img/tomica/073_01.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "MACK-01",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/MACK-01_official.jpg",
+        "https://snowsepch.github.io/Tomica-Cars/tomica_images/MACK-01_mini_mack.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "current"
+    }
+  ]
+}
