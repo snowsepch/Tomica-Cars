@@ -1,25 +1,65 @@
 # Tomica Cars 名稱／發售日校正說明（給 Snow）
 
-**執行時間（Asia/Taipei）：** 2026-10-25 02:28 CST  
+**執行時間（Asia/Taipei）：** 2026-10-25（含同日來源再校正）  
 **範圍：** 僅 Cars／カーズトミカ（registry 152 筆；含 SP／遊具／World）。非 Tomica（Mattel 等）不捏造發售日。  
 **台灣代理：** 卡布（Cabu）— 繁中名優先對齊可查的台灣通路標題。
 
+## 來源等級與信心（2026-10-25 再校正）
+
+詳見 `docs/SOURCE_AUDIT.md`。
+
+| 等級 | 意義 |
+|---|---|
+| Official | Takara 公式（disney/cars、tomica/new、mall） |
+| Primary retail | 日本一級通路（本輪：HobbySearch 1999.co.jp 列表活頁） |
+| Secondary | 台灣通路／轉貼等 |
+| Community | 收藏家年表（tomicadas）— 不可單獨升 high |
+| Unverified | 無可用依據 |
+
+- **confidence high**：發售日須有 Official 或 Primary retail 活頁依據。
+- **禁止猜填日期**；衝突或多世代未分清 →「官方未載明」。
+- 每筆 corrections 現含：`sourceTier`／`confidence`／`verifiedAt`／`evidenceUrls`。
+- 品相：本輪為新品／官方商品頁（無品相欄）。
+
 ## 鐵則（已遵守）
 
-1. 每個寫入的 `releaseDate`／`nameZh`／`officialNameJp` 變更，`sources` 皆為可點 URL（或 tried: …）。
+1. 每個寫入的 `releaseDate`／`nameZh`／`officialNameJp` 變更，`sources`／`evidenceUrls` 皆為可點 URL（或 tried: …）。
 2. **禁止**憑記憶、論壇口耳、無 URL 年表、推測年月。
-3. 查不到維持「官方未載明」，並列於下方「仍未載明」表。
-4. 次要來源（Hobby Search、收藏家年表 tomicadas）**須與另一可打開來源交叉同意 YYYY-MM** 才寫死；Takara 新聞／mall 可單獨採用。
+3. 查不到維持「官方未載明」，並列於「仍未載明」表。
+4. 次要來源須與另一可打開來源交叉同意 YYYY-MM 才寫死；Takara 新聞／mall／HobbySearch 一級列表可採用。
 
-## 統計（before → after）
+## 統計（來源再校正後）
 
-| 項目 | Before | After |
-|---|---:|---:|
-| 有可讀發售日（非「官方未載明」） | 39 | 127 |
-| 有繁中名（非「官方未載明」） | 44 | 152 |
-| `releaseDateChanged` | — | 136 |
-| `nameZhChanged` | — | 150 |
-| 仍「官方未載明」發售日 | — | 25 |
+| 項目 | 值 |
+|---|---:|
+| 有可讀發售日 | **149**（再校正前 127；+22） |
+| 有繁中名 | 152 |
+| 仍「官方未載明」發售日 | **3** |
+| confidence high／medium／low | 147／2／3 |
+
+## 仍「官方未載明」發售日（3）
+
+| number | display | officialNameJp | 說明 |
+|---|---|---|---|
+| `C-02_mcqueen_dinoco` | C-2 | ライトニング・マックィーン(DINOCOタイプ) | HobbySearch 日期衝突（2011-06 vs 2020-12） |
+| `SP_lightning_mcqueen_cars_3_metallic_rust_eze_racing_center` | SP | Lightning McQueen (Cars 3 Metallic Rust-eze Racing | 非 Tomica（Mattel） |
+| `SET_mcqueen_2026special` | 官方未載明 | ライトニング・マックィーンデイ2026特別仕様のカーズ トミカが登場! 作品と一緒に楽しもう! | 公式系列見出し，非單一 SKU |
+
+## 本回合補上的發售日（節錄）
+
+| number | releaseDate | 依據 |
+|---|---|---|
+| `C-21_j_p_standard` | 2018-10 | HobbySearch list/4 |
+| `C-34_mcqueen_grc` | 2025-10-18（重核） | mall＋new/2510 |
+| `SET_carwash` | 2026-11 | new/2611＋20th |
+| `SET_mcqueen_deruderu_bucket` | 2026-08 | new/2608 |
+| 銀賽車四筆 C-31/38/39/40 | 2020-03 | HobbySearch＋公式銀系列公告交叉 |
+
+（完整見 `corrections.json`／`SOURCE_AUDIT.md`）
+
+---
+
+以下保留先前校正說明（歷史）：
 
 ## 做了什麼
 

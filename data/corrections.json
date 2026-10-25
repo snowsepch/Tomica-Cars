@@ -4,16 +4,24 @@
     "displayNumber": "C-1",
     "officialNameJp": "ライトニング・マックィーン(スタンダードタイプ)",
     "nameZh": "閃電麥坤（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2011-06",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2011年6月中旬」；初代 2008-03 説無 Official 活頁可鎖，且可能為改模／再掲載 → medium；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "medium",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-02_mcqueen_dinoco",
@@ -29,7 +37,15 @@
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 HobbySearch 出現衝突日期（list/1：2011-06；list/4：2020-12），疑多世代／再販；Official 無單一発売日 → 維持官方未載明；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "low",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-03_mater_cave",
@@ -47,7 +63,13 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-03 メーター（ケイブタイプ）"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-03 メーター（ケイブタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/3"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-03_mcqueen_20th",
@@ -65,7 +87,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-03 ライトニング・マックィーン(20周年記念タイプ)"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-03 ライトニング・マックィーン(20周年記念タイプ)；本回合重核：new/2606.htm 2026年6月；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2606.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-03_mcqueen_cruising",
@@ -81,23 +110,39 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2102.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－０３ ライトニング・マックィーン（クルージングタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－０３ ライトニング・マックィーン（クルージングタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-04_mater_standard",
     "displayNumber": "C-4",
     "officialNameJp": "メーター(スタンダードタイプ)",
     "nameZh": "脫線（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2011-06",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2011年6月中旬」；初代 2008 説 Official 未鎖 → medium；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "medium",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-05_sally_standard",
@@ -114,7 +159,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-05_storm_standard",
@@ -130,7 +183,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2207.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-05 ジャクソン・ストーム"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-05 ジャクソン・ストーム；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-06_cruz_dinoco",
@@ -148,23 +207,38 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-06 クルーズ・ラミレス（DINOCOレーシングタイプ）；原 registry「2017-06-24」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-06 クルーズ・ラミレス（DINOCOレーシングタイプ）；原 registry「2017-06-24」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-06_doc_standard",
     "displayNumber": "C-6",
     "officialNameJp": "ドック・ハドソン(スタンダードタイプ)",
     "nameZh": "韓大夫（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2008-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2008年3月下旬」（初代波）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-07_red_standard",
@@ -181,39 +255,63 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/2"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-08_doc_fabulous",
     "displayNumber": "C-8",
     "officialNameJp": "ドック・ハドソン(ファビュラスタイプ)",
     "nameZh": "韓大夫（傳奇輝煌型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2017-12",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2017年12月上旬」；archive 有名無日；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-08_ramone_standard",
     "displayNumber": "C-8",
     "officialNameJp": "ラモーン(スタンダードタイプ)",
     "nameZh": "雷蒙（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2008-07",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2008年7月下旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-09_sheriff_standard",
@@ -230,7 +328,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-10_king_standard",
@@ -247,7 +352,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-11_chick_standard",
@@ -264,7 +376,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-12_luigi_standard",
@@ -281,7 +400,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-13_guido_standard",
@@ -298,7 +424,14 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/3"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-14_fillmore_standard",
@@ -315,7 +448,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-14_mater_20th",
@@ -333,7 +474,16 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-14 メーター(20周年記念タイプ)"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-14 メーター(20周年記念タイプ)；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "https://www.takaratomy.co.jp/products/tomica/new/2606.htm",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-14_mcqueen_cave",
@@ -351,7 +501,13 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-14 ライトニング・マックィーン（ケイブタイプ）"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-14 ライトニング・マックィーン（ケイブタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/3"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-15_cruz_road_patrol",
@@ -367,7 +523,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2507.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-15 クルーズ・ラミレス（道路パトロールカータイプ）；原 registry「2020-03-28」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-15 クルーズ・ラミレス（道路パトロールカータイプ）；原 registry「2020-03-28」與公式不符，已覆寫；本回合重核：new/2507.htm「2025年7月26日(土)発売予定」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2507.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-15_mack_cars3_standard",
@@ -385,7 +547,13 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-15 マック（カーズ3 スタンダードタイプ）"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-15 マック（カーズ3 スタンダードタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/2"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-15_mcqueen_wgp",
@@ -402,7 +570,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-16_finn_standard",
@@ -419,7 +595,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-16_mcqueen_cars3_intro",
@@ -436,39 +620,63 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-17_francesco_standard",
     "displayNumber": "C-17",
     "officialNameJp": "フランチェスコ・ベルヌーイ(スタンダードタイプ)",
     "nameZh": "法蘭斯高·伯努利（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2011-06",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2011年6月中旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-18_shu_standard",
     "displayNumber": "C-18",
     "officialNameJp": "シュウ・トドロキ(スタンダードタイプ)",
     "nameZh": "轟修（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2011-06",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2011年6月中旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-18_storm",
@@ -486,7 +694,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-18 ジャクソン・ストーム（GRCタイプ）"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-18 ジャクソン・ストーム（GRCタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2510.htm",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-18_mater_hunter",
@@ -504,7 +719,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-18 メーター（ハンタータイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-18 メーター（ハンタータイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-19_king_thomasville",
@@ -521,7 +744,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-19_tractor_standard",
@@ -539,7 +770,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－１９ トラクター（スタンダードタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－１９ トラクター（スタンダードタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-19_fillmore_fire_command",
@@ -555,7 +794,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2412.htm",
       "https://24h.pchome.com.tw/prod/DEAS1I-A900FBGFR"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-19 フィルモア（消防指揮車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-19 フィルモア（消防指揮車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2412.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-19_brick_standard",
@@ -572,7 +817,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-19_raoul_standard",
@@ -589,23 +842,39 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-20_sarge_standard",
     "displayNumber": "C-20",
     "officialNameJp": "サージ(スタンダードタイプ)",
     "nameZh": "士官長（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2020-10",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2020年10月中旬」C-20 サージ（非 C-33 舊番）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-20_storm_patrol",
@@ -621,7 +890,14 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2507.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-20 ジャクソン・ストーム（パトカータイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-20 ジャクソン・ストーム（パトカータイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.takaratomy.co.jp/products/tomica/new/2507.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-20_flip_standard",
@@ -638,7 +914,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-20_max_standard",
@@ -655,23 +939,39 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-21_j_p_standard",
     "displayNumber": "C-21",
     "officialNameJp": "J・P・ドライブ(スタンダードタイプ)",
     "nameZh": "J.P. 德萊夫（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2018-10",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2018年10月中旬」C-21 J・P・ドライブ；對應 character_easter_eggs Apple #84；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-21_holly_standard",
@@ -684,11 +984,18 @@
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
-      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；本回合 Primary：HobbySearch list/1「2011年7月中旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-21_mcqueen_cars3_standard",
@@ -701,12 +1008,21 @@
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://www.takaratomy.co.jp/products/tomica/new/2204.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-21 ライトニング・マックィーン（カーズ3 スタンダードタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-21 ライトニング・マックィーン（カーズ3 スタンダードタイプ）；本回合 Primary：HobbySearch list/4「2022年4月中旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-22_finn_standard",
@@ -723,7 +1039,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-22_prof_z_standard",
@@ -740,7 +1064,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-22_mater_ice",
@@ -756,23 +1088,37 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2402.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-22 メーター（アイスレーシングタイプ）；原 registry「2018-06-16」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-22 メーター（アイスレーシングタイプ）；原 registry「2018-06-16」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-22_luigi_rrc",
     "displayNumber": "C-22",
     "officialNameJp": "ルイジ(RRCタイプ)",
     "nameZh": "路易吉（RRC 型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2019-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2019年3月中旬」ルイジ(RRC)；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-22_louise_standard",
@@ -789,7 +1135,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-23_guido_ambulance",
@@ -805,7 +1159,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2410.htm",
       "https://24h.pchome.com.tw/prod/DEAS20-B900I2ULR"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-23 グイド（救急車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-23 グイド（救急車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2410.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-23_tractor_standard",
@@ -822,7 +1182,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-23_max_standard",
@@ -840,7 +1208,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－２３ マックス・シュネル；原 registry「2011-06-18（絕版神物）」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－２３ マックス・シュネル；原 registry「2011-06-18（絕版神物）」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-23_ramone_cars3",
@@ -857,7 +1233,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-24_guido_rrc",
@@ -874,7 +1258,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-24_flo_standard",
@@ -891,7 +1283,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-24_mater_stunt",
@@ -908,7 +1308,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-24_mcqueen_ice",
@@ -924,7 +1332,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2401.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-24 ライトニング・マックィーン（アイスレーシングタイプ）；原 registry「2016-10-15」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-24 ライトニング・マックィーン（アイスレーシングタイプ）；原 registry「2016-10-15」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-24_river_standard",
@@ -941,7 +1355,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-25_cruz_ice",
@@ -959,7 +1381,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-25 クルーズ・ラミレス（アイスレーシングタイプ）；原 registry「2022-06」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-25 クルーズ・ラミレス（アイスレーシングタイプ）；原 registry「2022-06」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-25_ryan_standard",
@@ -976,7 +1405,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-25_mcqueen_party",
@@ -994,23 +1431,38 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－２５ ライトニング・マックィーン（パーティータイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－２５ ライトニング・マックィーン（パーティータイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-25_mcqueen_hotrod",
     "displayNumber": "C-25",
     "officialNameJp": "ライトニング・マックィーン(ホットロッドタイプ)",
     "nameZh": "閃電麥坤（熱桿型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2019-12",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2019年12月上旬」C-25 ホットロッド；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-25_rip_standard",
@@ -1027,7 +1479,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-26_mater_hotrod",
@@ -1044,23 +1504,40 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-26_ramone_standard",
     "displayNumber": "C-26",
     "officialNameJp": "ラモーン(スタンダードタイプ)",
     "nameZh": "雷蒙（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2021-04",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2021年4月下旬」C-26 ラモーン（與 C-08 初代不同世代）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-26_leroy_standard",
@@ -1077,7 +1554,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-26_lewis_standard",
@@ -1094,7 +1579,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-27_jeff_standard",
@@ -1111,7 +1604,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-27_danny_thomasville",
@@ -1128,7 +1629,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-27_tex_standard",
@@ -1145,7 +1654,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-27_doc_patrol",
@@ -1163,7 +1680,13 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-27 ドック・ハドソン（パトカータイプ）；原 registry「2019-09-21」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-27 ドック・ハドソン（パトカータイプ）；原 registry「2019-09-21」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-27_flo_standard",
@@ -1180,7 +1703,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-28_fritter_standard",
@@ -1198,7 +1729,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-28 ミス・フリッター；原 registry「2017-06-24」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-28 ミス・フリッター；原 registry「2017-06-24」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-28_mater_toon_mater",
@@ -1215,7 +1753,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-29_carla_standard",
@@ -1232,7 +1778,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-29_storm_ice",
@@ -1248,7 +1802,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2402.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-29 ジャクソン・ストーム（アイスレーシングタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-29 ジャクソン・ストーム（アイスレーシングタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-29_natalie_standard",
@@ -1265,7 +1825,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-29_fillmore_rrc",
@@ -1282,7 +1850,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-29_holly_standard",
@@ -1299,7 +1875,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-30_nigel_standard",
@@ -1316,7 +1900,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-30_mcqueen_sheriff",
@@ -1332,7 +1924,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2310.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-30 ライトニング・マックィーン（シェリフタイプ）；原 registry「2020-03-28」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-30 ライトニング・マックィーン（シェリフタイプ）；原 registry「2020-03-28」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-30_mcqueen_fabulous",
@@ -1349,7 +1947,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-31_irvy_standard",
@@ -1366,7 +1972,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-31_woody_standard",
@@ -1383,7 +1997,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-31_cruz",
@@ -1399,7 +2021,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2601.htm",
       "https://24h.pchome.com.tw/prod/DEAS1I-A900JRMM0"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-31 クルーズ・ラミレス（GRCタイプ）"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-31 クルーズ・ラミレス（GRCタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2601.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-31_chase_standard",
@@ -1416,23 +2044,40 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-31_mcqueen_silver",
     "displayNumber": "C-31",
     "officialNameJp": "ライトニング・マックィーン(シルバーレーサータイプ)",
     "nameZh": "閃電麥坤（銀色賽車型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2020-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2020年3月下旬」；Official シルバーシリーズ交叉；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-31_mcqueen_hunter",
@@ -1450,7 +2095,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-31 ライトニング・マックィーン（ハンタータイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-31 ライトニング・マックィーン（ハンタータイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-32_buzz_standard",
@@ -1467,7 +2120,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-32_mcqueen_rrc",
@@ -1484,7 +2145,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-33_gale_standard",
@@ -1501,7 +2169,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-33_sarge_standard",
@@ -1518,7 +2194,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-33_todd_standard",
@@ -1536,7 +2220,13 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-33 トッド（スタンダードタイプ）；原 registry「2018-04-21」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-33 トッド（スタンダードタイプ）；原 registry「2018-04-21」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-33_mater_rrc",
@@ -1553,7 +2243,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-34_mcqueen_grc",
@@ -1567,10 +2265,17 @@
     "officialNameJpChanged": false,
     "sources": [
       "https://takaratomymall.jp/shop/g/g4904810981015/",
-      "https://24h.pchome.com.tw/prod/DEEE1I-A900JOO2D",
+      "https://www.takaratomy.co.jp/products/tomica/new/2510.htm",
+      "https://24h.pchome.com.tw/prod/DEEE1I-A900JOO2D"
+    ],
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C－34 ライトニング・マックィーン(GRCタイプ) 発売日2025年10月18日；亦見 https://www.takaratomy.co.jp/products/tomica/new/2510.htm；原 registry「2020-10-17」與公式不符，已覆寫；本回合重核：mall 発売日2025年10月18日＋new/2510.htm 2025年10月；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://takaratomymall.jp/shop/g/g4904810981015/",
       "https://www.takaratomy.co.jp/products/tomica/new/2510.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C－34 ライトニング・マックィーン(GRCタイプ) 発売日2025年10月18日；亦見 https://www.takaratomy.co.jp/products/tomica/new/2510.htm；原 registry「2020-10-17」與公式不符，已覆寫"
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-34_mcqueen_roadtrip",
@@ -1588,7 +2293,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-34 ライトニング・マックィーン（ロードトリップタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-34 ライトニング・マックィーン（ロードトリップタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-35_cruz_rusteeze_dinoco",
@@ -1604,7 +2317,14 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2212.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 クルーズ・ラミレス（ラスティーズDINOCOタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 クルーズ・ラミレス（ラスティーズDINOCOタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-35_cruz_rusteeze_dinoco_2",
@@ -1620,7 +2340,14 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2212.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 クルーズ・ラミレス（ラスティーズDINOCOタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 クルーズ・ラミレス（ラスティーズDINOCOタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-35_shu",
@@ -1636,7 +2363,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2601.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 シュウ・トドロキ（GRCタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-35 シュウ・トドロキ（GRCタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-36_mcqueen_toonpolice",
@@ -1653,7 +2386,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-36_mcqueen_patrol",
@@ -1669,23 +2410,37 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2406.htm",
       "https://24h.pchome.com.tw/prod/DEAS20-B900JHFI6"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-36 ライトニング・マックィーン（パトカータイプ）；原 registry「2019-11-16」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-36 ライトニング・マックィーン（パトカータイプ）；原 registry「2019-11-16」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2406.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-37_storm_thomasville",
     "displayNumber": "C-37",
     "officialNameJp": "ジャクソン・ストーム(トーマスビルタイプ)",
     "nameZh": "風暴傑森（湯瑪斯維爾型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2019-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2019年3月中旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-37_junior_moon_standard",
@@ -1702,7 +2457,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-37_miguel_standard",
@@ -1719,7 +2482,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-37_mater_timetravel",
@@ -1736,7 +2507,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-37_mater_president",
@@ -1752,7 +2531,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2306.htm",
       "https://mall.iopenmall.tw/002426/index.php?action=product_detail&prod_no=P0242606914785"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-37 メーター（プレジデントタイプ）"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-37 メーター（プレジデントタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2306.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-38_carla_standard",
@@ -1769,23 +2554,40 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-38_storm_silver",
     "displayNumber": "C-38",
     "officialNameJp": "ジャクソン・ストーム(シルバーレーサータイプ)",
     "nameZh": "風暴傑森（銀色賽車型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2020-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/4「2020年3月下旬」；Official シルバーシリーズ交叉；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/4",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-38_danny_standard",
@@ -1802,7 +2604,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-38_ham_standard",
@@ -1819,7 +2629,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-38_mater_firetruck",
@@ -1835,23 +2653,38 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2406.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-38 メーター（消防車タイプ）；原 registry「2019-11-16」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：C-38 メーター（消防車タイプ）；原 registry「2019-11-16」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-39_cruz_silver",
     "displayNumber": "C-39",
     "officialNameJp": "クルーズ・ラミレス(シルバーレーサータイプ)",
     "nameZh": "克魯茲·拉米雷斯（銀色賽車型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2020-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/3「2020年3月下旬」；Official cars/ 2020.01.31 シルバーレーサーシリーズ4台新登場（交叉）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-39_jeff_cars3",
@@ -1868,23 +2701,38 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-39_topper3_standard",
     "displayNumber": "C-39",
     "officialNameJp": "トッパー・デッキントン3世(スタンダードタイプ)",
     "nameZh": "托珀·德金頓三世（標準型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2015-10",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/2",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/2「2015年10月下旬」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/2"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-39_dr_damage_standard",
@@ -1901,7 +2749,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-39_raoul_standard",
@@ -1918,7 +2774,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-39_luigi_ambulance",
@@ -1935,7 +2799,13 @@
       "https://shop.funbox.com.tw/products/ds18948",
       "https://24h.pchome.com.tw/prod/DEAS20-B900I2UMC"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-39 ルイジ（救急車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-39 ルイジ（救急車タイプ）；原 registry「2020-04-25」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2410.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-40_jeff_standard",
@@ -1953,7 +2823,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－４０ ジェフ・ゴルベット"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－４０ ジェフ・ゴルベット；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-40_jonas_standard",
@@ -1970,23 +2848,40 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-40_doc_silver",
     "displayNumber": "C-40",
     "officialNameJp": "ドック・ハドソン(シルバーレーサータイプ)",
     "nameZh": "韓大夫（銀色賽車型）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2020-03",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/",
       "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/3「2020年3月下旬」；Official シルバーシリーズ交叉；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-40_mack_standard",
@@ -2003,7 +2898,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-40_ramone_road_patrol",
@@ -2021,7 +2924,13 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-40 ラモーン（道路パトロールカータイプ）；原 registry「2020-05-23」與公式不符，已覆寫"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-40 ラモーン（道路パトロールカータイプ）；原 registry「2020-05-23」與公式不符，已覆寫；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-41_mcqueen_cars3_standard",
@@ -2038,7 +2947,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-42_cruz_standard",
@@ -2055,7 +2972,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-42_sheriff_pinstripe",
@@ -2072,7 +2997,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-42_barry_standard",
@@ -2089,7 +3022,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-43_storm_standard",
@@ -2106,7 +3047,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-44_cal_standard",
@@ -2123,7 +3072,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-45_fritter_standard",
@@ -2140,7 +3097,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-46_sterling_standard",
@@ -2157,7 +3122,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-46_bubba_standard",
@@ -2174,7 +3147,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-46_red_classic",
@@ -2191,7 +3172,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-47_cruz_dinoco",
@@ -2208,7 +3197,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-48_smokey_standard",
@@ -2225,7 +3222,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-49_cruz_thomasville",
@@ -2242,7 +3247,15 @@
       "https://www.1999.co.jp/list/2547/7/2",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「上旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/2",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-49_darrell_standard",
@@ -2259,7 +3272,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-49_mater_young",
@@ -2277,7 +3298,15 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－４９ メーター（ヤングタイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：Ｃ－４９ メーター（ヤングタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "C-50_cruz_rusteeze",
@@ -2294,7 +3323,15 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「中旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_lightning_mcqueen_cars_3_metallic_rust_eze_racing_center",
@@ -2310,7 +3347,13 @@
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: scope excludes non_tomica Mattel"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；非 Tomica／排除發售日校正"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；非 Tomica／排除發售日校正；非 Tomica（Mattel 系）；範圍外不鎖日；品相：不適用（非本輪日本 Tomica 新品通路）",
+    "sourceTier": "Unverified",
+    "confidence": "low",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_cruz",
@@ -2327,7 +3370,14 @@
       "https://www.1999.co.jp/list/2547/7/3",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/3"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_cruz_20th",
@@ -2343,7 +3393,15 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：SP クルーズ・ラミレス（20周年記念タイプ）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：SP クルーズ・ラミレス（20周年記念タイプ）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_storm",
@@ -2360,7 +3418,14 @@
       "https://www.1999.co.jp/list/2547/7/1",
       "http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；兩源交叉（HobbySearch＋tomicadas 年表）；月精度；HobbySearch「下旬」約；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/",
+      "https://www.1999.co.jp/list/2547/7/1"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_storm_20th",
@@ -2376,7 +3441,14 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：SP ジャクソン・ストーム（20周年記念タイプ）；原 registry「2026年紀念」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：SP ジャクソン・ストーム（20周年記念タイプ）；原 registry「2026年紀念」與公式不符，已覆寫；本回合重核：new/2608.htm 2026年8月；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_doc_piston_cup_mcqueen_2026special",
@@ -2392,23 +3464,40 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：ドック・ハドソン ピストン・カップ付き（マックィーンデイ2026）"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：ドック・ハドソン ピストン・カップ付き（マックィーンデイ2026）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_mater_mcqueen_2023_special",
     "displayNumber": "SP",
     "officialNameJp": "メーター(ライトニング・マックィーンデイ 2023 特別仕様)",
     "nameZh": "脫線（閃電麥坤日 2023 特別仕樣）",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2023-09",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html",
       "https://24h.pchome.com.tw/search/?q=tomica+%E9%96%83%E9%9B%BB%E9%BA%A5%E5%9D%A4",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；本回合未能以 Takara 新聞或兩源交叉鎖定發售日"
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；本回合 Primary：HobbySearch list/3「2023年9月上旬」；archive 有 2023 特別仕様說明（無日付）；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/archive.html"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SP_mcqueen_piston_cup_mcqueen_2026special",
@@ -2422,25 +3511,41 @@
     "officialNameJpChanged": false,
     "sources": [
       "https://www.takaratomy.co.jp/products/tomica/new/2609.htm",
+      "https://www.1999.co.jp/list/2547/7/3",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：ライトニング・マックィーン ピストン・カップ付き（マックィーンデイ2026）；原 registry「2026年限定」與公式不符，已覆寫"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：ライトニング・マックィーン ピストン・カップ付き（マックィーンデイ2026）；原 registry「2026年限定」與公式不符，已覆寫；本回合重核：new/2609.htm 2026年9月；HobbySearch list/3 同月；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2609.htm",
+      "https://www.1999.co.jp/list/2547/7/3"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "マック_cars3_transporter",
     "displayNumber": "マック",
-    "officialNameJp": "(カーズ3 トランスポータータイプ)",
-    "nameZh": "(カーズ3 トランスポータータイプ)",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "officialNameJp": "マック(カーズ3 トランスポータータイプ)",
+    "nameZh": "麥大叔（Cars 3 運輸車型）",
+    "releaseDate": "2018-11",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
     "releaseDateChanged": true,
-    "officialNameJpChanged": false,
+    "officialNameJpChanged": true,
     "sources": [
+      "https://www.1999.co.jp/list/2547/7/1",
       "https://www.takaratomy.co.jp/products/disney/cars/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組；本回合 Primary：HobbySearch list/1「2018年11月上旬」マック(カーズ3 トランスポータータイプ)；官名頁確認見 cars/；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Primary retail",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.1999.co.jp/list/2547/7/1",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "マック_service_trailer_mack_toon",
@@ -2456,7 +3561,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2110.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/cars_tomica_world.html"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：整備トレーラーであそぼう！マック；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：整備トレーラーであそぼう！マック；遊具／套組；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "マック_rescue_carrier_mack",
@@ -2472,7 +3583,13 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2407.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/cars_tomica_world.html"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：現場へ急行！レスキューキャリアカー マック；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：現場へ急行！レスキューキャリアカー マック；遊具／套組；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SET_deruderu_bucket_mcqueenver",
@@ -2488,7 +3605,14 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：でるでるバケツ ライトニング・マックィーンver.；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：でるでるバケツ ライトニング・マックィーンver.；遊具／套組；本回合重核：new/2608.htm 2026年8月；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SET_advent2026",
@@ -2504,23 +3628,38 @@
       "https://www.takaratomy.co.jp/products/tomica/new/2609.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/cars_tomica_world.html"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：アドベントカレンダー２０２６；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；Takara/公式可核對：アドベントカレンダー２０２６；遊具／套組；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2609.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SET_mcqueen_deruderu_bucket",
     "displayNumber": "官方未載明",
     "officialNameJp": "カーズ トミカと一緒に楽しもう! ライトニング・マックィーンデザインのでるでるバケツが登場!",
     "nameZh": "倒倒樂水桶 閃電麥坤版",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2026-08",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組；本回合 Official：Takara new/2608.htm でるでるバケツ 2026年8月；與 SET_deruderu_bucket_mcqueenver 同品對齊；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SET_mcqueen_2026special",
@@ -2536,22 +3675,38 @@
       "https://www.takaratomy.co.jp/products/disney/cars/20th/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組；20th／公式為系列見出し文案，非單一 SKU；個別見 SP_mcqueen_piston_cup…(2026-09 Official) 與 Doc ピストンカップ(2026-08 Official)；維持未載明；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "low",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/",
+      "https://www.takaratomy.co.jp/products/tomica/new/2608.htm",
+      "https://www.takaratomy.co.jp/products/tomica/new/2609.htm"
+    ],
+    "verifiedAt": "2026-10-25"
   },
   {
     "number": "SET_carwash",
     "displayNumber": "官方未載明",
     "officialNameJp": "洗車場",
     "nameZh": "洗車場",
-    "releaseDate": "官方未載明",
-    "releaseDatePrecision": "unknown",
+    "releaseDate": "2026-11",
+    "releaseDatePrecision": "month",
     "nameZhChanged": true,
-    "releaseDateChanged": false,
+    "releaseDateChanged": true,
     "officialNameJpChanged": false,
     "sources": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2611.htm",
       "https://www.takaratomy.co.jp/products/disney/cars/20th/",
       "tried: https://www.takaratomy.co.jp/products/disney/cars/ | https://www.takaratomy.co.jp/products/disney/cars/archive.html | https://www.takaratomy.co.jp/products/disney/cars/20th/ | https://www.1999.co.jp/list/2547/7/1 | http://tomicadas.on.coocan.jp/c_disney_cars_list.htm"
     ],
-    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組"
+    "notes": "繁中由 Takara 日文官名意譯；台灣代理：卡布；角色名採台灣常見譯；本回合未能以 Takara 新聞或兩源交叉鎖定發售日；遊具／套組；本回合 Official：Takara new/2611.htm（2026年11月）＋20th「2026年11月下旬発売予定」；品相：新品／官方商品頁（無品相欄）",
+    "sourceTier": "Official",
+    "confidence": "high",
+    "evidenceUrls": [
+      "https://www.takaratomy.co.jp/products/tomica/new/2611.htm",
+      "https://www.takaratomy.co.jp/products/disney/cars/20th/"
+    ],
+    "verifiedAt": "2026-10-25"
   }
 ]
