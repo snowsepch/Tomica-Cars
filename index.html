@@ -8886,7 +8886,8 @@
             scoredName(hay, car.jpName, shortQuery),
             scoredName(hay, car.officialNameJp, shortQuery),
             scoredName(hay, car.name, shortQuery),
-            scoredName(hay, car.nameZh, shortQuery)
+            scoredName(hay, car.nameZh, shortQuery),
+            mode === 'typed' && hay.length >= 4 ? scoredName(hay, car.description, shortQuery) : 0
           );
           var keys = keywordScore(hay, car.keywords, keyMin);
           if (!(numberHit || nameScore >= minName || keys >= keyMin)) return;
@@ -8944,7 +8945,7 @@
           empty.className = 'photo-check-tip';
           empty.textContent = mode === 'typed'
             ? '圖鑑裡沒有這台。請改編號或品名。'
-            : '讀不到，請手打編號或品名';
+            : '請打編號或品名。';
           resultsEl.appendChild(empty);
           return;
         }
@@ -9370,7 +9371,7 @@
         catalogFeaturePromise = mapPool(localImageEntries(), 4, function (entry) {
           return loadHtmlImage(entry.url).then(function (img) {
             if (!img) return null;
-            return { car: entry.car, sig: colorSignature(img) };
+            return { car: entry.car, sig: colorSignature(img), band: bandProfile(img) };
           });
         }).then(function (rows) {
           return rows.filter(Boolean);
@@ -9381,6 +9382,92 @@
         return catalogFeaturePromise;
       }
 
+      function bandProfile(img) {
+        var nw = img.naturalWidth || img.width;
+        var nh = img.naturalHeight || img.height;
+        var scale = 180 / Math.max(nw, nh);
+        if (scale > 1) scale = 1;
+        var outW = Math.max(1, Math.round(nw * scale));
+        var outH = Math.max(1, Math.round(nh * scale));
+        var canvas = document.createElement('canvas');
+        canvas.width = outW;
+        canvas.height = outH;
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
+        ctx.drawImage(img, 0, 0, outW, outH);
+        var data = ctx.getImageData(0, 0, outW, outH).data;
+        var minX = outW;
+        var minY = outH;
+        var maxX = -1;
+        var maxY = -1;
+        var count = 0;
+        var y;
+        var x;
+        var tone;
+        for (y = 0; y < outH; y++) {
+          for (x = 0; x < outW; x++) {
+            var p = (y * outW + x) * 4;
+            tone = hueOf(data[p] / 255, data[p + 1] / 255, data[p + 2] / 255);
+            if (tone.sat < 0.28 || tone.luma <= 0.2 || tone.luma >= 0.88) continue;
+            count += 1;
+            if (x < minX) minX = x;
+            if (y < minY) minY = y;
+            if (x > maxX) maxX = x;
+            if (y > maxY) maxY = y;
+          }
+        }
+        if (count < 20 || maxX < minX) return null;
+        var bh = maxY - minY + 1;
+        var bw = maxX - minX + 1;
+        var yA = Math.max(0, minY - Math.floor(bh * 0.55));
+        var yB = Math.min(outH, maxY + Math.floor(bh * 0.15) + 1);
+        var xA = Math.max(0, minX - Math.floor(bw * 0.1));
+        var xB = Math.min(outW, maxX + Math.floor(bw * 0.1) + 1);
+        var span = Math.max(1, yB - yA);
+        var profile = [];
+        var band;
+        for (band = 0; band < 3; band++) {
+          var ya = yA + Math.floor(band * span / 3);
+          var yb = yA + Math.floor((band + 1) * span / 3);
+          var bins = [0, 0, 0, 0, 0, 0];
+          var darkN = 0;
+          var area = Math.max(1, (yb - ya) * (xB - xA));
+          for (y = ya; y < yb; y++) {
+            for (x = xA; x < xB; x++) {
+              var q = (y * outW + x) * 4;
+              tone = hueOf(data[q] / 255, data[q + 1] / 255, data[q + 2] / 255);
+              var dark = tone.luma < 0.32 && tone.sat < 0.5;
+              if (dark) darkN += 1;
+              if (!dark && tone.sat >= 0.22 && tone.luma > 0.16 && tone.luma < 0.92) {
+                bins[Math.min(5, (tone.hue * 6) | 0)] += 1;
+              }
+            }
+          }
+          var peak = 0;
+          var b;
+          for (b = 1; b < 6; b++) if (bins[b] > bins[peak]) peak = b;
+          profile.push(bins[peak] / area, darkN / area, bins[peak] ? peak : -1);
+        }
+        return profile;
+      }
+
+      function bandDistance(a, b) {
+        if (!a || !b) return 9;
+        var total = 0;
+        var i;
+        for (i = 0; i < 3; i++) {
+          var ap = a[i * 3 + 2];
+          var bp = b[i * 3 + 2];
+          if (ap < 0 || bp < 0) {
+            total += 0.5;
+            continue;
+          }
+          total += Math.abs(a[i * 3] - b[i * 3]);
+          total += 0.6 * Math.abs(a[i * 3 + 1] - b[i * 3 + 1]);
+          if (ap !== bp) total += 0.35;
+        }
+        return total;
+      }
+
       function queryColorSignatures(img) {
         return [
           colorSignature(img),
@@ -9389,7 +9476,18 @@
         ];
       }
 
-      function rankChannel(rows, queries, channel, minScore, minGap) {
+      function byOwnership(list) {
+        list.sort(function (a, b) {
+          var ao = ownership(a.car).owned ? 1 : 0;
+          var bo = ownership(b.car).owned ? 1 : 0;
+          if (ao !== bo) return bo - ao;
+          if (a.band != null && b.band != null && a.band !== b.band) return a.band - b.band;
+          return b.score - a.score;
+        });
+        return list;
+      }
+
+      function rankChannel(rows, queries, channel, minScore, queryBand) {
         var scored = [];
         rows.forEach(function (row) {
           var bestScore = 0;
@@ -9397,22 +9495,41 @@
             var score = hueScore(query[channel], row.sig[channel]);
             if (score > bestScore) bestScore = score;
           });
-          scored.push({ car: row.car, score: bestScore, numberHit: false });
+          scored.push({
+            car: row.car,
+            score: bestScore,
+            numberHit: false,
+            band: bandDistance(queryBand, row.band)
+          });
         });
         scored.sort(function (a, b) { return b.score - a.score; });
         if (!scored.length || scored[0].score < minScore) return null;
-        var gap = scored.length > 1 ? scored[0].score - scored[1].score : 1;
-        if (gap < minGap) return null;
         var best = scored[0].score;
-        var picked = scored.filter(function (item) {
-          return item.score >= best - 0.022;
-        }).slice(0, 3);
-        picked.sort(function (a, b) {
-          var ao = ownership(a.car).owned ? 1 : 0;
-          var bo = ownership(b.car).owned ? 1 : 0;
-          if (ao !== bo) return bo - ao;
-          return b.score - a.score;
-        });
+        var gap = scored.length > 1 ? best - scored[1].score : 1;
+        var picked;
+        if (gap >= 0.06) {
+          picked = scored.filter(function (item) {
+            return item.score >= best - 0.022;
+          }).slice(0, 3);
+        } else {
+          var pool = scored.filter(function (item) {
+            return item.score >= minScore && item.score >= best - 0.05;
+          });
+          var hueLeader = pool[0];
+          var bandLeader = pool[0];
+          pool.forEach(function (item) {
+            if (item.band < bandLeader.band) bandLeader = item;
+          });
+          if (!hueLeader || hueLeader.band > 0.7 && bandLeader.band > 0.7) return null;
+          if (hueLeader.band - bandLeader.band >= 0.08) {
+            picked = pool.filter(function (item) {
+              return item.band <= bandLeader.band + 0.04;
+            }).slice(0, 3);
+          } else {
+            picked = [hueLeader];
+          }
+        }
+        byOwnership(picked);
         picked.gap = gap;
         return picked;
       }
@@ -9424,10 +9541,17 @@
           if (query.open || query.nored) colorful = true;
         });
         if (!colorful) return Promise.resolve([]);
+        var queryBand = bandProfile(img);
         return ensureCatalogFeatures().then(function (rows) {
-          var masked = rankChannel(rows, queries, 'nored', 0.9, 0.02);
-          var open = rankChannel(rows, queries, 'open', 0.91, 0.02);
-          if (masked && open) return masked.gap >= open.gap ? masked : open;
+          var masked = rankChannel(rows, queries, 'nored', 0.9, queryBand);
+          var open = rankChannel(rows, queries, 'open', 0.91, queryBand);
+          if (masked && open) {
+            if (masked.gap >= 0.06 && masked.gap >= open.gap) return masked;
+            if (open.gap >= 0.06 && open.gap > masked.gap) return open;
+            var maskedBand = masked[0] && masked[0].band != null ? masked[0].band : 9;
+            var openBand = open[0] && open[0].band != null ? open[0].band : 9;
+            return maskedBand <= openBand ? masked : open;
+          }
           return masked || open || [];
         });
       }
@@ -9683,7 +9807,7 @@
       }
 
       function showManualPrompt() {
-        setOcrNote('讀不到，請手打編號或品名');
+        setOcrNote('這張照片對不到圖鑑裡的車。請打編號或品名。');
         renderMatches({ numbers: [], list: [], truncated: false }, 'ocr');
       }
 
