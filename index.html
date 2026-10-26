@@ -1182,7 +1182,7 @@
       </div>
 
       <div class="photo-check-body">
-        <p id="photoCheckTip" class="photo-check-tip">盡量拍到盒上 C 編號或日文品名；散車拍正面與特色塗裝。反光或沒有字時請改輸入。同編號有多台要自己點。照片只留在這支裝置，不會上傳。</p>
+        <p id="photoCheckTip" class="photo-check-tip">盡量拍到盒上的 C 編號。讀不到就手打編號或品名。同編號有多台要自己點。照片只留在這支裝置，不會上傳。</p>
         <div class="photo-check-preview-wrap">
           <img id="photoCheckPreview" alt="">
         </div>
@@ -8761,9 +8761,19 @@
       function extractNumbers(text) {
         var source = normalizeDigits(text);
         var out = [];
-        var re = /C\s*[-]?\s*0*(\d{1,3})/gi;
+        var re = /C\s*[-]?\s*([0-9Il|OoQZzSs]{1,3})(?![0-9A-Za-z])/gi;
         var match;
-        while ((match = re.exec(source))) out.push('C-' + parseInt(match[1], 10));
+        while ((match = re.exec(source))) {
+          var digits = match[1]
+            .replace(/[Il|]/g, '1')
+            .replace(/[OoQ]/g, '0')
+            .replace(/[Zz]/g, '2')
+            .replace(/[Ss]/g, '5');
+          if (!/^\d{1,3}$/.test(digits)) continue;
+          var n = parseInt(digits, 10);
+          if (n < 1 || n > 50) continue;
+          out.push('C-' + n);
+        }
         return unique(out);
       }
 
@@ -8841,26 +8851,44 @@
         return cars.concat(extra);
       }
 
+      function scoredName(hay, name, shortQuery) {
+        var target = normText(name);
+        if (!target) return 0;
+        if (!shortQuery) {
+          if (hay.indexOf(target) !== -1 && target.length >= 6) return target.length;
+          var minLen = Math.max(8, Math.ceil(target.length * 0.75));
+          if (minLen > target.length) return 0;
+          return nameOverlap(hay, name, minLen);
+        }
+        if (hay.length < 2) return 0;
+        return nameOverlap(hay, name, hay.length);
+      }
+
       function matchCatalog(raw, mode) {
         var text = String(raw || '');
-        var numbers = queryNumbers(text, mode);
+        var numbers = mode === 'ocr' ? extractNumbers(text) : queryNumbers(text, mode);
         var hay = normText(text);
-        var minName = mode === 'typed' && hay.length <= 8 ? 2 : 4;
-        var numberSet = {};
-        numbers.forEach(function (num) { numberSet[num] = true; });
+        var shortQuery = mode === 'typed' && hay.length <= 12;
+        var minName = shortQuery && hay.length <= 8 ? 2 : 4;
+        var keyMin = shortQuery ? 3 : 8;
         var scored = [];
         catalogCars().forEach(function (car) {
           var nums = carNumbers(car);
           var numberHit = false;
           numbers.forEach(function (num) { if (nums[num]) numberHit = true; });
+          if (mode === 'ocr') {
+            if (!numberHit) return;
+            scored.push({ car: car, numberHit: true, nameScore: 0, score: 100 });
+            return;
+          }
           var nameScore = Math.max(
-            nameOverlap(hay, car.jpName, minName),
-            nameOverlap(hay, car.officialNameJp, minName),
-            nameOverlap(hay, car.name, minName),
-            nameOverlap(hay, car.nameZh, minName)
+            scoredName(hay, car.jpName, shortQuery),
+            scoredName(hay, car.officialNameJp, shortQuery),
+            scoredName(hay, car.name, shortQuery),
+            scoredName(hay, car.nameZh, shortQuery)
           );
-          var keys = keywordScore(hay, car.keywords, mode === 'typed' ? 3 : 5);
-          if (!(numberHit || nameScore >= minName || keys >= (mode === 'typed' ? 3 : 5))) return;
+          var keys = keywordScore(hay, car.keywords, keyMin);
+          if (!(numberHit || nameScore >= minName || keys >= keyMin)) return;
           scored.push({
             car: car,
             numberHit: numberHit,
@@ -8907,8 +8935,8 @@
         if (!result.list.length) {
           var empty = document.createElement('p');
           empty.className = 'photo-check-tip';
-          empty.textContent = mode === 'ocr'
-            ? '沒有對到編號。請拍清楚盒上的 C 編號或日文品名，或改用上面的欄位。'
+          empty.textContent = mode === 'ocr' && !(result.numbers && result.numbers.length)
+            ? '讀不到，請手打編號或品名'
             : '圖鑑裡沒有這台。請改編號或品名。';
           resultsEl.appendChild(empty);
           return;
@@ -9006,7 +9034,7 @@
       function ensureWorker() {
         if (workerPromise) return workerPromise;
         workerPromise = loadTesseract().then(function (Tesseract) {
-          return Tesseract.createWorker('eng+jpn', 1, {
+          return Tesseract.createWorker('eng', 1, {
             logger: function (message) {
               if (!message || activeOcrId !== runId || userLocked) return;
               setOcrNote(ocrStatusText(message));
@@ -9030,29 +9058,150 @@
         return label + tailText + '。照片不會上傳。';
       }
 
-      function prepareImage(file) {
-        return new Promise(function (resolve) {
+      function loadImageElement(file) {
+        return new Promise(function (resolve, reject) {
           var url = URL.createObjectURL(file);
           var img = new Image();
           img.onload = function () {
-            var maxEdge = 1600;
-            var scale = Math.min(1, maxEdge / Math.max(img.width, img.height));
-            var canvas = document.createElement('canvas');
-            canvas.width = Math.max(1, Math.round(img.width * scale));
-            canvas.height = Math.max(1, Math.round(img.height * scale));
-            var ctx = canvas.getContext('2d', { willReadFrequently: true });
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             URL.revokeObjectURL(url);
-            resolve(canvas);
+            resolve(img);
           };
           img.onerror = function () {
             URL.revokeObjectURL(url);
-            resolve(file);
+            reject(new Error('image'));
           };
           img.src = url;
         });
+      }
+
+      function paintVariant(img, crop, longEdge) {
+        var sx = Math.max(0, Math.round(img.width * crop.x));
+        var sy = Math.max(0, Math.round(img.height * crop.y));
+        var sw = Math.max(1, Math.min(img.width - sx, Math.round(img.width * crop.w)));
+        var sh = Math.max(1, Math.min(img.height - sy, Math.round(img.height * crop.h)));
+        var scale = longEdge / Math.max(sw, sh);
+        if (scale > 3) scale = 3;
+        var outW = Math.max(1, Math.round(sw * scale));
+        var outH = Math.max(1, Math.round(sh * scale));
+        var maxPx = 2200;
+        if (outW > maxPx || outH > maxPx) {
+          var fit = maxPx / Math.max(outW, outH);
+          outW = Math.max(1, Math.round(outW * fit));
+          outH = Math.max(1, Math.round(outH * fit));
+        }
+        var canvas = document.createElement('canvas');
+        canvas.width = outW;
+        canvas.height = outH;
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, outW, outH);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+        var imageData = ctx.getImageData(0, 0, outW, outH);
+        var d = imageData.data;
+        var n = outW * outH;
+        var hist = new Uint32Array(256);
+        var i;
+        var y;
+        for (i = 0; i < d.length; i += 4) {
+          y = (d[i] * 299 + d[i + 1] * 587 + d[i + 2] * 114) / 1000;
+          y = y < 0 ? 0 : (y > 255 ? 255 : (y | 0));
+          d[i] = d[i + 1] = d[i + 2] = y;
+          hist[y] += 1;
+        }
+        var acc = 0;
+        var low = 0;
+        var high = 255;
+        var g;
+        for (g = 0; g < 256; g++) {
+          acc += hist[g];
+          if (acc >= n * 0.02) { low = g; break; }
+        }
+        acc = 0;
+        for (g = 255; g >= 0; g--) {
+          acc += hist[g];
+          if (acc >= n * 0.02) { high = g; break; }
+        }
+        if (high < low + 16) high = Math.min(255, low + 16);
+        var span = (high - low) || 1;
+        var v;
+        for (i = 0; i < d.length; i += 4) {
+          v = ((d[i] - low) * 255) / span;
+          if (v < 0) v = 0;
+          else if (v > 255) v = 255;
+          else v = v | 0;
+          d[i] = d[i + 1] = d[i + 2] = v;
+        }
+        ctx.putImageData(imageData, 0, 0);
+        return canvas;
+      }
+
+      function tokenNumber(text) {
+        var flat = normalizeDigits(String(text || ''))
+          .replace(/\s+/g, '')
+          .replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, '');
+        if (!flat || flat.length > 6) return [];
+        var nums = extractNumbers(flat);
+        if (nums.length !== 1) return [];
+        var folded = flat.toUpperCase()
+          .replace(/[IL|]/g, '1')
+          .replace(/[OQ]/g, '0')
+          .replace(/Z/g, '2')
+          .replace(/S/g, '5');
+        if (!/^C-?\d{1,2}$/.test(folded)) return [];
+        return nums;
+      }
+
+      function numbersFromRecognition(data) {
+        var hits = [];
+        function take(text, confidence, minConf) {
+          if (!text) return;
+          if (typeof confidence === 'number' && confidence < minConf) return;
+          tokenNumber(text).forEach(function (num) { hits.push(num); });
+        }
+        var words = (data && data.words) || [];
+        words.forEach(function (word) { take(word && word.text, word && word.confidence, 55); });
+        if (!hits.length) {
+          var lines = (data && data.lines) || [];
+          lines.forEach(function (line) { take(line && line.text, line && line.confidence, 50); });
+        }
+        if (!hits.length) {
+          var flat = String((data && data.text) || '').trim();
+          var mean = data && typeof data.confidence === 'number' ? data.confidence : 0;
+          if (flat.length <= 8 && mean >= 50) take(flat, mean, 50);
+        }
+        return unique(hits);
+      }
+
+      function recognizePass(worker, img, pass, id) {
+        if (id !== runId) return Promise.resolve([]);
+        var canvas = paintVariant(img, pass.crop, pass.edge);
+        return worker.setParameters({
+          tessedit_pageseg_mode: pass.psm,
+          user_defined_dpi: '300'
+        }).then(function () {
+          if (id !== runId) return null;
+          return worker.recognize(canvas, {}, { text: true, blocks: true });
+        }).then(function (res) {
+          if (!res || id !== runId) return [];
+          return numbersFromRecognition(res.data || {});
+        });
+      }
+
+      function readCatalogNumbers(worker, img, id) {
+        var passes = [
+          { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 2000, psm: '11' },
+          { crop: { x: 0, y: 0, w: 0.82, h: 0.64 }, edge: 1800, psm: '6' }
+        ];
+        var chain = Promise.resolve([]);
+        passes.forEach(function (pass) {
+          chain = chain.then(function (found) {
+            if (found.length || id !== runId) return found;
+            return recognizePass(worker, img, pass, id);
+          });
+        });
+        return chain;
       }
 
       function startOcr(file) {
@@ -9065,17 +9214,20 @@
           activeOcrId = id;
           return ensureWorker().then(function (worker) {
             if (id !== runId) return null;
-            return prepareImage(file).then(function (image) {
+            return loadImageElement(file).then(function (img) {
               if (id !== runId) return null;
-              return worker.recognize(image, {}, { text: true });
+              return readCatalogNumbers(worker, img, id);
             });
           });
-        }).then(function (res) {
-          if (!res || id !== runId || userLocked) return;
-          var text = (res.data && res.data.text) || '';
-          var flat = String(text).replace(/\s+/g, ' ').trim();
-          setOcrNote(flat ? ('讀到：' + flat.slice(0, 80)) : '沒有讀到文字。請輸入編號或品名。');
-          renderMatches(matchCatalog(text, 'ocr'), 'ocr');
+        }).then(function (found) {
+          if (!found || id !== runId || userLocked) return;
+          if (!found.length) {
+            setOcrNote('讀不到，請手打編號或品名');
+            renderMatches({ numbers: [], list: [], truncated: false }, 'ocr');
+            return;
+          }
+          setOcrNote('讀到：' + found.join('、'));
+          renderMatches(matchCatalog(found.join(' '), 'ocr'), 'ocr');
         }).catch(function () {
           if (id !== runId || userLocked) return;
           setOcrNote('文字辨識沒有完成，請輸入編號或品名。照片仍只在這支裝置。');
