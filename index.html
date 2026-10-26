@@ -1182,7 +1182,7 @@
       </div>
 
       <div class="photo-check-body">
-        <p id="photoCheckTip" class="photo-check-tip">盡量拍到盒上的 C 編號。讀不到就手打編號或品名。同編號有多台要自己點。照片只留在這支裝置，不會上傳。</p>
+        <p id="photoCheckTip" class="photo-check-tip">有盒先讀 C 編號。讀不到編號時，用這頁的官方圖看外形與配色。不確定就手打編號或品名。照片只留在這支裝置，不會上傳。</p>
         <div class="photo-check-preview-wrap">
           <img id="photoCheckPreview" alt="">
         </div>
@@ -8941,15 +8941,16 @@
         if (!list.length) {
           var empty = document.createElement('p');
           empty.className = 'photo-check-tip';
-          empty.textContent = mode === 'ocr'
-            ? '讀不到，請手打編號或品名'
-            : '圖鑑裡沒有這台。請改編號或品名。';
+          empty.textContent = mode === 'typed'
+            ? '圖鑑裡沒有這台。請改編號或品名。'
+            : '讀不到，請手打編號或品名';
           resultsEl.appendChild(empty);
           return;
         }
         var heading = document.createElement('p');
         heading.className = 'photo-check-query-label';
-        if (mode === 'ocr' || numbers.length) heading.textContent = list.length > 1 ? '同編號有多台，請點選' : '對到這台';
+        if (mode === 'visual') heading.textContent = '這些可能是，請點選';
+        else if (mode === 'ocr' || numbers.length) heading.textContent = list.length > 1 ? '同編號有多台，請點選' : '對到這台';
         else if (list.length > 1) heading.textContent = '可能是這幾台，請點選';
         else heading.textContent = '對到這台';
         resultsEl.appendChild(heading);
@@ -9210,33 +9211,256 @@
         return chain;
       }
 
+      var catalogFeaturePromise = null;
+
+      function localImageEntries() {
+        var out = [];
+        catalogCars().forEach(function (car) {
+          var images = car.images || [];
+          var url = '';
+          for (var i = 0; i < images.length; i++) {
+            var candidate = images[i] && images[i].url;
+            if (!candidate) continue;
+            if (candidate.indexOf('http:') === 0 || candidate.indexOf('https:') === 0 || candidate.indexOf('//') === 0) continue;
+            url = candidate;
+            break;
+          }
+          if (url) out.push({ car: car, url: url });
+        });
+        return out;
+      }
+
+      function loadHtmlImage(url) {
+        return new Promise(function (resolve) {
+          var img = new Image();
+          img.onload = function () { resolve(img); };
+          img.onerror = function () { resolve(null); };
+          img.src = url;
+        });
+      }
+
+      function visualFeature(img) {
+        var side = Math.min(img.naturalWidth || img.width, img.naturalHeight || img.height);
+        var sx = Math.floor(((img.naturalWidth || img.width) - side) / 2);
+        var sy = Math.floor(((img.naturalHeight || img.height) - side) / 2);
+        var canvas = document.createElement('canvas');
+        canvas.width = 48;
+        canvas.height = 48;
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 48, 48);
+        ctx.drawImage(img, sx, sy, side, side, 0, 0, 48, 48);
+        var data = ctx.getImageData(0, 0, 48, 48).data;
+        var fg = new Uint8Array(48 * 48);
+        var fgCount = 0;
+        var i;
+        for (i = 0; i < 48 * 48; i++) {
+          var r = data[i * 4] / 255;
+          var g = data[i * 4 + 1] / 255;
+          var b = data[i * 4 + 2] / 255;
+          var mx = Math.max(r, g, b);
+          var mn = Math.min(r, g, b);
+          var sat = mx > 1e-4 ? (mx - mn) / mx : 0;
+          var luma = 0.299 * r + 0.587 * g + 0.114 * b;
+          var on = sat > 0.16 && luma < 0.9 && mx > 0.12;
+          fg[i] = on ? 1 : 0;
+          if (on) fgCount += 1;
+        }
+        if (fgCount < 20) {
+          fgCount = 0;
+          for (i = 0; i < 48 * 48; i++) {
+            var luma2 = (0.299 * data[i * 4] + 0.587 * data[i * 4 + 1] + 0.114 * data[i * 4 + 2]) / 255;
+            fg[i] = luma2 < 0.85 ? 1 : 0;
+            if (fg[i]) fgCount += 1;
+          }
+        }
+        var hist = new Float32Array(64);
+        for (i = 0; i < 48 * 48; i++) {
+          if (!fg[i]) continue;
+          var qr = Math.min(3, (data[i * 4] / 255 * 3.999) | 0);
+          var qg = Math.min(3, (data[i * 4 + 1] / 255 * 3.999) | 0);
+          var qb = Math.min(3, (data[i * 4 + 2] / 255 * 3.999) | 0);
+          hist[qr * 16 + qg * 4 + qb] += 1;
+        }
+        var hsum = 0;
+        for (i = 0; i < 64; i++) hsum += hist[i];
+        if (hsum) {
+          for (i = 0; i < 64; i++) hist[i] /= hsum;
+        }
+        var spatial = new Float32Array(27);
+        var ratios = new Float32Array(9);
+        var by;
+        var bx;
+        for (by = 0; by < 3; by++) {
+          for (bx = 0; bx < 3; bx++) {
+            var cell = by * 3 + bx;
+            var sr = 0;
+            var sg = 0;
+            var sb = 0;
+            var n = 0;
+            var y;
+            var x;
+            for (y = by * 16; y < (by + 1) * 16; y++) {
+              for (x = bx * 16; x < (bx + 1) * 16; x++) {
+                var pi = y * 48 + x;
+                if (!fg[pi]) continue;
+                n += 1;
+                sr += data[pi * 4];
+                sg += data[pi * 4 + 1];
+                sb += data[pi * 4 + 2];
+              }
+            }
+            ratios[cell] = n / 256;
+            if (n) {
+              spatial[cell * 3] = sr / n / 255;
+              spatial[cell * 3 + 1] = sg / n / 255;
+              spatial[cell * 3 + 2] = sb / n / 255;
+            } else {
+              spatial[cell * 3] = 0.9;
+              spatial[cell * 3 + 1] = 0.9;
+              spatial[cell * 3 + 2] = 0.9;
+            }
+          }
+        }
+        return { hist: hist, spatial: spatial, ratios: ratios };
+      }
+
+      function visualSim(a, b) {
+        var inter = 0;
+        var i;
+        for (i = 0; i < 64; i++) inter += Math.min(a.hist[i], b.hist[i]);
+        var cols = 0;
+        for (i = 0; i < 9; i++) {
+          if (a.ratios[i] < 0.08 && b.ratios[i] < 0.08) {
+            cols += 1;
+            continue;
+          }
+          if (a.ratios[i] < 0.08 || b.ratios[i] < 0.08) {
+            cols += 0.35;
+            continue;
+          }
+          var d = (Math.abs(a.spatial[i * 3] - b.spatial[i * 3])
+            + Math.abs(a.spatial[i * 3 + 1] - b.spatial[i * 3 + 1])
+            + Math.abs(a.spatial[i * 3 + 2] - b.spatial[i * 3 + 2])) / 3;
+          cols += 1 - d;
+        }
+        return 0.62 * inter + 0.38 * (cols / 9);
+      }
+
+      function mapPool(items, limit, fn) {
+        var index = 0;
+        var out = new Array(items.length);
+        function next() {
+          if (index >= items.length) return Promise.resolve();
+          var current = index;
+          index += 1;
+          return fn(items[current]).then(function (value) {
+            out[current] = value;
+            return next();
+          });
+        }
+        var jobs = [];
+        var n = Math.min(limit, items.length);
+        for (var i = 0; i < n; i++) jobs.push(next());
+        return Promise.all(jobs).then(function () { return out; });
+      }
+
+      function ensureCatalogFeatures() {
+        if (catalogFeaturePromise) return catalogFeaturePromise;
+        catalogFeaturePromise = mapPool(localImageEntries(), 4, function (entry) {
+          return loadHtmlImage(entry.url).then(function (img) {
+            if (!img) return null;
+            return { car: entry.car, feature: visualFeature(img) };
+          });
+        }).then(function (rows) {
+          return rows.filter(Boolean);
+        }).catch(function (err) {
+          catalogFeaturePromise = null;
+          throw err;
+        });
+        return catalogFeaturePromise;
+      }
+
+      function rankVisual(img) {
+        return ensureCatalogFeatures().then(function (rows) {
+          var query = visualFeature(img);
+          var scored = [];
+          rows.forEach(function (row) {
+            scored.push({ car: row.car, score: visualSim(query, row.feature), numberHit: false });
+          });
+          scored.sort(function (a, b) { return b.score - a.score; });
+          if (!scored.length || scored[0].score < 0.66) return [];
+          var best = scored[0].score;
+          var picked = scored.filter(function (item) {
+            return item.score >= 0.66 && item.score >= best - 0.03;
+          }).slice(0, 4);
+          picked.sort(function (a, b) {
+            var ao = ownership(a.car).owned ? 1 : 0;
+            var bo = ownership(b.car).owned ? 1 : 0;
+            if (ao !== bo) return bo - ao;
+            return b.score - a.score;
+          });
+          return picked;
+        });
+      }
+
+      function showManualPrompt() {
+        setOcrNote('讀不到，請手打編號或品名');
+        renderMatches({ numbers: [], list: [], truncated: false }, 'ocr');
+      }
+
+      function showVisual(img, id) {
+        setOcrNote('沒有讀到編號，正在對照官方圖的外形與配色。照片不會上傳。');
+        return rankVisual(img).then(function (picked) {
+          if (id !== runId || userLocked) return;
+          if (!picked.length) {
+            showManualPrompt();
+            return;
+          }
+          setOcrNote('依外形、配色推測，不是讀到編號。');
+          renderMatches({ numbers: [], list: picked, truncated: false }, 'visual');
+        }).catch(function () {
+          if (id !== runId || userLocked) return;
+          showManualPrompt();
+        });
+      }
+
       function startOcr(file) {
         var id = ++runId;
         userLocked = false;
         clearResults();
         setOcrNote('正在讀取盒上文字…照片不會上傳。');
+        var readyImg = null;
         enqueue(function () {
           if (id !== runId) return null;
           activeOcrId = id;
           return ensureWorker().then(function (worker) {
             if (id !== runId) return null;
             return loadImageElement(file).then(function (img) {
+              readyImg = img;
               if (id !== runId) return null;
               return readCatalogNumbers(worker, img, id);
             });
           });
         }).then(function (found) {
-          if (!found || id !== runId || userLocked) return;
-          if (!found.length) {
-            setOcrNote('讀不到，請手打編號或品名');
-            renderMatches({ numbers: [], list: [], truncated: false }, 'ocr');
-            return;
+          if (id !== runId || userLocked) return null;
+          if (found && found.length) {
+            setOcrNote('讀到編號：' + found.join('、'));
+            renderMatches(matchCatalog(found.join(' '), 'ocr'), 'ocr');
+            return null;
           }
-          setOcrNote('讀到：' + found.join('、'));
-          renderMatches(matchCatalog(found.join(' '), 'ocr'), 'ocr');
+          if (!readyImg) {
+            showManualPrompt();
+            return null;
+          }
+          return showVisual(readyImg, id);
         }).catch(function () {
           if (id !== runId || userLocked) return;
-          setOcrNote('文字辨識沒有完成，請輸入編號或品名。照片仍只在這支裝置。');
+          if (!readyImg) {
+            setOcrNote('文字辨識沒有完成，請輸入編號或品名。照片仍只在這支裝置。');
+            return;
+          }
+          showVisual(readyImg, id);
         });
       }
 
