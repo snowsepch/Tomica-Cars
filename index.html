@@ -8932,10 +8932,16 @@
 
       function renderMatches(result, mode) {
         clearResults();
-        if (!result.list.length) {
+        var numbers = (result && result.numbers) || [];
+        var list = (result && result.list) || [];
+        if (mode === 'ocr') {
+          list = list.filter(function (item) { return item && item.numberHit; });
+          if (!numbers.length) list = [];
+        }
+        if (!list.length) {
           var empty = document.createElement('p');
           empty.className = 'photo-check-tip';
-          empty.textContent = mode === 'ocr' && !(result.numbers && result.numbers.length)
+          empty.textContent = mode === 'ocr'
             ? '讀不到，請手打編號或品名'
             : '圖鑑裡沒有這台。請改編號或品名。';
           resultsEl.appendChild(empty);
@@ -8943,17 +8949,17 @@
         }
         var heading = document.createElement('p');
         heading.className = 'photo-check-query-label';
-        if (result.list.length > 1 && result.numbers.length) heading.textContent = '同編號有多台，請點選';
-        else if (result.list.length > 1) heading.textContent = '可能是這幾台，請點選';
+        if (mode === 'ocr' || numbers.length) heading.textContent = list.length > 1 ? '同編號有多台，請點選' : '對到這台';
+        else if (list.length > 1) heading.textContent = '可能是這幾台，請點選';
         else heading.textContent = '對到這台';
         resultsEl.appendChild(heading);
-        if (result.truncated) {
+        if (mode !== 'ocr' && result.truncated) {
           var more = document.createElement('p');
           more.className = 'photo-check-tip';
           more.textContent = '只列出最接近的幾台。加上編號可以縮小範圍。';
           resultsEl.appendChild(more);
         }
-        result.list.forEach(function (item, index) {
+        list.forEach(function (item, index) {
           var own = ownership(item.car);
           var car = item.car;
           var number = car.displayNumber || car.id || '';
