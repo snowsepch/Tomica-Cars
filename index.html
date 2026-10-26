@@ -9096,7 +9096,7 @@
         });
       }
 
-      function paintVariant(img, crop, longEdge) {
+      function paintVariant(img, crop, longEdge, keepColor) {
         var sx = Math.max(0, Math.round(img.width * crop.x));
         var sy = Math.max(0, Math.round(img.height * crop.y));
         var sw = Math.max(1, Math.min(img.width - sx, Math.round(img.width * crop.w)));
@@ -9120,6 +9120,7 @@
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+        if (keepColor) return canvas;
         var imageData = ctx.getImageData(0, 0, outW, outH);
         var d = imageData.data;
         var n = outW * outH;
@@ -9198,7 +9199,7 @@
 
       function recognizeRaw(worker, img, pass, id) {
         if (id !== runId) return Promise.resolve(null);
-        var canvas = paintVariant(img, pass.crop, pass.edge);
+        var canvas = paintVariant(img, pass.crop, pass.edge, pass.color);
         return worker.setParameters({
           tessedit_pageseg_mode: pass.psm,
           user_defined_dpi: '300'
@@ -9256,13 +9257,41 @@
         });
       }
 
-      function visualFeature(img, crop) {
+      function hueOf(r, g, b) {
+        var mx = r > g ? (r > b ? r : b) : (g > b ? g : b);
+        var mn = r < g ? (r < b ? r : b) : (g < b ? g : b);
+        var diff = mx - mn;
+        if (diff <= 1e-6 || mx <= 1e-4) return { hue: 0, sat: 0, luma: 0.299 * r + 0.587 * g + 0.114 * b };
+        var hue;
+        if (mx === r) {
+          hue = ((g - b) / diff) % 6;
+          if (hue < 0) hue += 6;
+        } else if (mx === g) hue = (b - r) / diff + 2;
+        else hue = (r - g) / diff + 4;
+        return {
+          hue: hue / 6,
+          sat: diff / mx,
+          luma: 0.299 * r + 0.587 * g + 0.114 * b
+        };
+      }
+
+      function packHue(sum, count) {
+        if (count < 40) return null;
+        var hist = new Float32Array(12);
+        var i;
+        for (i = 0; i < 12; i++) hist[i] = sum[i] / count;
+        var peak = 0;
+        for (i = 1; i < 12; i++) if (hist[i] > hist[peak]) peak = i;
+        return { hist: hist, sat: sum[12] / count, peak: peak, pm: hist[peak] };
+      }
+
+      function colorSignature(img, crop) {
         var nw = img.naturalWidth || img.width;
         var nh = img.naturalHeight || img.height;
-        var sx;
-        var sy;
-        var sw;
-        var sh;
+        var sx = 0;
+        var sy = 0;
+        var sw = nw;
+        var sh = nh;
         if (crop && crop.frac) {
           var side = Math.max(1, Math.floor(Math.min(nw, nh) * crop.frac));
           var cx = nw / 2;
@@ -9271,122 +9300,51 @@
           sy = Math.floor(Math.max(0, Math.min(nh - side, cy - side / 2)));
           sw = side;
           sh = side;
-        } else if (crop && crop.w) {
-          sx = Math.floor(crop.x * nw);
-          sy = Math.floor(crop.y * nh);
-          sw = Math.max(1, Math.floor(crop.w * nw));
-          sh = Math.max(1, Math.floor(crop.h * nh));
-          if (sx + sw > nw) sw = nw - sx;
-          if (sy + sh > nh) sh = nh - sy;
-        } else {
-          var full = Math.min(nw, nh);
-          sx = Math.floor((nw - full) / 2);
-          sy = Math.floor((nh - full) / 2);
-          sw = full;
-          sh = full;
         }
+        var longEdge = Math.max(sw, sh);
+        var scale = 180 / longEdge;
+        if (scale > 1) scale = 1;
+        var outW = Math.max(1, Math.round(sw * scale));
+        var outH = Math.max(1, Math.round(sh * scale));
         var canvas = document.createElement('canvas');
-        canvas.width = 48;
-        canvas.height = 48;
+        canvas.width = outW;
+        canvas.height = outH;
         var ctx = canvas.getContext('2d', { willReadFrequently: true });
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, 48, 48);
-        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, 48, 48);
-        var data = ctx.getImageData(0, 0, 48, 48).data;
-        var fg = new Uint8Array(48 * 48);
-        var fgCount = 0;
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+        var data = ctx.getImageData(0, 0, outW, outH).data;
+        var open = new Float32Array(13);
+        var nored = new Float32Array(13);
+        var openN = 0;
+        var noredN = 0;
         var i;
-        for (i = 0; i < 48 * 48; i++) {
-          var r = data[i * 4] / 255;
-          var g = data[i * 4 + 1] / 255;
-          var b = data[i * 4 + 2] / 255;
-          var mx = Math.max(r, g, b);
-          var mn = Math.min(r, g, b);
-          var sat = mx > 1e-4 ? (mx - mn) / mx : 0;
-          var luma = 0.299 * r + 0.587 * g + 0.114 * b;
-          var on = sat > 0.16 && luma < 0.9 && mx > 0.12;
-          fg[i] = on ? 1 : 0;
-          if (on) fgCount += 1;
+        for (i = 0; i < data.length; i += 4) {
+          var tone = hueOf(data[i] / 255, data[i + 1] / 255, data[i + 2] / 255);
+          if (tone.sat < 0.28 || tone.luma <= 0.18 || tone.luma >= 0.9) continue;
+          var bin = Math.min(11, (tone.hue * 12) | 0);
+          open[bin] += 1;
+          open[12] += tone.sat;
+          openN += 1;
+          var red = tone.sat > 0.35 && data[i] / 255 > 0.45
+            && data[i] / 255 > data[i + 1] / 255 + 0.15
+            && data[i] / 255 > data[i + 2] / 255 + 0.15;
+          if (red) continue;
+          nored[bin] += 1;
+          nored[12] += tone.sat;
+          noredN += 1;
         }
-        if (fgCount < 20) {
-          fgCount = 0;
-          for (i = 0; i < 48 * 48; i++) {
-            var luma2 = (0.299 * data[i * 4] + 0.587 * data[i * 4 + 1] + 0.114 * data[i * 4 + 2]) / 255;
-            fg[i] = luma2 < 0.85 ? 1 : 0;
-            if (fg[i]) fgCount += 1;
-          }
-        }
-        var hist = new Float32Array(64);
-        for (i = 0; i < 48 * 48; i++) {
-          if (!fg[i]) continue;
-          var qr = Math.min(3, (data[i * 4] / 255 * 3.999) | 0);
-          var qg = Math.min(3, (data[i * 4 + 1] / 255 * 3.999) | 0);
-          var qb = Math.min(3, (data[i * 4 + 2] / 255 * 3.999) | 0);
-          hist[qr * 16 + qg * 4 + qb] += 1;
-        }
-        var hsum = 0;
-        for (i = 0; i < 64; i++) hsum += hist[i];
-        if (hsum) {
-          for (i = 0; i < 64; i++) hist[i] /= hsum;
-        }
-        var spatial = new Float32Array(27);
-        var ratios = new Float32Array(9);
-        var by;
-        var bx;
-        for (by = 0; by < 3; by++) {
-          for (bx = 0; bx < 3; bx++) {
-            var cell = by * 3 + bx;
-            var sr = 0;
-            var sg = 0;
-            var sb = 0;
-            var n = 0;
-            var y;
-            var x;
-            for (y = by * 16; y < (by + 1) * 16; y++) {
-              for (x = bx * 16; x < (bx + 1) * 16; x++) {
-                var pi = y * 48 + x;
-                if (!fg[pi]) continue;
-                n += 1;
-                sr += data[pi * 4];
-                sg += data[pi * 4 + 1];
-                sb += data[pi * 4 + 2];
-              }
-            }
-            ratios[cell] = n / 256;
-            if (n) {
-              spatial[cell * 3] = sr / n / 255;
-              spatial[cell * 3 + 1] = sg / n / 255;
-              spatial[cell * 3 + 2] = sb / n / 255;
-            } else {
-              spatial[cell * 3] = 0.9;
-              spatial[cell * 3 + 1] = 0.9;
-              spatial[cell * 3 + 2] = 0.9;
-            }
-          }
-        }
-        return { hist: hist, spatial: spatial, ratios: ratios };
+        return { open: packHue(open, openN), nored: packHue(nored, noredN) };
       }
 
-      function visualSim(a, b) {
+      function hueScore(q, d) {
+        if (!q || !d) return 0;
         var inter = 0;
         var i;
-        for (i = 0; i < 64; i++) inter += Math.min(a.hist[i], b.hist[i]);
-        var cols = 0;
-        for (i = 0; i < 9; i++) {
-          if (a.ratios[i] < 0.08 && b.ratios[i] < 0.08) {
-            cols += 1;
-            continue;
-          }
-          if (a.ratios[i] < 0.08 || b.ratios[i] < 0.08) {
-            cols += 0.35;
-            continue;
-          }
-          var d = (Math.abs(a.spatial[i * 3] - b.spatial[i * 3])
-            + Math.abs(a.spatial[i * 3 + 1] - b.spatial[i * 3 + 1])
-            + Math.abs(a.spatial[i * 3 + 2] - b.spatial[i * 3 + 2])) / 3;
-          cols += 1 - d;
-        }
-        return 0.62 * inter + 0.38 * (cols / 9);
+        for (i = 0; i < 12; i++) inter += Math.min(q.hist[i], d.hist[i]);
+        var satGap = Math.abs(q.sat - d.sat);
+        var satFactor = 1 - 0.2 * Math.min(1, satGap / 0.45);
+        var peak = q.peak === d.peak ? 1 : 0.9;
+        var pure = 1 - 0.15 * Math.min(1, Math.abs(q.pm - d.pm) / 0.5);
+        return inter * satFactor * peak * pure;
       }
 
       function mapPool(items, limit, fn) {
@@ -9412,7 +9370,7 @@
         catalogFeaturePromise = mapPool(localImageEntries(), 4, function (entry) {
           return loadHtmlImage(entry.url).then(function (img) {
             if (!img) return null;
-            return { car: entry.car, feature: visualFeature(img) };
+            return { car: entry.car, sig: colorSignature(img) };
           });
         }).then(function (rows) {
           return rows.filter(Boolean);
@@ -9423,59 +9381,54 @@
         return catalogFeaturePromise;
       }
 
-      function queryVisualFeatures(img) {
+      function queryColorSignatures(img) {
         return [
-          visualFeature(img),
-          visualFeature(img, { frac: 0.55, yshift: 0.06 }),
-          visualFeature(img, { x: 0.14, y: 0.36, w: 0.72, h: 0.5 })
+          colorSignature(img),
+          colorSignature(img, { frac: 0.72, yshift: 0 }),
+          colorSignature(img, { frac: 0.55, yshift: 0.04 })
         ];
       }
 
-      function featureSaturation(feature) {
-        var sat = 0;
-        var i;
-        for (i = 0; i < 64; i++) {
-          var qr = (i / 16) | 0;
-          var qg = ((i / 4) | 0) % 4;
-          var qb = i % 4;
-          var mx = qr > qg ? (qr > qb ? qr : qb) : (qg > qb ? qg : qb);
-          var mn = qr < qg ? (qr < qb ? qr : qb) : (qg < qb ? qg : qb);
-          sat += feature.hist[i] * (mx ? (mx - mn) / mx : 0);
-        }
-        return sat;
+      function rankChannel(rows, queries, channel, minScore, minGap) {
+        var scored = [];
+        rows.forEach(function (row) {
+          var bestScore = 0;
+          queries.forEach(function (query) {
+            var score = hueScore(query[channel], row.sig[channel]);
+            if (score > bestScore) bestScore = score;
+          });
+          scored.push({ car: row.car, score: bestScore, numberHit: false });
+        });
+        scored.sort(function (a, b) { return b.score - a.score; });
+        if (!scored.length || scored[0].score < minScore) return null;
+        var gap = scored.length > 1 ? scored[0].score - scored[1].score : 1;
+        if (gap < minGap) return null;
+        var best = scored[0].score;
+        var picked = scored.filter(function (item) {
+          return item.score >= best - 0.022;
+        }).slice(0, 3);
+        picked.sort(function (a, b) {
+          var ao = ownership(a.car).owned ? 1 : 0;
+          var bo = ownership(b.car).owned ? 1 : 0;
+          if (ao !== bo) return bo - ao;
+          return b.score - a.score;
+        });
+        picked.gap = gap;
+        return picked;
       }
 
       function rankVisual(img) {
-        var queries = queryVisualFeatures(img);
-        var colorful = 0;
+        var queries = queryColorSignatures(img);
+        var colorful = false;
         queries.forEach(function (query) {
-          var sat = featureSaturation(query);
-          if (sat > colorful) colorful = sat;
+          if (query.open || query.nored) colorful = true;
         });
-        if (colorful < 0.12) return Promise.resolve([]);
+        if (!colorful) return Promise.resolve([]);
         return ensureCatalogFeatures().then(function (rows) {
-          var scored = [];
-          rows.forEach(function (row) {
-            var bestScore = 0;
-            queries.forEach(function (query) {
-              var score = visualSim(query, row.feature);
-              if (score > bestScore) bestScore = score;
-            });
-            scored.push({ car: row.car, score: bestScore, numberHit: false });
-          });
-          scored.sort(function (a, b) { return b.score - a.score; });
-          if (!scored.length || scored[0].score < 0.66) return [];
-          var best = scored[0].score;
-          var picked = scored.filter(function (item) {
-            return item.score >= 0.66 && item.score >= best - 0.045;
-          }).slice(0, 4);
-          picked.sort(function (a, b) {
-            var ao = ownership(a.car).owned ? 1 : 0;
-            var bo = ownership(b.car).owned ? 1 : 0;
-            if (ao !== bo) return bo - ao;
-            return b.score - a.score;
-          });
-          return picked;
+          var masked = rankChannel(rows, queries, 'nored', 0.9, 0.02);
+          var open = rankChannel(rows, queries, 'open', 0.91, 0.02);
+          if (masked && open) return masked.gap >= open.gap ? masked : open;
+          return masked || open || [];
         });
       }
 
@@ -9493,11 +9446,19 @@
         if (list.indexOf(car) === -1) list.push(car);
       }
 
+      function foldKana(text) {
+        return String(text || '')
+          .replace(/[\s\u3000・･.．,，、/／\-－ーｰ_=~＝~～|｜（）()「」『』【】\[\]：:；;]/g, '')
+          .replace(/ジ/g, 'シ')
+          .replace(/ヅ/g, 'ツ');
+      }
+
       function buildExtraIndex() {
         if (extraIndex) return extraIndex;
         var dream = {};
         var dm = {};
         var names = {};
+        var phrases = {};
         catalogCars().forEach(function (car) {
           var blob = [car.id, car.displayNumber, car.jpName, car.officialNameJp, car.name, car.nameZh, car.keywords].filter(Boolean).join('\n');
           var folded = foldLatin(blob);
@@ -9526,11 +9487,32 @@
             if (!names[key]) names[key] = { raw: raw, cars: [] };
             pushUnique(names[key].cars, car);
           });
+          var phraseBlob = [car.jpName, car.officialNameJp, car.keywords, car.description].filter(Boolean).join('\n');
+          var phraseRe = /[\u30A0-\u30FF\u30FC]{8,}/g;
+          var phraseMatch;
+          var seenPhrase = {};
+          while ((phraseMatch = phraseRe.exec(phraseBlob))) {
+            var phraseRaw = phraseMatch[0];
+            var phraseKey = foldKana(phraseRaw);
+            if (phraseKey.length < 7 || seenPhrase[phraseKey]) continue;
+            seenPhrase[phraseKey] = true;
+            if (!phrases[phraseKey]) phrases[phraseKey] = { raw: phraseRaw, cars: [] };
+            else if (phraseRaw.length > phrases[phraseKey].raw.length) phrases[phraseKey].raw = phraseRaw;
+            pushUnique(phrases[phraseKey].cars, car);
+          }
         });
         Object.keys(dream).forEach(function (key) { if (dream[key].length > 4) delete dream[key]; });
         Object.keys(dm).forEach(function (key) { if (dm[key].length > 4) delete dm[key]; });
         Object.keys(names).forEach(function (key) { if (names[key].cars.length > 4) delete names[key]; });
-        extraIndex = { dream: dream, dm: dm, names: names, nameKeys: Object.keys(names) };
+        Object.keys(phrases).forEach(function (key) { if (phrases[key].cars.length !== 1) delete phrases[key]; });
+        extraIndex = {
+          dream: dream,
+          dm: dm,
+          names: names,
+          nameKeys: Object.keys(names),
+          phrases: phrases,
+          phraseKeys: Object.keys(phrases)
+        };
         return extraIndex;
       }
 
@@ -9607,6 +9589,27 @@
           cur = swap;
         }
         return prev[bl];
+      }
+
+      function phrasesFromRecognition(data) {
+        var index = buildExtraIndex();
+        if (!index.phraseKeys.length) return null;
+        var lines = (data && data.lines) || [];
+        var cars = [];
+        var label = '';
+        lines.forEach(function (line) {
+          if (!line || !line.text) return;
+          if (typeof line.confidence === 'number' && line.confidence < 45) return;
+          var folded = foldKana(line.text);
+          if (folded.length < 7) return;
+          index.phraseKeys.forEach(function (key) {
+            if (folded.indexOf(key) === -1) return;
+            if (!label) label = index.phrases[key].raw;
+            pushUnique(cars, index.phrases[key].cars[0]);
+          });
+        });
+        if (cars.length !== 1) return null;
+        return { kind: 'name', label: label, cars: cars };
       }
 
       function namesFromRecognition(data) {
@@ -9700,16 +9703,22 @@
 
       function readJapaneseName(img, id) {
         setOcrNote('外形對不上，正在讀盒上的日文品名。照片不會上傳。');
+        var passes = [
+          { crop: { x: 0.04, y: 0.16, w: 0.92, h: 0.48 }, edge: 1700, psm: '6', color: true },
+          { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 1700, psm: '6', color: true }
+        ];
         return ensureWorker('jpn').then(function (worker) {
-          if (id !== runId || userLocked) return null;
-          return recognizeRaw(worker, img, {
-            crop: { x: 0.01, y: 0.02, w: 0.98, h: 0.96 },
-            edge: 1800,
-            psm: '6'
-          }, id);
-        }).then(function (data) {
-          if (id !== runId || userLocked || !data) return null;
-          return namesFromRecognition(data);
+          var chain = Promise.resolve(null);
+          passes.forEach(function (pass) {
+            chain = chain.then(function (hit) {
+              if (hit || id !== runId || userLocked) return hit;
+              return recognizeRaw(worker, img, pass, id).then(function (data) {
+                if (!data || id !== runId || userLocked) return null;
+                return phrasesFromRecognition(data) || namesFromRecognition(data);
+              });
+            });
+          });
+          return chain;
         }).catch(function () {
           return null;
         });
