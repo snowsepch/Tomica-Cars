@@ -528,27 +528,98 @@
       max-height: min(32vh, 220px);
       object-fit: contain;
     }
-    .photo-check-prompt {
+    .photo-check-query {
       margin-top: 0.75rem;
-      padding: 0.7rem 0.75rem;
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      background: var(--bg-canvas);
     }
-    .photo-check-prompt-label {
-      margin: 0;
+    .photo-check-query-label {
+      margin: 0 0 0.35rem;
       font-size: 0.7rem;
       font-weight: 700;
       color: var(--text-muted);
       letter-spacing: 0.01em;
     }
-    .photo-check-prompt p {
-      margin: 0.3rem 0 0.55rem;
+    .photo-check-query-row {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .photo-check-query-row input {
+      flex: 1;
+      min-width: 0;
+      min-height: 44px;
+      border: 1px solid var(--border-medium);
+      border-radius: 10px;
+      padding: 0.4rem 0.65rem;
+      font: inherit;
       font-size: 0.84rem;
-      line-height: 1.6;
+      background: #ffffff;
+      color: var(--text-primary);
+    }
+    .photo-check-query-row button {
+      min-height: 44px;
+      padding: 0 0.75rem;
+      border-radius: 10px;
+      border: 1px solid var(--accent-black);
+      background: var(--accent-black);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .photo-check-heard {
+      margin: 0.55rem 0 0;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
       user-select: text;
       -webkit-user-select: text;
     }
+    .photo-check-results {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .photo-check-result {
+      width: 100%;
+      text-align: left;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.7rem 0.75rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      font: inherit;
+    }
+    .photo-check-result.is-selected {
+      border-color: var(--accent-black);
+    }
+    .photo-check-result-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .photo-check-result-name {
+      margin: 0.35rem 0 0;
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .photo-check-result-jp {
+      margin: 0.15rem 0 0;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    .photo-check-result-counts {
+      margin: 0.25rem 0 0;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-primary);
+    }
+    .photo-check-owned { color: var(--success-green); font-weight: 700; font-size: 0.78rem; }
+    .photo-check-unowned { color: var(--text-secondary); font-weight: 700; font-size: 0.78rem; }
     .photo-check-copy,
     .photo-check-textbtn {
       background: transparent;
@@ -1105,42 +1176,29 @@
       <div class="photo-check-head">
         <div>
           <h2 id="photoCheckTitle">拍照對照</h2>
-          <p>傳給東京｜小物獵人，問這台有沒有買過</p>
+          <p>在這頁對照圖鑑，看有沒有買過</p>
         </div>
         <button id="photoCheckCloseBtn" type="button" class="photo-check-close" aria-label="關閉拍照對照">✕</button>
       </div>
 
       <div class="photo-check-body">
-        <p id="photoCheckTip" class="photo-check-tip">盡量拍到盒上 C 編號或日文品名；散車拍正面與特色塗裝。照片只留在這支裝置，不會上傳。</p>
+        <p id="photoCheckTip" class="photo-check-tip">盡量拍到盒上 C 編號或日文品名；散車拍正面與特色塗裝。反光或沒有字時請改輸入。同編號有多台要自己點。照片只留在這支裝置，不會上傳。</p>
         <div class="photo-check-preview-wrap">
           <img id="photoCheckPreview" alt="">
         </div>
-
-        <div class="photo-check-prompt">
-          <p class="photo-check-prompt-label">貼上前的對照提示</p>
-          <p id="photoCheckPromptText">請對照圖鑑，告訴我這台有沒有買過（盒裝／散車）</p>
-          <button id="photoCheckCopyBtn" type="button" class="photo-check-copy">複製提示</button>
-        </div>
-
-        <p class="photo-check-note">開對話後把剛拍的照片貼上。</p>
-        <div class="photo-check-links">
-          <a
-            id="photoCheckWebLink"
-            href="https://cursor.com/grok-bot/link/v1/agent?id=27d11928-4154-46e3-9922-849d5b0138c5"
-            target="_blank"
-            rel="noopener noreferrer"
-          >網頁開啟同一個對話</a>
-        </div>
-        <p class="photo-check-url">https://cursor.com/grok-bot/link/v1/agent?id=27d11928-4154-46e3-9922-849d5b0138c5</p>
+        <p id="photoCheckOcrNote" class="photo-check-heard" role="status" aria-live="polite"></p>
+        <form id="photoCheckQueryForm" class="photo-check-query" autocomplete="off">
+          <label id="photoCheckQueryLabel" class="photo-check-query-label" for="photoCheckQuery">改查編號或品名</label>
+          <div class="photo-check-query-row">
+            <input id="photoCheckQuery" type="text" inputmode="text" enterkeyhint="search" placeholder="例如 C-37、メーター" aria-describedby="photoCheckTip">
+            <button type="submit">對照圖鑑</button>
+          </div>
+        </form>
+        <div id="photoCheckResults" class="photo-check-results"></div>
       </div>
 
       <div class="photo-check-footer">
         <p id="photoCheckStatus" class="photo-check-status" role="status" aria-live="polite"></p>
-        <a
-          id="photoCheckSendLink"
-          class="photo-check-primary"
-          href="grokbot://app/v1/agent?id=27d11928-4154-46e3-9922-849d5b0138c5"
-        >傳到對話查是否已購入</a>
         <button id="photoCheckShareBtn" type="button" class="photo-check-secondary" hidden>系統分享</button>
         <button id="photoCheckSaveBtn" type="button" class="photo-check-secondary">儲存照片</button>
         <div class="photo-check-row">
@@ -8596,13 +8654,14 @@
       switchMainTab('official');
     }
     renderCompendium();
+    window.CARS_DATABASE = CARS_DATABASE;
+    window.WEEKLY_PICKS_DATA = WEEKLY_PICKS_DATA;
   </script>
 
   <script>
-    // 拍照對照：檔案只留在這支裝置（object URL）。不 fetch、不送分析、不寫進頁面資料。
+    // 拍照對照：辨識與比對都在這支瀏覽器裡。照片不 fetch、不進永久儲存。
     (function () {
-      var AGENT_APP = 'grokbot://app/v1/agent?id=27d11928-4154-46e3-9922-849d5b0138c5';
-      var PHOTO_PROMPT = '請對照圖鑑，告訴我這台有沒有買過（盒裝／散車）';
+      var TESSERACT_SRC = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
 
       var openBtn = document.getElementById('photoCheckOpenBtn');
       var libraryBtn = document.getElementById('photoCheckLibraryBtn');
@@ -8612,27 +8671,39 @@
       var sheet = document.getElementById('photoCheckSheet');
       var preview = document.getElementById('photoCheckPreview');
       var statusEl = document.getElementById('photoCheckStatus');
-      var sendLink = document.getElementById('photoCheckSendLink');
+      var ocrNote = document.getElementById('photoCheckOcrNote');
+      var queryForm = document.getElementById('photoCheckQueryForm');
+      var queryInput = document.getElementById('photoCheckQuery');
+      var resultsEl = document.getElementById('photoCheckResults');
       var shareBtn = document.getElementById('photoCheckShareBtn');
       var saveBtn = document.getElementById('photoCheckSaveBtn');
-      var copyBtn = document.getElementById('photoCheckCopyBtn');
       var closeBtn = document.getElementById('photoCheckCloseBtn');
       var dismissBtn = document.getElementById('photoCheckDismissBtn');
       var retakeBtn = document.getElementById('photoCheckRetakeBtn');
       var sheetLibraryBtn = document.getElementById('photoCheckSheetLibraryBtn');
 
-      if (!openBtn || !cameraInput || !overlay || !sheet || !preview) return;
+      if (!openBtn || !cameraInput || !overlay || !sheet || !preview || !resultsEl) return;
 
       var objectUrl = '';
       var currentFile = null;
       var isOpen = false;
       var session = 0;
+      var runId = 0;
+      var activeOcrId = 0;
+      var userLocked = false;
       var prevOverflow = null;
       var lastFocus = null;
       var inerted = [];
+      var workerPromise = null;
+      var tesseractPromise = null;
+      var tail = Promise.resolve();
 
       function setStatus(text) {
         statusEl.textContent = text || '';
+      }
+
+      function setOcrNote(text) {
+        ocrNote.textContent = text || '';
       }
 
       function shareSupported(file) {
@@ -8661,6 +8732,354 @@
           return 'tomica-photo-check' + ext;
         }
         return raw;
+      }
+
+      function normalizeDigits(text) {
+        return String(text || '')
+          .replace(/[０-９]/g, function (ch) { return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0); })
+          .replace(/[Ｃｃ]/g, 'C')
+          .replace(/[－—–−]/g, '-');
+      }
+
+      function normText(text) {
+        return normalizeDigits(text)
+          .toLowerCase()
+          .replace(/[\s\u3000・･.．,，、/／\-－_（）()「」『』【】\[\]：:；;]/g, '');
+      }
+
+      function unique(list) {
+        var seen = {};
+        var out = [];
+        list.forEach(function (item) {
+          if (!item || seen[item]) return;
+          seen[item] = true;
+          out.push(item);
+        });
+        return out;
+      }
+
+      function extractNumbers(text) {
+        var source = normalizeDigits(text);
+        var out = [];
+        var re = /C\s*[-]?\s*0*(\d{1,3})/gi;
+        var match;
+        while ((match = re.exec(source))) out.push('C-' + parseInt(match[1], 10));
+        return unique(out);
+      }
+
+      function queryNumbers(text, mode) {
+        var nums = extractNumbers(text);
+        if (nums.length) return nums;
+        var folded = normText(text);
+        var compact = folded.length <= (mode === 'ocr' ? 24 : 12);
+        if (compact && /(^|[^a-z])sp([^a-z]|$)/.test(folded)) return ['SP'];
+        return nums;
+      }
+
+      function carNumbers(car) {
+        var set = {};
+        [car.displayNumber, car.id, car.registryKey].forEach(function (value) {
+          extractNumbers(value).forEach(function (num) { set[num] = true; });
+        });
+        if (normText(car.displayNumber) === 'sp') set.SP = true;
+        return set;
+      }
+
+      function nameOverlap(hay, name, minLen) {
+        var target = normText(name);
+        if (!target || target.length < minLen) return 0;
+        var source = hay;
+        if (source.indexOf(target) !== -1) return target.length;
+        var maxLen = Math.min(target.length, 18);
+        for (var len = maxLen; len >= minLen; len--) {
+          for (var i = 0; i + len <= target.length; i++) {
+            if (source.indexOf(target.substr(i, len)) !== -1) return len;
+          }
+        }
+        return 0;
+      }
+
+      function keywordScore(hay, keywords, minLen) {
+        var score = 0;
+        String(keywords || '').split(/\s+/).forEach(function (token) {
+          var folded = normText(token);
+          if (folded.length < minLen) return;
+          if (hay.indexOf(folded) !== -1) score += Math.min(folded.length, 8);
+        });
+        return score;
+      }
+
+      function catalogCars() {
+        var cars = Array.isArray(window.CARS_DATABASE) ? window.CARS_DATABASE : [];
+        var seen = {};
+        cars.forEach(function (car) {
+          if (car.registryKey) seen[car.registryKey] = true;
+          if (car.id) seen[car.id] = true;
+        });
+        var weekly = window.WEEKLY_PICKS_DATA && window.WEEKLY_PICKS_DATA.entries;
+        var extra = [];
+        if (Array.isArray(weekly)) {
+          weekly.forEach(function (row) {
+            var key = row.registryNumber || row.id;
+            if (key && seen[key]) return;
+            extra.push({
+              id: row.id || key || '',
+              name: row.nameZh || '',
+              nameZh: row.nameZh || '',
+              jpName: row.nameJp || '',
+              officialNameJp: row.nameJp || '',
+              displayNumber: row.displayNumber || '',
+              registryKey: row.registryNumber || '',
+              keywords: [row.displayNumber, row.nameZh, row.nameJp, row.registryNumber].filter(Boolean).join(' '),
+              owned: !!row.owned,
+              boxed: null,
+              loose: null,
+              fromWeekly: true
+            });
+          });
+        }
+        return cars.concat(extra);
+      }
+
+      function matchCatalog(raw, mode) {
+        var text = String(raw || '');
+        var numbers = queryNumbers(text, mode);
+        var hay = normText(text);
+        var minName = mode === 'typed' && hay.length <= 8 ? 2 : 4;
+        var numberSet = {};
+        numbers.forEach(function (num) { numberSet[num] = true; });
+        var scored = [];
+        catalogCars().forEach(function (car) {
+          var nums = carNumbers(car);
+          var numberHit = false;
+          numbers.forEach(function (num) { if (nums[num]) numberHit = true; });
+          var nameScore = Math.max(
+            nameOverlap(hay, car.jpName, minName),
+            nameOverlap(hay, car.officialNameJp, minName),
+            nameOverlap(hay, car.name, minName),
+            nameOverlap(hay, car.nameZh, minName)
+          );
+          var keys = keywordScore(hay, car.keywords, mode === 'typed' ? 3 : 5);
+          if (!(numberHit || nameScore >= minName || keys >= (mode === 'typed' ? 3 : 5))) return;
+          scored.push({
+            car: car,
+            numberHit: numberHit,
+            nameScore: nameScore,
+            score: (numberHit ? 100 : 0) + nameScore * 5 + keys
+          });
+        });
+        var numbered = scored.filter(function (item) { return item.numberHit; });
+        var list = numbered.length ? numbered : scored;
+        list.sort(function (a, b) {
+          var ao = ownership(a.car).owned ? 1 : 0;
+          var bo = ownership(b.car).owned ? 1 : 0;
+          if (bo !== ao) return bo - ao;
+          if (b.score !== a.score) return b.score - a.score;
+          var an = String(a.car.displayNumber || '');
+          var bn = String(b.car.displayNumber || '');
+          if (an !== bn) return an < bn ? -1 : 1;
+          var az = String(a.car.nameZh || a.car.name || '');
+          var bz = String(b.car.nameZh || b.car.name || '');
+          return az < bz ? -1 : az > bz ? 1 : 0;
+        });
+        return { numbers: numbers, list: list.slice(0, 8), truncated: list.length > 8 };
+      }
+
+      function ownership(car) {
+        var hasCounts = typeof car.boxed === 'number' && typeof car.loose === 'number';
+        if (hasCounts) {
+          var owned = car.owned !== false && (car.boxed + car.loose) > 0;
+          return {
+            owned: owned,
+            label: owned ? '已購入' : '未購入',
+            counts: owned ? ('盒裝 ' + car.boxed + '、散車 ' + car.loose) : ''
+          };
+        }
+        return { owned: !!car.owned, label: car.owned ? '已購入' : '未購入', counts: '' };
+      }
+
+      function clearResults() {
+        resultsEl.replaceChildren();
+      }
+
+      function renderMatches(result, mode) {
+        clearResults();
+        if (!result.list.length) {
+          var empty = document.createElement('p');
+          empty.className = 'photo-check-tip';
+          empty.textContent = mode === 'ocr'
+            ? '沒有對到編號。請拍清楚盒上的 C 編號或日文品名，或改用上面的欄位。'
+            : '圖鑑裡沒有這台。請改編號或品名。';
+          resultsEl.appendChild(empty);
+          return;
+        }
+        var heading = document.createElement('p');
+        heading.className = 'photo-check-query-label';
+        if (result.list.length > 1 && result.numbers.length) heading.textContent = '同編號有多台，請點選';
+        else if (result.list.length > 1) heading.textContent = '可能是這幾台，請點選';
+        else heading.textContent = '對到這台';
+        resultsEl.appendChild(heading);
+        if (result.truncated) {
+          var more = document.createElement('p');
+          more.className = 'photo-check-tip';
+          more.textContent = '只列出最接近的幾台。加上編號可以縮小範圍。';
+          resultsEl.appendChild(more);
+        }
+        result.list.forEach(function (item, index) {
+          var own = ownership(item.car);
+          var car = item.car;
+          var number = car.displayNumber || car.id || '';
+          var name = car.nameZh || car.name || '';
+          var jp = car.officialNameJp || car.jpName || '';
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'photo-check-result' + (index === 0 ? ' is-selected' : '');
+          btn.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+          var label = [number, name, jp, own.label, own.counts].filter(Boolean).join('，');
+          btn.setAttribute('aria-label', label);
+
+          var top = document.createElement('div');
+          top.className = 'photo-check-result-top';
+          var badge = document.createElement('span');
+          badge.className = 'compendium-badge';
+          badge.textContent = number;
+          var state = document.createElement('span');
+          state.className = own.owned ? 'photo-check-owned' : 'photo-check-unowned';
+          state.textContent = own.label;
+          top.appendChild(badge);
+          top.appendChild(state);
+
+          var nameEl = document.createElement('p');
+          nameEl.className = 'photo-check-result-name';
+          nameEl.textContent = name;
+          var jpEl = document.createElement('p');
+          jpEl.className = 'photo-check-result-jp';
+          jpEl.textContent = jp;
+
+          btn.appendChild(top);
+          btn.appendChild(nameEl);
+          if (jp) btn.appendChild(jpEl);
+          if (own.counts) {
+            var counts = document.createElement('p');
+            counts.className = 'photo-check-result-counts';
+            counts.textContent = own.counts;
+            btn.appendChild(counts);
+          }
+          btn.addEventListener('click', function () {
+            var buttons = resultsEl.querySelectorAll('.photo-check-result');
+            for (var i = 0; i < buttons.length; i++) {
+              var on = buttons[i] === btn;
+              buttons[i].classList.toggle('is-selected', on);
+              buttons[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+          });
+          resultsEl.appendChild(btn);
+        });
+      }
+
+      function enqueue(fn) {
+        var run = tail.then(fn, fn);
+        tail = run.then(function () { return null; }, function () { return null; });
+        return run;
+      }
+
+      function loadTesseract() {
+        if (window.Tesseract && window.Tesseract.createWorker) return Promise.resolve(window.Tesseract);
+        if (tesseractPromise) return tesseractPromise;
+        tesseractPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement('script');
+          script.src = TESSERACT_SRC;
+          script.async = true;
+          script.onload = function () {
+            if (window.Tesseract && window.Tesseract.createWorker) resolve(window.Tesseract);
+            else reject(new Error('tesseract missing'));
+          };
+          script.onerror = function () {
+            tesseractPromise = null;
+            reject(new Error('tesseract load failed'));
+          };
+          document.head.appendChild(script);
+        });
+        return tesseractPromise;
+      }
+
+      function ensureWorker() {
+        if (workerPromise) return workerPromise;
+        workerPromise = loadTesseract().then(function (Tesseract) {
+          return Tesseract.createWorker('eng+jpn', 1, {
+            logger: function (message) {
+              if (!message || activeOcrId !== runId || userLocked) return;
+              setOcrNote(ocrStatusText(message));
+            }
+          });
+        }).catch(function (err) {
+          workerPromise = null;
+          throw err;
+        });
+        return workerPromise;
+      }
+
+      function ocrStatusText(message) {
+        var status = String(message.status || '');
+        var label = '正在讀取盒上文字';
+        if (status.indexOf('language') !== -1) label = '正在載入文字資料';
+        else if (status.indexOf('core') !== -1 || status.indexOf('initializing tesseract') !== -1) label = '正在載入辨識元件';
+        else if (status.indexOf('initializing api') !== -1) label = '正在準備讀取文字';
+        var pct = typeof message.progress === 'number' ? Math.round(message.progress * 100) : null;
+        var tailText = pct !== null && pct > 0 && pct < 100 ? ('（' + pct + '%）') : '';
+        return label + tailText + '。照片不會上傳。';
+      }
+
+      function prepareImage(file) {
+        return new Promise(function (resolve) {
+          var url = URL.createObjectURL(file);
+          var img = new Image();
+          img.onload = function () {
+            var maxEdge = 1600;
+            var scale = Math.min(1, maxEdge / Math.max(img.width, img.height));
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.max(1, Math.round(img.width * scale));
+            canvas.height = Math.max(1, Math.round(img.height * scale));
+            var ctx = canvas.getContext('2d', { willReadFrequently: true });
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            URL.revokeObjectURL(url);
+            resolve(canvas);
+          };
+          img.onerror = function () {
+            URL.revokeObjectURL(url);
+            resolve(file);
+          };
+          img.src = url;
+        });
+      }
+
+      function startOcr(file) {
+        var id = ++runId;
+        userLocked = false;
+        clearResults();
+        setOcrNote('正在讀取盒上文字…照片不會上傳。');
+        enqueue(function () {
+          if (id !== runId) return null;
+          activeOcrId = id;
+          return ensureWorker().then(function (worker) {
+            if (id !== runId) return null;
+            return prepareImage(file).then(function (image) {
+              if (id !== runId) return null;
+              return worker.recognize(image, {}, { text: true });
+            });
+          });
+        }).then(function (res) {
+          if (!res || id !== runId || userLocked) return;
+          var text = (res.data && res.data.text) || '';
+          var flat = String(text).replace(/\s+/g, ' ').trim();
+          setOcrNote(flat ? ('讀到：' + flat.slice(0, 80)) : '沒有讀到文字。請輸入編號或品名。');
+          renderMatches(matchCatalog(text, 'ocr'), 'ocr');
+        }).catch(function () {
+          if (id !== runId || userLocked) return;
+          setOcrNote('文字辨識沒有完成，請輸入編號或品名。照片仍只在這支裝置。');
+        });
       }
 
       function setBackgroundInert(on) {
@@ -8718,6 +9137,9 @@
         currentFile = null;
         shareBtn.hidden = true;
         setStatus('');
+        setOcrNote('');
+        clearResults();
+        if (queryInput) queryInput.value = '';
         preview.alt = '';
         if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
       }
@@ -8725,6 +9147,9 @@
       function closeSheet() {
         if (!isOpen) return;
         isOpen = false;
+        runId += 1;
+        activeOcrId = 0;
+        userLocked = false;
         var token = session;
         overlay.classList.remove('active');
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -8744,8 +9169,10 @@
         objectUrl = URL.createObjectURL(file);
         preview.alt = '剛選取的車輛照片預覽，只存在這支裝置';
         preview.src = objectUrl;
+        if (queryInput) queryInput.value = '';
         setStatus('');
         openSheet();
+        startOcr(file);
       }
 
       function takeFile(input) {
@@ -8755,67 +9182,36 @@
         showFile(file);
       }
 
-      function copyPrompt() {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          return navigator.clipboard.writeText(PHOTO_PROMPT).then(function () { return true; }, function () { return false; });
-        }
-        return Promise.resolve(false);
-      }
-
-      function copyPromptFallback() {
-        var ta = document.createElement('textarea');
-        ta.value = PHOTO_PROMPT;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        var ok = false;
-        try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
-        ta.remove();
-        return ok;
-      }
-
       openBtn.addEventListener('click', function () {
         lastFocus = openBtn;
         cameraInput.click();
       });
-
       libraryBtn.addEventListener('click', function () {
         if (!isOpen) lastFocus = libraryBtn;
         libraryInput.click();
       });
-
       cameraInput.addEventListener('change', function () { takeFile(cameraInput); });
       libraryInput.addEventListener('change', function () { takeFile(libraryInput); });
-
       retakeBtn.addEventListener('click', function () { cameraInput.click(); });
       sheetLibraryBtn.addEventListener('click', function () { libraryInput.click(); });
       closeBtn.addEventListener('click', closeSheet);
       dismissBtn.addEventListener('click', closeSheet);
-
       overlay.addEventListener('click', function (e) {
         if (e.target === overlay) closeSheet();
       });
       sheet.addEventListener('click', function (e) { e.stopPropagation(); });
 
-      sendLink.addEventListener('click', function () {
-        setStatus('正在打開東京｜小物獵人。開對話後把剛拍的照片貼上。');
-        copyPrompt().then(function (ok) {
-          if (!isOpen) return;
-          setStatus(ok
-            ? '已複製對照提示。若對話沒有自動打開，點「網頁開啟同一個對話」。開對話後把剛拍的照片貼上。'
-            : '請點「複製提示」。若對話沒有自動打開，點「網頁開啟同一個對話」。開對話後把剛拍的照片貼上。');
-        });
-      });
-
-      copyBtn.addEventListener('click', function () {
-        copyPrompt().then(function (ok) {
-          if (!ok) ok = copyPromptFallback();
-          setStatus(ok ? '已複製對照提示。開對話後把剛拍的照片貼上。' : '這支瀏覽器沒有複製成功，請長按上方提示文字。');
-          if (isOpen) copyBtn.focus();
-        });
+      queryForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = queryInput.value.trim();
+        if (!value) {
+          setOcrNote('請輸入編號或品名。');
+          queryInput.focus();
+          return;
+        }
+        userLocked = true;
+        renderMatches(matchCatalog(value, 'typed'), 'typed');
+        setOcrNote('已用你輸入的文字對照圖鑑。');
       });
 
       shareBtn.addEventListener('click', function () {
@@ -8824,11 +9220,7 @@
           setStatus('這支瀏覽器不能直接分享照片，請改用「儲存照片」。');
           return;
         }
-        navigator.share({
-          files: [currentFile],
-          title: '拍照對照',
-          text: PHOTO_PROMPT
-        }).then(function () {
+        navigator.share({ files: [currentFile] }).then(function () {
           setStatus('已打開系統分享。照片仍只在這支裝置上。');
         }).catch(function (err) {
           if (err && err.name === 'AbortError') return;
@@ -8883,8 +9275,6 @@
           first.focus();
         }
       }, true);
-
-      if (sendLink.getAttribute('href') !== AGENT_APP) sendLink.setAttribute('href', AGENT_APP);
     })();
   </script>
 </body>
