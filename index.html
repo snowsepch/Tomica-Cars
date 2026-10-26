@@ -1176,13 +1176,13 @@
       <div class="photo-check-head">
         <div>
           <h2 id="photoCheckTitle">拍照對照</h2>
-          <p>在這頁對照圖鑑，看有沒有買過</p>
+          <p>Cars、迪士尼、Dream，整本圖鑑都能對</p>
         </div>
         <button id="photoCheckCloseBtn" type="button" class="photo-check-close" aria-label="關閉拍照對照">✕</button>
       </div>
 
       <div class="photo-check-body">
-        <p id="photoCheckTip" class="photo-check-tip">有盒先讀 C 編號。讀不到編號時，用這頁的官方圖看外形與配色。不確定就手打編號或品名。照片只留在這支裝置，不會上傳。</p>
+        <p id="photoCheckTip" class="photo-check-tip">整本口袋圖鑑都會對，包含 Cars、迪士尼和 Dream。先讀編號或品名，讀不到再看外形與配色。不確定就手打。照片只留在這支裝置，不會上傳。</p>
         <div class="photo-check-preview-wrap">
           <img id="photoCheckPreview" alt="">
         </div>
@@ -1190,7 +1190,7 @@
         <form id="photoCheckQueryForm" class="photo-check-query" autocomplete="off">
           <label id="photoCheckQueryLabel" class="photo-check-query-label" for="photoCheckQuery">改查編號或品名</label>
           <div class="photo-check-query-row">
-            <input id="photoCheckQuery" type="text" inputmode="text" enterkeyhint="search" placeholder="例如 C-37、メーター" aria-describedby="photoCheckTip">
+            <input id="photoCheckQuery" type="text" inputmode="text" enterkeyhint="search" placeholder="例如 C-14、No.179、メーター" aria-describedby="photoCheckTip">
             <button type="submit">對照圖鑑</button>
           </div>
         </form>
@@ -8695,6 +8695,7 @@
       var lastFocus = null;
       var inerted = [];
       var workerPromise = null;
+      var workerLang = '';
       var tesseractPromise = null;
       var tail = Promise.resolve();
 
@@ -8950,6 +8951,7 @@
         var heading = document.createElement('p');
         heading.className = 'photo-check-query-label';
         if (mode === 'visual') heading.textContent = '這些可能是，請點選';
+        else if (mode === 'name') heading.textContent = list.length > 1 ? '品名對得上這幾台，請點選' : '對到這台';
         else if (mode === 'ocr' || numbers.length) heading.textContent = list.length > 1 ? '同編號有多台，請點選' : '對到這台';
         else if (list.length > 1) heading.textContent = '可能是這幾台，請點選';
         else heading.textContent = '對到這台';
@@ -9038,20 +9040,33 @@
         return tesseractPromise;
       }
 
-      function ensureWorker() {
-        if (workerPromise) return workerPromise;
-        workerPromise = loadTesseract().then(function (Tesseract) {
-          return Tesseract.createWorker('eng', 1, {
-            logger: function (message) {
-              if (!message || activeOcrId !== runId || userLocked) return;
-              setOcrNote(ocrStatusText(message));
-            }
+      function ensureWorker(lang) {
+        var wanted = lang || 'eng';
+        if (!workerPromise) {
+          workerPromise = loadTesseract().then(function (Tesseract) {
+            return Tesseract.createWorker(wanted, 1, {
+              logger: function (message) {
+                if (!message || activeOcrId !== runId || userLocked) return;
+                setOcrNote(ocrStatusText(message));
+              }
+            });
+          }).then(function (worker) {
+            workerLang = wanted;
+            return worker;
+          }).catch(function (err) {
+            workerPromise = null;
+            workerLang = '';
+            throw err;
           });
-        }).catch(function (err) {
-          workerPromise = null;
-          throw err;
+          return workerPromise;
+        }
+        return workerPromise.then(function (worker) {
+          if (workerLang === wanted) return worker;
+          return worker.reinitialize(wanted).then(function () {
+            workerLang = wanted;
+            return worker;
+          });
         });
-        return workerPromise;
       }
 
       function ocrStatusText(message) {
@@ -9181,8 +9196,8 @@
         return unique(hits);
       }
 
-      function recognizePass(worker, img, pass, id) {
-        if (id !== runId) return Promise.resolve([]);
+      function recognizeRaw(worker, img, pass, id) {
+        if (id !== runId) return Promise.resolve(null);
         var canvas = paintVariant(img, pass.crop, pass.edge);
         return worker.setParameters({
           tessedit_pageseg_mode: pass.psm,
@@ -9191,21 +9206,23 @@
           if (id !== runId) return null;
           return worker.recognize(canvas, {}, { text: true, blocks: true });
         }).then(function (res) {
-          if (!res || id !== runId) return [];
-          return numbersFromRecognition(res.data || {});
+          if (!res || id !== runId) return null;
+          return res.data || null;
         });
       }
 
-      function readCatalogNumbers(worker, img, id) {
+      function readEngSignals(worker, img, id) {
         var passes = [
           { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 2000, psm: '11' },
           { crop: { x: 0, y: 0, w: 0.82, h: 0.64 }, edge: 1800, psm: '6' }
         ];
-        var chain = Promise.resolve([]);
+        var chain = Promise.resolve(null);
         passes.forEach(function (pass) {
-          chain = chain.then(function (found) {
-            if (found.length || id !== runId) return found;
-            return recognizePass(worker, img, pass, id);
+          chain = chain.then(function (hit) {
+            if (hit || id !== runId) return hit;
+            return recognizeRaw(worker, img, pass, id).then(function (data) {
+              return signalFromData(data, true);
+            });
           });
         });
         return chain;
@@ -9239,17 +9256,42 @@
         });
       }
 
-      function visualFeature(img) {
-        var side = Math.min(img.naturalWidth || img.width, img.naturalHeight || img.height);
-        var sx = Math.floor(((img.naturalWidth || img.width) - side) / 2);
-        var sy = Math.floor(((img.naturalHeight || img.height) - side) / 2);
+      function visualFeature(img, crop) {
+        var nw = img.naturalWidth || img.width;
+        var nh = img.naturalHeight || img.height;
+        var sx;
+        var sy;
+        var sw;
+        var sh;
+        if (crop && crop.frac) {
+          var side = Math.max(1, Math.floor(Math.min(nw, nh) * crop.frac));
+          var cx = nw / 2;
+          var cy = nh / 2 + (crop.yshift || 0) * nh;
+          sx = Math.floor(Math.max(0, Math.min(nw - side, cx - side / 2)));
+          sy = Math.floor(Math.max(0, Math.min(nh - side, cy - side / 2)));
+          sw = side;
+          sh = side;
+        } else if (crop && crop.w) {
+          sx = Math.floor(crop.x * nw);
+          sy = Math.floor(crop.y * nh);
+          sw = Math.max(1, Math.floor(crop.w * nw));
+          sh = Math.max(1, Math.floor(crop.h * nh));
+          if (sx + sw > nw) sw = nw - sx;
+          if (sy + sh > nh) sh = nh - sy;
+        } else {
+          var full = Math.min(nw, nh);
+          sx = Math.floor((nw - full) / 2);
+          sy = Math.floor((nh - full) / 2);
+          sw = full;
+          sh = full;
+        }
         var canvas = document.createElement('canvas');
         canvas.width = 48;
         canvas.height = 48;
         var ctx = canvas.getContext('2d', { willReadFrequently: true });
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, 48, 48);
-        ctx.drawImage(img, sx, sy, side, side, 0, 0, 48, 48);
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, 48, 48);
         var data = ctx.getImageData(0, 0, 48, 48).data;
         var fg = new Uint8Array(48 * 48);
         var fgCount = 0;
@@ -9381,18 +9423,51 @@
         return catalogFeaturePromise;
       }
 
+      function queryVisualFeatures(img) {
+        return [
+          visualFeature(img),
+          visualFeature(img, { frac: 0.55, yshift: 0.06 }),
+          visualFeature(img, { x: 0.14, y: 0.36, w: 0.72, h: 0.5 })
+        ];
+      }
+
+      function featureSaturation(feature) {
+        var sat = 0;
+        var i;
+        for (i = 0; i < 64; i++) {
+          var qr = (i / 16) | 0;
+          var qg = ((i / 4) | 0) % 4;
+          var qb = i % 4;
+          var mx = qr > qg ? (qr > qb ? qr : qb) : (qg > qb ? qg : qb);
+          var mn = qr < qg ? (qr < qb ? qr : qb) : (qg < qb ? qg : qb);
+          sat += feature.hist[i] * (mx ? (mx - mn) / mx : 0);
+        }
+        return sat;
+      }
+
       function rankVisual(img) {
+        var queries = queryVisualFeatures(img);
+        var colorful = 0;
+        queries.forEach(function (query) {
+          var sat = featureSaturation(query);
+          if (sat > colorful) colorful = sat;
+        });
+        if (colorful < 0.12) return Promise.resolve([]);
         return ensureCatalogFeatures().then(function (rows) {
-          var query = visualFeature(img);
           var scored = [];
           rows.forEach(function (row) {
-            scored.push({ car: row.car, score: visualSim(query, row.feature), numberHit: false });
+            var bestScore = 0;
+            queries.forEach(function (query) {
+              var score = visualSim(query, row.feature);
+              if (score > bestScore) bestScore = score;
+            });
+            scored.push({ car: row.car, score: bestScore, numberHit: false });
           });
           scored.sort(function (a, b) { return b.score - a.score; });
           if (!scored.length || scored[0].score < 0.66) return [];
           var best = scored[0].score;
           var picked = scored.filter(function (item) {
-            return item.score >= 0.66 && item.score >= best - 0.03;
+            return item.score >= 0.66 && item.score >= best - 0.045;
           }).slice(0, 4);
           picked.sort(function (a, b) {
             var ao = ownership(a.car).owned ? 1 : 0;
@@ -9404,24 +9479,239 @@
         });
       }
 
+      var extraIndex = null;
+
+      function foldLatin(text) {
+        return normalizeDigits(text)
+          .replace(/[Ｎｎ]/g, 'N')
+          .replace(/[Ｏｏ]/g, 'O')
+          .replace(/[Ｄｄ]/g, 'D')
+          .replace(/[Ｍｍ]/g, 'M');
+      }
+
+      function pushUnique(list, car) {
+        if (list.indexOf(car) === -1) list.push(car);
+      }
+
+      function buildExtraIndex() {
+        if (extraIndex) return extraIndex;
+        var dream = {};
+        var dm = {};
+        var names = {};
+        catalogCars().forEach(function (car) {
+          var blob = [car.id, car.displayNumber, car.jpName, car.officialNameJp, car.name, car.nameZh, car.keywords].filter(Boolean).join('\n');
+          var folded = foldLatin(blob);
+          var match;
+          var seenDream = {};
+          var dreamRe = /No\.?\s*(\d{2,3})(?!\d)/gi;
+          while ((match = dreamRe.exec(folded))) {
+            var dreamKey = String(parseInt(match[1], 10));
+            if (seenDream[dreamKey]) continue;
+            seenDream[dreamKey] = true;
+            if (!dream[dreamKey]) dream[dreamKey] = [];
+            pushUnique(dream[dreamKey], car);
+          }
+          var seenDm = {};
+          var dmRe = /DM-?\s*(\d{1,3})(?!\d)/gi;
+          while ((match = dmRe.exec(folded))) {
+            var dmKey = String(parseInt(match[1], 10));
+            if (seenDm[dmKey]) continue;
+            seenDm[dmKey] = true;
+            if (!dm[dmKey]) dm[dmKey] = [];
+            pushUnique(dm[dmKey], car);
+          }
+          [car.jpName, car.officialNameJp, car.nameZh, car.name].forEach(function (raw) {
+            var key = normText(raw);
+            if (!key || key.length < 8 || key.length > 48) return;
+            if (!names[key]) names[key] = { raw: raw, cars: [] };
+            pushUnique(names[key].cars, car);
+          });
+        });
+        Object.keys(dream).forEach(function (key) { if (dream[key].length > 4) delete dream[key]; });
+        Object.keys(dm).forEach(function (key) { if (dm[key].length > 4) delete dm[key]; });
+        Object.keys(names).forEach(function (key) { if (names[key].cars.length > 4) delete names[key]; });
+        extraIndex = { dream: dream, dm: dm, names: names, nameKeys: Object.keys(names) };
+        return extraIndex;
+      }
+
+      function linesOf(data, minConf) {
+        var lines = (data && data.lines) || [];
+        var out = [];
+        lines.forEach(function (line) {
+          if (!line || !line.text) return;
+          if (typeof line.confidence === 'number' && line.confidence < minConf) return;
+          out.push(String(line.text));
+        });
+        return out;
+      }
+
+      function dreamFromRecognition(data) {
+        var index = buildExtraIndex();
+        var lines = linesOf(data, 48);
+        var found = [];
+        var seen = {};
+        lines.forEach(function (text) {
+          if (text.length > 80) return;
+          var folded = foldLatin(text);
+          var match;
+          var dreamRe = /No\.?\s*(\d{2,3})(?!\d)/gi;
+          while ((match = dreamRe.exec(folded))) {
+            var key = String(parseInt(match[1], 10));
+            if (seen['N' + key] || !index.dream[key]) continue;
+            seen['N' + key] = true;
+            found.push({ label: 'No.' + key, cars: index.dream[key] });
+          }
+          var dmRe = /DM-?\s*(\d{1,3})(?!\d)/gi;
+          while ((match = dmRe.exec(folded))) {
+            var dmKey = String(parseInt(match[1], 10));
+            if (seen['D' + dmKey] || !index.dm[dmKey]) continue;
+            seen['D' + dmKey] = true;
+            found.push({ label: 'DM-' + dmKey, cars: index.dm[dmKey] });
+          }
+        });
+        if (!found.length || found.length > 2) return null;
+        var cars = [];
+        var labels = [];
+        found.forEach(function (hit) {
+          labels.push(hit.label);
+          hit.cars.forEach(function (car) { pushUnique(cars, car); });
+        });
+        if (!cars.length || cars.length > 4) return null;
+        return { kind: 'dream', label: labels.join('、'), cars: cars };
+      }
+
+      function boundedEdit(a, b, maxDist) {
+        var al = a.length;
+        var bl = b.length;
+        if (Math.abs(al - bl) > maxDist) return maxDist + 1;
+        var prev = new Array(bl + 1);
+        var cur = new Array(bl + 1);
+        var j;
+        for (j = 0; j <= bl; j++) prev[j] = j;
+        var i;
+        for (i = 1; i <= al; i++) {
+          cur[0] = i;
+          var rowMin = cur[0];
+          var aj = a.charAt(i - 1);
+          for (j = 1; j <= bl; j++) {
+            var cost = aj === b.charAt(j - 1) ? 0 : 1;
+            var val = prev[j] + 1;
+            if (cur[j - 1] + 1 < val) val = cur[j - 1] + 1;
+            if (prev[j - 1] + cost < val) val = prev[j - 1] + cost;
+            cur[j] = val;
+            if (val < rowMin) rowMin = val;
+          }
+          if (rowMin > maxDist) return maxDist + 1;
+          var swap = prev;
+          prev = cur;
+          cur = swap;
+        }
+        return prev[bl];
+      }
+
+      function namesFromRecognition(data) {
+        var index = buildExtraIndex();
+        var lines = linesOf(data, 55);
+        var cars = [];
+        var label = '';
+        lines.forEach(function (text) {
+          var hay = normText(text);
+          if (hay.length < 8 || hay.length > 52) return;
+          var bestKey = '';
+          var bestDist = 3;
+          var rivals = 0;
+          index.nameKeys.forEach(function (key) {
+            var dist = 3;
+            if (hay.indexOf(key) !== -1 && key.length >= hay.length * 0.72) dist = 0;
+            else if (key.length >= 12) dist = boundedEdit(hay, key, 2);
+            if (dist > 2) return;
+            if (dist < bestDist || (dist === bestDist && key.length > bestKey.length)) {
+              bestDist = dist;
+              bestKey = key;
+              rivals = 1;
+              return;
+            }
+            if (dist === bestDist && key.length === bestKey.length) rivals += 1;
+          });
+          if (!bestKey || bestDist > 2 || rivals !== 1) return;
+          if (!label) label = index.names[bestKey].raw;
+          index.names[bestKey].cars.forEach(function (car) { pushUnique(cars, car); });
+        });
+        if (!cars.length || cars.length > 4) return null;
+        return { kind: 'name', label: label, cars: cars };
+      }
+
+      function signalFromData(data, allowNames) {
+        if (!data) return null;
+        var numbers = numbersFromRecognition(data);
+        if (numbers.length) return { kind: 'c', numbers: numbers };
+        var dream = dreamFromRecognition(data);
+        if (dream) return dream;
+        if (!allowNames) return null;
+        return namesFromRecognition(data);
+      }
+
+      function ownedResult(cars, numbers) {
+        var list = cars.map(function (car) {
+          return { car: car, numberHit: numbers.length > 0, score: 100 };
+        });
+        list.sort(function (a, b) {
+          var ao = ownership(a.car).owned ? 1 : 0;
+          var bo = ownership(b.car).owned ? 1 : 0;
+          if (ao !== bo) return bo - ao;
+          return 0;
+        });
+        return { numbers: numbers, list: list.slice(0, 4), truncated: false };
+      }
+
+      function showSignal(signal) {
+        if (signal.kind === 'c') {
+          setOcrNote('讀到編號：' + signal.numbers.join('、'));
+          renderMatches(matchCatalog(signal.numbers.join(' '), 'ocr'), 'ocr');
+          return;
+        }
+        if (signal.kind === 'dream') {
+          setOcrNote('讀到編號：' + signal.label);
+          renderMatches(ownedResult(signal.cars, [signal.label]), 'ocr');
+          return;
+        }
+        setOcrNote('讀到品名：' + signal.label);
+        renderMatches(ownedResult(signal.cars, []), 'name');
+      }
+
       function showManualPrompt() {
         setOcrNote('讀不到，請手打編號或品名');
         renderMatches({ numbers: [], list: [], truncated: false }, 'ocr');
       }
 
       function showVisual(img, id) {
-        setOcrNote('沒有讀到編號，正在對照官方圖的外形與配色。照片不會上傳。');
+        setOcrNote('沒有讀到編號，正在對照這頁全部官方圖的外形與配色。照片不會上傳。');
         return rankVisual(img).then(function (picked) {
-          if (id !== runId || userLocked) return;
-          if (!picked.length) {
-            showManualPrompt();
-            return;
-          }
+          if (id !== runId || userLocked) return true;
+          if (!picked.length) return false;
           setOcrNote('依外形、配色推測，不是讀到編號。');
           renderMatches({ numbers: [], list: picked, truncated: false }, 'visual');
+          return true;
         }).catch(function () {
-          if (id !== runId || userLocked) return;
-          showManualPrompt();
+          if (id !== runId || userLocked) return true;
+          return false;
+        });
+      }
+
+      function readJapaneseName(img, id) {
+        setOcrNote('外形對不上，正在讀盒上的日文品名。照片不會上傳。');
+        return ensureWorker('jpn').then(function (worker) {
+          if (id !== runId || userLocked) return null;
+          return recognizeRaw(worker, img, {
+            crop: { x: 0.01, y: 0.02, w: 0.98, h: 0.96 },
+            edge: 1800,
+            psm: '6'
+          }, id);
+        }).then(function (data) {
+          if (id !== runId || userLocked || !data) return null;
+          return namesFromRecognition(data);
+        }).catch(function () {
+          return null;
         });
       }
 
@@ -9434,33 +9724,43 @@
         enqueue(function () {
           if (id !== runId) return null;
           activeOcrId = id;
-          return ensureWorker().then(function (worker) {
+          return ensureWorker('eng').then(function (worker) {
             if (id !== runId) return null;
             return loadImageElement(file).then(function (img) {
               readyImg = img;
               if (id !== runId) return null;
-              return readCatalogNumbers(worker, img, id);
+              return readEngSignals(worker, img, id);
             });
           });
-        }).then(function (found) {
+        }).then(function (signal) {
           if (id !== runId || userLocked) return null;
-          if (found && found.length) {
-            setOcrNote('讀到編號：' + found.join('、'));
-            renderMatches(matchCatalog(found.join(' '), 'ocr'), 'ocr');
+          if (signal) {
+            showSignal(signal);
             return null;
           }
           if (!readyImg) {
             showManualPrompt();
             return null;
           }
-          return showVisual(readyImg, id);
+          return showVisual(readyImg, id).then(function (shown) {
+            if (shown || id !== runId || userLocked) return null;
+            return readJapaneseName(readyImg, id).then(function (nameHit) {
+              if (id !== runId || userLocked) return null;
+              if (nameHit) showSignal(nameHit);
+              else showManualPrompt();
+              return null;
+            });
+          });
         }).catch(function () {
           if (id !== runId || userLocked) return;
           if (!readyImg) {
             setOcrNote('文字辨識沒有完成，請輸入編號或品名。照片仍只在這支裝置。');
             return;
           }
-          showVisual(readyImg, id);
+          showVisual(readyImg, id).then(function (shown) {
+            if (shown || id !== runId || userLocked) return;
+            showManualPrompt();
+          });
         });
       }
 
