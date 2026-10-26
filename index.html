@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>TOMICA 多美小汽車・個人掌上典藏圖鑑</title>
+  <title>東京文具櫃・又入手 × Tomica Cars</title>
   
   <!-- Tailwind CSS Engine -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -324,6 +324,7 @@
       transform: scale(0.97);
     }
   </style>
+  <link rel="stylesheet" href="catalog.css">
 </head>
 
 <body class="min-h-screen pb-20">
@@ -331,70 +332,51 @@
   <!-- ============================================================ -->
   <!-- 1. 圖鑑典藏頂欄 (Sticky Compendium Header)                      -->
   <!-- ============================================================ -->
-  <header class="header-bar sticky top-0 z-40 px-2.5 sm:px-4 py-2 sm:py-3">
+  <header class="header-bar sticky top-0 z-40 px-2.5 sm:px-4 py-2.5 sm:py-3">
     <div class="page-container">
-      
-      <!-- 頂部品牌與精準統計 -->
-      <div class="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
-        <div class="flex items-center gap-2 sm:gap-2.5">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-zinc-900 text-white flex items-center justify-center text-base sm:text-lg shadow-sm shrink-0">
-            🚗
-          </div>
-          <div>
-            <div class="flex items-center gap-1.5">
-              <h1 class="text-sm sm:text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
-              <span class="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
-            </div>
-            <p class="text-[10px] sm:text-[11px] text-zinc-500 font-medium leading-tight">✨ 官方高畫質棚拍・隨身典藏指南</p>
+
+      <div class="brand-row">
+        <div class="brand-lockup">
+          <div class="monogram" aria-hidden="true">又</div>
+          <div class="wordmark">
+            <div class="wordmark-kicker">東京文具櫃</div>
+            <h1>又入手 <span class="times">×</span> Tomica Cars</h1>
+            <p class="wordmark-sub">個人掌上典藏圖鑑</p>
           </div>
         </div>
-
-        <!-- 登錄數字徽章 -->
-        <div class="flex items-center gap-1.5 text-right shrink-0">
-          <div class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-white border border-zinc-200 text-right shadow-2xs">
-            <div class="text-[10.5px] sm:text-[11px] font-bold text-zinc-900 leading-tight">
-              在冊 <span id="statUniqueCount" class="text-red-600">63</span> 款
-            </div>
-            <div class="text-[9.5px] sm:text-[10px] text-zinc-500 leading-tight">
-              共 <span id="statTotalPieces" class="font-bold text-zinc-800">86</span> 台
-            </div>
-          </div>
+        <div class="census" aria-label="在冊統計">
+          <div class="census-kicker">在冊</div>
+          <div class="census-count"><strong id="statUniqueCount">63</strong> 款</div>
+          <div class="census-sub">共 <strong id="statTotalPieces">86</strong> 台</div>
         </div>
       </div>
 
-      <!-- 頂部三大核心選單並列 (官方發售總車款 ｜ 現有收藏 ｜ 每週新品追蹤) -->
-      <nav class="flex items-center justify-between bg-zinc-200/80 p-0.5 sm:p-1 rounded-xl sm:rounded-2xl gap-1 mb-2">
-        <button id="mainTabOfficial" class="flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition bg-zinc-950 text-white shadow-2xs cursor-pointer">
-          官方發售總車款
-        </button>
-        <button id="mainTabOwned" class="flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition text-zinc-600 hover:text-zinc-950 hover:bg-zinc-300/40 cursor-pointer">
-          現有收藏
-        </button>
-        <button id="mainTabWeekly" class="flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition text-zinc-600 hover:text-zinc-950 hover:bg-zinc-300/40 cursor-pointer">
-          每週新品追蹤
-        </button>
+      <nav class="main-nav" aria-label="圖鑑目錄">
+        <button id="mainTabOfficial" type="button" class="main-tab is-active">官方發售總車款</button>
+        <button id="mainTabOwned" type="button" class="main-tab">現有收藏</button>
+        <button id="mainTabWeekly" type="button" class="main-tab">每週新品追蹤</button>
       </nav>
 
-      <!-- 採購即時比對搜尋條 (Instant Search Bar) -->
-      <div class="relative mb-1 sm:mb-2">
-        <input 
-          id="searchInput" 
-          type="search" 
-          placeholder="🔍 搜尋車款編號或名稱（例如 C-37、C-14、プレジデント）..." 
-          class="w-full pl-3 pr-8 py-1.5 sm:py-2.5 bg-white border border-zinc-300 rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium" 
+      <div class="search-wrap">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="搜尋編號或名稱，例如 C-37、プレジデント"
+          class="catalog-search"
+          aria-label="搜尋車款編號或名稱"
           autocomplete="off"
         >
-        <button 
-          id="clearSearchBtn" 
-          class="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden" 
+        <button
+          id="clearSearchBtn"
+          class="search-clear hidden"
           aria-label="清除搜尋"
+          type="button"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
 
-      <!-- 即時採購庫存警戒條 (Anti-Duplicate Alert Banner) -->
-      <div id="checkerAlertBanner" class="hidden rounded-xl p-2.5 sm:p-3 text-xs leading-relaxed transition-all shadow-sm"></div>
+      <div id="checkerAlertBanner" class="alert-banner hidden"></div>
 
     </div>
   </header>
@@ -404,87 +386,76 @@
   <!-- ============================================================ -->
   <section id="compendiumControlSection" class="page-container pt-2 sm:pt-3 pb-1">
     
-    <!-- 圖鑑統計 Bento Bar (簡潔收集進度卡 - 點擊可直接快速篩選) -->
-    <div class="grid grid-cols-5 gap-1 sm:gap-2 mb-2 sm:mb-3">
-      <div id="bentoCardCars" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看 Tomica Cars 系列">
-        <div class="text-[9px] sm:text-[10px] text-zinc-500 font-medium truncate">Tomica Cars</div>
-        <div class="text-xs sm:text-sm font-extrabold text-zinc-900" id="bentoCarsCount">42</div>
+    <div class="stat-grid">
+      <div id="bentoCardCars" class="stat-tile bento-clickable" title="點擊僅查看 Tomica Cars 系列">
+        <div class="tile-label">Tomica Cars</div>
+        <div class="tile-num" id="bentoCarsCount">42</div>
       </div>
-      <div id="bentoCardNonTomica" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看非 Tomica・Cars 系列">
-        <div class="text-[9px] sm:text-[10px] text-amber-700 font-medium truncate">非 Tomica</div>
-        <div class="text-xs sm:text-sm font-extrabold text-amber-600" id="bentoNonTomicaCount">6</div>
+      <div id="bentoCardNonTomica" class="stat-tile tile-clay bento-clickable" title="點擊僅查看非 Tomica・Cars 系列">
+        <div class="tile-label">非 Tomica</div>
+        <div class="tile-num" id="bentoNonTomicaCount">6</div>
       </div>
-      <div id="bentoCardToy" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看玩具總動員">
-        <div class="text-[9px] sm:text-[10px] text-zinc-500 font-medium truncate">玩具總動員</div>
-        <div class="text-xs sm:text-sm font-extrabold text-blue-700" id="bentoToyCount">4</div>
+      <div id="bentoCardToy" class="stat-tile tile-sky bento-clickable" title="點擊僅查看玩具總動員">
+        <div class="tile-label">玩具總動員</div>
+        <div class="tile-num" id="bentoToyCount">4</div>
       </div>
-      <div id="bentoCardDisney" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看經典與迪士尼">
-        <div class="text-[9px] sm:text-[10px] text-zinc-500 font-medium truncate">經典/迪士尼</div>
-        <div class="text-xs sm:text-sm font-extrabold text-purple-700" id="bentoDisneyCount">16</div>
+      <div id="bentoCardDisney" class="stat-tile tile-plum bento-clickable" title="點擊僅查看經典與迪士尼">
+        <div class="tile-label">經典/迪士尼</div>
+        <div class="tile-num" id="bentoDisneyCount">16</div>
       </div>
-      <div id="bentoCardDup" class="bento-clickable bg-red-50/80 p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-red-200 text-center shadow-2xs hover:border-red-300" title="點擊僅查看真正重複的車款">
-        <div class="text-[9px] sm:text-[10px] text-red-600 font-bold truncate">⚠️ 重複款</div>
-        <div class="text-xs sm:text-sm font-extrabold text-red-700" id="bentoDupCount">12</div>
+      <div id="bentoCardDup" class="stat-tile tile-rose bento-clickable" title="點擊僅查看真正重複的車款">
+        <div class="tile-label">重複款</div>
+        <div class="tile-num" id="bentoDupCount">12</div>
       </div>
     </div>
 
-    <!-- 視角切換與編號查詢庫存篩選 -->
-    <div class="flex items-center justify-between gap-1.5 sm:gap-2 py-0.5 mb-2 flex-wrap">
-      
-      <!-- 視角切換：海報 vs 清單 -->
-      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-lg sm:rounded-xl shrink-0">
-        <button id="viewGridBtn" class="view-mode-btn active" title="海報圖鑑網格模式（隨身翻閱）">
+    <div class="tool-row">
+      <div class="segment" role="group" aria-label="瀏覽方式">
+        <button id="viewGridBtn" class="view-mode-btn active" type="button" title="海報圖鑑網格模式（隨身翻閱）">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
           <span>海報</span>
         </button>
-        <button id="viewListBtn" class="view-mode-btn" title="清單對照模式">
+        <button id="viewListBtn" class="view-mode-btn" type="button" title="清單對照模式">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           <span>清單</span>
         </button>
       </div>
 
-      <!-- 購入狀態快篩標籤 (已購入 / 全目錄 / 未購入) -->
-      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-lg sm:rounded-xl shrink-0">
-        <button id="filterOwnedBtn" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs">
-          🌟 已購入 (<span id="pillOwnedCount">63</span>)
+      <div class="segment" role="group" aria-label="購入狀態">
+        <button id="filterOwnedBtn" class="own-pill is-active" type="button">
+          已購入 (<span id="pillOwnedCount">63</span>)
         </button>
-        <button id="filterAllBtn" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
+        <button id="filterAllBtn" class="own-pill" type="button">
           全目錄 (<span id="pillAllCount">167</span>)
         </button>
-        <button id="filterUnownedBtn" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
+        <button id="filterUnownedBtn" class="own-pill" type="button">
           未購入 (<span id="pillUnownedCount">104</span>)
         </button>
       </div>
-
     </div>
 
-    <!-- 快捷系列快篩標籤 (一鍵即時切換系列) -->
-    <div class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5 mb-2 text-xs">
-      <button id="quickFilterAllBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-zinc-900 text-white shrink-0 shadow-2xs cursor-pointer">全部系列</button>
-      <button id="quickFilterCarsBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer">🏎️ Tomica Cars</button>
-      <button id="quickFilterNonTomicaBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-amber-200 text-amber-700 hover:bg-amber-50 shrink-0 cursor-pointer">⚡ 非 Tomica・Cars</button>
-      <button id="quickFilterToyBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer">🤠 玩具總動員</button>
-      <button id="quickFilterOtherBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer">🏰 經典/迪士尼</button>
+    <div class="chip-row no-scrollbar">
+      <button id="quickFilterAllBtn" type="button" class="chip is-active">全部系列</button>
+      <button id="quickFilterCarsBtn" type="button" class="chip">Tomica Cars</button>
+      <button id="quickFilterNonTomicaBtn" type="button" class="chip chip-clay">非 Tomica・Cars</button>
+      <button id="quickFilterToyBtn" type="button" class="chip">玩具總動員</button>
+      <button id="quickFilterOtherBtn" type="button" class="chip">經典/迪士尼</button>
     </div>
 
-    <!-- 系列別選單按鈕 (點擊展開自訂選單，可手動調整一次想看到的系列組合) -->
     <div class="mb-1.5 sm:mb-2">
-      <button 
-        id="openSeriesDrawerBtn" 
-        class="w-full flex items-center justify-between px-2.5 sm:px-3.5 py-1.5 sm:py-2.5 bg-white border border-zinc-200 hover:border-zinc-300 rounded-lg sm:rounded-xl shadow-2xs text-[11px] sm:text-xs font-semibold text-zinc-900 active:scale-[0.99] transition cursor-pointer"
+      <button
+        id="openSeriesDrawerBtn"
+        class="series-launcher"
         type="button"
         title="點擊展開自訂系列選單"
       >
-        <div class="flex items-center gap-1.5 sm:gap-2 truncate">
-          <span class="text-xs sm:text-sm">🗂️</span>
-          <span class="text-zinc-400 font-medium shrink-0">自訂顯示系列：</span>
-          <span id="selectedSeriesSummaryText" class="font-bold text-zinc-900 truncate">全部系列 (63款)</span>
+        <div class="flex items-center gap-1.5 sm:gap-2 truncate min-w-0">
+          <span class="muted shrink-0">自訂顯示系列</span>
+          <span id="selectedSeriesSummaryText" class="truncate">全部系列 (63款)</span>
         </div>
         <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
-          <span id="selectedSeriesBadge" class="bg-zinc-100 text-zinc-700 text-[9.5px] sm:text-[10px] font-bold font-mono px-1.5 sm:px-2 py-0.5 rounded-full">
-            4 系列全選
-          </span>
-          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span id="selectedSeriesBadge" class="series-badge">4 系列全選</span>
+          <svg class="w-3.5 h-3.5" style="color: var(--ink-faint)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </div>
@@ -499,22 +470,20 @@
   <main id="compendiumMainSection" class="page-container pt-1">
     
     <!-- 結果數量提示 -->
-    <div class="flex items-center justify-between text-[11px] sm:text-xs text-zinc-500 py-0.5 mb-1.5 px-0.5">
-      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">63</strong> 款車輛</div>
-      <div class="text-[10px] sm:text-[11px] text-zinc-400">💡 點擊任一卡片可展開全圖鑑資料卡</div>
+    <div class="result-bar">
+      <div>顯示 <strong id="currentShownCount">63</strong> 款</div>
+      <div>點卡片展開資料卡</div>
     </div>
 
     <!-- 卡片容器 (動態切換 grid / list 樣式) -->
     <div id="compendiumContainer" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"></div>
 
     <!-- 無搜尋結果提示 -->
-    <div id="emptyNotice" class="hidden text-center py-16 px-4">
-      <div class="text-5xl mb-3">🔍</div>
-      <h3 class="text-base font-bold text-zinc-800 mb-1">找不到這個編號。可能是尚未收錄的絕版或輸入有誤。</h3>
-      <p class="text-xs text-zinc-500 mb-4">資料庫中目前沒有符合所選系列的收藏紀錄，可以安心採購！</p>
-      <button id="resetSearchBtn" class="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition">
-        重設篩選條件
-      </button>
+    <div id="emptyNotice" class="empty-state hidden">
+      <div class="empty-mark">查無</div>
+      <h3>找不到這個編號。可能是尚未收錄的絕版或輸入有誤。</h3>
+      <p>資料庫中目前沒有符合所選系列的收藏紀錄，可以安心採購。</p>
+      <button id="resetSearchBtn" class="btn-ink" type="button">重設篩選條件</button>
     </div>
 
   </main>
@@ -524,20 +493,15 @@
   <!-- ============================================================ -->
   <section id="weeklyTrackerSection" class="page-container pt-2 sm:pt-3 pb-16 hidden">
     <!-- 週報頂部總結卡片 -->
-    <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-zinc-200/90 shadow-2xs mb-4">
-      <div class="flex items-center justify-between gap-2 flex-wrap">
-        <div>
-          <h2 class="text-sm sm:text-base font-extrabold text-zinc-950 flex items-center gap-1.5">
-            <span>📅</span> 東京小物・每週新品追蹤
-          </h2>
-          <p class="text-xs text-zinc-500 mt-0.5 font-medium">每週五精選新品情報・發售日期・通路預約與官方可核來源</p>
-        </div>
-        <div class="flex items-center gap-1.5 flex-wrap">
-          <span class="tag-badge bg-zinc-100 text-zinc-700 font-bold font-mono">共 8 款新品</span>
-          <span class="tag-badge tag-cars font-bold">Cars 4款</span>
-          <span class="tag-badge bg-amber-50 text-amber-800 border border-amber-200 font-bold">Cars 遊具 1款</span>
-          <span class="tag-badge bg-purple-50 text-purple-800 border border-purple-200 font-bold">Tomica 限定 3款</span>
-        </div>
+    <div class="weekly-masthead">
+      <div class="wordmark-kicker">東京文具櫃</div>
+      <h2>每週新品追蹤</h2>
+      <p>每週五精選。發售日期、通路與官方可核來源，照目錄抄下來。</p>
+      <div class="weekly-counts">
+        <span class="tag-badge">共 8 款新品</span>
+        <span class="tag-badge tag-cars">Cars 4款</span>
+        <span class="tag-badge tag-non-tomica">Cars 遊具 1款</span>
+        <span class="tag-badge tag-disney">Tomica 限定 3款</span>
       </div>
     </div>
 
@@ -545,13 +509,11 @@
     <div id="weeklyPicksContainer" class="space-y-6"></div>
 
     <!-- 週報搜尋無結果提示 -->
-    <div id="weeklyEmptyNotice" class="hidden text-center py-16 px-4">
-      <div class="text-5xl mb-3">🔍</div>
-      <h3 class="text-base font-bold text-zinc-800 mb-1">查無相符的週報新品</h3>
-      <p class="text-xs text-zinc-500 mb-4">建議嘗試搜尋品名、日文名（如 洗車場、GR86、MR2）或編號（如 C-14、C-3）</p>
-      <button id="resetWeeklySearchBtn" class="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition cursor-pointer">
-        清除搜尋關鍵字
-      </button>
+    <div id="weeklyEmptyNotice" class="empty-state hidden">
+      <div class="empty-mark">查無</div>
+      <h3>查無相符的週報新品</h3>
+      <p>試試品名、日文名（洗車場、GR86、MR2）或編號（C-14、C-3）。</p>
+      <button id="resetWeeklySearchBtn" class="btn-ink" type="button">清除搜尋關鍵字</button>
     </div>
   </section>
 
@@ -560,124 +522,102 @@
   <!-- ============================================================ -->
   <div id="seriesDrawerOverlay" class="detail-modal-overlay">
     <div class="detail-modal-card" onclick="event.stopPropagation()">
-      <!-- 頂部固定 Header -->
-      <div class="px-5 pt-3.5 pb-3 sm:px-6 sm:pt-4 border-b border-zinc-100 flex-shrink-0 bg-white">
-        <!-- 手機頂部手柄 -->
-        <div class="sm:hidden w-12 h-1.5 bg-zinc-300/80 rounded-full mx-auto mb-2.5"></div>
-
-        <!-- 抽屜標題列 -->
-        <div class="flex items-center justify-between">
+      <div class="sheet-head px-5 pt-3.5 pb-3 sm:px-6 sm:pt-4 flex-shrink-0">
+        <div class="handle sm:hidden"></div>
+        <div class="flex items-center justify-between gap-3">
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-zinc-900 flex items-center gap-1.5">
-              <span>🗂️</span> 手動調整顯示系列
-            </h3>
-            <p class="text-xs text-zinc-500 mt-0.5">可自由勾選單一或多個系列，一次檢視您想要的組合</p>
+            <h3 class="sheet-title">手動調整顯示系列</h3>
+            <p class="sheet-sub">勾選一個或幾個系列，一次看想看的組合。</p>
           </div>
-          <button id="closeSeriesDrawerBtn" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center font-bold text-sm transition" aria-label="關閉選單">
-            ✕
-          </button>
+          <button id="closeSeriesDrawerBtn" class="icon-btn" type="button" aria-label="關閉選單">✕</button>
         </div>
       </div>
 
-      <!-- 中段獨立滑動清單 (Scrollable List) -->
-      <div class="px-5 py-3 sm:px-6 flex-1 overflow-y-auto overscroll-contain" style="-webkit-overflow-scrolling: touch;">
-        <!-- 快捷一鍵切換列 (Quick Actions) -->
+      <div class="sheet-body flex-1 overflow-y-auto overscroll-contain" style="-webkit-overflow-scrolling: touch;">
         <div class="mb-3">
-          <div class="text-[11px] font-bold text-zinc-400 mb-1.5">一鍵快速切換：</div>
-          <div class="flex items-center gap-1.5 flex-wrap text-xs">
-            <button id="presetAllBtn" type="button" class="px-2.5 py-1 rounded-lg bg-zinc-900 text-white font-bold text-xs transition active:scale-95 cursor-pointer">全部顯示</button>
-            <button id="presetCarsBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 Tomica Cars</button>
-            <button id="presetNonTomicaBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-amber-200 text-amber-800 font-bold hover:bg-amber-50 transition active:scale-95 cursor-pointer">僅 非 Tomica (6)</button>
-            <button id="presetToyBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 玩具總動員 (4)</button>
-            <button id="presetGeneralBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 經典長車 (6)</button>
-            <button id="presetDisneyBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 迪士尼/卡通 (10)</button>
+          <div class="sheet-label">一鍵切換</div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button id="presetAllBtn" type="button" class="chip is-active">全部顯示</button>
+            <button id="presetCarsBtn" type="button" class="chip">僅 Tomica Cars</button>
+            <button id="presetNonTomicaBtn" type="button" class="chip chip-clay">僅 非 Tomica (6)</button>
+            <button id="presetToyBtn" type="button" class="chip">僅 玩具總動員 (4)</button>
+            <button id="presetGeneralBtn" type="button" class="chip">僅 經典長車 (6)</button>
+            <button id="presetDisneyBtn" type="button" class="chip">僅 迪士尼/卡通 (10)</button>
           </div>
         </div>
 
-        <!-- 多選系列清單 (舒適點選手感) -->
-        <div class="space-y-2 mb-2">
-          <!-- 1. Tomica Cars 系列 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckCars" value="cars_tomica" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🏎️ Cars 汽車總動員（Tomica）</div>
-                <div class="text-[11px] text-zinc-500 font-mono">C-編號、SP特別款、超大麥克拖車等多美正版合金車</div>
+        <div>
+          <label class="sheet-row">
+            <div class="flex items-center gap-3 min-w-0">
+              <input type="checkbox" id="catCheckCars" value="cars_tomica" checked class="w-4 h-4">
+              <div class="min-w-0">
+                <div class="row-title">Cars 汽車總動員（Tomica）</div>
+                <div class="row-sub">C-編號、SP特別款、超大麥克拖車等多美正版合金車</div>
               </div>
             </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-50 text-red-700 border border-red-200" id="drawerTomicaCount">42 款</span>
+            <span class="count-pill accent" id="drawerTomicaCount">42 款</span>
           </label>
 
-          <!-- 2. 非 Tomica・Cars 系列 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-amber-200 bg-amber-50/20 hover:bg-amber-50 active:bg-amber-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckNonTomica" value="cars_non_tomica" checked class="w-4 h-4 rounded text-amber-700 focus:ring-amber-700 accent-amber-700">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">⚡ Cars 汽車總動員（非 Tomica）</div>
-                <div class="text-[11px] text-zinc-500 font-mono">美泰兒（Mattel）F1、回力車組、大型塑膠麥坤／拖線／麥克等</div>
+          <label class="sheet-row is-clay">
+            <div class="flex items-center gap-3 min-w-0">
+              <input type="checkbox" id="catCheckNonTomica" value="cars_non_tomica" checked class="w-4 h-4">
+              <div class="min-w-0">
+                <div class="row-title">Cars 汽車總動員（非 Tomica）</div>
+                <div class="row-sub">美泰兒（Mattel）F1、回力車組、大型塑膠麥坤／拖線／麥克等</div>
               </div>
             </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200" id="drawerNonTomicaCount">6 款</span>
+            <span class="count-pill clay" id="drawerNonTomicaCount">6 款</span>
           </label>
 
-          <!-- 2. 玩具總動員 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckToy" value="toystory" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🤠 玩具總動員系列</div>
-                <div class="text-[11px] text-zinc-500 font-mono">胡迪高帽老爺車、翠絲、巴斯光年、胡迪疊疊車</div>
+          <label class="sheet-row">
+            <div class="flex items-center gap-3 min-w-0">
+              <input type="checkbox" id="catCheckToy" value="toystory" checked class="w-4 h-4">
+              <div class="min-w-0">
+                <div class="row-title">玩具總動員系列</div>
+                <div class="row-sub">胡迪高帽老爺車、翠絲、巴斯光年、胡迪疊疊車</div>
               </div>
             </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">4 款</span>
+            <span class="count-pill sky">4 款</span>
           </label>
 
-          <!-- 3. 經典款與多美組 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckGeneral" value="general" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🚗 經典模型組 / 超長拖車隊 / 7-11聯名</div>
-                <div class="text-[11px] text-zinc-500 font-mono">超長拖車隊、美食車4組、哆啦A夢、7-11麵包小車</div>
+          <label class="sheet-row">
+            <div class="flex items-center gap-3 min-w-0">
+              <input type="checkbox" id="catCheckGeneral" value="general" checked class="w-4 h-4">
+              <div class="min-w-0">
+                <div class="row-title">經典模型組 / 超長拖車隊 / 7-11聯名</div>
+                <div class="row-sub">超長拖車隊、美食車4組、哆啦A夢、7-11麵包小車</div>
               </div>
             </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">6 款</span>
+            <span class="count-pill moss">6 款</span>
           </label>
 
-          <!-- 4. 迪士尼與 Tsum Tsum -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckDisney" value="other_disney" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🏰 迪士尼 & Tunes / 夢幻系列</div>
-                <div class="text-[11px] text-zinc-500 font-mono">奧斯華、布丁狗Tunes、雪寶、米奇露營車、冰雪奇緣等</div>
+          <label class="sheet-row">
+            <div class="flex items-center gap-3 min-w-0">
+              <input type="checkbox" id="catCheckDisney" value="other_disney" checked class="w-4 h-4">
+              <div class="min-w-0">
+                <div class="row-title">迪士尼 & Tunes / 夢幻系列</div>
+                <div class="row-sub">奧斯華、布丁狗Tunes、雪寶、米奇露營車、冰雪奇緣等</div>
               </div>
             </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">10 款</span>
+            <span class="count-pill plum">10 款</span>
           </label>
 
-          <!-- 5. 獨立開關：僅顯示真正重複的款式 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-red-200 bg-red-50/40 hover:bg-red-50 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="checkOnlyDuplicates" class="w-4 h-4 rounded text-red-600 focus:ring-red-600 accent-red-600">
-              <div>
-                <div class="text-sm font-bold text-red-900">⚠️ 僅篩選「已重複款」（避免重複採購）</div>
-                <div class="text-[11px] text-red-600">快速比對出目前庫存超過 1 台的車輛（排除套裝組合車）</div>
+          <label class="sheet-row is-rose">
+            <div class="flex items-center gap-3 min-w-0">
+              <input type="checkbox" id="checkOnlyDuplicates" class="w-4 h-4">
+              <div class="min-w-0">
+                <div class="row-title">僅篩選已重複款</div>
+                <div class="row-sub">庫存超過 1 台的車輛（排除套裝組合車）</div>
               </div>
             </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-100 text-red-800">12 款</span>
+            <span class="count-pill rose">12 款</span>
           </label>
         </div>
       </div>
 
-      <!-- 底部吸底固定操作按鈕 (Pinned Footer above Safari Toolbar) -->
-      <div class="px-5 py-3 sm:px-6 border-t border-zinc-200/80 bg-white/95 backdrop-blur-md flex-shrink-0 flex items-center gap-2.5 z-10" style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 20px));">
-        <button id="resetAllSeriesBtn" type="button" class="px-4 py-2.5 rounded-xl border border-zinc-300 text-zinc-700 text-xs font-bold hover:bg-zinc-50 active:scale-95 transition whitespace-nowrap">
-          重設全選
-        </button>
-        <button id="applySeriesDrawerBtn" type="button" class="flex-1 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 active:scale-98 transition shadow-sm flex items-center justify-center gap-1.5">
-          <span>完成設定（套用查看）</span>
-        </button>
+      <div class="sheet-foot flex-shrink-0 z-10">
+        <button id="resetAllSeriesBtn" type="button" class="btn-ghost">重設全選</button>
+        <button id="applySeriesDrawerBtn" type="button" class="btn-ink">完成設定（套用查看）</button>
       </div>
     </div>
   </div>
@@ -688,12 +628,12 @@
   <div id="detailModalOverlay" class="detail-modal-overlay">
     <div class="detail-modal-card relative" onclick="event.stopPropagation()">
       <!-- 手機頂部手柄 -->
-      <div class="sm:hidden w-12 h-1.5 bg-zinc-300/80 rounded-full mx-auto my-3 flex-shrink-0"></div>
+      <div class="handle sm:hidden"></div>
 
-      <!-- 彈窗右上角關閉按鈕 -->
-      <button 
-        id="closeModalBtn" 
-        class="absolute top-3.5 right-4 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center font-bold text-sm z-20 transition shadow-2xs"
+      <button
+        id="closeModalBtn"
+        class="icon-btn absolute top-3.5 right-4 z-20"
+        type="button"
         aria-label="關閉圖鑑"
       >
         ✕
@@ -713,7 +653,7 @@
       ✕
     </button>
     <img id="lightboxImg" class="lightbox-img shadow-2xl mb-3" src="" alt="高解析放大檢視">
-    <div id="lightboxCaption" class="text-white/90 text-sm font-medium px-4 py-1.5 bg-black/60 rounded-full backdrop-blur-md text-center max-w-md"></div>
+    <div id="lightboxCaption" class="lightbox-caption text-center max-w-md"></div>
   </div>
 
   <!-- ============================================================ -->
@@ -6925,14 +6865,14 @@
     // 更新快速過濾標籤樣式
     function updateQuickFilterStyles() {
       if (!quickFilterAllBtn) return;
-      const activePill = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-zinc-900 text-white shrink-0 shadow-2xs cursor-pointer';
-      const inactivePill = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer';
-      const activeAmber = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-amber-600 text-white shrink-0 shadow-2xs cursor-pointer';
-      const inactiveAmber = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-amber-200 text-amber-700 hover:bg-amber-50 shrink-0 cursor-pointer';
+      const activePill = 'chip is-active';
+      const inactivePill = 'chip';
+      const activeClay = 'chip chip-clay is-active';
+      const inactiveClay = 'chip chip-clay';
 
       quickFilterAllBtn.className = (selectedCategories.size === 5 && !filterOnlyDuplicates) ? activePill : inactivePill;
       quickFilterCarsBtn.className = (selectedCategories.size === 1 && selectedCategories.has('cars_tomica') && !filterOnlyDuplicates) ? activePill : inactivePill;
-      quickFilterNonTomicaBtn.className = (selectedCategories.size === 1 && selectedCategories.has('cars_non_tomica') && !filterOnlyDuplicates) ? activeAmber : inactiveAmber;
+      quickFilterNonTomicaBtn.className = (selectedCategories.size === 1 && selectedCategories.has('cars_non_tomica') && !filterOnlyDuplicates) ? activeClay : inactiveClay;
       quickFilterToyBtn.className = (selectedCategories.size === 1 && selectedCategories.has('toystory') && !filterOnlyDuplicates) ? activePill : inactivePill;
       quickFilterOtherBtn.className = (selectedCategories.size === 2 && selectedCategories.has('general') && selectedCategories.has('other_disney') && !filterOnlyDuplicates) ? activePill : inactivePill;
     }
@@ -6943,11 +6883,11 @@
       if (filterOnlyDuplicates) {
         selectedSeriesSummaryText.textContent = `⚠️ 僅篩選已重複款 (${dupCount}款)`;
         selectedSeriesBadge.textContent = '重複專區';
-        selectedSeriesBadge.className = 'bg-red-100 text-red-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full';
+        selectedSeriesBadge.className = 'series-badge is-alert';
         return;
       }
 
-      selectedSeriesBadge.className = 'bg-zinc-100 text-zinc-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full';
+      selectedSeriesBadge.className = 'series-badge';
 
       if (selectedCategories.size === 5) {
         selectedSeriesSummaryText.textContent = `全部系列 (${CARS_DATABASE.length}款)`;
@@ -6992,23 +6932,23 @@
       if (entry.category === 'cars') {
         catBadgeHtml = '<span class="tag-badge tag-cars font-bold">Cars</span>';
       } else if (entry.category === 'cars_playset') {
-        catBadgeHtml = '<span class="tag-badge bg-amber-50 text-amber-800 border border-amber-200 font-bold">Cars 遊具</span>';
+        catBadgeHtml = '<span class="tag-badge tag-non-tomica">Cars 遊具</span>';
       } else if (entry.category === 'tomica_limited') {
-        catBadgeHtml = '<span class="tag-badge bg-purple-50 text-purple-800 border border-purple-200 font-bold">Tomica 限定</span>';
+        catBadgeHtml = '<span class="tag-badge tag-disney">Tomica 限定</span>';
       }
 
       // 購入狀態徽章 (僅 owned !== null 時顯示)
       let ownedBadgeHtml = '';
       if (entry.owned === true) {
-        ownedBadgeHtml = '<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">已購入</span>';
+        ownedBadgeHtml = '<span class="stamp stamp-owned">已購入</span>';
       } else if (entry.owned === false) {
-        ownedBadgeHtml = '<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 font-bold">未購入</span>';
+        ownedBadgeHtml = '<span class="stamp stamp-unowned">未購入</span>';
       }
 
       // 需預約徽章
       let reservationBadgeHtml = '';
       if (entry.needsReservation) {
-        reservationBadgeHtml = '<span class="tag-badge bg-rose-50 text-rose-700 border border-rose-200 font-bold">需預約</span>';
+        reservationBadgeHtml = '<span class="stamp stamp-hold">需預約</span>';
       }
 
       // Cars 編號快速跳轉按鈕 (點擊切換至總目錄搜尋對應編號)
@@ -7018,11 +6958,11 @@
           <button 
             type="button"
             onclick="jumpToCatalogSearch('${entry.displayNumber}')" 
-            class="compendium-badge font-mono hover:bg-zinc-200 hover:text-zinc-950 cursor-pointer transition text-[10.5px] py-0.5 px-2 flex items-center gap-1 shadow-2xs"
+            class="compendium-badge"
             title="點擊切換至官方總車款目錄檢視 ${entry.displayNumber}"
           >
-            <span>🏎️ ${entry.displayNumber}</span>
-            <span class="text-[9px] text-zinc-400">總目錄 ↗</span>
+            <span>${entry.displayNumber}</span>
+            <span class="jump-hint">總目錄</span>
           </button>
         `;
       }
@@ -7034,82 +6974,54 @@
       let notesHtml = '';
       if (entry.notes) {
         notesHtml = `
-          <details class="mt-2.5 pt-2 border-t border-zinc-100 text-xs text-zinc-600">
-            <summary class="font-bold text-zinc-700 cursor-pointer select-none hover:text-zinc-900 flex items-center gap-1">
-              <span>📝 查看新品備註與特注說明</span>
-            </summary>
-            <div class="mt-1.5 p-2.5 bg-zinc-50 rounded-lg text-zinc-700 leading-relaxed font-sans border border-zinc-200/60">
-              ${entry.notes}
-            </div>
+          <details class="note-fold">
+            <summary>查看新品備註與特注說明</summary>
+            <div class="note-body">${entry.notes}</div>
           </details>
         `;
       }
 
       return `
-        <article class="pokedex-card p-4 sm:p-5 flex flex-col justify-between">
-          <div>
-            <!-- 頂部徽章與編號 -->
-            <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
-              <div class="flex items-center gap-1.5 flex-wrap">
-                ${catBadgeHtml}
-                ${ownedBadgeHtml}
-                ${reservationBadgeHtml}
-              </div>
-              <div>
-                ${numberJumpHtml}
-              </div>
+        <article class="pokedex-card weekly-card">
+          <div class="weekly-top">
+            <div class="list-badges">
+              ${catBadgeHtml}
+              ${ownedBadgeHtml}
+              ${reservationBadgeHtml}
             </div>
-
-            <!-- 品名與日文原名 -->
-            <h3 class="text-base sm:text-lg font-bold text-zinc-950 leading-snug">
-              ${entry.nameZh}
-            </h3>
-            <div class="text-xs text-zinc-500 font-mono mb-3">
-              ${entry.nameJp}
+            <div>${numberJumpHtml}</div>
+          </div>
+          <h3 class="card-title">${entry.nameZh}</h3>
+          <div class="card-jp">${entry.nameJp}</div>
+          <div class="spec-sheet">
+            <div class="spec-row">
+              <span class="spec-key">通報週次</span>
+              <span class="spec-val">${entry.reportedAt || entry.weekOf}</span>
             </div>
-
-            <!-- 規格與情報清單 (繁中標籤) -->
-            <div class="bg-zinc-50 rounded-xl p-3 text-xs space-y-1.5 border border-zinc-200/80">
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">通報週次</span>
-                <span class="font-semibold text-zinc-800 font-mono text-right">通報：${entry.reportedAt || entry.weekOf}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">發售／期間</span>
-                <span class="font-semibold text-zinc-800 text-right font-medium">${entry.releaseOrPeriod || '官方未載明'}</span>
-              </div>
-              ${entry.releaseDate ? `
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">官方發售日</span>
-                <span class="font-semibold text-zinc-800 text-right font-mono">${entry.releaseDate}</span>
-              </div>` : ''}
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">參考價格</span>
-                <span class="font-bold text-zinc-900 font-mono text-right">${priceText}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">販售通路</span>
-                <span class="font-semibold text-zinc-800 text-right truncate max-w-[200px] sm:max-w-[280px]" title="${entry.place || ''}">${entry.place || '官方未載明'}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">情報來源</span>
-                <span class="text-right truncate max-w-[200px] sm:max-w-[280px]">
-                  <a 
-                    href="${entry.sourceUrl}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="text-blue-600 hover:text-blue-800 underline font-medium inline-flex items-center gap-0.5"
-                    title="前往官方來源：${entry.sourceLabel}"
-                  >
-                    <span>來源：${entry.sourceLabel}</span>
-                    <span class="text-[10px]">↗</span>
-                  </a>
-                </span>
-              </div>
+            <div class="spec-row">
+              <span class="spec-key">發售／期間</span>
+              <span class="spec-val">${entry.releaseOrPeriod || '官方未載明'}</span>
+            </div>
+            ${entry.releaseDate ? `
+            <div class="spec-row">
+              <span class="spec-key">官方發售日</span>
+              <span class="spec-val">${entry.releaseDate}</span>
+            </div>` : ''}
+            <div class="spec-row">
+              <span class="spec-key">參考價格</span>
+              <span class="spec-val price">${priceText}</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">販售通路</span>
+              <span class="spec-val" title="${entry.place || ''}">${entry.place || '官方未載明'}</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">情報來源</span>
+              <span class="spec-val">
+                <a href="${entry.sourceUrl}" target="_blank" rel="noopener noreferrer" title="前往官方來源：${entry.sourceLabel}">${entry.sourceLabel}</a>
+              </span>
             </div>
           </div>
-
-          <!-- 備註說明區塊 -->
           ${notesHtml}
         </article>
       `;
@@ -7167,12 +7079,10 @@
         const list = groups[week];
         html += `
           <section class="weekly-group">
-            <div class="flex items-center gap-2 mb-3 mt-4 pb-2 border-b border-zinc-200">
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-900 shrink-0"></span>
-              <h2 class="text-sm sm:text-base font-extrabold text-zinc-900 tracking-tight">
-                週報 ${week}
-              </h2>
-              <span class="text-xs text-zinc-500 font-mono">(${list.length} 款新品)</span>
+            <div class="week-rule">
+              <span class="week-index">WEEK</span>
+              <h2>週報 ${week}</h2>
+              <span class="week-count">${list.length} 款新品</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               ${list.map(e => generateWeeklyCardHtml(e)).join('')}
@@ -7199,8 +7109,8 @@
       currentMainTab = tab;
       window.location.hash = tab === 'weekly' ? 'weekly' : (tab === 'collection' ? 'collection' : 'official');
 
-      const activeClass = 'flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition bg-zinc-950 text-white shadow-2xs cursor-pointer';
-      const inactiveClass = 'flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition text-zinc-600 hover:text-zinc-950 hover:bg-zinc-300/40 cursor-pointer';
+      const activeClass = 'main-tab is-active';
+      const inactiveClass = 'main-tab';
 
       mainTabOfficial.className = currentMainTab === 'official' ? activeClass : inactiveClass;
       mainTabOwned.className = currentMainTab === 'collection' ? activeClass : inactiveClass;
@@ -7211,7 +7121,7 @@
         compendiumMainSection.classList.add('hidden');
         weeklyTrackerSection.classList.remove('hidden');
         checkerAlertBanner.classList.add('hidden');
-        searchInput.placeholder = '🔍 搜尋週報新品（例如 洗車場、GR86、C-14）...';
+        searchInput.placeholder = '搜尋週報新品，例如 洗車場、GR86、C-14';
         renderWeeklyTracker();
       } else {
         weeklyTrackerSection.classList.add('hidden');
@@ -7224,14 +7134,14 @@
           filterOwnership = 'all';
           updateOwnershipPillStyles();
           updateSeriesButtonLabel();
-          searchInput.placeholder = '🔍 搜尋車款編號或名稱（例如 C-37、C-14、プレジデント）...';
+          searchInput.placeholder = '搜尋編號或名稱，例如 C-37、プレジデント';
         } else {
           // 現有收藏: 預設呈現已購入收藏 (包含 Tomica Cars、非 Tomica Cars、玩具總動員等全系列)
           filterOwnership = 'owned';
           selectedCategories = new Set(['cars_tomica', 'cars_non_tomica', 'toystory', 'general', 'other_disney']);
           updateOwnershipPillStyles();
           updateSeriesButtonLabel();
-          searchInput.placeholder = '🔍 搜尋在冊收藏車款（例如 C-37、麥坤、Mattel、拖線）...';
+          searchInput.placeholder = '搜尋在冊收藏，例如 C-37、麥坤、Mattel';
         }
         renderCompendium();
       }
@@ -7342,60 +7252,56 @@
       // 狀態徽章：已購入 (綠) / 未購入 (灰) / 重複 (紅) / 特殊組合
       let statusBadgeHtml = '';
       if (!isCarOwned) {
-        statusBadgeHtml = `<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 shadow-2xs font-bold">未購入</span>`;
+        statusBadgeHtml = `<span class="stamp stamp-unowned">未購入</span>`;
       } else if (isDup) {
-        statusBadgeHtml = `<span class="tag-badge tag-dup shadow-2xs">⚠️ 重複 ×${total}</span>`;
+        statusBadgeHtml = `<span class="stamp stamp-dup">重複 ×${total}</span>`;
       } else if (car.id === 'GEN-FOOD-SET') {
-        statusBadgeHtml = `<span class="tag-badge tag-boxed shadow-2xs">盒裝 4台組</span>`;
+        statusBadgeHtml = `<span class="stamp stamp-owned">盒裝 4台組</span>`;
       } else if (car.id === 'GEN-LONG-TRAILERS') {
-        statusBadgeHtml = `<span class="tag-badge tag-loose shadow-2xs">7台拖車隊</span>`;
+        statusBadgeHtml = `<span class="stamp stamp-owned">7台拖車隊</span>`;
       } else if (car.id === 'SP-711-PLAINME-BREAD') {
-        statusBadgeHtml = `<span class="tag-badge tag-loose shadow-2xs">2款聯名小車</span>`;
+        statusBadgeHtml = `<span class="stamp stamp-owned">2款聯名</span>`;
       } else {
-        statusBadgeHtml = `<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs font-bold">已購入</span>`;
+        statusBadgeHtml = `<span class="stamp stamp-owned">已購入</span>`;
       }
 
       // 發售時間展示
-      const releaseLabel = (car.releaseDate && car.releaseDate !== '官方未載明') 
-        ? `發售：${car.releaseDate}` 
-        : '發售：官方未載明';
+      const releaseLabel = (car.releaseDate && car.releaseDate !== '官方未載明')
+        ? car.releaseDate
+        : '日期未載';
 
       // 同名不同號或同號已購入關聯註記
       const relatedNoteHtml = car.relatedOwnedNote ? `
-        <div class="mt-1 text-[10px] text-amber-900 bg-amber-50/90 rounded px-1.5 py-0.5 border border-amber-200/80 font-medium leading-tight">
-          💡 ${car.relatedOwnedNote}
-        </div>
+        <div class="related-note">${car.relatedOwnedNote}</div>
       ` : '';
 
       // 展台圖片與標籤 (非 Tomica 且無官方圖時呈現專屬佔位標記)
       let stageContentHtml = '';
       if (hasImages) {
-        const imageTagLabel = (car.category === 'cars_non_tomica') ? '📷 藏品實拍' : '🌟 官方圖';
+        const imageTagLabel = (car.category === 'cars_non_tomica') ? '藏品實拍' : '官方圖';
         stageContentHtml = `
             <img 
               src="${displayImg}" 
               referrerpolicy="no-referrer"
               alt="${car.name}" 
               loading="lazy"
-              onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none\'><span class=\'text-2xl\'>📷</span><span class=\'text-xs font-bold tracking-wider\'>暫無官方圖</span></div>';"
+              onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'stage-empty\'><span class=\'stage-mark\'>無圖</span><span class=\'stage-label\'>暫無官方圖</span></div>';"
             >
-            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded backdrop-blur-xs pointer-events-none">
-              ${imageTagLabel}
-            </span>
+            <span class="image-chip">${imageTagLabel}</span>
         `;
       } else if (car.category === 'cars_non_tomica') {
         stageContentHtml = `
-            <div class="w-full h-full flex flex-col items-center justify-center bg-amber-50/60 text-amber-800 gap-1 select-none p-2 text-center">
-              <span class="text-2xl">⚡</span>
-              <span class="text-[11px] font-bold tracking-tight">非 Tomica・暫無官方 Tomica 圖</span>
-              <span class="text-[9px] text-amber-600/80 font-mono">（美泰兒／正版授權車模）</span>
+            <div class="stage-empty stage-non">
+              <span class="stage-mark">非</span>
+              <span class="stage-label">非 Tomica・暫無官方圖</span>
+              <span class="stage-sub">美泰兒／正版授權車模</span>
             </div>
         `;
       } else {
         stageContentHtml = `
-            <div class="w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none">
-              <span class="text-2xl">📷</span>
-              <span class="text-xs font-bold tracking-wider">暫無官方圖</span>
+            <div class="stage-empty">
+              <span class="stage-mark">無圖</span>
+              <span class="stage-label">暫無官方圖</span>
             </div>
         `;
       }
@@ -7406,50 +7312,35 @@
       const subTitle = hasChinese ? car.jpName : '繁中名：官方未載明';
 
       return `
-        <article 
-          class="pokedex-card ${isDup ? 'is-duplicate' : ''} ${!isCarOwned ? 'opacity-90 bg-zinc-50/40' : ''}"
+        <article
+          class="pokedex-card ${isDup ? 'is-duplicate' : ''} ${!isCarOwned ? 'is-unowned' : ''}"
           onclick="openCarDetail('${car.id}')"
           title="點擊查看詳細資料"
         >
-          <!-- 車輛展示舞台 (手機黃金比例 16:11 均勻展台) -->
           <div class="car-stage aspect-[16/11] p-3">
-            <span class="absolute top-2 left-2 compendium-badge z-10 font-mono">
+            <span class="absolute top-2 left-2 compendium-badge z-10">
               ${car.displayNumber || car.id}
             </span>
             <div class="absolute top-2 right-2 flex flex-col items-end gap-1 z-10">
               ${statusBadgeHtml}
             </div>
-            
             ${stageContentHtml}
           </div>
-
-          <!-- 卡片文字資訊 -->
-          <div class="p-3 flex flex-col justify-between flex-grow bg-white">
+          <div class="card-copy">
             <div>
-              <div class="flex items-center justify-between gap-1 mb-1">
-                <span class="tag-badge ${catBadgeClass} text-[9px] py-0 px-1.5">
-                  ${car.categoryName.replace('系列', '')}
+              <div class="card-meta">
+                <span class="tag-badge ${catBadgeClass}">
+                  ${({cars_tomica:'Tomica Cars',cars_non_tomica:'非 Tomica',toystory:'玩具總動員',general:'經典長車',other_disney:'迪士尼'})[car.category] || car.categoryName}
                 </span>
-                <span class="text-[10px] text-zinc-400 font-mono truncate max-w-[58%]">
-                  ${releaseLabel}
-                </span>
+                <span class="meta-date">${releaseLabel}</span>
               </div>
-              <h2 class="text-xs sm:text-sm font-bold text-zinc-900 leading-snug line-clamp-2">
-                ${mainTitle}
-              </h2>
-              <div class="text-[10.5px] text-zinc-500 font-mono truncate mt-0.5">
-                ${subTitle}
-              </div>
+              <h2 class="card-title">${mainTitle}</h2>
+              <div class="card-jp">${subTitle}</div>
               ${relatedNoteHtml}
             </div>
-
-            <div class="mt-2 pt-2 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-500">
-              <span class="font-mono text-[10px] text-zinc-500">
-                盒裝 ${car.boxed} ・ 散車 ${car.loose}
-              </span>
-              <span class="font-bold ${isCarOwned ? 'text-zinc-900' : 'text-zinc-400'} shrink-0 text-[10.5px]">
-                ${isCarOwned ? `持有 ${total} 台` : '未購入'}
-              </span>
+            <div class="card-foot">
+              <span>盒裝 ${car.boxed} ・ 散車 ${car.loose}</span>
+              <span class="hold-count ${isCarOwned ? '' : 'is-empty'}">${isCarOwned ? `持有 ${total} 台` : '未購入'}</span>
             </div>
           </div>
         </article>
@@ -7474,7 +7365,7 @@
           <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-2 my-2.5">
             ${car.images.map(img => `
               <div 
-                class="car-stage aspect-[16/11] rounded-xl border border-zinc-200/90 shadow-2xs cursor-zoom-in"
+                class="car-stage aspect-[16/11] cursor-zoom-in"
                 onclick="event.stopPropagation(); openLightbox('${img.url}', '${car.name} - ${img.label}')"
               >
                 <img 
@@ -7483,28 +7374,30 @@
                   alt="${car.name}" 
                   class="p-2.5"
                   loading="lazy"
-                  onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none\'><span class=\'text-2xl\'>📷</span><span class=\'text-xs font-bold tracking-wider\'>暫無官方圖</span></div>';"
+                  onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'stage-empty\'><span class=\'stage-mark\'>無圖</span><span class=\'stage-label\'>暫無官方圖</span></div>';"
                 >
-                <span class="absolute bottom-1.5 right-1.5 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs pointer-events-none">
-                  ${img.label}
-                </span>
+                <span class="image-chip">${img.label}</span>
               </div>
             `).join('')}
           </div>
         `;
       } else if (car.category === 'cars_non_tomica') {
         imagesDualHtml = `
-          <div class="car-stage aspect-[16/11] rounded-xl border border-amber-200/90 shadow-2xs flex flex-col items-center justify-center bg-amber-50/60 text-amber-800 gap-1 my-2.5 p-3 text-center">
-            <span class="text-2xl">⚡</span>
-            <span class="text-xs font-bold tracking-tight">非 Tomica・暫無官方 Tomica 圖</span>
-            <span class="text-[10px] text-amber-600/80 font-mono">（美泰兒／正版授權車模）</span>
+          <div class="car-stage aspect-[16/11] my-2.5">
+            <div class="stage-empty stage-non">
+              <span class="stage-mark">非</span>
+              <span class="stage-label">非 Tomica・暫無官方圖</span>
+              <span class="stage-sub">美泰兒／正版授權車模</span>
+            </div>
           </div>
         `;
       } else {
         imagesDualHtml = `
-          <div class="car-stage aspect-[16/11] rounded-xl border border-zinc-200/90 shadow-2xs flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 my-2.5">
-            <span class="text-2xl">📷</span>
-            <span class="text-xs font-bold tracking-wider">暫無官方圖</span>
+          <div class="car-stage aspect-[16/11] my-2.5">
+            <div class="stage-empty">
+              <span class="stage-mark">無圖</span>
+              <span class="stage-label">暫無官方圖</span>
+            </div>
           </div>
         `;
       }
@@ -7514,58 +7407,31 @@
       const releaseText = (car.releaseDate && car.releaseDate !== '官方未載明') ? car.releaseDate : '官方未載明';
 
       return `
-        <article class="pokedex-card p-4 sm:p-5 ${isDup ? 'is-duplicate' : ''} ${!isCarOwned ? 'opacity-90 bg-zinc-50/40' : ''}" onclick="openCarDetail('${car.id}')">
-          <div class="flex items-start justify-between gap-2 mb-1">
-            <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="compendium-badge font-mono">
-                ${car.displayNumber || car.id}
-              </span>
-              <span class="tag-badge ${catBadgeClass}">
-                ${car.categoryName}
-              </span>
-              ${isCarOwned ? `<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">已購入</span>` : `<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 font-bold">未購入</span>`}
-              ${isDup ? `<span class="tag-badge tag-dup">⚠️ 重複收藏款</span>` : ''}
+        <article class="pokedex-card list-card ${isDup ? 'is-duplicate' : ''} ${!isCarOwned ? 'is-unowned' : ''}" onclick="openCarDetail('${car.id}')">
+          <div class="list-head">
+            <div class="list-badges">
+              <span class="compendium-badge">${car.displayNumber || car.id}</span>
+              <span class="tag-badge ${catBadgeClass}">${car.categoryName}</span>
+              ${isCarOwned ? `<span class="stamp stamp-owned">已購入</span>` : `<span class="stamp stamp-unowned">未購入</span>`}
+              ${isDup ? `<span class="stamp stamp-dup">重複收藏</span>` : ''}
             </div>
-
-            <div class="text-right shrink-0">
-              <span class="text-xs font-bold ${isCarOwned ? 'text-zinc-900' : 'text-zinc-400'}">
-                ${isCarOwned ? `持有 ${total} 台` : '未購入'}
-              </span>
-              <div class="text-[10px] text-zinc-500 font-mono">
-                盒裝 ${car.boxed} ・ 散車 ${car.loose}
-              </div>
+            <div class="list-hold">
+              <div class="hold-count ${isCarOwned ? '' : 'is-empty'}">${isCarOwned ? `持有 ${total} 台` : '未購入'}</div>
+              <div class="meta-date">盒裝 ${car.boxed} ・ 散車 ${car.loose}</div>
             </div>
           </div>
-
-          <h2 class="text-base sm:text-lg font-bold text-zinc-950 mt-1 mb-0.5 leading-snug">
-            ${mainTitle}
-          </h2>
-          <div class="text-xs text-zinc-500 font-mono mb-2">
-            ${car.jpName}
-          </div>
-
-          <!-- 官方展示圖 -->
+          <h2 class="card-title">${mainTitle}</h2>
+          <div class="card-jp">${car.jpName}</div>
           ${imagesDualHtml}
-
-          <!-- 同名不同號或同號已購入關聯註記 -->
-          ${car.relatedOwnedNote ? `
-            <div class="my-2 text-xs text-amber-900 bg-amber-50/90 rounded-lg p-2.5 border border-amber-200 font-medium leading-relaxed">
-              💡 ${car.relatedOwnedNote}
+          ${car.relatedOwnedNote ? `<div class="related-note">${car.relatedOwnedNote}</div>` : ''}
+          <div class="list-prose">
+            <div>
+              <span class="prose-label">官方發售時間</span>
+              <span class="meta-date">${releaseText}</span>
+              <span class="prose-label">原型考證</span>
+              <span class="prototype-chip">${car.prototype || '官方特規原創'}</span>
             </div>
-          ` : ''}
-
-          <!-- 考證與詳細資訊 -->
-          <div class="mt-2.5 pt-2.5 border-t border-zinc-100 flex flex-col gap-1.5 text-xs text-zinc-600">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="font-bold text-zinc-700">官方發售時間：</span>
-              <span class="text-zinc-800 font-mono font-medium">${releaseText}</span>
-              <span class="text-zinc-400">｜</span>
-              <span class="font-bold text-zinc-700">原型考證：</span>
-              <span class="bg-zinc-100 px-2 py-0.5 rounded text-zinc-700 font-mono">${car.prototype || '官方特規原創'}</span>
-            </div>
-            <div class="leading-relaxed text-zinc-700 mt-1">
-              ${car.description}
-            </div>
+            <div style="margin-top:0.35rem">${car.description}</div>
           </div>
         </article>
       `;
@@ -7580,10 +7446,10 @@
         return `<a href="${safe}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline" title="${safe}">${label}</a>`;
       });
       if (!links.length) return '';
-      return `
-          <div class="flex items-start justify-between gap-3">
-            <span class="text-zinc-500 shrink-0">來源依據</span>
-            <span class="font-medium text-right leading-relaxed">${links.join('<span class="text-zinc-300"> · </span>')}</span>
+          return `
+          <div class="spec-row">
+            <span class="spec-key">來源依據</span>
+            <span class="spec-val">${links.join(' · ')}</span>
           </div>`;
     }
 
@@ -7607,30 +7473,32 @@
           <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3 my-4">
             ${car.images.map(img => `
               <div 
-                class="car-stage aspect-[16/11] rounded-2xl border border-zinc-200 cursor-zoom-in"
+                class="car-stage aspect-[16/11] cursor-zoom-in"
                 onclick="openLightbox('${img.url}', '${car.name} - ${img.label}')"
               >
                 <img src="${img.url}" alt="${car.name}" class="p-3" loading="lazy">
-                <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">
-                  ${img.label}
-                </span>
+                <span class="image-chip">${img.label}</span>
               </div>
             `).join('')}
           </div>
         `;
       } else if (car.category === 'cars_non_tomica') {
         modalImagesHtml = `
-          <div class="car-stage aspect-[16/11] rounded-2xl border border-amber-200 flex flex-col items-center justify-center bg-amber-50/60 text-amber-800 gap-1 my-4 p-4 text-center">
-            <span class="text-3xl">⚡</span>
-            <span class="text-sm font-bold tracking-tight">非 Tomica・暫無官方 Tomica 圖</span>
-            <span class="text-xs text-amber-600/80 font-mono">（美泰兒／正版授權車模）</span>
+          <div class="car-stage aspect-[16/11] my-4">
+            <div class="stage-empty stage-non">
+              <span class="stage-mark">非</span>
+              <span class="stage-label">非 Tomica・暫無官方圖</span>
+              <span class="stage-sub">美泰兒／正版授權車模</span>
+            </div>
           </div>
         `;
       } else {
         modalImagesHtml = `
-          <div class="car-stage aspect-[16/11] rounded-2xl border border-zinc-200 flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 my-4">
-            <span class="text-3xl">📷</span>
-            <span class="text-sm font-bold tracking-wider">暫無官方圖</span>
+          <div class="car-stage aspect-[16/11] my-4">
+            <div class="stage-empty">
+              <span class="stage-mark">無圖</span>
+              <span class="stage-label">暫無官方圖</span>
+            </div>
           </div>
         `;
       }
@@ -7645,105 +7513,76 @@
         if (!isCarOwned) {
           if (car.relatedOwnedNote) {
             buyAdviceHtml = `
-              <div class="my-3 p-3.5 rounded-xl border bg-amber-50/90 border-amber-200 text-amber-950 text-xs leading-relaxed">
-                <div class="font-bold flex items-center gap-1.5 mb-1 text-amber-900">
-                  <span>💡 同名／同號已購入提醒：</span>
-                </div>
-                <div class="mb-1.5 font-semibold text-amber-900">${car.relatedOwnedNote}</div>
-                <div class="text-amber-800">此官方編號（<strong>${car.displayNumber || car.id}</strong>）尚未登錄購入；您另有同角色／同名不同號已購入（見上方註記）。若出外逛街或網購，請務必先確認盒上編號後再決定是否入手。</div>
+              <div class="advice advice-note">
+                <div class="advice-title">同名／同號已購入提醒</div>
+                <div>${car.relatedOwnedNote}</div>
+                <div>此官方編號（<strong>${car.displayNumber || car.id}</strong>）尚未登錄購入；您另有同角色／同名不同號已購入（見上方註記）。若出外逛街或網購，請務必先確認盒上編號後再決定是否入手。</div>
               </div>
             `;
           } else {
             buyAdviceHtml = `
-              <div class="my-3 p-3.5 rounded-xl border bg-blue-50/80 border-blue-200 text-blue-950 text-xs leading-relaxed">
-                <div class="font-bold flex items-center gap-1.5 mb-1 text-blue-900">
-                  <span>🛒 官方收錄未購入車款：</span>
-                </div>
-                <div>官方編號 <strong>${car.displayNumber || car.id}</strong>，您尚未購入。出外逛街或網購時若價格合理，可放心入手擴充圖鑑！</div>
+              <div class="advice advice-go">
+                <div class="advice-title">官方收錄未購入車款</div>
+                <div>官方編號 <strong>${car.displayNumber || car.id}</strong>，您尚未購入。出外逛街或網購時若價格合理，可放心入手擴充圖鑑。</div>
               </div>
             `;
           }
         } else if (isDup) {
           buyAdviceHtml = `
-            <div class="my-3 p-3.5 rounded-xl border bg-red-50/80 border-red-200 text-red-900 text-xs leading-relaxed">
-              <div class="font-bold flex items-center gap-1 mb-1 text-red-700">
-                <span>🚫 重複持有警戒：切勿重複購買！</span>
-              </div>
-              <div>您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款！</div>
+            <div class="advice advice-dup">
+              <div class="advice-title">重複持有警戒：切勿重複購買</div>
+              <div>您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款。</div>
             </div>
           `;
         } else if (total === 0) {
           buyAdviceHtml = `
-            <div class="my-3 p-3.5 rounded-xl border bg-amber-50/80 border-amber-200 text-amber-900 text-xs leading-relaxed">
-              <div class="font-bold flex items-center gap-1 mb-1 text-amber-800">
-                <span>💡 收藏目錄在庫提醒：目前在庫 0 台</span>
-              </div>
-              <div>此車款已登錄於您的收藏目錄，但實體庫存目前為 0。若出外逛街或網購時遇到，可直接入手！</div>
+            <div class="advice advice-note">
+              <div class="advice-title">收藏目錄在庫提醒：目前在庫 0 台</div>
+              <div>此車款已登錄於您的收藏目錄，但實體庫存目前為 0。若出外逛街或網購時遇到，可直接入手。</div>
             </div>
           `;
         } else {
           buyAdviceHtml = `
-            <div class="my-3 p-3.5 rounded-xl border bg-amber-50/80 border-amber-200 text-amber-900 text-xs leading-relaxed">
-              <div class="font-bold flex items-center gap-1 mb-1 text-amber-800">
-                <span>💡 採購庫存建議：</span>
-              </div>
+            <div class="advice advice-hold">
+              <div class="advice-title">採購庫存建議</div>
               <div>目前庫存持有 <strong>${total} 台</strong>（${car.boxed > 0 ? '盒裝全新' : '無盒散車'}）。若在實體店遇到便宜盒裝款可考慮補盒，否則無須再買。</div>
             </div>
           `;
         }
 
         detailModalContent.innerHTML = `
-        <div class="flex items-center gap-2 mb-2 flex-wrap pr-8">
-          <span class="compendium-badge text-sm font-mono">${car.displayNumber || car.id}</span>
+        <div class="list-badges" style="padding-right:2rem">
+          <span class="compendium-badge">${car.displayNumber || car.id}</span>
           <span class="tag-badge ${catBadgeClass}">${car.categoryName}</span>
-          ${isCarOwned ? `<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">已購入</span>` : `<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 font-bold">未購入</span>`}
-          ${isDup ? `<span class="tag-badge tag-dup">⚠️ 重複持有 ${total} 台</span>` : ''}
+          ${isCarOwned ? `<span class="stamp stamp-owned">已購入</span>` : `<span class="stamp stamp-unowned">未購入</span>`}
+          ${isDup ? `<span class="stamp stamp-dup">重複 ${total} 台</span>` : ''}
         </div>
-
-        <h2 class="text-xl font-extrabold text-zinc-950 leading-snug">
-          ${mainTitle}
-        </h2>
-        <p class="text-xs text-zinc-500 font-mono mb-2">
-          ${car.jpName}
-        </p>
-
-        <!-- 圖片區塊 -->
+        <h2 class="modal-title">${mainTitle}</h2>
+        <p class="modal-jp">${car.jpName}</p>
         ${modalImagesHtml}
-
-        <!-- 採購避坑警報 -->
         ${buyAdviceHtml}
-
-        <!-- 規格資訊清單 -->
-        <div class="bg-zinc-50 rounded-xl p-3.5 my-3 text-xs space-y-2 border border-zinc-200/80">
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">官方編號</span>
-            <span class="font-semibold text-zinc-800 font-mono">${car.displayNumber || car.id}</span>
+        <div class="spec-sheet">
+          <div class="spec-row">
+            <span class="spec-key">官方編號</span>
+            <span class="spec-val">${car.displayNumber || car.id}</span>
           </div>
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">官方發售日期</span>
-            <div class="text-right">
-              <span class="font-semibold text-zinc-800 font-mono">${releaseText}</span>
-              ${car.sourceTier ? `<span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-zinc-200/80 text-zinc-700 font-medium">${car.sourceTier}${car.confidence ? ' (' + car.confidence + ')' : ''}</span>` : ''}
-            </div>
+          <div class="spec-row">
+            <span class="spec-key">官方發售日期</span>
+            <span class="spec-val">${releaseText}${car.sourceTier ? ` · ${car.sourceTier}${car.confidence ? ' (' + car.confidence + ')' : ''}` : ''}</span>
           </div>
           ${evidenceLinksHtml(car)}
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">原型車款</span>
-            <span class="font-semibold text-zinc-800 text-right font-mono">${car.prototype || '官方特規原創'}</span>
+          <div class="spec-row">
+            <span class="spec-key">原型車款</span>
+            <span class="spec-val">${car.prototype || '官方特規原創'}</span>
           </div>
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">收藏實況</span>
-            <span class="font-bold text-zinc-900 font-mono">盒裝 ${car.boxed} ・ 散車 ${car.loose} (${isCarOwned ? '持有 ' + total + ' 台' : '未購入'})</span>
+          <div class="spec-row">
+            <span class="spec-key">收藏實況</span>
+            <span class="spec-val">盒裝 ${car.boxed} ・ 散車 ${car.loose}（${isCarOwned ? '持有 ' + total + ' 台' : '未購入'}）</span>
           </div>
         </div>
-
-        <!-- 典藏背景手冊與考究 (Section H: 角色彩蛋與專屬手冊介紹) -->
-        <div class="mt-3 pt-3 border-t border-zinc-100 text-xs text-zinc-700 leading-relaxed">
-          <div class="font-bold text-zinc-900 mb-1.5 flex items-center gap-1.5">
-            <span>【官方收錄手冊詳細介紹】</span>
-            ${car.characterEasterEggZh ? '<span class="tag-badge bg-amber-50 text-amber-800 border border-amber-200 text-[10px] py-0 px-1.5 font-bold">🍎 角色彩蛋</span>' : ''}
-          </div>
-          <p class="mb-2 whitespace-pre-line leading-relaxed text-zinc-800 bg-zinc-50/80 p-3 rounded-xl border border-zinc-200/60">${handbookBlurb}</p>
+        <div class="handbook">
+          <div class="prose-label">官方收錄手冊 ${car.characterEasterEggZh ? '<span class="tag-badge tag-non-tomica">角色彩蛋</span>' : ''}</div>
+          <p>${handbookBlurb}</p>
         </div>
       `;
 
@@ -7809,12 +7648,10 @@
       checkerAlertBanner.classList.remove('hidden');
 
       if (filtered.length === 0) {
-        checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-zinc-100 border border-zinc-300 text-zinc-900 font-medium';
+        checkerAlertBanner.className = 'alert-banner alert-muted';
         checkerAlertBanner.innerHTML = `
-          <div class="font-bold text-zinc-800 flex items-center gap-1.5 text-sm mb-1">
-            <span>🔍 找不到這個編號。可能是尚未收錄的絕版或輸入有誤。</span>
-          </div>
-          <div class="text-[11px] text-zinc-500">建議嘗試搜尋主編號（如 C-37、C-14、SP）或角色日文名（如 プレジデント、メーター）。</div>
+          <div class="alert-title">找不到這個編號。可能是尚未收錄的絕版或輸入有誤。</div>
+          <div>建議嘗試搜尋主編號（如 C-37、C-14、SP）或角色日文名（如 プレジデント、メーター）。</div>
         `;
         return;
       }
@@ -7824,11 +7661,9 @@
       const unownedMatches = filtered.filter(c => c.owned === false);
 
       if (ownedMatches.length > 0 && unownedMatches.length > 0) {
-        checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-blue-50 border border-blue-200 text-blue-950 font-medium';
+        checkerAlertBanner.className = 'alert-banner alert-info';
         checkerAlertBanner.innerHTML = `
-          <div class="font-bold text-blue-900 flex items-center gap-1 text-sm mb-1">
-            <span>ℹ️ 官方重用編號：找到 ${filtered.length} 款相符車款</span>
-          </div>
+          <div class="alert-title">官方重用編號：找到 ${filtered.length} 款相符車款</div>
           <div>其中 <strong>${ownedMatches.length} 款已購入</strong>、<strong>${unownedMatches.length} 款未購入</strong>。請比對下方卡片官方日文品名與車型。</div>
         `;
       } else if (ownedMatches.length > 0) {
@@ -7836,19 +7671,15 @@
         const isDup = Boolean(topMatch.isDuplicate);
         const total = topMatch.boxed + topMatch.loose;
         if (isDup) {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-red-100 border border-red-300 text-red-950 font-medium';
+          checkerAlertBanner.className = 'alert-banner alert-dup';
           checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-red-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>🚫 重複庫存警示：您已擁有此車款！</span>
-            </div>
-            <div>庫存比對成功：<strong>${topMatch.displayNumber || topMatch.id} ${topMatch.name}</strong>（${topMatch.jpName}），發售時間：<strong>${topMatch.releaseDate || '官方未載明'}</strong>。已收藏 <strong>${total} 台</strong>（盒裝 ${topMatch.boxed}、散車 ${topMatch.loose}），<span class="underline font-bold">現場請勿重複購買！</span></div>
+            <div class="alert-title">重複庫存警示：您已擁有此車款</div>
+            <div>庫存比對成功：<strong>${topMatch.displayNumber || topMatch.id} ${topMatch.name}</strong>（${topMatch.jpName}），發售時間：<strong>${topMatch.releaseDate || '官方未載明'}</strong>。已收藏 <strong>${total} 台</strong>（盒裝 ${topMatch.boxed}、散車 ${topMatch.loose}），<span class="underline font-bold">現場請勿重複購買。</span></div>
           `;
         } else {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-amber-50 border border-amber-300 text-amber-950 font-medium';
+          checkerAlertBanner.className = 'alert-banner alert-warn';
           checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-amber-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>⚠️ 採購提醒：已有此車款（${topMatch.boxed > 0 ? '原盒 1 台' : '無盒 1 台'}）</span>
-            </div>
+            <div class="alert-title">採購提醒：已有此車款（${topMatch.boxed > 0 ? '原盒 1 台' : '無盒 1 台'}）</div>
             <div>庫存比對成功：<strong>${topMatch.displayNumber || topMatch.id} ${topMatch.name}</strong>（${topMatch.jpName}），發售時間：<strong>${topMatch.releaseDate || '官方未載明'}</strong>。若現場看到便宜原盒可考慮補盒，否則建議跳過。</div>
           `;
         }
@@ -7857,21 +7688,17 @@
         const noteMatch = unownedMatches.find(c => c.relatedOwnedNote);
         const topUnowned = noteMatch || unownedMatches[0];
         if (topUnowned.relatedOwnedNote) {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-amber-50 border border-amber-300 text-amber-950 font-medium';
+          checkerAlertBanner.className = 'alert-banner alert-warn';
           checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-amber-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>💡 同名／同號車款關聯提示</span>
-            </div>
-            <div class="mb-1 font-semibold text-amber-900">${topUnowned.relatedOwnedNote}</div>
+            <div class="alert-title">同名／同號車款關聯提示</div>
+            <div>${topUnowned.relatedOwnedNote}</div>
             <div>官方編號 <strong>${topUnowned.displayNumber || topUnowned.id}</strong>（${topUnowned.jpName}）此款您尚未購入。請核對盒上編號與所附註記後再決定是否採購。</div>
           `;
         } else {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-emerald-50 border border-emerald-300 text-emerald-950 font-medium';
+          checkerAlertBanner.className = 'alert-banner alert-go';
           checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-emerald-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>🎉 採購綠燈：查無持有紀錄（未購入）！</span>
-            </div>
-            <div>官方編號 <strong>${topUnowned.displayNumber || topUnowned.id}</strong>（${topUnowned.jpName}），發售時間：<strong>${topUnowned.releaseDate || '官方未載明'}</strong>。您<strong>尚未購入此款</strong>，現場若價格合適可放心入手擴充圖鑑！</div>
+            <div class="alert-title">查無持有紀錄（未購入）</div>
+            <div>官方編號 <strong>${topUnowned.displayNumber || topUnowned.id}</strong>（${topUnowned.jpName}），發售時間：<strong>${topUnowned.releaseDate || '官方未載明'}</strong>。您<strong>尚未購入此款</strong>，現場若價格合適可放心入手擴充圖鑑。</div>
           `;
         }
       }
@@ -7944,15 +7771,11 @@
 
     // 購入狀態篩選快籤切換 (已購入 / 全目錄 / 未購入)
     function updateOwnershipPillStyles() {
-      filterOwnedBtn.className = filterOwnership === 'owned' 
-        ? 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs'
-        : 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
-      filterAllBtn.className = filterOwnership === 'all'
-        ? 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs'
-        : 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
-      filterUnownedBtn.className = filterOwnership === 'unowned'
-        ? 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs'
-        : 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
+      const on = 'own-pill is-active';
+      const off = 'own-pill';
+      filterOwnedBtn.className = filterOwnership === 'owned' ? on : off;
+      filterAllBtn.className = filterOwnership === 'all' ? on : off;
+      filterUnownedBtn.className = filterOwnership === 'unowned' ? on : off;
     }
 
     filterOwnedBtn.addEventListener('click', () => {
