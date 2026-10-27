@@ -2854,6 +2854,31 @@
     ]
   },
   {
+    "id": "SP-MCQUEEN-2023",
+    "category": "cars_tomica",
+    "categoryName": "Cars 汽車總動員（Tomica）",
+    "name": "閃電麥坤（閃電麥坤日 2023 特別仕樣）",
+    "jpName": "ライトニング・マックィーン(ライトニング・マックィーンデイ 2023特別仕様)",
+    "officialNameJp": "ライトニング・マックィーン(ライトニング・マックィーンデイ 2023特別仕様)",
+    "releaseDate": "2023-09-02",
+    "prototype": "NASCAR 次世代跑車（麥坤日 2023 金屬藍特別仕樣車・車身95號彩繪）",
+    "boxed": 1,
+    "loose": 0,
+    "isDuplicate": false,
+    "keywords": "SP 閃電麥坤 麥坤日 2023 藍色 金屬藍 メタリックブルー 95 特別仕樣 Lightning McQueen Day",
+    "images": [
+      {
+        "url": "tomica_official_images/SP-MCQUEEN-2023.jpg",
+        "label": "📷 藏品實拍"
+      }
+    ],
+    "description": "【2023 麥坤日特別仕樣車】為紀念每年 9 月 5 日「閃電麥坤日」（95 號之日），官方採限定特殊色「メタリックブルー」（金屬金蔥藍）塗裝，車頂與車門繪有 2023 麥坤日專屬 95 號與原創紀念徽章。建議售價 1,100 日圓（含稅）。",
+    "owned": true,
+    "displayNumber": "SP",
+    "registryKey": "SP_lightning_mcqueen_day_2023_special",
+    "nameZh": "閃電麥坤（閃電麥坤日 2023 特別仕樣）"
+  },
+  {
     "id": "SP-MCQUEEN-CHERRY",
     "category": "cars_tomica",
     "categoryName": "Cars 汽車總動員（Tomica）",
@@ -8785,16 +8810,14 @@
       function extractNumbers(text) {
         var source = normalizeDigits(text);
         var out = [];
-        var re = /(?:^|[^A-Za-z0-9])C(?:[-_.\s]+([0-9Il|iOoQZzSsAa]{1,3})|([0-9]{1,3}))(?![0-9A-Za-z])/gi;
+        var re = /(?:^|[^A-Za-z0-9])C(?:[-_.\s]+([0-9Il|iOoQZz]{1,3})|([0-9]{1,3}))(?![0-9A-Za-z])/gi;
         var match;
         while ((match = re.exec(source))) {
           var rawDigits = match[1] || match[2];
           var digits = rawDigits
             .replace(/[Il|i]/g, '1')
             .replace(/[OoQ]/g, '0')
-            .replace(/[Zz]/g, '2')
-            .replace(/[Ss]/g, '5')
-            .replace(/[Aa]/g, '4');
+            .replace(/[Zz]/g, '2');
           if (!/^\d{1,3}$/.test(digits)) continue;
           var n = parseInt(digits, 10);
           if (n < 1 || n > 50) continue;
@@ -9214,9 +9237,7 @@
         var folded = flat.toUpperCase()
           .replace(/[IL|i]/gi, '1')
           .replace(/[OQ]/g, '0')
-          .replace(/Z/g, '2')
-          .replace(/S/g, '5')
-          .replace(/A/g, '4');
+          .replace(/Z/g, '2');
         if (!/^C-?\d{1,2}$/.test(folded)) return [];
         return nums;
       }
