@@ -1,7 +1,7 @@
 {
   "source": "https://snowsepch.github.io/Tomica-Cars/",
   "extractedAt": "2026-10-25T02:42:05+08:00",
-  "count": 42,
+  "count": 43,
   "entries": [
     {
       "number": "C-01_mcqueen_standard",
@@ -74,6 +74,23 @@
       ],
       "notes": null,
       "sourcePage": "current"
+    },
+    {
+      "number": "C-06_doc_standard",
+      "displayNumber": "C-6",
+      "officialNameJp": "ドック・ハドソン(スタンダードタイプ)",
+      "nameZh": "韓大夫（標準型）",
+      "releaseDate": "2008-03",
+      "officialImageUrl": "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-06_doc_standard_official.jpg",
+      "owned": true,
+      "boxed": 0,
+      "loose": 1,
+      "catalogId": "C-06-DOC-STANDARD",
+      "ownedImageUrls": [
+        "https://snowsepch.github.io/Tomica-Cars/tomica_official_images/C-06_doc_standard_official.jpg"
+      ],
+      "notes": null,
+      "sourcePage": "archive"
     },
     {
       "number": "C-07_red_standard",
