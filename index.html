@@ -3581,28 +3581,29 @@
     "displayNumber": "C-3",
     "registryKey": "C-03_mater_cave",
     "releaseDate": "2022-10",
-    "prototype": "官方未載明",
+    "prototype": "原始時代石器長毛象洞穴改裝吊車（Disney+ Cars on the Road 第2集）",
     "boxed": 0,
-    "loose": 0,
-    "owned": false,
+    "loose": 1,
+    "owned": true,
     "isDuplicate": false,
-    "keywords": "C 03 mater cave C-03 C-03_mater_cave C-3 C03 C3 メーター(ケイブタイプ)",
+    "keywords": "C 03 mater cave C-03 C-03_mater_cave C-3 C03 C3 拖線 脫線 洞穴版 恐龍版 遠古 原始 猛瑪象 長毛象 メーター(ケイブタイプ)",
     "images": [
       {
         "url": "tomica_official_images/C-03_mater_cave_official.jpg",
-        "label": "🌟 官方圖"
+        "label": "🌟 官方高清展示圖"
       }
     ],
-    "description": "【官方收錄・未購入車款】メーター(ケイブタイプ)。官方編號：C-3。發售時間：官方未載明。",
+    "description": "出自 Disney+ 影集《公路旅行（Cars on the Road）》第 2 集「恐龍公園」！脫線在史前白堊紀幻想化身為長毛象骨骼裝飾的遠古洞穴吊車，車頂配有長毛象象牙裝飾與原始石器輪圈，野性粗獷造型，開盒收藏 1 台。",
     "nameZh": "脫線（洞穴版）",
     "officialNameJp": "メーター(ケイブタイプ)",
-    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-03 メーター（ケイブタイプ）；品相：新品／官方商品頁（無品相欄）",
+    "notes": "繁中優先對齊台灣通路標題；代理商：卡布；Takara/公式可核對：C-03 メーター（ケイブタイプ）",
     "sourceTier": "Official",
     "confidence": "high",
-    "verifiedAt": "2026-10-25",
+    "verifiedAt": "2026-10-28",
     "releaseDatePrecision": "month",
     "evidenceUrls": [
-      "https://www.1999.co.jp/list/2547/7/3"
+      "https://www.1999.co.jp/list/2547/7/3",
+      "https://www.takaratomy.co.jp/products/disney/cars/"
     ]
   },
   {
@@ -10405,6 +10406,13 @@
             ['マックィーンデイ2026', 'マックィーンデイ2026特別仕様'].forEach(function (k) {
               var f = foldKana(k);
               if (!phrases[f]) phrases[f] = { raw: '閃電麥坤附活塞盃（麥坤日 2026特別仕樣）', cars: [] };
+              pushUnique(phrases[f].cars, car);
+            });
+          }
+          if (car.id === 'C-03_mater_cave') {
+            ['ケイブタイプ', 'ケイブ', '洞穴', '洞穴版'].forEach(function (k) {
+              var f = foldKana(k);
+              if (!phrases[f]) phrases[f] = { raw: '脫線（洞穴版）', cars: [] };
               pushUnique(phrases[f].cars, car);
             });
           }
