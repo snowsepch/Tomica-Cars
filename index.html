@@ -8762,10 +8762,11 @@
       function extractNumbers(text) {
         var source = normalizeDigits(text);
         var out = [];
-        var re = /C\s*[-]?\s*([0-9Il|iOoQZzSsAa]{1,3})(?![0-9A-Za-z])/gi;
+        var re = /(?:^|[^A-Za-z0-9])C(?:[-_.\s]+([0-9Il|iOoQZzSsAa]{1,3})|([0-9]{1,3}))(?![0-9A-Za-z])/gi;
         var match;
         while ((match = re.exec(source))) {
-          var digits = match[1]
+          var rawDigits = match[1] || match[2];
+          var digits = rawDigits
             .replace(/[Il|i]/g, '1')
             .replace(/[OoQ]/g, '0')
             .replace(/[Zz]/g, '2')
