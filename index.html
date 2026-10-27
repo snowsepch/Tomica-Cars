@@ -3011,7 +3011,7 @@
     "images": [
       {
         "url": "tomica_official_images/SP-MCQUEEN-2023.jpg",
-        "label": "📷 藏品實拍"
+        "label": "🌟 官方高清展示圖"
       }
     ],
     "description": "【2023 麥坤日特別仕樣車】為紀念每年 9 月 5 日「閃電麥坤日」（95 號之日），官方採限定特殊色「メタリックブルー」（金屬金蔥藍）塗裝，車頂與車門繪有 2023 麥坤日專屬 95 號與原創紀念徽章。建議售價 1,100 日圓（含稅）。",
@@ -3036,7 +3036,7 @@
     "images": [
       {
         "url": "tomica_official_images/SP-MACK-2021.jpg",
-        "label": "📷 藏品實拍"
+        "label": "🌟 官方高清展示圖"
       }
     ],
     "description": "【2021 麥坤日 15 週年特別仕樣車】為慶祝 Cars Tomica 誕生 15 週年及每年 9 月 5 日「閃電麥坤日」，官方特別推出限定金色＆黃色華麗塗裝的麥大叔車頭（Takara Tomy Mall 及 Tomica Shop 限定販售）。車頂印有 95 號，帽子前方繪有 15 週年專屬紀念徽章。建議售價 1,100 日圓（含稅）。JAN: 4904810186281。",
@@ -7196,7 +7196,7 @@
     "images": [
       {
         "url": "tomica_official_images/NTC-MATTEL-F1-SET.jpg",
-        "label": "📷 藏品實拍"
+        "label": "🌟 官方高清展示圖"
       }
     ],
     "description": "【⚠️ 非 TOMICA 系列】美泰兒（Mattel）原廠正版 F1 Formula 1 賽車窗盒 3 入套組，包含麥坤、超哥（法蘭斯高）與奇諾。",
@@ -7334,7 +7334,7 @@
     "images": [
       {
         "url": "tomica_official_images/NTC-MCQUEEN-ADVENT-2024.jpg",
-        "label": "📷 藏品實拍"
+        "label": "🌟 官方高清展示圖"
       }
     ],
     "description": "【⚠️ 非 TOMICA 系列】美泰兒（Mattel）2024 年 Disney Pixar Cars 聖誕降臨曆（Advent Calendar）限定內容物！車身採用 Holiday Hotshot 金屬金蔥紅烤漆、白邊紅圈復古輪胎與車側聖誕樹綠色閃電塗裝，車頂附有專屬綠色聖誕精靈帽配件。",
@@ -8104,7 +8104,8 @@
       // 展台圖片與標籤 (非 Tomica 且無官方圖時呈現專屬佔位標記)
       let stageContentHtml = '';
       if (hasImages) {
-        const imageTagLabel = (car.category === 'cars_non_tomica') ? '📷 藏品實拍' : '🌟 官方圖';
+        const firstImg = (car.images && car.images[0]) ? car.images[0] : null;
+        const imageTagLabel = (firstImg && firstImg.label && firstImg.label.includes('實拍')) ? '📷 藏品實拍' : '🌟 官方圖';
         stageContentHtml = `
             <img 
               src="${displayImg}" 
