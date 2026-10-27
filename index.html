@@ -9205,6 +9205,9 @@
               if (found.length === 1) nums = found;
             }
           }
+          if (allowBox && nums.length === 1 && nums[0].slice(2).length < 2) {
+            if (typeof confidence === 'number' && confidence < 70) nums = [];
+          }
           nums.forEach(function (num) { hits.push(num); });
         }
         var words = (data && data.words) || [];
@@ -9223,8 +9226,91 @@
           if (flat.length <= 8 && mean >= 50) take(flat, mean, 50, false);
         }
         var uniq = unique(hits);
-        if (boxFace && uniq.length !== 1) return [];
-        return uniq;
+        if (!boxFace) return uniq;
+        var kept = uniq.filter(function (num) {
+          var digits = num.slice(2);
+          return !uniq.some(function (other) {
+            var more = other.slice(2);
+            return more.length > digits.length && more.indexOf(digits) === 0;
+          });
+        });
+        return kept.length === 1 ? kept : [];
+      }
+
+      function contentCrop(img) {
+        var nw = img.naturalWidth || img.width;
+        var nh = img.naturalHeight || img.height;
+        if (!nw || !nh) return { x: 0, y: 0, w: 1, h: 1 };
+        var fit = 240 / Math.max(nw, nh);
+        if (fit > 1) fit = 1;
+        var outW = Math.max(1, Math.round(nw * fit));
+        var outH = Math.max(1, Math.round(nh * fit));
+        var canvas = document.createElement('canvas');
+        canvas.width = outW;
+        canvas.height = outH;
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
+        ctx.drawImage(img, 0, 0, outW, outH);
+        var data = ctx.getImageData(0, 0, outW, outH).data;
+        var col = new Float32Array(outW);
+        var row = new Float32Array(outH);
+        var inkCount = 0;
+        var x;
+        var y;
+        var i;
+        var r;
+        var g;
+        var b;
+        var luma;
+        var mx;
+        var mn;
+        var sat;
+        for (y = 0; y < outH; y++) {
+          for (x = 0; x < outW; x++) {
+            i = (y * outW + x) * 4;
+            r = data[i] / 255;
+            g = data[i + 1] / 255;
+            b = data[i + 2] / 255;
+            luma = 0.299 * r + 0.587 * g + 0.114 * b;
+            mx = r > g ? (r > b ? r : b) : (g > b ? g : b);
+            mn = r < g ? (r < b ? r : b) : (g < b ? g : b);
+            sat = mx <= 1e-4 ? 0 : (mx - mn) / mx;
+            if (luma > 0.90 && sat < 0.15) continue;
+            col[x] += 1;
+            row[y] += 1;
+            inkCount += 1;
+          }
+        }
+        if (inkCount < outW * outH * 0.05) return { x: 0, y: 0, w: 1, h: 1 };
+        var minX = -1;
+        var maxX = -1;
+        var minY = -1;
+        var maxY = -1;
+        for (x = 0; x < outW; x++) {
+          if (col[x] / outH <= 0.10) continue;
+          if (minX < 0) minX = x;
+          maxX = x;
+        }
+        for (y = 0; y < outH; y++) {
+          if (row[y] / outW <= 0.10) continue;
+          if (minY < 0) minY = y;
+          maxY = y;
+        }
+        if (minX < 0 || minY < 0) return { x: 0, y: 0, w: 1, h: 1 };
+        var bw = maxX - minX + 1;
+        var bh = maxY - minY + 1;
+        if (bw * bh < outW * outH * 0.05) return { x: 0, y: 0, w: 1, h: 1 };
+        var padX = bw * 0.03;
+        var padY = bh * 0.03;
+        var x0 = Math.max(0, minX - padX);
+        var y0 = Math.max(0, minY - padY);
+        var x1 = Math.min(outW, maxX + 1 + padX);
+        var y1 = Math.min(outH, maxY + 1 + padY);
+        return {
+          x: x0 / outW,
+          y: y0 / outH,
+          w: (x1 - x0) / outW,
+          h: (y1 - y0) / outH
+        };
       }
 
       function recognizeRaw(worker, img, pass, id) {
@@ -9243,7 +9329,9 @@
       }
 
       function readEngSignals(worker, img, id) {
+        var content = contentCrop(img);
         var passes = [
+          { crop: content, edge: 2000, psm: '11', color: true, boxFace: true },
           { crop: { x: 0, y: 0, w: 1, h: 0.48 }, edge: 2000, psm: '11', color: true, boxFace: true },
           { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 2000, psm: '11' },
           { crop: { x: 0, y: 0, w: 0.82, h: 0.64 }, edge: 1800, psm: '6' }
