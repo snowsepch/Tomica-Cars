@@ -5270,7 +5270,7 @@
     "loose": 0,
     "owned": false,
     "isDuplicate": false,
-    "keywords": "C 31 woody standard C-31 C-31_woody_standard C31 ウッディ(スタンダードタイプ)",
+    "keywords": "C 31 woody standard C-31 C-31_woody_standard C31 SP 胡迪 ウッディ(スタンダードタイプ)",
     "images": [
       {
         "url": "tomica_official_images/C-31_woody_standard_official.jpg",
@@ -5442,7 +5442,7 @@
     "loose": 0,
     "owned": false,
     "isDuplicate": false,
-    "keywords": "C 32 buzz standard C-32 C-32_buzz_standard C32 バズ・ライトイヤー(スタンダードタイプ)",
+    "keywords": "C 32 buzz standard C-32 C-32_buzz_standard C32 SP 巴斯光年 バズ・ライトイヤー(スタンダードタイプ)",
     "images": [
       {
         "url": "tomica_official_images/C-32_buzz_standard_official.jpg",
@@ -8777,7 +8777,7 @@
           out.push('C-' + n);
         }
         if (!out.length) {
-          if (/(^|[^A-Za-z0-9])SP(?![A-Za-z0-9])/i.test(source)) {
+          if (/(^|[^A-Za-z0-9])(SP|[=5\-C§]P)(?![A-Za-z0-9])/i.test(source)) {
             out.push('SP');
           }
         }
@@ -8907,10 +8907,10 @@
         var numbered = scored.filter(function (item) { return item.numberHit; });
         var list = numbered.length ? numbered : scored;
         list.sort(function (a, b) {
+          if (b.score !== a.score) return b.score - a.score;
           var ao = ownership(a.car).owned ? 1 : 0;
           var bo = ownership(b.car).owned ? 1 : 0;
           if (bo !== ao) return bo - ao;
-          if (b.score !== a.score) return b.score - a.score;
           var an = String(a.car.displayNumber || '');
           var bn = String(b.car.displayNumber || '');
           if (an !== bn) return an < bn ? -1 : 1;
@@ -9103,20 +9103,26 @@
         });
       }
 
-      function paintVariant(img, crop, longEdge, keepColor) {
+      function paintVariant(img, crop, longEdge, keepColor, rotate) {
         var sx = Math.max(0, Math.round(img.width * crop.x));
         var sy = Math.max(0, Math.round(img.height * crop.y));
         var sw = Math.max(1, Math.min(img.width - sx, Math.round(img.width * crop.w)));
         var sh = Math.max(1, Math.min(img.height - sy, Math.round(img.height * crop.h)));
+        var rot = rotate || 0;
+        var isSwap = (rot === 90 || rot === 270);
         var scale = longEdge / Math.max(sw, sh);
         if (scale > 3) scale = 3;
-        var outW = Math.max(1, Math.round(sw * scale));
-        var outH = Math.max(1, Math.round(sh * scale));
+        var drawW = Math.max(1, Math.round(sw * scale));
+        var drawH = Math.max(1, Math.round(sh * scale));
+        var outW = isSwap ? drawH : drawW;
+        var outH = isSwap ? drawW : drawH;
         var maxPx = 2200;
         if (outW > maxPx || outH > maxPx) {
           var fit = maxPx / Math.max(outW, outH);
-          outW = Math.max(1, Math.round(outW * fit));
-          outH = Math.max(1, Math.round(outH * fit));
+          drawW = Math.max(1, Math.round(drawW * fit));
+          drawH = Math.max(1, Math.round(drawH * fit));
+          outW = isSwap ? drawH : drawW;
+          outH = isSwap ? drawW : drawH;
         }
         var canvas = document.createElement('canvas');
         canvas.width = outW;
@@ -9126,7 +9132,13 @@
         ctx.fillRect(0, 0, outW, outH);
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
-        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+        if (rot !== 0) {
+          ctx.translate(outW / 2, outH / 2);
+          ctx.rotate((rot * Math.PI) / 180);
+          ctx.drawImage(img, sx, sy, sw, sh, -drawW / 2, -drawH / 2, drawW, drawH);
+        } else {
+          ctx.drawImage(img, sx, sy, sw, sh, 0, 0, drawW, drawH);
+        }
         if (keepColor) return canvas;
         var imageData = ctx.getImageData(0, 0, outW, outH);
         var d = imageData.data;
@@ -9170,9 +9182,9 @@
       function tokenNumber(text) {
         var flat = normalizeDigits(String(text || ''))
           .replace(/\s+/g, '')
-          .replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, '');
+          .replace(/^[^A-Za-z0-9=§\-]+|[^A-Za-z0-9=§\-]+$/g, '');
         if (!flat || flat.length > 6) return [];
-        if (flat.toUpperCase() === 'SP') return ['SP'];
+        if (/^(SP|[=5\-C§]P)$/i.test(flat)) return ['SP'];
         var nums = extractNumbers(flat);
         if (nums.length !== 1) return [];
         var folded = flat.toUpperCase()
@@ -9188,8 +9200,9 @@
       function confusionNumber(text) {
         var flat = normalizeDigits(String(text || ''))
           .replace(/\s+/g, '')
-          .replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, '');
+          .replace(/^[^A-Za-z0-9=§\-]+|[^A-Za-z0-9=§\-]+$/g, '');
         if (!flat || flat.length > 6) return [];
+        if (/^(SP|[=5\-C§]P)$/i.test(flat)) return ['SP'];
         var matched = flat.toUpperCase().match(/^[G6]-(\d{1,2})$/);
         if (!matched) return [];
         var n = parseInt(matched[1], 10);
@@ -9213,7 +9226,7 @@
               if (found.length === 1) nums = found;
             }
           }
-          if (allowBox && nums.length === 1 && nums[0].slice(2).length < 2) {
+          if (allowBox && nums.length === 1 && nums[0].indexOf('C-') === 0 && nums[0].slice(2).length < 2) {
             if (typeof confidence === 'number' && confidence < 70) nums = [];
           }
           nums.forEach(function (num) { hits.push(num); });
@@ -9228,16 +9241,18 @@
             take(line && line.text, line && line.confidence, boxFace ? 38 : 50, !!boxFace);
           });
         }
-        if (!hits.length && !boxFace) {
+        if (!hits.length) {
           var flat = String((data && data.text) || '').trim();
-          var mean = data && typeof data.confidence === 'number' ? data.confidence : 0;
-          if (flat.length <= 8 && mean >= 50) take(flat, mean, 50, false);
+          var found = extractNumbers(flat);
+          if (found.length === 1) hits.push(found[0]);
         }
         var uniq = unique(hits);
         if (!boxFace) return uniq;
         var kept = uniq.filter(function (num) {
+          if (num === 'SP' || num.indexOf('C-') !== 0) return true;
           var digits = num.slice(2);
           return !uniq.some(function (other) {
+            if (other === 'SP' || other.indexOf('C-') !== 0) return false;
             var more = other.slice(2);
             return more.length > digits.length && more.indexOf(digits) === 0;
           });
@@ -9350,7 +9365,7 @@
 
       function recognizeRaw(worker, img, pass, id) {
         if (id !== runId) return Promise.resolve(null);
-        var canvas = paintVariant(img, pass.crop, pass.edge, pass.color);
+        var canvas = paintVariant(img, pass.crop, pass.edge, pass.color, pass.rotate);
         return worker.setParameters({
           tessedit_pageseg_mode: pass.psm,
           user_defined_dpi: '300'
@@ -9368,6 +9383,8 @@
         var passes = [
           { crop: content, edge: 2000, psm: '11', color: true, boxFace: true },
           { crop: { x: 0, y: 0, w: 1, h: 0.48 }, edge: 2000, psm: '11', color: true, boxFace: true },
+          { crop: content, edge: 2000, psm: '11', color: true, boxFace: true, rotate: 270 },
+          { crop: content, edge: 2000, psm: '11', color: true, boxFace: true, rotate: 90 },
           { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 2000, psm: '11' },
           { crop: { x: 0, y: 0, w: 0.82, h: 0.64 }, edge: 1800, psm: '6' }
         ];
@@ -9743,8 +9760,8 @@
         list.sort(function (a, b) {
           var ao = ownership(a.car).owned ? 1 : 0;
           var bo = ownership(b.car).owned ? 1 : 0;
-          if (ao !== bo) return bo - ao;
-          if (a.band != null && b.band != null && a.band !== b.band) return a.band - b.band;
+          if (Math.abs(b.score - a.score) <= 0.03 && ao !== bo) return bo - ao;
+          if (a.band != null && b.band != null && Math.abs(a.band - b.band) >= 0.15) return a.band - b.band;
           return b.score - a.score;
         });
         return list;
@@ -10111,6 +10128,8 @@
         var passes = [
           { crop: { x: 0.02, y: 0.35, w: 0.96, h: 0.63 }, edge: 2000, psm: '11', color: true },
           { crop: content, edge: 2000, psm: '11', color: true },
+          { crop: content, edge: 2000, psm: '11', color: true, rotate: 270 },
+          { crop: content, edge: 2000, psm: '11', color: true, rotate: 90 },
           { crop: { x: 0.02, y: 0.35, w: 0.96, h: 0.63 }, edge: 2000, psm: '6', color: false },
           { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 1800, psm: '11', color: true }
         ];
