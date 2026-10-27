@@ -9177,25 +9177,54 @@
         return nums;
       }
 
-      function numbersFromRecognition(data) {
+      function confusionNumber(text) {
+        var flat = normalizeDigits(String(text || ''))
+          .replace(/\s+/g, '')
+          .replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, '');
+        if (!flat || flat.length > 6) return [];
+        var matched = flat.toUpperCase().match(/^[G6]-(\d{1,2})$/);
+        if (!matched) return [];
+        var n = parseInt(matched[1], 10);
+        if (n < 1 || n > 50) return [];
+        return ['C-' + n];
+      }
+
+      function numbersFromRecognition(data, boxFace) {
         var hits = [];
-        function take(text, confidence, minConf) {
+        function take(text, confidence, minConf, allowBox) {
           if (!text) return;
           if (typeof confidence === 'number' && confidence < minConf) return;
-          tokenNumber(text).forEach(function (num) { hits.push(num); });
+          var nums = tokenNumber(text);
+          if (!nums.length && allowBox && (typeof confidence !== 'number' || confidence >= 45)) {
+            nums = confusionNumber(text);
+          }
+          if (!nums.length && allowBox) {
+            var raw = String(text).trim();
+            if (raw.length > 0 && raw.length <= 48) {
+              var found = extractNumbers(raw);
+              if (found.length === 1) nums = found;
+            }
+          }
+          nums.forEach(function (num) { hits.push(num); });
         }
         var words = (data && data.words) || [];
-        words.forEach(function (word) { take(word && word.text, word && word.confidence, 55); });
+        words.forEach(function (word) {
+          take(word && word.text, word && word.confidence, boxFace ? 38 : 55, !!boxFace);
+        });
         if (!hits.length) {
           var lines = (data && data.lines) || [];
-          lines.forEach(function (line) { take(line && line.text, line && line.confidence, 50); });
+          lines.forEach(function (line) {
+            take(line && line.text, line && line.confidence, boxFace ? 38 : 50, !!boxFace);
+          });
         }
-        if (!hits.length) {
+        if (!hits.length && !boxFace) {
           var flat = String((data && data.text) || '').trim();
           var mean = data && typeof data.confidence === 'number' ? data.confidence : 0;
-          if (flat.length <= 8 && mean >= 50) take(flat, mean, 50);
+          if (flat.length <= 8 && mean >= 50) take(flat, mean, 50, false);
         }
-        return unique(hits);
+        var uniq = unique(hits);
+        if (boxFace && uniq.length !== 1) return [];
+        return uniq;
       }
 
       function recognizeRaw(worker, img, pass, id) {
@@ -9215,6 +9244,7 @@
 
       function readEngSignals(worker, img, id) {
         var passes = [
+          { crop: { x: 0, y: 0, w: 1, h: 0.48 }, edge: 2000, psm: '11', color: true, boxFace: true },
           { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 2000, psm: '11' },
           { crop: { x: 0, y: 0, w: 0.82, h: 0.64 }, edge: 1800, psm: '6' }
         ];
@@ -9223,6 +9253,10 @@
           chain = chain.then(function (hit) {
             if (hit || id !== runId) return hit;
             return recognizeRaw(worker, img, pass, id).then(function (data) {
+              if (pass.boxFace) {
+                var numbers = numbersFromRecognition(data, true);
+                return numbers.length ? { kind: 'c', numbers: numbers } : null;
+              }
               return signalFromData(data, true);
             });
           });
@@ -9890,7 +9924,7 @@
             setOcrNote('文字辨識沒有完成，請輸入編號或品名。照片仍只在這支裝置。');
             return;
           }
-          showVisual(readyImg, id).then(function (shown) {
+          return showVisual(readyImg, id).then(function (shown) {
             if (shown || id !== runId || userLocked) return;
             showManualPrompt();
           });
