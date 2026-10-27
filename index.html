@@ -9786,10 +9786,10 @@
           if (!hueLeader) return null;
           if (hueLeader.band - bandLeader.band >= 0.08 && bandLeader.band <= 0.70) {
             picked = pool.filter(function (item) {
-              return item.band <= bandLeader.band + 0.04;
-            }).slice(0, 3);
+              return item.band <= bandLeader.band + 0.05;
+            }).slice(0, 4);
           } else {
-            picked = [hueLeader];
+            picked = pool.slice(0, 4);
           }
         }
         byOwnership(picked);
@@ -9875,23 +9875,36 @@
             pushUnique(names[key].cars, car);
           });
           var phraseBlob = [car.jpName, car.officialNameJp, car.keywords, car.description].filter(Boolean).join('\n');
-          var phraseRe = /[\u30A0-\u30FF\u30FC]{8,}/g;
+          var phraseRe = /[\u30A0-\u30FF\u30FC]{4,}/g;
           var phraseMatch;
           var seenPhrase = {};
           while ((phraseMatch = phraseRe.exec(phraseBlob))) {
             var phraseRaw = phraseMatch[0];
             var phraseKey = foldKana(phraseRaw);
-            if (phraseKey.length < 7 || seenPhrase[phraseKey]) continue;
+            if (phraseKey.length < 4 || seenPhrase[phraseKey]) continue;
             seenPhrase[phraseKey] = true;
             if (!phrases[phraseKey]) phrases[phraseKey] = { raw: phraseRaw, cars: [] };
             else if (phraseRaw.length > phrases[phraseKey].raw.length) phrases[phraseKey].raw = phraseRaw;
             pushUnique(phrases[phraseKey].cars, car);
           }
+          var charM = (car.jpName || car.officialNameJp || '').match(/^([^(（]+)/);
+          if (charM) {
+            var charRaw = charM[1].trim();
+            var charKey = foldKana(charRaw);
+            if (charKey.length >= 2) {
+              if (!phrases[charKey]) phrases[charKey] = { raw: charRaw, cars: [] };
+              pushUnique(phrases[charKey].cars, car);
+            }
+          }
         });
         Object.keys(dream).forEach(function (key) { if (dream[key].length > 4) delete dream[key]; });
         Object.keys(dm).forEach(function (key) { if (dm[key].length > 4) delete dm[key]; });
-        Object.keys(names).forEach(function (key) { if (names[key].cars.length > 4) delete names[key]; });
-        Object.keys(phrases).forEach(function (key) { if (phrases[key].cars.length !== 1) delete phrases[key]; });
+        Object.keys(names).forEach(function (key) { if (names[key].cars.length > 5) delete names[key]; });
+        Object.keys(phrases).forEach(function (key) {
+          if (phrases[key].cars.length > 5 && !['ライトニングマックィン', 'メタ'].includes(key)) {
+            delete phrases[key];
+          }
+        });
         extraIndex = {
           dream: dream,
           dm: dm,
@@ -9984,18 +9997,22 @@
         var lines = (data && data.lines) || [];
         var cars = [];
         var label = '';
+        var searchTexts = [];
         lines.forEach(function (line) {
-          if (!line || !line.text) return;
-          if (typeof line.confidence === 'number' && line.confidence < 45) return;
-          var folded = foldKana(line.text);
-          if (folded.length < 7) return;
+          if (line && line.text) searchTexts.push(line.text);
+        });
+        if (data && data.text) searchTexts.push(data.text);
+        searchTexts.forEach(function (text) {
+          var folded = foldKana(text);
+          if (folded.length < 2) return;
           index.phraseKeys.forEach(function (key) {
             if (folded.indexOf(key) === -1) return;
-            if (!label) label = index.phrases[key].raw;
-            pushUnique(cars, index.phrases[key].cars[0]);
+            var hit = index.phrases[key];
+            if (!label || key.length > label.length) label = hit.raw;
+            hit.cars.forEach(function (c) { pushUnique(cars, c); });
           });
         });
-        if (cars.length !== 1) return null;
+        if (!cars.length || cars.length > 5) return null;
         return { kind: 'name', label: label, cars: cars };
       }
 
@@ -10079,7 +10096,7 @@
         return rankVisual(img).then(function (picked) {
           if (id !== runId || userLocked) return true;
           if (!picked.length) return false;
-          setOcrNote('依外形、配色推測，不是讀到編號。');
+          setOcrNote('依外形、配色推測，請在下方候選車款中點選：');
           renderMatches({ numbers: [], list: picked, truncated: false }, 'visual');
           return true;
         }).catch(function () {
@@ -10089,10 +10106,13 @@
       }
 
       function readJapaneseName(img, id) {
-        setOcrNote('外形對不上，正在讀盒上的日文品名。照片不會上傳。');
+        setOcrNote('正在比對盒上日文品名…照片不會上傳。');
+        var content = contentCrop(img);
         var passes = [
-          { crop: { x: 0.04, y: 0.16, w: 0.92, h: 0.48 }, edge: 1700, psm: '6', color: true },
-          { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 1700, psm: '6', color: true }
+          { crop: { x: 0.02, y: 0.35, w: 0.96, h: 0.63 }, edge: 2000, psm: '11', color: true },
+          { crop: content, edge: 2000, psm: '11', color: true },
+          { crop: { x: 0.02, y: 0.35, w: 0.96, h: 0.63 }, edge: 2000, psm: '6', color: false },
+          { crop: { x: 0.02, y: 0.02, w: 0.96, h: 0.96 }, edge: 1800, psm: '11', color: true }
         ];
         return ensureWorker('jpn').then(function (worker) {
           var chain = Promise.resolve(null);
@@ -10101,7 +10121,11 @@
               if (hit || id !== runId || userLocked) return hit;
               return recognizeRaw(worker, img, pass, id).then(function (data) {
                 if (!data || id !== runId || userLocked) return null;
-                return phrasesFromRecognition(data) || namesFromRecognition(data);
+                var hitSignal = phrasesFromRecognition(data) || namesFromRecognition(data);
+                if (hitSignal) return hitSignal;
+                var nums = numbersFromRecognition(data, true);
+                if (nums.length) return { kind: 'c', numbers: nums };
+                return null;
               });
             });
           });
@@ -10138,12 +10162,15 @@
             showManualPrompt();
             return null;
           }
-          return showVisual(readyImg, id).then(function (shown) {
-            if (shown || id !== runId || userLocked) return null;
-            return readJapaneseName(readyImg, id).then(function (nameHit) {
-              if (id !== runId || userLocked) return null;
-              if (nameHit) showSignal(nameHit);
-              else showManualPrompt();
+          return readJapaneseName(readyImg, id).then(function (nameHit) {
+            if (id !== runId || userLocked) return null;
+            if (nameHit) {
+              showSignal(nameHit);
+              return null;
+            }
+            return showVisual(readyImg, id).then(function (shown) {
+              if (shown || id !== runId || userLocked) return null;
+              showManualPrompt();
               return null;
             });
           });
