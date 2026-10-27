@@ -10696,21 +10696,18 @@
                   { text: promptText },
                   { inlineData: { mimeType: mime, data: base64Data } }
                 ]
-              }],
-              generationConfig: {
-                responseMimeType: 'application/json'
-              }
+              }]
             })
           }).then(function (res) {
             if (!res.ok) {
               return res.json().then(function (err) {
                 var msg = (err && err.error && err.error.message) || ('HTTP ' + res.status);
-                if (res.status === 404 && idx + 1 < candidateEndpoints.length) {
+                if ((res.status === 404 || res.status === 400) && idx + 1 < candidateEndpoints.length) {
                   return tryEndpoint(idx + 1);
                 }
                 throw new Error(msg);
               }).catch(function (e) {
-                if (res.status === 404 && idx + 1 < candidateEndpoints.length) {
+                if ((res.status === 404 || res.status === 400) && idx + 1 < candidateEndpoints.length) {
                   return tryEndpoint(idx + 1);
                 }
                 throw e;
