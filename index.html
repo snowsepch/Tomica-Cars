@@ -758,6 +758,11 @@
       border: 1px solid #fae2b6;
       color: #794d07;
     }
+    .ai-mode-bar.is-error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
     .ai-config-btn {
       min-height: 28px;
       padding: 0.2rem 0.6rem;
@@ -777,6 +782,11 @@
       background: #ffffff;
       border: 1px solid #fae2b6;
       color: #794d07;
+    }
+    .ai-mode-bar.is-error .ai-config-btn {
+      background: #ffffff;
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
     }
     #aiKeyModalOverlay {
       position: fixed;
@@ -8923,7 +8933,7 @@
       }
 
       function getGeminiApiKey() {
-        return (localStorage.getItem('gemini_api_key') || '').trim();
+        return (localStorage.getItem('gemini_api_key') || '').trim().replace(/^["']|["']$/g, '');
       }
 
       function updateAiModeBar() {
@@ -8978,15 +8988,55 @@
       }
       if (saveApiKeyBtn && geminiApiKeyInput) {
         saveApiKeyBtn.addEventListener('click', function () {
-          var val = geminiApiKeyInput.value.trim();
+          var val = geminiApiKeyInput.value.trim().replace(/^["']|["']$/g, '');
           if (!val) {
             alert('請貼上有效的 Google Gemini API Key（以 AIzaSy... 開頭）');
             return;
           }
-          localStorage.setItem('gemini_api_key', val);
-          updateAiModeBar();
-          closeAiKeyModal();
-          setStatus('✨ 已成功啟用 Gemini AI 視覺深度辨識！');
+          saveApiKeyBtn.disabled = true;
+          saveApiKeyBtn.textContent = '連線驗證中…';
+          var testUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(val);
+          fetch(testUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] })
+          }).then(function (res) {
+            return res.json().then(function (data) {
+              if (!res.ok) {
+                var errCode = (data && data.error && data.error.message) || ('HTTP ' + res.status);
+                if (res.status === 404) {
+                  return fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + encodeURIComponent(val), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] })
+                  }).then(function (r2) {
+                    if (r2.ok) return { ok: true };
+                    return r2.json().then(function (d2) {
+                      throw new Error((d2 && d2.error && d2.error.message) || ('HTTP ' + r2.status));
+                    });
+                  });
+                }
+                throw new Error(errCode);
+              }
+              return { ok: true };
+            });
+          }).then(function () {
+            saveApiKeyBtn.disabled = false;
+            saveApiKeyBtn.textContent = '儲存並啟用 AI 視覺';
+            localStorage.setItem('gemini_api_key', val);
+            updateAiModeBar();
+            closeAiKeyModal();
+            setStatus('✨ 已成功啟用 Gemini AI 視覺深度辨識（Google 連線驗證通過）！');
+          }).catch(function (err) {
+            saveApiKeyBtn.disabled = false;
+            saveApiKeyBtn.textContent = '儲存並啟用 AI 視覺';
+            var msg = err && err.message ? err.message : '連線失敗';
+            if (msg.indexOf('API_KEY_INVALID') !== -1 || msg.indexOf('API key not valid') !== -1) {
+              alert('⚠️ Google 驗證失敗：API Key 無效。\n\n請確認是從 aistudio.google.com 複製完整的 AIzaSy... 金鑰，且沒有複製到多餘的空格。');
+            } else {
+              alert('⚠️ Google 連線異常：' + msg + '\n\n若金鑰無誤，請檢查網路環境或是否開啟了擋廣告擴充套件。');
+            }
+          });
         });
       }
       if (clearApiKeyBtn) {
@@ -10203,12 +10253,47 @@
               pushUnique(phrases[charKey].cars, car);
             }
           }
+          if (car.id === 'SP-MCQUEEN-2023') {
+            ['マックィーンデイ2023', 'マックィーンデイ2023特別仕様'].forEach(function (k) {
+              var f = foldKana(k);
+              if (!phrases[f]) phrases[f] = { raw: '閃電麥坤（麥坤日 2023特別仕樣）', cars: [] };
+              pushUnique(phrases[f].cars, car);
+            });
+          }
+          if (car.id === 'SP-MACK-2021') {
+            ['マックィーンデイ2021', 'マックィーンデイ2021特別仕様'].forEach(function (k) {
+              var f = foldKana(k);
+              if (!phrases[f]) phrases[f] = { raw: '麥大叔（麥坤日 2021特別仕樣）', cars: [] };
+              pushUnique(phrases[f].cars, car);
+            });
+          }
+          if (car.id === 'SP-DOC-2020') {
+            ['マックィーンデイ2020', 'マックィーンデイ2020特別仕様'].forEach(function (k) {
+              var f = foldKana(k);
+              if (!phrases[f]) phrases[f] = { raw: '韓大夫附活塞盃（麥坤日 2020特別仕樣）', cars: [] };
+              pushUnique(phrases[f].cars, car);
+            });
+          }
+          if (car.id === 'SP-MCQUEEN-DAY-2026') {
+            ['マックィーンデイ2026', 'マックィーンデイ2026特別仕様'].forEach(function (k) {
+              var f = foldKana(k);
+              if (!phrases[f]) phrases[f] = { raw: '閃電麥坤附活塞盃（麥坤日 2026特別仕樣）', cars: [] };
+              pushUnique(phrases[f].cars, car);
+            });
+          }
+          if (car.id === 'NTC-MCQUEEN-ADVENT-2024') {
+            ['ホリデーホットショット', 'アドベントカレンダー2024', 'アドベントカレンダー'].forEach(function (k) {
+              var f = foldKana(k);
+              if (!phrases[f]) phrases[f] = { raw: '閃電麥坤（2024 聖誕降臨曆限定款）', cars: [] };
+              pushUnique(phrases[f].cars, car);
+            });
+          }
         });
         Object.keys(dream).forEach(function (key) { if (dream[key].length > 4) delete dream[key]; });
         Object.keys(dm).forEach(function (key) { if (dm[key].length > 4) delete dm[key]; });
         Object.keys(names).forEach(function (key) { if (names[key].cars.length > 5) delete names[key]; });
         Object.keys(phrases).forEach(function (key) {
-          if (phrases[key].cars.length > 5 && !['ライトニングマックィン', 'メタ'].includes(key)) {
+          if (phrases[key].cars.length > 5 && key !== 'ライトニングマックィン' && key !== 'メタ') {
             delete phrases[key];
           }
         });
@@ -10314,6 +10399,8 @@
           if (folded.length < 2) return;
           index.phraseKeys.forEach(function (key) {
             if (folded.indexOf(key) === -1) return;
+            // 若包含マックィーン或其片假名縮寫，不可誤認成拖車頭「マック」
+            if (key === 'マック' && (folded.indexOf('マックィ') !== -1 || folded.indexOf('マックイ') !== -1 || folded.indexOf('マックイン') !== -1)) return;
             var hit = index.phrases[key];
             if (!label || key.length > label.length) label = hit.raw;
             hit.cars.forEach(function (c) { pushUnique(cars, c); });
@@ -10456,30 +10543,56 @@
 
       function imageFileToBase64(file, maxEdge) {
         return new Promise(function (resolve, reject) {
-          var img = new Image();
-          var url = URL.createObjectURL(file);
-          img.onload = function () {
-            URL.revokeObjectURL(url);
-            var w = img.naturalWidth || img.width;
-            var h = img.naturalHeight || img.height;
-            var edge = maxEdge || 1024;
-            var scale = Math.min(1, edge / Math.max(w, h));
-            var outW = Math.max(1, Math.round(w * scale));
-            var outH = Math.max(1, Math.round(h * scale));
-            var canvas = document.createElement('canvas');
-            canvas.width = outW;
-            canvas.height = outH;
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, outW, outH);
-            var dataUrl = canvas.toDataURL('image/jpeg', 0.82);
-            var base64 = dataUrl.split(',')[1];
-            resolve(base64);
+          if (!file) {
+            reject(new Error('未提供照片檔案'));
+            return;
+          }
+          var reader = new FileReader();
+          reader.onload = function () {
+            var dataUrl = reader.result;
+            if (typeof dataUrl !== 'string') {
+              reject(new Error('無法讀取照片內容'));
+              return;
+            }
+            var mime = (dataUrl.match(/^data:([^;]+);base64,/) || [])[1] || 'image/jpeg';
+            var rawBase64 = dataUrl.replace(/^data:[^;]+;base64,/, '');
+
+            try {
+              var img = new Image();
+              img.onload = function () {
+                try {
+                  var w = img.naturalWidth || img.width;
+                  var h = img.naturalHeight || img.height;
+                  var edge = maxEdge || 1024;
+                  var scale = Math.min(1, edge / Math.max(w, h));
+                  var outW = Math.max(1, Math.round(w * scale));
+                  var outH = Math.max(1, Math.round(h * scale));
+                  var canvas = document.createElement('canvas');
+                  canvas.width = outW;
+                  canvas.height = outH;
+                  var ctx = canvas.getContext('2d');
+                  ctx.drawImage(img, 0, 0, outW, outH);
+                  var compressed = canvas.toDataURL('image/jpeg', 0.82);
+                  resolve({
+                    mimeType: 'image/jpeg',
+                    data: compressed.replace(/^data:[^;]+;base64,/, '')
+                  });
+                } catch (err) {
+                  resolve({ mimeType: mime, data: rawBase64 });
+                }
+              };
+              img.onerror = function () {
+                resolve({ mimeType: mime, data: rawBase64 });
+              };
+              img.src = dataUrl;
+            } catch (e) {
+              resolve({ mimeType: mime, data: rawBase64 });
+            }
           };
-          img.onerror = function () {
-            URL.revokeObjectURL(url);
-            reject(new Error('image load failed'));
+          reader.onerror = function () {
+            reject(new Error('照片讀取失敗'));
           };
-          img.src = url;
+          reader.readAsDataURL(file);
         });
       }
 
@@ -10494,32 +10607,18 @@
         }, 'ai');
       }
 
-      function runGeminiVision(file, apiKey, id) {
-        return imageFileToBase64(file, 1024).then(function (base64) {
-          if (id !== runId || userLocked) return null;
-          var summary = getCarsDatabaseSummary();
-          var promptText = "You are an expert appraiser of Tomica & Disney Pixar Cars diecast toys.\n" +
-            "Analyze the provided photo (toy car box or loose car).\n" +
-            "Identify the EXACT vehicle and match it to one of the cars in our collection compendium if possible.\n" +
-            "Reference list of cars in compendium (format: ID|Number|ChineseName|JapaneseName):\n" +
-            summary + "\n\n" +
-            "Guidelines:\n" +
-            "- If the photo shows a box, read all text on box (e.g. Takara Tomy logo, special edition labels like マックィーンデイ 2021/2023 特別仕様, character name, C-number if any).\n" +
-            "- Note difference: 'マック' (Mack / 麥大叔) is the yellow/red cab truck, while 'ライトニング・マックィーン' (Lightning McQueen / 閃電麥坤) is the red race car.\n" +
-            "- If the photo shows a loose car, identify the character, special paint job/decals, accessories (e.g. 聖誕綠帽子, 白邊輪胎, 95號, 泥巴, 銹斑).\n" +
-            "- If it matches a car in the compendium, return its exact matchedId from the reference list.\n" +
-            "- If it is NOT in the compendium, set matchedId to null.\n" +
-            "Respond in JSON format strictly:\n" +
-            "{\n" +
-            '  "matchedId": "exact car ID from compendium or null",\n' +
-            '  "number": "e.g. C-01, SP, or empty",\n' +
-            '  "nameZh": "Traditional Chinese character name e.g. 麥大叔",\n' +
-            '  "variant": "Edition or variant description in Traditional Chinese e.g. 閃電麥坤日 2021 特別仕樣",\n' +
-            '  "confidence": "high" or "medium" or "low",\n' +
-            '  "reason": "1-sentence visual evidence in Traditional Chinese explaining how you identified it"\n' +
-            "}";
+      function callGeminiGenerate(apiKey, imgObj, promptText) {
+        var cleanKey = (apiKey || '').trim().replace(/^["']|["']$/g, '');
+        var models = ['gemini-2.0-flash', 'gemini-1.5-flash'];
+        var mime = (imgObj && imgObj.mimeType) || 'image/jpeg';
+        var base64Data = (typeof imgObj === 'string') ? imgObj : (imgObj && imgObj.data);
 
-          var apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(apiKey);
+        function tryModel(idx) {
+          if (idx >= models.length) {
+            throw new Error('所有 Gemini 模型連線均失敗');
+          }
+          var m = models[idx];
+          var apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/' + m + ':generateContent?key=' + encodeURIComponent(cleanKey);
           return fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -10527,7 +10626,7 @@
               contents: [{
                 parts: [
                   { text: promptText },
-                  { inlineData: { mimeType: 'image/jpeg', data: base64 } }
+                  { inlineData: { mimeType: mime, data: base64Data } }
                 ]
               }],
               generationConfig: {
@@ -10538,25 +10637,71 @@
             if (!res.ok) {
               return res.json().then(function (err) {
                 var msg = (err && err.error && err.error.message) || ('HTTP ' + res.status);
+                if (res.status === 404 && idx + 1 < models.length) {
+                  return tryModel(idx + 1);
+                }
                 throw new Error(msg);
               }).catch(function (e) {
-                throw new Error(e.message || ('Gemini API HTTP ' + res.status));
+                if (res.status === 404 && idx + 1 < models.length) {
+                  return tryModel(idx + 1);
+                }
+                throw e;
               });
             }
             return res.json();
-          }).then(function (resp) {
+          });
+        }
+        return tryModel(0);
+      }
+
+      function runGeminiVision(file, apiKey, id) {
+        return imageFileToBase64(file, 1024).then(function (imgObj) {
+          if (id !== runId || userLocked) return null;
+          var summary = getCarsDatabaseSummary();
+          var promptText = "You are an expert appraiser of Tomica & Disney Pixar Cars diecast toys.\n" +
+            "Analyze the provided photo (toy car box or loose car).\n" +
+            "Identify the EXACT vehicle and match it to one of the cars in our collection compendium if possible.\n" +
+            "Reference list of cars in compendium (format: ID|Number|ChineseName|JapaneseName):\n" +
+            summary + "\n\n" +
+            "Guidelines:\n" +
+            "- If the photo shows a box, read all text on box (e.g. Takara Tomy logo, special edition labels like マックィーンデイ 2021/2023 特別仕様, character name, C-number if any).\n" +
+            "- Note difference: 'マック' (Mack / 麥大叔) is the yellow/red cab truck (e.g. SP-MACK-2021), while 'ライトニング・マックィーン' (Lightning McQueen / 閃電麥坤) is the red or blue race car (e.g. SP-MCQUEEN-2023 is metallic blue with #95).\n" +
+            "- If the photo shows a loose car, identify the character, special paint job/decals, accessories (e.g. 聖誕綠帽子, 白邊輪胎, 95號, 泥巴, 銹斑).\n" +
+            "- If it matches a car in the compendium, return its exact matchedId from the reference list.\n" +
+            "- If it is NOT in the compendium, set matchedId to null.\n" +
+            "Respond in JSON format strictly:\n" +
+            "{\n" +
+            '  "matchedId": "exact car ID from compendium or null",\n' +
+            '  "number": "e.g. C-01, SP, or empty",\n' +
+            '  "nameZh": "Traditional Chinese character name e.g. 閃電麥坤",\n' +
+            '  "variant": "Edition or variant description in Traditional Chinese e.g. 閃電麥坤日 2023 特別仕樣",\n' +
+            '  "confidence": "high" or "medium" or "low",\n' +
+            '  "reason": "1-sentence visual evidence in Traditional Chinese explaining how you identified it"\n' +
+            "}";
+
+          return callGeminiGenerate(apiKey, imgObj, promptText).then(function (resp) {
             if (id !== runId || userLocked) return null;
             var text = '';
             try {
               text = resp.candidates[0].content.parts[0].text;
             } catch (e) {
-              throw new Error('Empty response');
+              throw new Error('AI 回傳空白內容');
+            }
+            var cleanText = (text || '').trim();
+            var jsonBlock = cleanText.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
+            if (jsonBlock) {
+              cleanText = jsonBlock[1].trim();
+            }
+            var firstBrace = cleanText.indexOf('{');
+            var lastBrace = cleanText.lastIndexOf('}');
+            if (firstBrace !== -1 && lastBrace > firstBrace) {
+              cleanText = cleanText.slice(firstBrace, lastBrace + 1);
             }
             var parsed;
             try {
-              parsed = JSON.parse(text);
+              parsed = JSON.parse(cleanText);
             } catch (e) {
-              throw new Error('Invalid JSON from AI');
+              throw new Error('AI 回傳非標準 JSON');
             }
             var matchedCar = null;
             if (parsed.matchedId) {
@@ -10564,11 +10709,15 @@
                 return c.id === parsed.matchedId || c.registryKey === parsed.matchedId;
               });
             }
+            if (aiModeBar && aiModeStatusText) {
+              aiModeBar.className = 'ai-mode-bar is-active';
+              aiModeStatusText.textContent = '✨ Gemini AI 視覺深度辨識成功';
+              if (aiConfigBtn) aiConfigBtn.textContent = '更換金鑰';
+            }
             if (matchedCar) {
               showAiHit(matchedCar, parsed);
               return true;
             }
-            // Fallback: search by detected name or number in compendium
             var query = [parsed.number, parsed.nameZh, parsed.variant].filter(Boolean).join(' ');
             if (query) {
               var matches = matchCatalog(query, 'ai');
@@ -10602,18 +10751,25 @@
           });
         }).then(function (signal) {
           if (id !== runId || userLocked) return null;
-          if (signal) {
+          // 若只辨識到模糊的 SP，且有圖片，優先嘗試讀取日文品名以精確鎖定是哪一台 SP 車款
+          var isGenericSp = signal && signal.kind === 'c' && signal.numbers.length === 1 && signal.numbers[0] === 'SP';
+          if (signal && !isGenericSp) {
             showSignal(signal);
             return null;
           }
           if (!readyImg) {
-            showManualPrompt();
+            if (signal) showSignal(signal);
+            else showManualPrompt();
             return null;
           }
           return readJapaneseName(readyImg, id).then(function (nameHit) {
             if (id !== runId || userLocked) return null;
             if (nameHit) {
               showSignal(nameHit);
+              return null;
+            }
+            if (signal) {
+              showSignal(signal);
               return null;
             }
             return showVisual(readyImg, id).then(function (shown) {
@@ -10639,16 +10795,28 @@
         var id = ++runId;
         userLocked = false;
         clearResults();
+        updateAiModeBar();
         var apiKey = getGeminiApiKey();
         if (apiKey) {
-          setOcrNote('✨ 正在使用 Google Gemini 2.0 視覺深度辨識…（直連 Google 官方）');
+          setOcrNote('✨ 正在使用 Google Gemini 視覺深度辨識…（直連 Google 官方）');
           return runGeminiVision(file, apiKey, id).catch(function (err) {
-            console.error('Gemini vision failed, falling back to offline:', err);
+            console.error('Gemini vision failed:', err);
             var errMsg = (err && err.message) || '連線逾時';
             if (errMsg.indexOf('API_KEY_INVALID') !== -1 || errMsg.indexOf('API key not valid') !== -1) {
-              errMsg = 'API Key 無效或未授權，請至設定檢查';
+              errMsg = 'API Key 無效或未授權，請至上方更換金鑰重新輸入';
+            } else if (errMsg.indexOf('quota') !== -1 || errMsg.indexOf('RESOURCE_EXHAUSTED') !== -1) {
+              errMsg = '今日免費額度已達上限';
+            } else if (errMsg.indexOf('Failed to fetch') !== -1) {
+              errMsg = '無法連線 Google（請確認網路或 VPN）';
             }
-            return runOfflineOcr(file, id, '⚠️ AI 辨識失敗（' + errMsg + '），已切換為離線模式…');
+            if (aiModeBar && aiModeStatusText) {
+              aiModeBar.className = 'ai-mode-bar is-error';
+              aiModeStatusText.textContent = '⚠️ AI 異常：' + errMsg;
+              if (aiConfigBtn) aiConfigBtn.textContent = '重設金鑰';
+            }
+            setStatus('⚠️ AI 辨識異常：' + errMsg);
+            setOcrNote('⚠️ AI 辨識未完成（' + errMsg + '），改由本機文字識別對照：');
+            return runOfflineOcr(file, id, '⚠️ AI 連線異常（' + errMsg + '），已改用本機文字識別：');
           });
         }
         return runOfflineOcr(file, id);
