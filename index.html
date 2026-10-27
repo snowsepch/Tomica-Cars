@@ -8986,6 +8986,85 @@
           }
         });
       }
+      function discoverAndVerifyGemini(val) {
+        var cleanKey = (val || '').trim().replace(/^["']|["']$/g, '');
+        function pingEndpoint(url) {
+          return fetch(url + '?key=' + encodeURIComponent(cleanKey), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] })
+          }).then(function (res) {
+            if (!res.ok) {
+              return res.json().then(function (err) {
+                var msg = (err && err.error && err.error.message) || ('HTTP ' + res.status);
+                var e = new Error(msg);
+                e.status = res.status;
+                throw e;
+              }).catch(function (e) {
+                if (!e.status) e.status = res.status;
+                throw e;
+              });
+            }
+            return { ok: true, endpoint: url };
+          });
+        }
+
+        var candidateEndpoints = [
+          'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent'
+        ];
+
+        function tryListModels() {
+          return fetch('https://generativelanguage.googleapis.com/v1/models?key=' + encodeURIComponent(cleanKey))
+            .then(function (res) {
+              if (res.ok) return res.json().then(function (d) { return { ver: 'v1', list: (d && d.models) || [] }; });
+              return fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + encodeURIComponent(cleanKey))
+                .then(function (r2) {
+                  if (r2.ok) return r2.json().then(function (d2) { return { ver: 'v1beta', list: (d2 && d2.models) || [] }; });
+                  return { ver: null, list: [] };
+                });
+            }).catch(function () {
+              return { ver: null, list: [] };
+            });
+        }
+
+        return tryListModels().then(function (info) {
+          var endpointsToTry = [];
+          if (info.ver && info.list.length) {
+            var genModels = info.list.filter(function (m) {
+              return m && m.supportedGenerationMethods && m.supportedGenerationMethods.indexOf('generateContent') !== -1;
+            });
+            var pick = genModels.find(function (m) { return m.name.indexOf('gemini-1.5-flash') !== -1; }) ||
+                       genModels.find(function (m) { return m.name.indexOf('gemini-2.0-flash') !== -1; }) ||
+                       genModels.find(function (m) { return m.name.indexOf('flash') !== -1; }) ||
+                       genModels[0];
+            if (pick) {
+              var cleanName = pick.name.replace(/^models\//, '');
+              endpointsToTry.push('https://generativelanguage.googleapis.com/' + info.ver + '/models/' + cleanName + ':generateContent');
+            }
+          }
+          candidateEndpoints.forEach(function (ep) {
+            if (endpointsToTry.indexOf(ep) === -1) endpointsToTry.push(ep);
+          });
+
+          function testNext(idx) {
+            if (idx >= endpointsToTry.length) {
+              throw new Error('所有模型端點皆無法連線（請確認金鑰權限與網路環境）');
+            }
+            return pingEndpoint(endpointsToTry[idx]).catch(function (err) {
+              if (err && (err.status === 404 || (err.message && err.message.indexOf('not found') !== -1))) {
+                return testNext(idx + 1);
+              }
+              throw err;
+            });
+          }
+          return testNext(0);
+        });
+      }
+
       if (saveApiKeyBtn && geminiApiKeyInput) {
         saveApiKeyBtn.addEventListener('click', function () {
           var val = geminiApiKeyInput.value.trim().replace(/^["']|["']$/g, '');
@@ -8995,35 +9074,13 @@
           }
           saveApiKeyBtn.disabled = true;
           saveApiKeyBtn.textContent = '連線驗證中…';
-          var testUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + encodeURIComponent(val);
-          fetch(testUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] })
-          }).then(function (res) {
-            return res.json().then(function (data) {
-              if (!res.ok) {
-                var errCode = (data && data.error && data.error.message) || ('HTTP ' + res.status);
-                if (res.status === 404) {
-                  return fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + encodeURIComponent(val), {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] })
-                  }).then(function (r2) {
-                    if (r2.ok) return { ok: true };
-                    return r2.json().then(function (d2) {
-                      throw new Error((d2 && d2.error && d2.error.message) || ('HTTP ' + r2.status));
-                    });
-                  });
-                }
-                throw new Error(errCode);
-              }
-              return { ok: true };
-            });
-          }).then(function () {
+          discoverAndVerifyGemini(val).then(function (result) {
             saveApiKeyBtn.disabled = false;
             saveApiKeyBtn.textContent = '儲存並啟用 AI 視覺';
             localStorage.setItem('gemini_api_key', val);
+            if (result && result.endpoint) {
+              localStorage.setItem('gemini_api_endpoint', result.endpoint);
+            }
             updateAiModeBar();
             closeAiKeyModal();
             setStatus('✨ 已成功啟用 Gemini AI 視覺深度辨識（Google 連線驗證通過）！');
@@ -9042,6 +9099,7 @@
       if (clearApiKeyBtn) {
         clearApiKeyBtn.addEventListener('click', function () {
           localStorage.removeItem('gemini_api_key');
+          localStorage.removeItem('gemini_api_endpoint');
           if (geminiApiKeyInput) geminiApiKeyInput.value = '';
           updateAiModeBar();
           closeAiKeyModal();
@@ -10609,16 +10667,26 @@
 
       function callGeminiGenerate(apiKey, imgObj, promptText) {
         var cleanKey = (apiKey || '').trim().replace(/^["']|["']$/g, '');
-        var models = ['gemini-2.0-flash', 'gemini-1.5-flash'];
         var mime = (imgObj && imgObj.mimeType) || 'image/jpeg';
         var base64Data = (typeof imgObj === 'string') ? imgObj : (imgObj && imgObj.data);
+        var savedEndpoint = localStorage.getItem('gemini_api_endpoint') || '';
+        var candidateEndpoints = [
+          savedEndpoint,
+          'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+          'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent'
+        ].filter(function (u, idx, arr) {
+          return u && arr.indexOf(u) === idx;
+        });
 
-        function tryModel(idx) {
-          if (idx >= models.length) {
-            throw new Error('所有 Gemini 模型連線均失敗');
+        function tryEndpoint(idx) {
+          if (idx >= candidateEndpoints.length) {
+            throw new Error('所有 Gemini 模型端點連線均失敗');
           }
-          var m = models[idx];
-          var apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/' + m + ':generateContent?key=' + encodeURIComponent(cleanKey);
+          var ep = candidateEndpoints[idx];
+          var apiUrl = ep + '?key=' + encodeURIComponent(cleanKey);
           return fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -10637,21 +10705,22 @@
             if (!res.ok) {
               return res.json().then(function (err) {
                 var msg = (err && err.error && err.error.message) || ('HTTP ' + res.status);
-                if (res.status === 404 && idx + 1 < models.length) {
-                  return tryModel(idx + 1);
+                if (res.status === 404 && idx + 1 < candidateEndpoints.length) {
+                  return tryEndpoint(idx + 1);
                 }
                 throw new Error(msg);
               }).catch(function (e) {
-                if (res.status === 404 && idx + 1 < models.length) {
-                  return tryModel(idx + 1);
+                if (res.status === 404 && idx + 1 < candidateEndpoints.length) {
+                  return tryEndpoint(idx + 1);
                 }
                 throw e;
               });
             }
+            localStorage.setItem('gemini_api_endpoint', ep);
             return res.json();
           });
         }
-        return tryModel(0);
+        return tryEndpoint(0);
       }
 
       function runGeminiVision(file, apiKey, id) {
