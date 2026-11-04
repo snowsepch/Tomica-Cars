@@ -1,0 +1,16 @@
+.DS_Store
+*.swp
+
+archive_fixes/
+tomica_cars_collection.html
+tomica_images/
+__pycache__/
+
+# Local maintenance docs and migration scripts
+docs/
+scripts/apply_new_pack_*.py
+audit_screenshots/
+audit_screenshots_*/
+scripts/cdp_audit.py
+scripts/test_render.py
+scripts/update_mobile_and_newitems.py
