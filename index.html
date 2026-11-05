@@ -1,399 +1,861 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>TOMICA 多美小汽車・個人掌上典藏圖鑑</title>
-  
-  <!-- Tailwind CSS Engine -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
+  <title>Tomica 小車圖鑑</title>
+  <meta name="description" content="Tomica 小車圖鑑・個人隨身典藏型錄">
+  <meta property="og:title" content="Tomica 小車圖鑑">
+  <meta property="og:description" content="Tomica 小車圖鑑・個人隨身典藏型錄">
+  <meta property="og:type" content="website">
+  <link rel="preload" href="fonts/jf-openhuninn.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    :root {
-      /* 暖骨白與炭黑色彩系統 (Monograph 黃金標竿規範) */
-      --bg-canvas: #FAFAF8;
-      --bg-card: #FFFFFF;
-      --bg-card-hover: #FDFDFB;
-      --border-subtle: #E8E8E5;
-      --border-medium: #D8D8D4;
-      --border-dark: #27272A;
-      --text-primary: #18181B;
-      --text-secondary: #52525B;
-      --text-muted: #71717A;
-      --accent-black: #09090B;
-      --accent-gold: #D97706;
-      --accent-gold-bg: #FEF3C7;
-      --alert-red: #DC2626;
-      --alert-red-bg: #FEF2F2;
-      --alert-red-border: #FCA5A5;
-      --success-green: #15803D;
-      --success-green-bg: #F0FDF4;
-      --success-green-border: #86EFAC;
+    @font-face {
+      font-family: "jf-openhuninn";
+      src: url("fonts/jf-openhuninn.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
-
-    /* 原生 CSS 基礎保障，嚴禁任何破版 */
+    :root {
+      --bg: #FBFAF7;
+      --ink: #1C1B19;
+      --mut: #8A8578;
+      --line: rgba(28, 27, 25, 0.12);
+      --grn: #1E6B4F;
+      --red: #B3261E;
+      --round: "jf-openhuninn", "Yuanti TC", "Hiragino Maru Gothic ProN", "PingFang TC", "Noto Sans TC", sans-serif;
+      --serif: var(--round);
+      --latin: var(--round);
+      --sans: var(--round);
+    }
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
     body {
+      font-variant-numeric: lining-nums;
       margin: 0;
       padding: 0;
-      background-color: var(--bg-canvas);
-      color: var(--text-primary);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Noto Sans TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
-      -webkit-font-smoothing: antialiased;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
       line-height: 1.75;
       letter-spacing: 0.015em;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    a {
-      text-decoration: none;
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+    button {
+      font: inherit;
       color: inherit;
-    }
-
-    /* 繁體中文排版規範：嚴格禁止負字距與小於 1.3 的行高 */
-    .heading-display {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang TC", "Noto Sans TC", sans-serif;
-      font-size: clamp(1.25rem, 4vw, 1.85rem);
-      font-weight: 700;
-      line-height: 1.38;
-      letter-spacing: 0.01em;
-      color: var(--text-primary);
-    }
-
-    /* 頂端導航與浮動工具欄 */
-    .header-bar {
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(250, 250, 248, 0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding-top: max(0.6rem, env(safe-area-inset-top));
-    }
-    .page-container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* 圖鑑卡片基礎樣式 */
-    .pokedex-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s ease, border-color 0.15s ease;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      background: none;
+      border: 0;
       cursor: pointer;
-    }
-    .pokedex-card:active {
-      transform: scale(0.985);
-    }
-    @media (hover: hover) {
-      .pokedex-card:hover {
-        border-color: var(--border-medium);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-        background: var(--bg-card-hover);
-      }
-    }
-    .pokedex-card.is-duplicate {
-      border-color: #F87171;
-      background: #FFFDFD;
-    }
-
-    /* 圖鑑展示展台窗口 */
-    .car-stage {
-      background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F3 100%);
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .car-stage img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transition: transform 0.25s ease;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
-    }
-    .pokedex-card:hover .car-stage img {
-      transform: scale(1.04);
-    }
-
-    /* 圖鑑專屬金屬編號名牌 */
-    .compendium-badge {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      padding: 0.18rem 0.55rem;
-      border-radius: 6px;
-      background: var(--accent-black);
-      color: #FFFFFF;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      display: inline-flex;
-      align-items: center;
-    }
-
-    /* 分類標籤樣式 */
-    .tag-badge {
-      padding: 0.2rem 0.5rem;
-      border-radius: 9999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
-    .tag-cars { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
-    .tag-non-tomica { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
-    .tag-toystory { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
-    .tag-general { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
-    .tag-disney { background: #FAF5FF; color: #6B21A8; border: 1px solid #E9D5FF; }
-    .tag-dup { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; font-weight: 700; }
-    .tag-boxed { background: #EFF6FF; color: #2563EB; border: 1px solid #DBEAFE; }
-    .tag-loose { background: #F4F4F5; color: #52525B; border: 1px solid #E4E4E7; }
-
-    /* 模式切換按鈕 */
-    .view-mode-btn {
-      padding: 0.28rem 0.55rem;
-      border-radius: 6px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-      color: var(--text-secondary);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-    @media (min-width: 640px) {
-      .view-mode-btn {
-        padding: 0.45rem 0.8rem;
-        border-radius: 8px;
-        font-size: 0.78rem;
-        gap: 0.35rem;
-      }
-    }
-    .view-mode-btn.active {
-      background: var(--accent-black);
-      border-color: var(--accent-black);
-      color: #FFFFFF;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
-    }
-
-    /* 圖鑑抽屜/彈窗 Modal - 手機底部抽屜 (Bottom Sheet) ＋ 桌面居中彈窗 */
-    .detail-modal-overlay {
-      position: fixed;
-      inset: 0;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      height: 100vh;
-      height: 100dvh;
-      background: rgba(9, 9, 11, 0.68);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index: 900;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 0;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @media (min-width: 640px) {
-      .detail-modal-overlay {
-        align-items: center;
-        padding: 1.25rem;
-      }
-    }
-    .detail-modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .detail-modal-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 24px 24px 0 0;
-      width: 100%;
-      max-width: 640px;
-      max-height: 85vh;
-      max-height: 85dvh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.16);
-      transform: translateY(100%);
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @media (min-width: 640px) {
-      .detail-modal-card {
-        border-radius: 20px;
-        max-height: 90vh;
-        max-height: 90dvh;
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
-        transform: translateY(20px) scale(0.98);
-      }
-    }
-    .detail-modal-overlay.active .detail-modal-card {
-      transform: translateY(0);
-    }
-    @media (min-width: 640px) {
-      .detail-modal-overlay.active .detail-modal-card {
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Lightbox 全螢幕圖片放大 */
-    .lightbox-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(9, 9, 11, 0.95);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-    }
-    .lightbox-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .lightbox-img {
-      max-width: 92vw;
-      max-height: 82vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    /* 浮動快速置頂按鈕 */
-    .floating-top-btn {
-      position: fixed;
-      bottom: max(1.5rem, env(safe-area-inset-bottom));
-      right: 1.25rem;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      background: var(--accent-black);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-      border: 1px solid rgba(255,255,255,0.15);
-      z-index: 50;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .floating-top-btn.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .floating-top-btn:active {
-      transform: scale(0.92);
-    }
-
-    /* Bento 卡片可點擊回饋 */
-    .bento-clickable {
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .bento-clickable:active {
-      transform: scale(0.97);
-    }
-
-    /* 拍照對照：只加這條流程，不改圖鑑本體 */
-    .photo-check-launch {
-      display: flex;
-      align-items: stretch;
-      gap: 0.35rem;
-      margin-top: 0.45rem;
-    }
-    @media (min-width: 640px) {
-      .photo-check-launch {
-        max-width: 28rem;
-      }
-    }
-    .photo-check-btn,
-    .photo-check-lib {
-      min-height: 44px;
-      border-radius: 10px;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: 0.01em;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
       touch-action: manipulation;
     }
-    .photo-check-btn {
-      flex: 1;
-      padding: 0.45rem 0.8rem;
-      background: var(--accent-black);
-      color: #ffffff;
-      border: 1px solid var(--accent-black);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    .photo-check-btn svg {
-      width: 1.05rem;
-      height: 1.05rem;
-      flex-shrink: 0;
+    .cap {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--mut);
+      text-transform: uppercase;
     }
-    .photo-check-lib {
-      padding: 0.45rem 0.85rem;
-      background: #ffffff;
-      color: var(--text-primary);
-      border: 1px solid var(--border-medium);
-      white-space: nowrap;
+    .lat {
+      font-family: var(--latin);
     }
-    .photo-check-btn:active,
-    .photo-check-lib:active {
-      transform: scale(0.98);
+    .ser {
+      font-family: var(--serif);
+      font-weight: 500;
     }
-    @media (hover: hover) {
-      .photo-check-btn:hover { background: #18181b; }
-      .photo-check-lib:hover { background: #f4f4f5; }
+    @keyframes up {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
     }
-    .photo-check-btn:focus-visible,
-    .photo-check-lib:focus-visible,
-    .photo-check-sheet button:focus-visible,
-    .photo-check-sheet a:focus-visible {
-      outline: 2px solid var(--accent-gold);
-      outline-offset: 2px;
+    @keyframes car {
+      from { opacity: 0; transform: translateX(36px); }
+      to { opacity: 1; transform: none; }
     }
-    .photo-check-file {
-      position: fixed;
-      left: -9999px;
-      top: 0;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
+    @keyframes stamp {
+      0% { opacity: 0; transform: scale(1.8) rotate(-18deg); }
+      60% { opacity: 1; transform: scale(0.94) rotate(-8deg); }
+      100% { opacity: 1; transform: scale(1) rotate(-10deg); }
+    }
+
+    /* Cover (P.01) */
+    .cover {
+      height: 76svh;
+      min-height: 560px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 22px 22px 0;
+      display: flex;
+      flex-direction: column;
+      position: relative;
       overflow: hidden;
     }
+    .cover .eb {
+      display: flex;
+      justify-content: space-between;
+      animation: up 0.8s both;
+    }
+    .cover h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 38px;
+      line-height: 1.25;
+      margin: 20px 0 0;
+      letter-spacing: 0.04em;
+      animation: up 0.9s 0.1s both;
+    }
+    .cover h1 small {
+      display: block;
+      font-family: var(--latin);
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      color: var(--mut);
+      margin-top: 6px;
+    }
+    .hero {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 0;
+      cursor: pointer;
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      width: 78%;
+      aspect-ratio: 1;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: #F2EEE5;
+    }
+    .hero img {
+      position: relative;
+      width: 88%;
+      max-height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      animation: car 1.2s 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+    .hero .lab {
+      position: absolute;
+      left: 0;
+      bottom: 8%;
+      animation: up 1s 0.7s both;
+    }
+    .hero .lab b {
+      display: block;
+      font-family: var(--latin);
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1;
+      color: var(--red);
+    }
+    .hero .lab span {
+      font-size: 12px;
+      color: var(--mut);
+    }
+    .stat {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      padding: 10px 0;
+      animation: up 1s 0.9s both;
+    }
+    .stat div {
+      text-align: center;
+    }
+    .stat b {
+      display: block;
+      font-family: var(--latin);
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+    .stat b small {
+      font-size: 13px;
+      color: var(--mut);
+    }
+    .stat span {
+      font-size: 11px;
+      color: var(--mut);
+      letter-spacing: 0.14em;
+    }
+    .peek {
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 48px;
+      font-size: 12px;
+      color: var(--mut);
+      letter-spacing: 0.1em;
+    }
+    .peek a {
+      color: var(--ink);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Sticky Toolbar */
+    .tb {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 46px;
+      z-index: 100;
+      background: #FBFAF7;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      padding: 0 10px 0 16px;
+      gap: 4px;
+      transform: translateY(-100%);
+      transition: transform 0.3s;
+    }
+    .tb.show {
+      transform: none;
+    }
+    .tb .tt {
+      flex: 1;
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tb .tt i {
+      font-style: normal;
+      font-family: var(--latin);
+      color: var(--mut);
+      margin-left: 6px;
+      font-size: 13px;
+    }
+    .tb button {
+      min-width: 44px;
+      height: 44px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+      color: var(--ink);
+    }
+
+    /* Sections */
+    .sec {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 26px 20px 8px;
+      scroll-margin-top: 52px;
+    }
+    .sh {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+    .sh h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+    }
+    .seg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: #F1EEE7;
+      border-radius: 14px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .seg button {
+      min-height: 44px;
+      border-radius: 11px;
+      font-size: 15px;
+      color: #6b665c;
+      border: 0;
+      margin: 0;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .seg button.on {
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      font-weight: 700;
+    }
+    .sbox {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      align-items: center;
+    }
+    .sfield {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 46px;
+      border: 1px solid rgba(0,0,0,0.16);
+      border-radius: 23px;
+      background: #fff;
+      padding: 0 14px;
+    }
+    .sfield svg {
+      flex: none;
+    }
+    .sfield input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: none;
+      background: none;
+      font: inherit;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .camb {
+      width: 46px;
+      height: 46px;
+      flex: none;
+      border: 1px solid rgba(0,0,0,0.16);
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .flab {
+      font-size: 11px;
+      color: var(--mut);
+      letter-spacing: 0.12em;
+      margin: 18px 0 0;
+    }
+    .chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      margin-top: 8px;
+      padding: 2px 2px 4px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .chips::-webkit-scrollbar {
+      display: none;
+    }
+    .chip {
+      flex: none;
+      min-height: 36px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      font-size: 13px;
+      color: #57534E;
+      background: none;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .chip i {
+      font-style: normal;
+      opacity: 0.6;
+      margin-left: 4px;
+      font-family: var(--latin);
+    }
+    .chip.on {
+      background: #fff;
+      border-color: var(--ink);
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .chip.own {
+      color: var(--grn);
+    }
+    .chip.own.on {
+      background: #EEF6F1;
+      border-color: var(--grn);
+    }
+    .chip.un {
+      color: var(--red);
+    }
+    .chip.un.on {
+      background: #FBEFEE;
+      border-color: var(--red);
+    }
+    .pg {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--mut);
+      line-height: 1.6;
+    }
+    .pg .bar {
+      height: 1px;
+      background: var(--line);
+      margin: 8px 0;
+    }
+    .pg .bar i {
+      display: block;
+      height: 1px;
+      background: var(--grn);
+    }
+    .pg b {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* TOC (P.03) */
+    .toc a {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      min-height: 60px;
+      border-bottom: 1px solid var(--line);
+      gap: 8px;
+    }
+    .toc .no {
+      font-family: var(--latin);
+      font-size: 13px;
+      color: var(--mut);
+      letter-spacing: 0.08em;
+    }
+    .toc .nm {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--ink);
+    }
+    .toc .en {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--mut);
+      margin-top: 2px;
+    }
+    .toc .pr {
+      text-align: right;
+      font-family: var(--latin);
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .toc .pr small {
+      color: var(--mut);
+      font-size: 12px;
+    }
+    .toc .mini {
+      display: block;
+      width: 64px;
+      height: 1px;
+      background: var(--line);
+      margin-top: 5px;
+      margin-left: auto;
+    }
+    .toc .mini i {
+      display: block;
+      height: 1px;
+      background: var(--grn);
+    }
+
+    /* Chapter Spread */
+    .ch {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 36px 0 10px;
+      scroll-margin-top: 52px;
+    }
+    @media (min-width: 768px) {
+      .sec, .ch {
+        max-width: 1080px;
+      }
+    }
+    .sp {
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .sp .num {
+      display: flex;
+      justify-content: space-between;
+    }
+    .sp h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.25;
+      margin: 14px 0 4px;
+      letter-spacing: 0.04em;
+    }
+    .sp .en {
+      font-family: var(--latin);
+      color: var(--mut);
+      font-size: 16px;
+    }
+    .fig {
+      margin: 18px -20px 0 32px;
+      background: #F2EEE5;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    @media (min-width: 768px) {
+      .fig {
+        margin: 18px 0 0 auto;
+        max-width: 520px;
+      }
+    }
+    .fig img {
+      width: 86%;
+      max-height: 84%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .figcap {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0 0 32px;
+      font-size: 11px;
+      color: var(--mut);
+    }
+    @media (min-width: 768px) {
+      .figcap {
+        margin: 8px 0 0 auto;
+        max-width: 520px;
+      }
+    }
+    .quote {
+      margin: 18px 40px 0 0;
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.8;
+      color: #3f3c37;
+      border-left: 1px solid var(--ink);
+      padding-left: 12px;
+    }
+    .chp {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 18px 20px 12px;
+      font-size: 12px;
+      color: var(--mut);
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 12px;
+      padding: 0 20px;
+    }
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px 16px;
+        padding: 0 20px;
+      }
+    }
+
+    /* Cards */
+    .card {
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      flex-direction: column;
+    }
+    .card .fr {
+      position: relative;
+      aspect-ratio: 1/1;
+      background: #fff;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card .fr img {
+      width: 84%;
+      max-height: 70%;
+      object-fit: contain;
+      margin-top: 10px;
+    }
+    .card.o .fr {
+      box-shadow: 0 0 0 1px var(--grn);
+    }
+    .card.u .fr {
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+    }
+    .card .id {
+      position: absolute;
+      top: 8px;
+      left: 9px;
+      font-family: var(--latin);
+      font-size: 14px;
+      color: #57534E;
+      max-width: 60%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .seal {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 28px;
+      height: 28px;
+    }
+    .tag {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      border: 1px solid rgba(179,38,30,0.55);
+      border-radius: 99px;
+      padding: 1px 7px;
+      background: #fff;
+    }
+    .card .nm {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 1.4;
+      margin-top: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: var(--ink);
+    }
+    .card .m {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      font-size: 11px;
+      color: #A8A29E;
+      margin-top: 3px;
+    }
+    .card.o .s {
+      color: var(--grn);
+    }
+    .card.u .s {
+      color: var(--red);
+    }
+    .dupt {
+      color: #A8A29E;
+      font-size: 10.5px;
+    }
+    .empty {
+      padding: 30px 20px;
+      color: var(--mut);
+      font-size: 14px;
+      text-align: center;
+    }
+    .foot {
+      text-align: center;
+      padding: 40px 20px 60px;
+      font-size: 11px;
+      color: var(--mut);
+      letter-spacing: 0.2em;
+    }
+
+    /* Detail Modal */
+    .dt {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--bg);
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .dt.open {
+      transform: none;
+    }
+    .dt .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 52px;
+      padding: 0 10px 0 20px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 2;
+    }
+    .dt .bar button {
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dt .stg {
+      position: relative;
+      margin: 18px 20px 0;
+      max-width: 500px;
+      width: calc(100% - 40px);
+      margin-left: auto;
+      margin-right: auto;
+      aspect-ratio: 4/3.2;
+      background: #fff;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dt.o .stg {
+      box-shadow: 0 0 0 1px var(--grn);
+    }
+    .dt.u .stg {
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+    }
+    .dt .stg img {
+      width: 86%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+    .bigseal {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 76px;
+      height: 76px;
+    }
+    .dt.o .bigseal {
+      animation: stamp 0.6s 0.25s both;
+    }
+    .dt .body {
+      padding: 18px 20px 40px;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .dt h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.35;
+      margin: 6px 0 2px;
+    }
+    .dt .jp {
+      font-size: 13px;
+      color: var(--mut);
+    }
+    .dl {
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .dl div {
+      display: flex;
+      justify-content: space-between;
+      min-height: 44px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .dl dt {
+      color: var(--mut);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+    .pn {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .pn button {
+      flex: 1;
+      height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      font-size: 14px;
+      background: #fff;
+      font-weight: 500;
+    }
+
+    /* Weekly Picks */
+    .wk {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+    }
+    .wk .fr {
+      aspect-ratio: 1;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px var(--line);
+      overflow: hidden;
+    }
+    .wk .fr img {
+      width: 86%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+    .wk h5 {
+      margin: 3px 0 4px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .wk .m {
+      font-size: 12px;
+      color: var(--mut);
+      line-height: 1.6;
+    }
+    .wk a {
+      color: var(--grn);
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    /* Photo Check Sheet & AI Modal */
     .photo-check-overlay {
       position: fixed;
       inset: 0;
@@ -404,7 +866,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      background: rgba(9, 9, 11, 0.68);
+      background: rgba(9, 9, 11, 0.65);
       padding: 0;
       opacity: 0;
       pointer-events: none;
@@ -424,9 +886,9 @@
       }
     }
     .photo-check-sheet {
-      background: #ffffff;
-      color: var(--text-primary);
-      border: 1px solid var(--border-subtle);
+      background: #FBFAF7;
+      color: var(--ink);
+      border: 1px solid var(--line);
       border-radius: 24px 24px 0 0;
       width: 100%;
       max-width: 480px;
@@ -459,7 +921,7 @@
       width: 3rem;
       height: 0.35rem;
       border-radius: 999px;
-      background: rgba(161, 161, 170, 0.8);
+      background: rgba(161, 161, 170, 0.6);
       margin: 0.7rem auto 0;
       flex-shrink: 0;
     }
@@ -476,16 +938,16 @@
     }
     .photo-check-head h2 {
       margin: 0;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       line-height: 1.4;
       font-weight: 700;
-      letter-spacing: 0.01em;
+      font-family: var(--serif);
     }
     .photo-check-head p {
       margin: 0.15rem 0 0;
       font-size: 0.75rem;
       line-height: 1.55;
-      color: var(--text-secondary);
+      color: var(--mut);
     }
     .photo-check-close {
       width: 2rem;
@@ -493,7 +955,7 @@
       border-radius: 999px;
       border: 0;
       background: #f4f4f5;
-      color: var(--text-secondary);
+      color: var(--ink);
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
@@ -510,11 +972,11 @@
       margin: 0 0 0.65rem;
       font-size: 0.78rem;
       line-height: 1.65;
-      color: var(--text-secondary);
+      color: var(--mut);
     }
     .photo-check-preview-wrap {
-      background: linear-gradient(180deg, #ffffff 0%, #f5f5f3 100%);
-      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      border: 1px solid var(--line);
       border-radius: 12px;
       min-height: 140px;
       display: flex;
@@ -535,8 +997,7 @@
       margin: 0 0 0.35rem;
       font-size: 0.7rem;
       font-weight: 700;
-      color: var(--text-muted);
-      letter-spacing: 0.01em;
+      color: var(--mut);
     }
     .photo-check-query-row {
       display: flex;
@@ -546,23 +1007,23 @@
       flex: 1;
       min-width: 0;
       min-height: 44px;
-      border: 1px solid var(--border-medium);
+      border: 1px solid var(--line);
       border-radius: 10px;
       padding: 0.4rem 0.65rem;
       font: inherit;
-      font-size: 0.84rem;
+      font-size: 0.88rem;
       background: #ffffff;
-      color: var(--text-primary);
+      color: var(--ink);
     }
     .photo-check-query-row button {
       min-height: 44px;
-      padding: 0 0.75rem;
+      padding: 0 0.85rem;
       border-radius: 10px;
-      border: 1px solid var(--accent-black);
-      background: var(--accent-black);
+      border: 1px solid var(--ink);
+      background: var(--ink);
       color: #ffffff;
       font-weight: 700;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       white-space: nowrap;
       cursor: pointer;
     }
@@ -570,7 +1031,7 @@
       margin: 0.55rem 0 0;
       font-size: 0.75rem;
       line-height: 1.55;
-      color: var(--text-secondary);
+      color: var(--mut);
       user-select: text;
       -webkit-user-select: text;
     }
@@ -584,21 +1045,30 @@
       width: 100%;
       text-align: left;
       background: #ffffff;
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--line);
       border-radius: 12px;
       padding: 0.7rem 0.75rem;
       cursor: pointer;
-      color: var(--text-primary);
+      color: var(--ink);
       font: inherit;
     }
     .photo-check-result.is-selected {
-      border-color: var(--accent-black);
+      border-color: var(--ink);
     }
     .photo-check-result-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
+    }
+    .compendium-badge {
+      font-family: var(--latin);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #f4f4f5;
+      color: var(--ink);
     }
     .photo-check-result-name {
       margin: 0.35rem 0 0;
@@ -610,627 +1080,230 @@
       margin: 0.15rem 0 0;
       font-size: 0.78rem;
       line-height: 1.5;
-      color: var(--text-secondary);
+      color: var(--mut);
     }
     .photo-check-result-counts {
       margin: 0.25rem 0 0;
       font-size: 0.78rem;
       line-height: 1.45;
-      color: var(--text-primary);
+      color: var(--ink);
     }
-    .photo-check-owned { color: var(--success-green); font-weight: 700; font-size: 0.78rem; }
-    .photo-check-unowned { color: var(--text-secondary); font-weight: 700; font-size: 0.78rem; }
-    .photo-check-copy,
-    .photo-check-textbtn {
-      background: transparent;
-      border: 0;
-      padding: 0.35rem 0.15rem;
-      min-height: 44px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      cursor: pointer;
-    }
-    .photo-check-note {
-      margin: 0.75rem 0 0.35rem;
-      font-size: 0.78rem;
-      line-height: 1.65;
-      color: var(--text-primary);
-      user-select: text;
-      -webkit-user-select: text;
-    }
-    .photo-check-links {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.15rem;
-    }
-    .photo-check-links a {
-      color: var(--text-primary);
-      font-size: 0.78rem;
-      font-weight: 700;
-      line-height: 1.5;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-    }
-    .photo-check-url {
-      margin: 0.1rem 0 0.4rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.68rem;
-      line-height: 1.55;
-      color: var(--text-muted);
-      word-break: break-all;
-      user-select: all;
-      -webkit-user-select: all;
-    }
+    .photo-check-owned { color: var(--grn); font-weight: 700; font-size: 0.78rem; }
+    .photo-check-unowned { color: var(--mut); font-weight: 700; font-size: 0.78rem; }
     .photo-check-footer {
+      padding: 0.65rem 1.15rem 0.9rem;
+      background: #FBFAF7;
+      border-top: 1px solid var(--line);
       flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      padding: 0.65rem 1.15rem max(0.9rem, env(safe-area-inset-bottom));
-      border-top: 1px solid var(--border-subtle);
-      background: #ffffff;
     }
     .photo-check-status {
-      min-height: 0;
-      margin: 0;
-      font-size: 0.75rem;
-      line-height: 1.55;
-      color: var(--text-secondary);
+      font-size: 0.78rem;
+      color: var(--mut);
+      margin: 0 0 0.5rem;
     }
-    .photo-check-status:empty { display: none; }
-    .photo-check-primary,
     .photo-check-secondary {
       width: 100%;
-      min-height: 48px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: 0.01em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      touch-action: manipulation;
-      padding: 0.55rem 0.8rem;
-    }
-    .photo-check-primary {
-      background: var(--accent-black);
-      color: #ffffff;
-      border: 1px solid var(--accent-black);
-    }
-    .photo-check-secondary {
+      min-height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
       background: #ffffff;
-      color: var(--text-primary);
-      border: 1px solid var(--border-medium);
-    }
-    .photo-check-primary:active,
-    .photo-check-secondary:active {
-      transform: scale(0.99);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+      cursor: pointer;
     }
     .photo-check-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 0.25rem;
+      gap: 0.5rem;
     }
-    .photo-check-secondary[hidden] { display: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .photo-check-overlay,
-      .photo-check-sheet,
-      .photo-check-btn,
-      .photo-check-lib,
-      .photo-check-primary,
-      .photo-check-secondary {
-        transition: none;
-      }
+    .photo-check-textbtn {
+      background: transparent;
+      border: 0;
+      padding: 0.35rem 0.25rem;
+      min-height: 44px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--mut);
+      cursor: pointer;
+    }
+    .photo-check-file {
+      position: fixed;
+      left: -9999px;
+      top: 0;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
     }
     .ai-mode-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-      padding: 0.5rem 0.75rem;
-      border-radius: 12px;
+      padding: 0.55rem 0.75rem;
+      border-radius: 10px;
+      font-size: 0.78rem;
       margin-bottom: 0.65rem;
-      font-size: 0.75rem;
-      line-height: 1.4;
-      transition: all 0.2s ease;
+      border: 1px solid var(--line);
+      background: #ffffff;
     }
     .ai-mode-bar.is-active {
-      background: #effaf3;
-      border: 1px solid #b7ebd1;
-      color: #0f5132;
+      background: #EEF6F1;
+      border-color: var(--grn);
+      color: var(--grn);
     }
     .ai-mode-bar.is-idle {
-      background: #fdfaf3;
-      border: 1px solid #fae2b6;
-      color: #794d07;
-    }
-    .ai-mode-bar.is-error {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      color: #991b1b;
+      background: #f4f4f5;
+      color: #52525B;
     }
     .ai-config-btn {
-      min-height: 28px;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.7rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.15s ease;
-    }
-    .ai-mode-bar.is-active .ai-config-btn {
-      background: #ffffff;
-      border: 1px solid #b7ebd1;
-      color: #0f5132;
-    }
-    .ai-mode-bar.is-idle .ai-config-btn {
-      background: #ffffff;
-      border: 1px solid #fae2b6;
-      color: #794d07;
-    }
-    .ai-mode-bar.is-error .ai-config-btn {
-      background: #ffffff;
-      border: 1px solid #fca5a5;
-      color: #b91c1c;
     }
     #aiKeyModalOverlay {
       position: fixed;
       inset: 0;
       z-index: 1300;
+      background: rgba(9, 9, 11, 0.65);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(9, 9, 11, 0.65);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
       padding: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-    }
-    #aiKeyModalOverlay.active {
-      opacity: 1;
-      pointer-events: auto;
     }
     #aiKeyModalOverlay[hidden] {
       display: none;
     }
+    .ai-key-card {
+      background: #ffffff;
+      border-radius: 18px;
+      max-width: 440px;
+      width: 100%;
+      padding: 1.25rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after {
+        animation: none !important;
+        transition: none !important;
+      }
+      html {
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
-
-<body class="min-h-screen pb-20">
-
-  <!-- ============================================================ -->
-  <!-- 1. 圖鑑典藏頂欄 (Sticky Compendium Header)                      -->
-  <!-- ============================================================ -->
-  <header class="header-bar sticky top-0 z-40 px-2.5 sm:px-4 py-2 sm:py-3">
-    <div class="page-container">
-      
-      <!-- 頂部品牌與精準統計 -->
-      <div class="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
-        <div class="flex items-center gap-2 sm:gap-2.5">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-zinc-900 text-white flex items-center justify-center text-base sm:text-lg shadow-sm shrink-0">
-            🚗
-          </div>
-          <div>
-            <div class="flex items-center gap-1.5">
-              <h1 class="text-sm sm:text-base font-bold text-zinc-950 tracking-tight leading-tight">TOMICA 個人典藏圖鑑</h1>
-              <span class="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-800 uppercase tracking-widest">POCKET</span>
-            </div>
-            <p class="text-[10px] sm:text-[11px] text-zinc-500 font-medium leading-tight">✨ 官方高畫質棚拍・隨身典藏指南</p>
-          </div>
-        </div>
-
-        <!-- 登錄數字徽章 -->
-        <div class="flex items-center gap-1.5 text-right shrink-0">
-          <div class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-white border border-zinc-200 text-right shadow-2xs">
-            <div class="text-[10.5px] sm:text-[11px] font-bold text-zinc-900 leading-tight">
-              在冊 <span id="statUniqueCount" class="text-red-600">90</span> 款
-            </div>
-            <div class="text-[9.5px] sm:text-[10px] text-zinc-500 leading-tight">
-              共 <span id="statTotalPieces" class="font-bold text-zinc-800">118</span> 台
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 頂部三大核心選單並列 (官方發售總車款 ｜ 現有收藏 ｜ 每週新品追蹤) -->
-      <nav class="flex items-center justify-between bg-zinc-200/80 p-0.5 sm:p-1 rounded-xl sm:rounded-2xl gap-1 mb-2">
-        <button id="mainTabOfficial" class="flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition bg-zinc-950 text-white shadow-2xs cursor-pointer">
-          官方發售總車款
-        </button>
-        <button id="mainTabOwned" class="flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition text-zinc-600 hover:text-zinc-950 hover:bg-zinc-300/40 cursor-pointer">
-          現有收藏
-        </button>
-        <button id="mainTabWeekly" class="flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition text-zinc-600 hover:text-zinc-950 hover:bg-zinc-300/40 cursor-pointer">
-          每週新品追蹤
-        </button>
-      </nav>
-
-      <!-- 採購即時比對搜尋條 (Instant Search Bar) -->
-      <div class="relative mb-1 sm:mb-2">
-        <input 
-          id="searchInput" 
-          type="search" 
-          placeholder="🔍 搜尋車款編號或名稱（例如 C-37、C-14、プレジデント）..." 
-          class="w-full pl-3 pr-8 py-1.5 sm:py-2.5 bg-white border border-zinc-300 rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-zinc-900 transition shadow-2xs text-zinc-900 placeholder-zinc-400 font-medium" 
-          autocomplete="off"
-        >
-        <button 
-          id="clearSearchBtn" 
-          class="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 p-1 hidden" 
-          aria-label="清除搜尋"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-      </div>
-
-      <div class="photo-check-launch">
-        <button
-          id="photoCheckOpenBtn"
-          type="button"
-          class="photo-check-btn"
-          aria-label="拍照對照，開啟相機比對是否已購入"
-          aria-controls="photoCheckOverlay"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M4.5 8.5h2.1l1.15-1.8h6.5L15.4 8.5H19.5a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18v-8a1.5 1.5 0 0 1 1.5-1.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
-            <circle cx="12" cy="13.6" r="2.7" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
-          </svg>
-          <span>拍照對照</span>
-        </button>
-        <button
-          id="photoCheckLibraryBtn"
-          type="button"
-          class="photo-check-lib"
-          aria-label="從相簿選擇照片對照"
-          aria-controls="photoCheckOverlay"
-        >
-          相簿
-        </button>
-      </div>
-
-      <!-- 即時採購庫存警戒條 (Anti-Duplicate Alert Banner) -->
-      <div id="checkerAlertBanner" class="hidden rounded-xl p-2.5 sm:p-3 text-xs leading-relaxed transition-all shadow-sm"></div>
-
-    </div>
+<body>
+  <!-- 頂部吸頂工具列 (捲動過封面約 80% 後浮現) -->
+  <header class="tb" id="tb">
+    <div class="tt">Tomica 小車圖鑑<i id="tbp">90/187</i></div>
+    <button id="tbSearchBtn" onclick="goSearch()" aria-label="搜尋">🔍 搜尋</button>
+    <button id="tbFilterBtn" onclick="goSearch(1)" aria-label="篩選">篩選</button>
+    <button id="tbCamBtn" aria-label="拍照對照" onclick="document.getElementById('photoCheckOpenBtn').click()">📷</button>
   </header>
 
-  <!-- ============================================================ -->
-  <!-- 2. 圖鑑儀表板與控制列 (Compendium Control Deck)               -->
-  <!-- ============================================================ -->
-  <section id="compendiumControlSection" class="page-container pt-2 sm:pt-3 pb-1">
-    
-    <!-- 圖鑑統計 Bento Bar (簡潔收集進度卡 - 點擊可直接快速篩選) -->
-    <div class="grid grid-cols-5 gap-1 sm:gap-2 mb-2 sm:mb-3">
-      <div id="bentoCardCars" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看 Tomica Cars 系列">
-        <div class="text-[9px] sm:text-[10px] text-zinc-500 font-medium truncate">Tomica Cars</div>
-        <div class="text-xs sm:text-sm font-extrabold text-zinc-900" id="bentoCarsCount">62</div>
-      </div>
-      <div id="bentoCardNonTomica" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看非 Tomica・Cars 系列">
-        <div class="text-[9px] sm:text-[10px] text-amber-700 font-medium truncate">非 Tomica</div>
-        <div class="text-xs sm:text-sm font-extrabold text-amber-600" id="bentoNonTomicaCount">8</div>
-      </div>
-      <div id="bentoCardToy" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看玩具總動員">
-        <div class="text-[9px] sm:text-[10px] text-zinc-500 font-medium truncate">玩具總動員</div>
-        <div class="text-xs sm:text-sm font-extrabold text-blue-700" id="bentoToyCount">4</div>
-      </div>
-      <div id="bentoCardDisney" class="bento-clickable bg-white p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-zinc-200 text-center shadow-2xs hover:border-zinc-300" title="點擊僅查看經典與迪士尼">
-        <div class="text-[9px] sm:text-[10px] text-zinc-500 font-medium truncate">經典/迪士尼</div>
-        <div class="text-xs sm:text-sm font-extrabold text-purple-700" id="bentoDisneyCount">16</div>
-      </div>
-      <div id="bentoCardDup" class="bento-clickable bg-red-50/80 p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-red-200 text-center shadow-2xs hover:border-red-300" title="點擊僅查看真正重複的車款">
-        <div class="text-[9px] sm:text-[10px] text-red-600 font-bold truncate">⚠️ 重複款</div>
-        <div class="text-xs sm:text-sm font-extrabold text-red-700" id="bentoDupCount">16</div>
+  <!-- P.01 封面 (約 76svh) -->
+  <section class="cover" id="cover">
+    <div class="eb">
+      <span class="cap">TOMICA FIELD GUIDE</span>
+      <span class="cap">VOL. 2026・P.01</span>
+    </div>
+    <h1>Tomica<br>小車圖鑑<small>A catalogue of little cars</small></h1>
+    <div class="hero" id="heroCard" onclick="openCarDetail(HERO.id)" title="查看主角車小檔案">
+      <img id="heroImg" alt="閃電麥坤（標準型）">
+      <div class="lab">
+        <b id="heroNo">No.C-1</b>
+        <span id="heroNm">閃電麥坤（標準型）</span>
       </div>
     </div>
-
-    <!-- 視角切換與編號查詢庫存篩選 -->
-    <div class="flex items-center justify-between gap-1.5 sm:gap-2 py-0.5 mb-2 flex-wrap">
-      
-      <!-- 視角切換：海報 vs 清單 -->
-      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-lg sm:rounded-xl shrink-0">
-        <button id="viewGridBtn" class="view-mode-btn active" title="海報圖鑑網格模式（隨身翻閱）">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-          <span>海報</span>
-        </button>
-        <button id="viewListBtn" class="view-mode-btn" title="清單對照模式">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-          <span>清單</span>
-        </button>
-      </div>
-
-      <!-- 購入狀態快篩標籤 (已購入 / 全目錄 / 未購入) -->
-      <div class="flex items-center bg-zinc-200/80 p-0.5 rounded-lg sm:rounded-xl shrink-0">
-        <button id="filterOwnedBtn" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs">
-          🌟 已購入 (<span id="pillOwnedCount">90</span>)
-        </button>
-        <button id="filterAllBtn" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
-          全目錄 (<span id="pillAllCount">187</span>)
-        </button>
-        <button id="filterUnownedBtn" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900">
-          未購入 (<span id="pillUnownedCount">97</span>)
-        </button>
-      </div>
-
+    <div class="stat">
+      <div><b id="s1">90<small>/187</small></b><span>已入手</span></div>
+      <div><b id="s2">67</b><span>盒裝</span></div>
+      <div><b id="s3">51</b><span>散車</span></div>
     </div>
-
-    <!-- 快捷系列快篩標籤 (一鍵即時切換系列) -->
-    <div class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5 mb-2 text-xs">
-      <button id="quickFilterAllBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-zinc-900 text-white shrink-0 shadow-2xs cursor-pointer">全部系列</button>
-      <button id="quickFilterCarsBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer">🏎️ Tomica Cars</button>
-      <button id="quickFilterNonTomicaBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-amber-200 text-amber-700 hover:bg-amber-50 shrink-0 cursor-pointer">⚡ 非 Tomica・Cars</button>
-      <button id="quickFilterToyBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer">🤠 玩具總動員</button>
-      <button id="quickFilterOtherBtn" type="button" class="px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer">🏰 經典/迪士尼</button>
-    </div>
-
-    <!-- 系列別選單按鈕 (點擊展開自訂選單，可手動調整一次想看到的系列組合) -->
-    <div class="mb-1.5 sm:mb-2">
-      <button 
-        id="openSeriesDrawerBtn" 
-        class="w-full flex items-center justify-between px-2.5 sm:px-3.5 py-1.5 sm:py-2.5 bg-white border border-zinc-200 hover:border-zinc-300 rounded-lg sm:rounded-xl shadow-2xs text-[11px] sm:text-xs font-semibold text-zinc-900 active:scale-[0.99] transition cursor-pointer"
-        type="button"
-        title="點擊展開自訂系列選單"
-      >
-        <div class="flex items-center gap-1.5 sm:gap-2 truncate">
-          <span class="text-xs sm:text-sm">🗂️</span>
-          <span class="text-zinc-400 font-medium shrink-0">自訂顯示系列：</span>
-          <span id="selectedSeriesSummaryText" class="font-bold text-zinc-900 truncate">全部系列 (63款)</span>
-        </div>
-        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
-          <span id="selectedSeriesBadge" class="bg-zinc-100 text-zinc-700 text-[9.5px] sm:text-[10px] font-bold font-mono px-1.5 sm:px-2 py-0.5 rounded-full">
-            4 系列全選
-          </span>
-          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </div>
-      </button>
-    </div>
-
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 3. 圖鑑核心展示主區 (Compendium Main Grid / List)             -->
-  <!-- ============================================================ -->
-  <main id="compendiumMainSection" class="page-container pt-1">
-    
-    <!-- 結果數量提示 -->
-    <div class="flex items-center justify-between text-[11px] sm:text-xs text-zinc-500 py-0.5 mb-1.5 px-0.5">
-      <div>顯示 <strong id="currentShownCount" class="text-zinc-900 font-bold">63</strong> 款車輛</div>
-      <div class="text-[10px] sm:text-[11px] text-zinc-400">💡 點擊任一卡片可展開全圖鑑資料卡</div>
-    </div>
-
-    <!-- 卡片容器 (動態切換 grid / list 樣式) -->
-    <div id="compendiumContainer" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"></div>
-
-    <!-- 無搜尋結果提示 -->
-    <div id="emptyNotice" class="hidden text-center py-16 px-4">
-      <div class="text-5xl mb-3">🔍</div>
-      <h3 class="text-base font-bold text-zinc-800 mb-1">找不到這個編號。可能是尚未收錄的絕版或輸入有誤。</h3>
-      <p class="text-xs text-zinc-500 mb-4">資料庫中目前沒有符合所選系列的收藏紀錄，可以安心採購！</p>
-      <button id="resetSearchBtn" class="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition">
-        重設篩選條件
-      </button>
-    </div>
-
-  </main>
-
-  <!-- ============================================================ -->
-  <!-- 3.5 每週新品追蹤展示專區 (Weekly Picks Tracker)                  -->
-  <!-- ============================================================ -->
-  <section id="weeklyTrackerSection" class="page-container pt-2 sm:pt-3 pb-16 hidden">
-    <!-- 週報頂部總結卡片 -->
-    <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-zinc-200/90 shadow-2xs mb-4">
-      <div class="flex items-center justify-between gap-2 flex-wrap">
-        <div>
-          <h2 class="text-sm sm:text-base font-extrabold text-zinc-950 flex items-center gap-1.5">
-            <span>📅</span> 東京小物・每週新品追蹤
-          </h2>
-          <p class="text-xs text-zinc-500 mt-0.5 font-medium">每週五精選新品情報・發售日期・通路預約與官方可核來源</p>
-        </div>
-        <div class="flex items-center gap-1.5 flex-wrap">
-          <span class="tag-badge bg-zinc-100 text-zinc-700 font-bold font-mono">共 8 款新品</span>
-          <span class="tag-badge tag-cars font-bold">Cars 4款</span>
-          <span class="tag-badge bg-amber-50 text-amber-800 border border-amber-200 font-bold">Cars 遊具 1款</span>
-          <span class="tag-badge bg-purple-50 text-purple-800 border border-purple-200 font-bold">Tomica 限定 3款</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 週報清單容器 (動態按 weekOf 新到舊渲染) -->
-    <div id="weeklyPicksContainer" class="space-y-6"></div>
-
-    <!-- 週報搜尋無結果提示 -->
-    <div id="weeklyEmptyNotice" class="hidden text-center py-16 px-4">
-      <div class="text-5xl mb-3">🔍</div>
-      <h3 class="text-base font-bold text-zinc-800 mb-1">查無相符的週報新品</h3>
-      <p class="text-xs text-zinc-500 mb-4">建議嘗試搜尋品名、日文名（如 洗車場、GR86、MR2）或編號（如 C-14、C-3）</p>
-      <button id="resetWeeklySearchBtn" class="px-4 py-2 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition cursor-pointer">
-        清除搜尋關鍵字
-      </button>
+    <div class="peek">
+      <a href="#toc">目錄 CONTENTS ↓</a>
+      <a href="#findSec">🔍 搜尋・篩選</a>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- 4. 系列篩選自訂選單抽屜 (Series Custom Selection Drawer)       -->
-  <!-- ============================================================ -->
-  <div id="seriesDrawerOverlay" class="detail-modal-overlay">
-    <div class="detail-modal-card" onclick="event.stopPropagation()">
-      <!-- 頂部固定 Header -->
-      <div class="px-5 pt-3.5 pb-3 sm:px-6 sm:pt-4 border-b border-zinc-100 flex-shrink-0 bg-white">
-        <!-- 手機頂部手柄 -->
-        <div class="sm:hidden w-12 h-1.5 bg-zinc-300/80 rounded-full mx-auto mb-2.5"></div>
-
-        <!-- 抽屜標題列 -->
-        <div class="flex items-center justify-between">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-zinc-900 flex items-center gap-1.5">
-              <span>🗂️</span> 手動調整顯示系列
-            </h3>
-            <p class="text-xs text-zinc-500 mt-0.5">可自由勾選單一或多個系列，一次檢視您想要的組合</p>
-          </div>
-          <button id="closeSeriesDrawerBtn" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center font-bold text-sm transition" aria-label="關閉選單">
-            ✕
-          </button>
-        </div>
-      </div>
-
-      <!-- 中段獨立滑動清單 (Scrollable List) -->
-      <div class="px-5 py-3 sm:px-6 flex-1 overflow-y-auto overscroll-contain" style="-webkit-overflow-scrolling: touch;">
-        <!-- 快捷一鍵切換列 (Quick Actions) -->
-        <div class="mb-3">
-          <div class="text-[11px] font-bold text-zinc-400 mb-1.5">一鍵快速切換：</div>
-          <div class="flex items-center gap-1.5 flex-wrap text-xs">
-            <button id="presetAllBtn" type="button" class="px-2.5 py-1 rounded-lg bg-zinc-900 text-white font-bold text-xs transition active:scale-95 cursor-pointer">全部顯示</button>
-            <button id="presetCarsBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 Tomica Cars</button>
-            <button id="presetNonTomicaBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-amber-200 text-amber-800 font-bold hover:bg-amber-50 transition active:scale-95 cursor-pointer">僅 非 Tomica (7)</button>
-            <button id="presetToyBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 玩具總動員 (4)</button>
-            <button id="presetGeneralBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 經典長車 (6)</button>
-            <button id="presetDisneyBtn" type="button" class="px-2.5 py-1 rounded-lg bg-white border border-zinc-200 text-zinc-700 font-bold hover:bg-zinc-50 transition active:scale-95 cursor-pointer">僅 迪士尼/卡通 (10)</button>
-          </div>
-        </div>
-
-        <!-- 多選系列清單 (舒適點選手感) -->
-        <div class="space-y-2 mb-2">
-          <!-- 1. Tomica Cars 系列 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckCars" value="cars_tomica" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🏎️ Cars 汽車總動員（Tomica）</div>
-                <div class="text-[11px] text-zinc-500 font-mono">C-編號、SP特別款、超大麥克拖車等多美正版合金車</div>
-              </div>
-            </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-50 text-red-700 border border-red-200" id="drawerTomicaCount">62 款</span>
-          </label>
-
-          <!-- 2. 非 Tomica・Cars 系列 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-amber-200 bg-amber-50/20 hover:bg-amber-50 active:bg-amber-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckNonTomica" value="cars_non_tomica" checked class="w-4 h-4 rounded text-amber-700 focus:ring-amber-700 accent-amber-700">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">⚡ Cars 汽車總動員（非 Tomica）</div>
-                <div class="text-[11px] text-zinc-500 font-mono">美泰兒（Mattel）F1、回力車組、大型塑膠麥坤／拖線／麥克等</div>
-              </div>
-            </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200" id="drawerNonTomicaCount">8 款</span>
-          </label>
-
-          <!-- 2. 玩具總動員 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckToy" value="toystory" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🤠 玩具總動員系列</div>
-                <div class="text-[11px] text-zinc-500 font-mono">胡迪高帽老爺車、翠絲、巴斯光年、胡迪疊疊車</div>
-              </div>
-            </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">4 款</span>
-          </label>
-
-          <!-- 3. 經典款與多美組 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckGeneral" value="general" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🚗 經典模型組 / 超長拖車隊 / 7-11聯名</div>
-                <div class="text-[11px] text-zinc-500 font-mono">超長拖車隊、美食車4組、哆啦A夢、7-11麵包小車</div>
-              </div>
-            </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">6 款</span>
-          </label>
-
-          <!-- 4. 迪士尼與 Tsum Tsum -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-200 hover:bg-zinc-50 active:bg-zinc-100 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="catCheckDisney" value="other_disney" checked class="w-4 h-4 rounded text-zinc-900 focus:ring-zinc-900 accent-zinc-900">
-              <div>
-                <div class="text-sm font-bold text-zinc-900">🏰 迪士尼 & Tunes / 夢幻系列</div>
-                <div class="text-[11px] text-zinc-500 font-mono">奧斯華、布丁狗Tunes、雪寶、米奇露營車、冰雪奇緣等</div>
-              </div>
-            </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">10 款</span>
-          </label>
-
-          <!-- 5. 獨立開關：僅顯示真正重複的款式 -->
-          <label class="flex items-center justify-between p-3 rounded-xl border border-red-200 bg-red-50/40 hover:bg-red-50 cursor-pointer transition select-none">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" id="checkOnlyDuplicates" class="w-4 h-4 rounded text-red-600 focus:ring-red-600 accent-red-600">
-              <div>
-                <div class="text-sm font-bold text-red-900">⚠️ 僅篩選「已重複款」（避免重複採購）</div>
-                <div class="text-[11px] text-red-600">快速比對出目前庫存超過 1 台的車輛（排除套裝組合車）</div>
-              </div>
-            </div>
-            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-red-100 text-red-800">12 款</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- 底部吸底固定操作按鈕 (Pinned Footer above Safari Toolbar) -->
-      <div class="px-5 py-3 sm:px-6 border-t border-zinc-200/80 bg-white/95 backdrop-blur-md flex-shrink-0 flex items-center gap-2.5 z-10" style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 20px));">
-        <button id="resetAllSeriesBtn" type="button" class="px-4 py-2.5 rounded-xl border border-zinc-300 text-zinc-700 text-xs font-bold hover:bg-zinc-50 active:scale-95 transition whitespace-nowrap">
-          重設全選
-        </button>
-        <button id="applySeriesDrawerBtn" type="button" class="flex-1 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 active:scale-98 transition shadow-sm flex items-center justify-center gap-1.5">
-          <span>完成設定（套用查看）</span>
-        </button>
-      </div>
+  <!-- P.02 查詢區 -->
+  <section class="sec" id="findSec">
+    <div class="sh">
+      <h2>查詢</h2>
+      <span class="cap">P.02 INDEX</span>
     </div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- 5. 圖鑑沉浸式單車詳情抽屜 (Detail Modal Drawer)                 -->
-  <!-- ============================================================ -->
-  <div id="detailModalOverlay" class="detail-modal-overlay">
-    <div class="detail-modal-card relative" onclick="event.stopPropagation()">
-      <!-- 手機頂部手柄 -->
-      <div class="sm:hidden w-12 h-1.5 bg-zinc-300/80 rounded-full mx-auto my-3 flex-shrink-0"></div>
-
-      <!-- 彈窗右上角關閉按鈕 -->
-      <button 
-        id="closeModalBtn" 
-        class="absolute top-3.5 right-4 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center font-bold text-sm z-20 transition shadow-2xs"
-        aria-label="關閉圖鑑"
-      >
-        ✕
+    <nav class="seg" id="seg">
+      <button id="mainTabOfficial" data-t="all" class="on">全部車款</button>
+      <button id="mainTabOwned" data-t="mine">我的收藏</button>
+      <button id="mainTabWeekly" data-t="week">每週新品</button>
+    </nav>
+    <div class="sbox">
+      <label class="sfield">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8578" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5"/>
+        </svg>
+        <input id="searchInput" type="search" placeholder="搜尋編號或車名" aria-label="搜尋編號或車名">
+      </label>
+      <button class="camb" id="photoCheckOpenBtn" aria-label="拍照對照" title="拍照對照">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1B19" stroke-width="1.6">
+          <path d="M4 8h3l2-3h6l2 3h3v11H4z"/>
+          <circle cx="12" cy="13" r="3.5"/>
+        </svg>
       </button>
-
-      <!-- 彈窗內容容器 (JS 動態填入，內部獨立滾動且帶有安全邊距) -->
-      <div id="detailModalContent" class="flex-1 overflow-y-auto overscroll-contain px-5 pt-1 pb-6 sm:px-6" style="-webkit-overflow-scrolling: touch; padding-bottom: max(2rem, env(safe-area-inset-bottom, 24px));"></div>
-
+      <button id="photoCheckLibraryBtn" style="display:none" aria-label="從相簿選">相簿</button>
     </div>
+    <div class="flab" id="flab1">購入狀態</div>
+    <div class="chips" id="sf"></div>
+    <div class="flab" id="flab2">系列</div>
+    <div class="chips" id="cf"></div>
+    <div class="pg" id="pg"></div>
+  </section>
+
+  <!-- P.03 目錄區 -->
+  <section class="sec" id="toc">
+    <div class="sh">
+      <h2>目錄</h2>
+      <span class="cap">P.03 Contents</span>
+    </div>
+    <div class="toc" id="tocL"></div>
+  </section>
+
+  <!-- 主車款清單 (依章節陳列) -->
+  <main id="chs"></main>
+
+  <!-- 每週新品區 -->
+  <section class="sec" id="weekSec" hidden>
+    <div class="sh">
+      <h2>每週新品</h2>
+      <span class="cap">WEEKLY PICKS</span>
+    </div>
+    <div id="wkL"></div>
+  </section>
+
+  <div class="foot">TOMICA FIELD GUIDE・END</div>
+
+  <!-- 全螢幕車款小檔案彈窗 -->
+  <div class="dt" id="dt" aria-modal="true" role="dialog" aria-label="車款小檔案">
+    <div class="bar">
+      <span class="cap" id="dPos"></span>
+      <button onclick="closeCarDetail()" aria-label="關閉">✕</button>
+    </div>
+    <div class="stg" id="dStg"></div>
+    <div class="body" id="dBody"></div>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- 6. 全螢幕手勢放大燈箱 (Fullscreen Lightbox)                   -->
-  <!-- ============================================================ -->
-  <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
-    <button class="absolute top-4 right-4 text-white/80 hover:text-white text-2xl p-2 font-bold z-10" aria-label="關閉">
-      ✕
-    </button>
-    <img id="lightboxImg" class="lightbox-img shadow-2xl mb-3" src="" alt="高解析放大檢視">
-    <div id="lightboxCaption" class="text-white/90 text-sm font-medium px-4 py-1.5 bg-black/60 rounded-full backdrop-blur-md text-center max-w-md"></div>
-  </div>
-
-  <!-- ============================================================ -->
-  <!-- 7. 拍照對照（照片只留在這支裝置，不送出、不進 repo）            -->
-  <!-- ============================================================ -->
+  <!-- 拍照對照輸入與面板 (保有完整 OCR / Tesseract / 散車比對 / Gemini 邏輯) -->
   <div id="photoCheckInputs">
     <input id="photoCheckCameraInput" class="photo-check-file" type="file" accept="image/*" capture="environment" tabindex="-1" aria-hidden="true">
     <input id="photoCheckLibraryInput" class="photo-check-file" type="file" accept="image/*" tabindex="-1" aria-hidden="true">
@@ -1256,15 +1329,15 @@
       </div>
 
       <div class="photo-check-body">
-        <!-- 🌟 Gemini AI 模式狀態與快速設定列 -->
+        <!-- Gemini AI 模式狀態與快速設定列 -->
         <div id="aiModeBar" class="ai-mode-bar is-idle">
-          <div class="flex items-center gap-1.5 min-w-0">
-            <span class="text-sm shrink-0">✨</span>
-            <span id="aiModeStatusText" class="truncate font-medium">離線比對中（點右側開啟 AI 99% 精準辨識）</span>
+          <div style="display:flex;align-items:center;gap:6px;min-width:0">
+            <span style="font-size:14px;flex-shrink:0">✨</span>
+            <span id="aiModeStatusText" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500">離線比對中（點右側開啟 AI 99% 精準辨識）</span>
           </div>
-          <button id="aiConfigBtn" type="button" class="ai-config-btn shrink-0">免費開啟</button>
+          <button id="aiConfigBtn" type="button" class="ai-config-btn" style="flex-shrink:0">免費開啟</button>
         </div>
-        <p id="photoCheckTip" class="photo-check-tip">整本口袋圖鑑都會對，包含 Cars、迪士尼和 Dream。先讀編號或品名，讀不到再看外形與配色。不確定就手打。照片只留在這支裝置，不會上傳。</p>
+        <p id="photoCheckTip" class="photo-check-tip">整本口袋圖鑑都會對，包含 Cars、迪士尼和 Dream。先讀編號或品名，讀不到再看外形與配色。預設不上傳照片，僅在手機本機比對；開啟 AI 模式才會將照片傳送至 Google API 辨識。</p>
         <div class="photo-check-preview-wrap">
           <img id="photoCheckPreview" alt="">
         </div>
@@ -1292,84 +1365,58 @@
     </div>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- 7.5 Gemini AI 視覺辨識金鑰設定視窗                              -->
-  <!-- ============================================================ -->
+  <!-- Gemini AI 金鑰設定視窗 -->
   <div id="aiKeyModalOverlay" hidden>
     <div
       id="aiKeyModalCard"
-      class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-zinc-200 text-zinc-900 mx-auto"
+      class="ai-key-card"
       role="dialog"
       aria-modal="true"
       aria-labelledby="aiKeyModalTitle"
     >
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">✨</span>
-          <h3 id="aiKeyModalTitle" class="text-base sm:text-lg font-bold text-zinc-900 tracking-tight">Google Gemini 視覺 AI 設定</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">✨</span>
+          <h3 id="aiKeyModalTitle" style="font-size:16px;font-weight:700;margin:0;letter-spacing:0.02em">Google Gemini 視覺 AI 設定</h3>
         </div>
-        <button id="aiKeyModalCloseBtn" type="button" class="w-8 h-8 flex items-center justify-center rounded-full text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 transition text-sm cursor-pointer" aria-label="關閉">✕</button>
+        <button id="aiKeyModalCloseBtn" type="button" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f4f4f5;border:0;cursor:pointer" aria-label="關閉設定">✕</button>
       </div>
 
-      <p class="text-xs sm:text-[13px] text-zinc-600 leading-relaxed mb-3.5">
-        啟用後拍照將使用 <strong>Google Gemini 2.0 Flash</strong> 進行多模態深度辨識，不論盒裝反光、角度歪斜或無編號散車，均能 99% 精準鎖定。
-      </p>
-
-      <div class="bg-amber-50/80 border border-amber-200/80 rounded-xl p-3 mb-4 text-[11.5px] sm:text-xs text-amber-950 leading-relaxed space-y-1">
-        <div class="font-bold flex items-center gap-1">🔒 隱私與安全保障：</div>
-        <div>• <strong>完全免費</strong>：Google 官方提供每天 1,500 張免費額度，無需綁定信用卡。</div>
-        <div>• <strong>零第三方轉傳</strong>：金鑰僅保存在您手機的本地快取（localStorage），拍照直接從手機直連 Google 官方，不經任何中繼伺服器，不儲存任何照片。</div>
+      <div style="font-size:13px;color:#52525B;line-height:1.6;margin-bottom:14px">
+        本功能完全免費且安全，API Key 僅保存在您的手機瀏覽器中，不經過任何第三方伺服器。<br>
+        前往 <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer" style="color:#1E6B4F;font-weight:700;text-decoration:underline">Google AI Studio</a> 即可一鍵免費獲取。
       </div>
 
-      <div class="mb-4">
-        <label for="geminiApiKeyInput" class="block text-xs font-bold text-zinc-700 mb-1.5">Gemini API Key：</label>
-        <div class="relative">
+      <div style="margin-bottom:14px">
+        <label for="geminiApiKeyInput" style="display:block;font-size:12px;font-weight:700;color:#18181B;margin-bottom:6px">輸入 Gemini API 金鑰 (Key)</label>
+        <div style="position:relative">
           <input
             id="geminiApiKeyInput"
             type="password"
-            placeholder="請貼上 AIzaSy... 開頭的金鑰"
-            class="w-full px-3 py-2.5 text-xs sm:text-sm bg-zinc-50 border border-zinc-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono pr-9"
+            placeholder="AIzaSy..."
             autocomplete="off"
             spellcheck="false"
+            style="width:100%;height:44px;padding:0 38px 0 12px;border:1px solid #D8D8D4;border-radius:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;outline:none"
           >
-          <button id="toggleApiKeyVisibilityBtn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-zinc-400 hover:text-zinc-700 p-1 cursor-pointer" title="顯示/隱藏金鑰">👁️</button>
-        </div>
-        <div class="mt-2 text-right">
-          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="text-[11.5px] text-amber-700 hover:text-amber-800 font-bold inline-flex items-center gap-0.5 underline">
-            🔗 前往 Google AI Studio 免費取得 API Key ➔
-          </a>
+          <button id="toggleApiKeyVisibilityBtn" type="button" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:none;cursor:pointer;font-size:14px" aria-label="切換密碼顯示">👁️</button>
         </div>
       </div>
 
-      <div class="flex items-center gap-2 pt-2">
-        <button id="saveApiKeyBtn" type="button" class="flex-1 py-2.5 px-4 bg-zinc-900 text-white rounded-xl font-bold text-xs sm:text-sm hover:bg-zinc-800 transition active:scale-95 shadow-sm cursor-pointer">
-          儲存並啟用 AI 視覺
-        </button>
-        <button id="clearApiKeyBtn" type="button" class="py-2.5 px-3 bg-zinc-100 text-zinc-700 border border-zinc-200 rounded-xl font-bold text-xs sm:text-sm hover:bg-zinc-200 transition active:scale-95 cursor-pointer">
-          清除
-        </button>
+      <div style="display:flex;gap:8px">
+        <button id="saveApiKeyBtn" type="button" style="flex:1;height:44px;background:#1C1B19;color:#fff;border-radius:10px;font-size:14px;font-weight:700;border:0;cursor:pointer">儲存並啟用 AI 視覺</button>
+        <button id="clearApiKeyBtn" type="button" style="height:44px;padding:0 14px;background:#f4f4f5;color:#52525B;border-radius:10px;font-size:13px;border:1px solid #D8D8D4;cursor:pointer">清除</button>
       </div>
     </div>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- 8. 浮動快速置頂按鈕 (Floating Back to Top)                    -->
-  <!-- ============================================================ -->
-  <button id="floatingTopBtn" class="floating-top-btn" aria-label="回到頁首">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-  </button>
-
-  <!-- ============================================================ -->
-  <!-- 9. 典藏資料庫與核心運作邏輯 (Database & Engine)                -->
-  <!-- ============================================================ -->
   <script>
-    // 每週新品追蹤主資料 (東京小物精選週報・每週五情報)
-    const WEEKLY_PICKS_DATA = {
+
+const WEEKLY_PICKS_DATA = {
       "title": "東京小物・每週新品追蹤（Cars／Tomica）",
       "builtAt": "2026-10-25T00:07:04+08:00",
       "timezone": "Asia/Taipei (UTC+8)",
       "scope": "Cars + Tomica limited from weekly Friday picks",
-      "site": "https://snowsepch.github.io/Tomica-Cars/",
+      "site": "",
       "count": 8,
       "skippedNonCarsIp": [
             {
@@ -1605,7 +1652,8 @@
 
     // 核心車輛資料庫 (官方發售總車款目錄 167 款: 63 款既有收藏 + 104 款官方未購入車款)
     // 注入原始完整無缺資料庫
-    const CARS_DATABASE = [
+
+const CARS_DATABASE = [
   {
     "id": "C-01",
     "category": "cars_tomica",
@@ -7724,1376 +7772,439 @@
   }
 ];
 
-    // 狀態變數：支援多選系列與重複獨立過濾
-    // 頂部三大主選單狀態: 'official' (官方發售總車款) | 'collection' (現有收藏) | 'weekly' (每週新品追蹤)
-    let currentMainTab = 'official';
+// ==========================================
+// K3 粉圓雜誌版 核心渲染與互動邏輯
+// ==========================================
+const isOwned = c => c.owned !== false && ((c.boxed || 0) + (c.loose || 0)) > 0;
+const D = CARS_DATABASE;
+const OWN = D.filter(isOwned);
+const title = c => (c.name && c.name !== '官方未載明' && c.name !== c.jpName) ? c.name : (c.jpName || c.name || c.id);
+const has = v => v != null && v !== '' && v !== '官方未載明';
+const getCarImg = c => c.img || (c.images && c.images.length > 0 ? c.images[0].url : '');
+const im = c => {
+  const url = getCarImg(c);
+  return url ? `<img src="${url}" loading="lazy" alt="${title(c)}">` : `<span class="noimg" style="font-size:12px;color:#a8a29e">暫無官方圖</span>`;
+};
 
-    let selectedCategories = new Set(['cars_tomica', 'cars_non_tomica', 'toystory', 'general', 'other_disney']);
-    let filterOnlyDuplicates = false;
-    let filterOwnership = 'owned'; // 'owned' | 'all' | 'unowned'
-    let searchQuery = '';
-    let currentViewMode = 'grid'; // 'grid' | 'list'
+const CH = [
+  ['cars_tomica', 'Cars 汽車總動員', 'Cars・Tomica', '從 Radiator Springs 出發，每一台都是 66 號公路上的老朋友。'],
+  ['cars_non_tomica', 'Cars 非 Tomica 系列', 'Cars・Other Makers', '不是 Tomica，卻同樣屬於這座小鎮的收藏。'],
+  ['other_disney', '迪士尼與夢幻系列', 'Disney & Dreams', '把喜歡的角色，縮成掌心大小。'],
+  ['toystory', '玩具總動員', 'Toy Story', '到無限，再超越——裝進小小的車殼裡。'],
+  ['general', '一般車輛與其他', 'General & Others', '街上看得見的車，也值得一頁。']
+].filter(c => D.some(x => x.category === c[0]));
 
-    // DOM 快取
-    const compendiumContainer = document.getElementById('compendiumContainer');
-    const searchInput = document.getElementById('searchInput');
-    const clearSearchBtn = document.getElementById('clearSearchBtn');
-    const checkerAlertBanner = document.getElementById('checkerAlertBanner');
-    const emptyNotice = document.getElementById('emptyNotice');
-    const resetSearchBtn = document.getElementById('resetSearchBtn');
-    const viewGridBtn = document.getElementById('viewGridBtn');
-    const viewListBtn = document.getElementById('viewListBtn');
-    const filterOwnedBtn = document.getElementById('filterOwnedBtn');
-    const filterAllBtn = document.getElementById('filterAllBtn');
-    const filterUnownedBtn = document.getElementById('filterUnownedBtn');
-    const pillOwnedCount = document.getElementById('pillOwnedCount');
-    const pillAllCount = document.getElementById('pillAllCount');
-    const pillUnownedCount = document.getElementById('pillUnownedCount');
-    const mainTabOfficial = document.getElementById('mainTabOfficial');
-    const mainTabOwned = document.getElementById('mainTabOwned');
-    const mainTabWeekly = document.getElementById('mainTabWeekly');
-    const compendiumControlSection = document.getElementById('compendiumControlSection');
-    const compendiumMainSection = document.getElementById('compendiumMainSection');
-    const weeklyTrackerSection = document.getElementById('weeklyTrackerSection');
-    const weeklyPicksContainer = document.getElementById('weeklyPicksContainer');
-    const weeklyEmptyNotice = document.getElementById('weeklyEmptyNotice');
-    const resetWeeklySearchBtn = document.getElementById('resetWeeklySearchBtn');
-    const detailModalOverlay = document.getElementById('detailModalOverlay');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const detailModalContent = document.getElementById('detailModalContent');
-    const lightboxOverlay = document.getElementById('lightboxOverlay');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const floatingTopBtn = document.getElementById('floatingTopBtn');
-    const currentShownCount = document.getElementById('currentShownCount');
+const TB = OWN.reduce((a, c) => a + (c.boxed || 0), 0);
+const TL = OWN.reduce((a, c) => a + (c.loose || 0), 0);
+const HERO = D.find(c => c.id === 'C-01') || OWN[0];
 
-    // 系列選單 DOM
-    const openSeriesDrawerBtn = document.getElementById('openSeriesDrawerBtn');
-    const seriesDrawerOverlay = document.getElementById('seriesDrawerOverlay');
-    const closeSeriesDrawerBtn = document.getElementById('closeSeriesDrawerBtn');
-    const applySeriesDrawerBtn = document.getElementById('applySeriesDrawerBtn');
-    const resetAllSeriesBtn = document.getElementById('resetAllSeriesBtn');
-    const selectedSeriesSummaryText = document.getElementById('selectedSeriesSummaryText');
-    const selectedSeriesBadge = document.getElementById('selectedSeriesBadge');
+if (HERO) {
+  const hImg = document.getElementById('heroImg');
+  const hNo = document.getElementById('heroNo');
+  const hNm = document.getElementById('heroNm');
+  if (hImg) {
+    const u = getCarImg(HERO);
+    if (u) hImg.src = u;
+    hImg.alt = title(HERO);
+  }
+  if (hNo) hNo.textContent = 'No.' + (HERO.displayNumber || HERO.id);
+  if (hNm) hNm.textContent = title(HERO);
+}
 
-    const catCheckCars = document.getElementById('catCheckCars');
-    const catCheckNonTomica = document.getElementById('catCheckNonTomica');
-    const catCheckToy = document.getElementById('catCheckToy');
-    const catCheckGeneral = document.getElementById('catCheckGeneral');
-    const catCheckDisney = document.getElementById('catCheckDisney');
-    const checkOnlyDuplicates = document.getElementById('checkOnlyDuplicates');
+const s1 = document.getElementById('s1');
+const s2 = document.getElementById('s2');
+const s3 = document.getElementById('s3');
+const tbp = document.getElementById('tbp');
+const pg = document.getElementById('pg');
+const tocL = document.getElementById('tocL');
+const sf = document.getElementById('sf');
+const cf = document.getElementById('cf');
+const seg = document.getElementById('seg');
+const q = document.getElementById('searchInput');
+const tb = document.getElementById('tb');
+const chs = document.getElementById('chs');
+const weekSec = document.getElementById('weekSec');
+const wkL = document.getElementById('wkL');
+const tocSec = document.getElementById('toc');
+const findSec = document.getElementById('findSec');
+const coverSec = document.getElementById('cover');
 
-    // 快捷按鈕
-    const presetAllBtn = document.getElementById('presetAllBtn');
-    const presetCarsBtn = document.getElementById('presetCarsBtn');
-    const presetNonTomicaBtn = document.getElementById('presetNonTomicaBtn');
-    const presetToyBtn = document.getElementById('presetToyBtn');
-    const presetGeneralBtn = document.getElementById('presetGeneralBtn');
-    const presetDisneyBtn = document.getElementById('presetDisneyBtn');
+if (s1) s1.innerHTML = `${OWN.length}<small>/${D.length}</small>`;
+if (s2) s2.textContent = TB;
+if (s3) s3.textContent = TL;
+if (tbp) tbp.textContent = `${OWN.length}/${D.length}`;
 
-    // Bento 快捷卡片
-    const bentoCardCars = document.getElementById('bentoCardCars');
-    const bentoCardNonTomica = document.getElementById('bentoCardNonTomica');
-    const bentoCardToy = document.getElementById('bentoCardToy');
-    const bentoCardDisney = document.getElementById('bentoCardDisney');
-    const bentoCardDup = document.getElementById('bentoCardDup');
+if (pg) {
+  const pct = Math.round((OWN.length / D.length) * 100);
+  pg.innerHTML = `總收藏進度 <b>${OWN.length} / ${D.length}</b>・${pct}%<div class="bar"><i style="width:${(OWN.length / D.length) * 100}%"></i></div>盒裝 ${TB} 台・散車 ${TL} 台・待入手 ${D.length - OWN.length} 款`;
+}
 
-    // 快捷系列標籤
-    const quickFilterAllBtn = document.getElementById('quickFilterAllBtn');
-    const quickFilterCarsBtn = document.getElementById('quickFilterCarsBtn');
-    const quickFilterNonTomicaBtn = document.getElementById('quickFilterNonTomicaBtn');
-    const quickFilterToyBtn = document.getElementById('quickFilterToyBtn');
-    const quickFilterOtherBtn = document.getElementById('quickFilterOtherBtn');
+const pad = n => String(n).padStart(2, '0');
 
-    // 初始化統計數值
-    function initStatistics() {
-      // 實體收藏在冊統計（嚴格遵循 Section G：只有 (boxed + loose) > 0 才視為在冊已購入）
-      const ownedCars = CARS_DATABASE.filter(c => c.owned !== false && (c.boxed + c.loose) > 0);
-      const unownedCars = CARS_DATABASE.filter(c => c.owned === false || (c.boxed + c.loose) === 0);
+if (tocL) {
+  tocL.innerHTML = CH.map((c, i) => {
+    const L = D.filter(x => x.category === c[0]);
+    const o = L.filter(isOwned).length;
+    const pct = L.length ? (o / L.length) * 100 : 0;
+    return `
+      <a href="#ch-${c[0]}">
+        <span class="no">CH.${pad(i + 1)}</span>
+        <span>
+          <span class="nm">${c[1]}</span>
+          <span class="en">${c[2]}</span>
+        </span>
+        <span class="pr">
+          ${o}<small>/${L.length}</small>
+          <span class="mini"><i style="width:${pct}%"></i></span>
+        </span>
+      </a>
+    `;
+  }).join('');
+}
 
-      let totalPieces = 0;
-      let countCars = 0;
-      let countNonTomica = 0;
-      let countToy = 0;
-      let countGeneral = 0;
-      let countDisney = 0;
-      let dupKinds = 0;
+const st = { s: 'all', c: 'all', q: '', t: 'all' };
 
-      ownedCars.forEach(c => {
-        totalPieces += (c.boxed + c.loose);
-        if (c.category === 'cars_tomica') countCars++;
-        if (c.category === 'cars_non_tomica') countNonTomica++;
-        if (c.category === 'toystory') countToy++;
-        if (c.category === 'general') countGeneral++;
-        if (c.category === 'other_disney') countDisney++;
-        if (c.isDuplicate) dupKinds++;
-      });
+if (sf) {
+  sf.innerHTML = [
+    ['all', '全部', D.length],
+    ['own', '已入手', OWN.length],
+    ['un', '待入手', D.length - OWN.length]
+  ].map(s => `<button class="chip ${s[0]}" data-v="${s[0]}">${s[1]}<i>${s[2]}</i></button>`).join('');
+}
 
-      document.getElementById('statUniqueCount').textContent = ownedCars.length;
-      document.getElementById('statTotalPieces').textContent = totalPieces;
+if (cf) {
+  cf.innerHTML = [
+    ['all', '全部系列'],
+    ...CH.map(c => [c[0], c[1]])
+  ].map(s => `<button class="chip" data-v="${s[0]}">${s[1]}</button>`).join('');
+}
 
-      document.getElementById('bentoCarsCount').textContent = countCars;
-      if (document.getElementById('bentoNonTomicaCount')) {
-        document.getElementById('bentoNonTomicaCount').textContent = countNonTomica;
-      }
-      document.getElementById('bentoToyCount').textContent = countToy;
-      document.getElementById('bentoDisneyCount').textContent = countGeneral + countDisney;
-      document.getElementById('bentoDupCount').textContent = dupKinds;
-
-      const dTomica = document.getElementById('drawerTomicaCount');
-      if (dTomica) dTomica.textContent = `${countCars} 款`;
-      const dNonTomica = document.getElementById('drawerNonTomicaCount');
-      if (dNonTomica) dNonTomica.textContent = `${countNonTomica} 款`;
-
-      if (pillOwnedCount) pillOwnedCount.textContent = ownedCars.length;
-      if (pillAllCount) pillAllCount.textContent = CARS_DATABASE.length;
-      if (pillUnownedCount) pillUnownedCount.textContent = unownedCars.length;
+if (sf) {
+  sf.onclick = e => {
+    const b = e.target.closest('button');
+    if (b) {
+      st.s = b.dataset.v;
+      render();
     }
+  };
+}
 
-    // 更新快速過濾標籤樣式
-    function updateQuickFilterStyles() {
-      if (!quickFilterAllBtn) return;
-      const activePill = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-zinc-900 text-white shrink-0 shadow-2xs cursor-pointer';
-      const inactivePill = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 shrink-0 cursor-pointer';
-      const activeAmber = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-amber-600 text-white shrink-0 shadow-2xs cursor-pointer';
-      const inactiveAmber = 'px-2.5 py-1 rounded-lg font-bold text-[10.5px] sm:text-xs transition bg-white border border-amber-200 text-amber-700 hover:bg-amber-50 shrink-0 cursor-pointer';
-
-      quickFilterAllBtn.className = (selectedCategories.size === 5 && !filterOnlyDuplicates) ? activePill : inactivePill;
-      quickFilterCarsBtn.className = (selectedCategories.size === 1 && selectedCategories.has('cars_tomica') && !filterOnlyDuplicates) ? activePill : inactivePill;
-      quickFilterNonTomicaBtn.className = (selectedCategories.size === 1 && selectedCategories.has('cars_non_tomica') && !filterOnlyDuplicates) ? activeAmber : inactiveAmber;
-      quickFilterToyBtn.className = (selectedCategories.size === 1 && selectedCategories.has('toystory') && !filterOnlyDuplicates) ? activePill : inactivePill;
-      quickFilterOtherBtn.className = (selectedCategories.size === 2 && selectedCategories.has('general') && selectedCategories.has('other_disney') && !filterOnlyDuplicates) ? activePill : inactivePill;
+if (cf) {
+  cf.onclick = e => {
+    const b = e.target.closest('button');
+    if (b) {
+      st.c = b.dataset.v;
+      render();
     }
+  };
+}
 
-    // 更新系列按鈕顯示文字與徽章
-    function updateSeriesButtonLabel() {
-      const dupCount = CARS_DATABASE.filter(c => c.isDuplicate).length;
-      if (filterOnlyDuplicates) {
-        selectedSeriesSummaryText.textContent = `⚠️ 僅篩選已重複款 (${dupCount}款)`;
-        selectedSeriesBadge.textContent = '重複專區';
-        selectedSeriesBadge.className = 'bg-red-100 text-red-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full';
-        return;
-      }
+if (q) {
+  q.oninput = () => {
+    st.q = q.value.trim();
+    render();
+    if (st.t === 'week') renderWk();
+  };
+}
 
-      selectedSeriesBadge.className = 'bg-zinc-100 text-zinc-700 text-[10px] font-bold font-mono px-2 py-0.5 rounded-full';
+function setTab(tab, updateHash) {
+  st.t = tab;
+  if (seg) {
+    seg.querySelectorAll('button').forEach(x => {
+      x.classList.toggle('on', x.dataset.t === tab);
+    });
+  }
+  const isWeek = st.t === 'week';
+  if (weekSec) weekSec.hidden = !isWeek;
+  if (chs) chs.hidden = isWeek;
+  if (tocSec) tocSec.hidden = isWeek;
 
-      if (selectedCategories.size === 5) {
-        selectedSeriesSummaryText.textContent = `全部系列 (${CARS_DATABASE.length}款)`;
-        selectedSeriesBadge.textContent = '5 系列全選';
-      } else if (selectedCategories.size === 1) {
-        const singleCat = Array.from(selectedCategories)[0];
-        const count = CARS_DATABASE.filter(c => c.category === singleCat).length;
-        if (singleCat === 'cars_tomica') {
-          selectedSeriesSummaryText.textContent = `🏎️ Tomica Cars 汽車總動員 (${count}款)`;
-          selectedSeriesBadge.textContent = '僅 Tomica Cars';
-        } else if (singleCat === 'cars_non_tomica') {
-          selectedSeriesSummaryText.textContent = `⚡ 非 Tomica・Cars 系列 (${count}款)`;
-          selectedSeriesBadge.textContent = '僅 非 Tomica';
-        } else if (singleCat === 'toystory') {
-          selectedSeriesSummaryText.textContent = `🤠 玩具總動員系列 (${count}款)`;
-          selectedSeriesBadge.textContent = '僅 玩具總動員';
-        } else if (singleCat === 'general') {
-          selectedSeriesSummaryText.textContent = `🚗 經典模型與長車組 (${count}款)`;
-          selectedSeriesBadge.textContent = '僅 經典長車';
-        } else if (singleCat === 'other_disney') {
-          selectedSeriesSummaryText.textContent = `🏰 迪士尼 / Tunes / 夢幻 (${count}款)`;
-          selectedSeriesBadge.textContent = '僅 迪士尼/卡通';
-        }
-      } else {
-        const names = [];
-        if (selectedCategories.has('cars_tomica')) names.push('Tomica Cars');
-        if (selectedCategories.has('cars_non_tomica')) names.push('非 Tomica');
-        if (selectedCategories.has('toystory')) names.push('玩具總動員');
-        if (selectedCategories.has('general')) names.push('經典長車');
-        if (selectedCategories.has('other_disney')) names.push('迪士尼/卡通');
-        const count = CARS_DATABASE.filter(c => selectedCategories.has(c.category)).length;
-        selectedSeriesSummaryText.textContent = `${names.join(' ＋ ')} (${count}款)`;
-        selectedSeriesBadge.textContent = `${selectedCategories.size} 系列組合`;
-      }
-      updateQuickFilterStyles();
-    }
+  const flab1 = document.getElementById('flab1');
+  const flab2 = document.getElementById('flab2');
+  if (sf) sf.style.display = isWeek ? 'none' : '';
+  if (cf) cf.style.display = isWeek ? 'none' : '';
+  if (flab1) flab1.style.display = isWeek ? 'none' : '';
+  if (flab2) flab2.style.display = isWeek ? 'none' : '';
 
-    // 產生每週新品卡片 HTML (支援類別、預約、購入狀態、可點來源與編號互連)
-    function generateWeeklyCardHtml(entry) {
-      // 類別徽章
-      let catBadgeHtml = '';
-      if (entry.category === 'cars') {
-        catBadgeHtml = '<span class="tag-badge tag-cars font-bold">Cars</span>';
-      } else if (entry.category === 'cars_playset') {
-        catBadgeHtml = '<span class="tag-badge bg-amber-50 text-amber-800 border border-amber-200 font-bold">Cars 遊具</span>';
-      } else if (entry.category === 'tomica_limited') {
-        catBadgeHtml = '<span class="tag-badge bg-purple-50 text-purple-800 border border-purple-200 font-bold">Tomica 限定</span>';
-      }
+  if (st.t === 'mine') {
+    st.s = 'own';
+    if (updateHash) window.location.hash = 'collection';
+  } else if (st.t === 'all') {
+    st.s = 'all';
+    if (updateHash) window.location.hash = 'official';
+  } else if (st.t === 'week') {
+    if (updateHash) window.location.hash = 'weekly';
+  }
+  render();
+  if (isWeek) renderWk();
+}
 
-      // 購入狀態徽章 (僅 owned !== null 時顯示)
-      let ownedBadgeHtml = '';
-      if (entry.owned === true) {
-        ownedBadgeHtml = '<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">已購入</span>';
-      } else if (entry.owned === false) {
-        ownedBadgeHtml = '<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 font-bold">未購入</span>';
-      }
+if (seg) {
+  seg.onclick = e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    setTab(b.dataset.t, true);
+  };
+}
 
-      // 需預約徽章
-      let reservationBadgeHtml = '';
-      if (entry.needsReservation) {
-        reservationBadgeHtml = '<span class="tag-badge bg-rose-50 text-rose-700 border border-rose-200 font-bold">需預約</span>';
-      }
+function syncFromHash() {
+  const hash = window.location.hash.replace(/^#/, '');
+  if (hash === 'weekly') {
+    setTab('week', false);
+  } else if (hash === 'collection') {
+    setTab('mine', false);
+  } else if (hash === 'official') {
+    setTab('all', false);
+  }
+}
+window.addEventListener('hashchange', syncFromHash);
+syncFromHash();
 
-      // Cars 編號快速跳轉按鈕 (點擊切換至總目錄搜尋對應編號)
-      let numberJumpHtml = '';
-      if (entry.displayNumber) {
-        numberJumpHtml = `
-          <button 
-            type="button"
-            onclick="jumpToCatalogSearch('${entry.displayNumber}')" 
-            class="compendium-badge font-mono hover:bg-zinc-200 hover:text-zinc-950 cursor-pointer transition text-[10.5px] py-0.5 px-2 flex items-center gap-1 shadow-2xs"
-            title="點擊切換至官方總車款目錄檢視 ${entry.displayNumber}"
-          >
-            <span>🏎️ ${entry.displayNumber}</span>
-            <span class="text-[9px] text-zinc-400">總目錄 ↗</span>
-          </button>
-        `;
-      }
-
-      // 參考價格文字
-      const priceText = entry.priceJpy != null ? `¥${entry.priceJpy.toLocaleString()}` : '官方未載明';
-
-      // 備註折疊區塊
-      let notesHtml = '';
-      if (entry.notes) {
-        notesHtml = `
-          <details class="mt-2.5 pt-2 border-t border-zinc-100 text-xs text-zinc-600">
-            <summary class="font-bold text-zinc-700 cursor-pointer select-none hover:text-zinc-900 flex items-center gap-1">
-              <span>📝 查看新品備註與特注說明</span>
-            </summary>
-            <div class="mt-1.5 p-2.5 bg-zinc-50 rounded-lg text-zinc-700 leading-relaxed font-sans border border-zinc-200/60">
-              ${entry.notes}
-            </div>
-          </details>
-        `;
-      }
-
-      return `
-        <article class="pokedex-card p-4 sm:p-5 flex flex-col justify-between">
-          <div>
-            <!-- 頂部徽章與編號 -->
-            <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
-              <div class="flex items-center gap-1.5 flex-wrap">
-                ${catBadgeHtml}
-                ${ownedBadgeHtml}
-                ${reservationBadgeHtml}
-              </div>
-              <div>
-                ${numberJumpHtml}
-              </div>
-            </div>
-
-            <!-- 品名與日文原名 -->
-            <h3 class="text-base sm:text-lg font-bold text-zinc-950 leading-snug">
-              ${entry.nameZh}
-            </h3>
-            <div class="text-xs text-zinc-500 font-mono mb-3">
-              ${entry.nameJp}
-            </div>
-
-            <!-- 規格與情報清單 (繁中標籤) -->
-            <div class="bg-zinc-50 rounded-xl p-3 text-xs space-y-1.5 border border-zinc-200/80">
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">通報週次</span>
-                <span class="font-semibold text-zinc-800 font-mono text-right">通報：${entry.reportedAt || entry.weekOf}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">發售／期間</span>
-                <span class="font-semibold text-zinc-800 text-right font-medium">${entry.releaseOrPeriod || '官方未載明'}</span>
-              </div>
-              ${entry.releaseDate ? `
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">官方發售日</span>
-                <span class="font-semibold text-zinc-800 text-right font-mono">${entry.releaseDate}</span>
-              </div>` : ''}
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">參考價格</span>
-                <span class="font-bold text-zinc-900 font-mono text-right">${priceText}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">販售通路</span>
-                <span class="font-semibold text-zinc-800 text-right truncate max-w-[200px] sm:max-w-[280px]" title="${entry.place || ''}">${entry.place || '官方未載明'}</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <span class="text-zinc-500 shrink-0">情報來源</span>
-                <span class="text-right truncate max-w-[200px] sm:max-w-[280px]">
-                  <a 
-                    href="${entry.sourceUrl}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="text-blue-600 hover:text-blue-800 underline font-medium inline-flex items-center gap-0.5"
-                    title="前往官方來源：${entry.sourceLabel}"
-                  >
-                    <span>來源：${entry.sourceLabel}</span>
-                    <span class="text-[10px]">↗</span>
-                  </a>
-                </span>
-              </div>
-            </div>
+function renderWk() {
+  if (!wkL) return;
+  const E = (window.WEEKLY_PICKS_DATA && window.WEEKLY_PICKS_DATA.entries) || (window.WEEKLY && window.WEEKLY.entries) || [];
+  const qq = (st.q || '').toLowerCase();
+  const L = E.filter(e => !qq || ((e.displayNumber || '') + (e.nameZh || '') + (e.nameJp || '')).toLowerCase().includes(qq));
+  if (!L.length) {
+    wkL.innerHTML = '<p class="empty" style="padding:20px 0">目前沒有每週新品資料。</p>';
+    return;
+  }
+  wkL.innerHTML = L.map(e => {
+    const c = D.find(x => x.name === e.nameZh && getCarImg(x));
+    const imgHtml = c ? im(c) : '<span style="font-size:11px;color:#a8a29e">暫無圖</span>';
+    return `
+      <div class="wk">
+        <div class="fr">${imgHtml}</div>
+        <div>
+          <span class="cap">${e.weekOf || ''} 週報</span>
+          <h5>${e.nameZh || ''}</h5>
+          <div class="m">
+            ${e.releaseOrPeriod || ''}${e.priceJpy ? '・¥' + e.priceJpy : ''}${e.owned === true ? '・<span style="color:#1E6B4F">✓ 已入手</span>' : (e.owned === false ? '・<span style="color:#B3261E">待入手</span>' : '')}
+            <br>${e.place || ''}
           </div>
-
-          <!-- 備註說明區塊 -->
-          ${notesHtml}
-        </article>
-      `;
-    }
-
-    // 渲染每週新品追蹤專區 (依 weekOf 新→舊分組)
-    function renderWeeklyTracker() {
-      const query = searchQuery.trim().toLowerCase();
-      let entries = WEEKLY_PICKS_DATA.entries;
-
-      if (query) {
-        const queryNoSpace = query.replace(/[\s\-_]/g, '');
-        entries = entries.filter(e => {
-          const nameZh = e.nameZh.toLowerCase();
-          const nameJp = e.nameJp.toLowerCase();
-          const place = (e.place || '').toLowerCase();
-          const disp = (e.displayNumber || '').toLowerCase();
-          const notes = (e.notes || '').toLowerCase();
-          const cat = (e.category || '').toLowerCase();
-
-          const nameZhNoSpace = nameZh.replace(/[\s\-_]/g, '');
-          const nameJpNoSpace = nameJp.replace(/[\s\-_]/g, '');
-          const dispNoSpace = disp.replace(/[\s\-_]/g, '');
-
-          const matchNameZh = nameZh.includes(query) || (queryNoSpace && nameZhNoSpace.includes(queryNoSpace));
-          const matchNameJp = nameJp.includes(query) || (queryNoSpace && nameJpNoSpace.includes(queryNoSpace));
-          const matchPlace = place.includes(query);
-          const matchDisp = disp.includes(query) || (queryNoSpace && dispNoSpace.includes(queryNoSpace));
-          const matchNotes = notes.includes(query);
-          const matchCat = cat.includes(query);
-
-          return matchNameZh || matchNameJp || matchPlace || matchDisp || matchNotes || matchCat;
-        });
-      }
-
-      if (entries.length === 0) {
-        weeklyPicksContainer.innerHTML = '';
-        weeklyEmptyNotice.classList.remove('hidden');
-        return;
-      }
-      weeklyEmptyNotice.classList.add('hidden');
-
-      // 依 weekOf 新到舊分組
-      const groups = {};
-      entries.forEach(e => {
-        const w = e.weekOf;
-        if (!groups[w]) groups[w] = [];
-        groups[w].push(e);
-      });
-
-      const sortedWeeks = Object.keys(groups).sort((a, b) => b.localeCompare(a));
-
-      let html = '';
-      sortedWeeks.forEach(week => {
-        const list = groups[week];
-        html += `
-          <section class="weekly-group">
-            <div class="flex items-center gap-2 mb-3 mt-4 pb-2 border-b border-zinc-200">
-              <span class="w-2.5 h-2.5 rounded-full bg-zinc-900 shrink-0"></span>
-              <h2 class="text-sm sm:text-base font-extrabold text-zinc-900 tracking-tight">
-                週報 ${week}
-              </h2>
-              <span class="text-xs text-zinc-500 font-mono">(${list.length} 款新品)</span>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-              ${list.map(e => generateWeeklyCardHtml(e)).join('')}
-            </div>
-          </section>
-        `;
-      });
-
-      weeklyPicksContainer.innerHTML = html;
-    }
-
-    // 由週報卡片點擊 Cars 編號跳轉至官方總車款目錄
-    function jumpToCatalogSearch(num) {
-      switchMainTab('official');
-      searchInput.value = num;
-      searchQuery = num;
-      clearSearchBtn.classList.remove('hidden');
-      renderCompendium();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 頂部三大主選單切換核心函式
-    function switchMainTab(tab) {
-      currentMainTab = tab;
-      window.location.hash = tab === 'weekly' ? 'weekly' : (tab === 'collection' ? 'collection' : 'official');
-
-      const activeClass = 'flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition bg-zinc-950 text-white shadow-2xs cursor-pointer';
-      const inactiveClass = 'flex-1 py-1.5 sm:py-2 text-center rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold transition text-zinc-600 hover:text-zinc-950 hover:bg-zinc-300/40 cursor-pointer';
-
-      mainTabOfficial.className = currentMainTab === 'official' ? activeClass : inactiveClass;
-      mainTabOwned.className = currentMainTab === 'collection' ? activeClass : inactiveClass;
-      mainTabWeekly.className = currentMainTab === 'weekly' ? activeClass : inactiveClass;
-
-      if (currentMainTab === 'weekly') {
-        compendiumControlSection.classList.add('hidden');
-        compendiumMainSection.classList.add('hidden');
-        weeklyTrackerSection.classList.remove('hidden');
-        checkerAlertBanner.classList.add('hidden');
-        searchInput.placeholder = '🔍 搜尋週報新品（例如 洗車場、GR86、C-14）...';
-        renderWeeklyTracker();
-      } else {
-        weeklyTrackerSection.classList.add('hidden');
-        compendiumControlSection.classList.remove('hidden');
-        compendiumMainSection.classList.remove('hidden');
-
-        if (currentMainTab === 'official') {
-          // 官方發售總車款: 預設呈現全官方 Tomica Cars 目錄 (包含未購入與已購入)
-          selectedCategories = new Set(['cars_tomica']);
-          filterOwnership = 'all';
-          updateOwnershipPillStyles();
-          updateSeriesButtonLabel();
-          searchInput.placeholder = '🔍 搜尋車款編號或名稱（例如 C-37、C-14、プレジデント）...';
-        } else {
-          // 現有收藏: 預設呈現已購入收藏 (包含 Tomica Cars、非 Tomica Cars、玩具總動員等全系列)
-          filterOwnership = 'owned';
-          selectedCategories = new Set(['cars_tomica', 'cars_non_tomica', 'toystory', 'general', 'other_disney']);
-          updateOwnershipPillStyles();
-          updateSeriesButtonLabel();
-          searchInput.placeholder = '🔍 搜尋在冊收藏車款（例如 C-37、麥坤、Mattel、拖線）...';
-        }
-        renderCompendium();
-      }
-    }
-
-        // 核心渲染主函式 (支援官方編號精確查詢與購入狀態快篩)
-    function renderCompendium() {
-      const query = searchQuery.trim().toLowerCase();
-      const isSearching = Boolean(query);
-
-      // 若使用者輸入了特定的 C 編號格式 (如 C-3, C3, C-03, C03, C-37)，提取目標數字
-      let targetCNumber = null;
-      if (isSearching) {
-        const mC = query.match(/^c-?0*(\d+)$/i);
-        if (mC) {
-          targetCNumber = parseInt(mC[1], 10);
-        }
-      }
-
-      const filtered = CARS_DATABASE.filter(car => {
-        const isCarOwned = Boolean(car.owned !== false && (car.boxed + car.loose) > 0);
-        const isDup = Boolean(car.isDuplicate);
-
-        // 搜尋狀態下：優先比對全官方資料庫 (若有特定號碼立即呈現，不因未購入而被過濾)
-        if (!isSearching) {
-          // 未搜尋時，依據目前選取的購入狀態標籤過濾
-          if (filterOwnership === 'owned' && !isCarOwned) return false;
-          if (filterOwnership === 'unowned' && isCarOwned) return false;
-          if (filterOnlyDuplicates && !isDup) return false;
-          if (!selectedCategories.has(car.category)) return false;
-          return true;
-        }
-
-        // 搜尋模式：
-        // 1. 若為純數字 C 編號 (例如 C-14, C-3, C-37)，進行高精度編號比對
-        if (targetCNumber !== null) {
-          let carNum = null;
-          const disp = (car.displayNumber || '').toLowerCase();
-          const cid = car.id.toLowerCase();
-          const mDisp = disp.match(/^c-?0*(\d+)(?:[_-]|$|\b)/i);
-          const mId = cid.match(/^c-?0*(\d+)(?:[_-]|$|\b)/i);
-          if (mDisp) carNum = parseInt(mDisp[1], 10);
-          else if (mId) carNum = parseInt(mId[1], 10);
-
-          if (carNum === targetCNumber) {
-            // 精準編號相符
-            if (filterOnlyDuplicates && !isDup) return false;
-            return true;
-          }
-          // 對於純 C 編號查詢，精確限制在該號碼，防止 C-3 模糊匹配 C-30 ~ C-39
-          return false;
-        }
-
-        // 2. 通用字串多維度比對 (品名、日文名、關鍵字、編號變體)
-        const matchId = car.id.toLowerCase().includes(query);
-        const matchDisp = car.displayNumber ? car.displayNumber.toLowerCase().includes(query) : false;
-        const matchDispNoDash = car.displayNumber ? car.displayNumber.toLowerCase().replace('-', '').includes(query) : false;
-        const matchName = car.name.toLowerCase().includes(query);
-        const matchJp = car.jpName.toLowerCase().includes(query);
-        const matchNameZh = car.nameZh ? car.nameZh.toLowerCase().includes(query) : false;
-        const matchOfficialJp = car.officialNameJp ? car.officialNameJp.toLowerCase().includes(query) : false;
-        const matchKw = car.keywords ? car.keywords.toLowerCase().includes(query) : false;
-        const matchDesc = car.description ? car.description.toLowerCase().includes(query) : false;
-        const matchCat = car.categoryName ? car.categoryName.toLowerCase().includes(query) : false;
-
-        const isMatch = matchId || matchDisp || matchDispNoDash || matchName || matchJp || matchNameZh || matchOfficialJp || matchKw || matchDesc || matchCat;
-        if (!isMatch) return false;
-
-        if (filterOnlyDuplicates && !isDup) return false;
-        return true;
-      });
-
-      currentShownCount.textContent = filtered.length;
-
-      if (filtered.length === 0) {
-        compendiumContainer.innerHTML = '';
-        emptyNotice.classList.remove('hidden');
-      } else {
-        emptyNotice.classList.add('hidden');
-        if (currentViewMode === 'grid') {
-          compendiumContainer.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4';
-          compendiumContainer.innerHTML = filtered.map(car => generateGridCardHtml(car)).join('');
-        } else {
-          compendiumContainer.className = 'grid grid-cols-1 gap-4';
-          compendiumContainer.innerHTML = filtered.map(car => generateListCardHtml(car)).join('');
-        }
-      }
-
-      updateSeriesButtonLabel();
-      updateCheckerAlert(query, filtered);
-    }
-
-    // 產生海報圖鑑網格卡片 (Grid Card - 嚴格呈現官方日文名、發售時間、購入狀態、盒裝散車)
-    function generateGridCardHtml(car) {
-      const isCarOwned = Boolean(car.owned !== false && (car.boxed + car.loose) > 0);
-      const isDup = Boolean(car.isDuplicate);
-      const total = car.boxed + car.loose;
-
-      const hasImages = car.images && car.images.length > 0;
-      const displayImg = hasImages ? car.images[0].url : '';
-
-      let catBadgeClass = 'tag-cars';
-      if (car.category === 'cars_non_tomica') catBadgeClass = 'tag-non-tomica';
-      if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
-      if (car.category === 'general') catBadgeClass = 'tag-general';
-      if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
-
-      // 狀態徽章：已購入 (綠) / 未購入 (灰) / 重複 (紅) / 特殊組合
-      let statusBadgeHtml = '';
-      if (!isCarOwned) {
-        statusBadgeHtml = `<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 shadow-2xs font-bold">未購入</span>`;
-      } else if (isDup) {
-        statusBadgeHtml = `<span class="tag-badge tag-dup shadow-2xs">⚠️ 重複 ×${total}</span>`;
-      } else if (car.id === 'GEN-FOOD-SET') {
-        statusBadgeHtml = `<span class="tag-badge tag-boxed shadow-2xs">盒裝 4台組</span>`;
-      } else if (car.id === 'GEN-LONG-TRAILERS') {
-        statusBadgeHtml = `<span class="tag-badge tag-loose shadow-2xs">7台拖車隊</span>`;
-      } else if (car.id === 'SP-711-PLAINME-BREAD') {
-        statusBadgeHtml = `<span class="tag-badge tag-loose shadow-2xs">2款聯名小車</span>`;
-      } else {
-        statusBadgeHtml = `<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs font-bold">已購入</span>`;
-      }
-
-      // 發售時間展示
-      const releaseLabel = (car.releaseDate && car.releaseDate !== '官方未載明') 
-        ? `發售：${car.releaseDate}` 
-        : '發售：官方未載明';
-
-      // 同名不同號或同號已購入關聯註記
-      const relatedNoteHtml = car.relatedOwnedNote ? `
-        <div class="mt-1 text-[10px] text-amber-900 bg-amber-50/90 rounded px-1.5 py-0.5 border border-amber-200/80 font-medium leading-tight">
-          💡 ${car.relatedOwnedNote}
+          ${e.sourceUrl ? `<a href="${e.sourceUrl}" target="_blank" rel="noopener">官方來源 ↗</a>` : ''}
         </div>
-      ` : '';
+      </div>
+    `;
+  }).join('');
+}
 
-      // 展台圖片與標籤 (非 Tomica 且無官方圖時呈現專屬佔位標記)
-      let stageContentHtml = '';
-      if (hasImages) {
-        const firstImg = (car.images && car.images[0]) ? car.images[0] : null;
-        const imageTagLabel = (firstImg && firstImg.label && firstImg.label.includes('實拍')) ? '📷 藏品實拍' : '🌟 官方圖';
-        stageContentHtml = `
-            <img 
-              src="${displayImg}" 
-              referrerpolicy="no-referrer"
-              alt="${car.name}" 
-              loading="lazy"
-              onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none\'><span class=\'text-2xl\'>📷</span><span class=\'text-xs font-bold tracking-wider\'>暫無官方圖</span></div>';"
-            >
-            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded backdrop-blur-xs pointer-events-none">
-              ${imageTagLabel}
-            </span>
-        `;
-      } else if (car.category === 'cars_non_tomica') {
-        stageContentHtml = `
-            <div class="w-full h-full flex flex-col items-center justify-center bg-amber-50/60 text-amber-800 gap-1 select-none p-2 text-center">
-              <span class="text-2xl">⚡</span>
-              <span class="text-[11px] font-bold tracking-tight">非 Tomica・暫無官方 Tomica 圖</span>
-              <span class="text-[9px] text-amber-600/80 font-mono">（美泰兒／正版授權車模）</span>
-            </div>
-        `;
-      } else {
-        stageContentHtml = `
-            <div class="w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none">
-              <span class="text-2xl">📷</span>
-              <span class="text-xs font-bold tracking-wider">暫無官方圖</span>
-            </div>
-        `;
-      }
+const SEAL = (cls, big) => `
+  <svg class="${cls}" viewBox="0 0 40 40" aria-label="已入手印章">
+    <circle cx="20" cy="20" r="18" fill="rgba(255,255,255,.9)" stroke="#1E6B4F" stroke-width="${big ? 0.7 : 1}"/>
+    <circle cx="20" cy="20" r="14.5" fill="none" stroke="#1E6B4F" stroke-width="0.5" stroke-dasharray="1.2 1.4"/>
+    <text x="20" y="18.5" text-anchor="middle" font-size="7" fill="#1E6B4F" font-family="var(--sans)">又入手</text>
+    <text x="20" y="28.5" text-anchor="middle" font-size="9" fill="#1E6B4F" font-family="var(--sans)">✓</text>
+  </svg>
+`;
 
-      // 官方日文名與繁中名
-      const hasChinese = car.name && car.name !== '官方未載明' && car.name !== car.jpName;
-      const mainTitle = hasChinese ? car.name : car.jpName;
-      const subTitle = hasChinese ? car.jpName : '繁中名：官方未載明';
+const EMPTY = `
+  <svg class="bigseal" viewBox="0 0 40 40" aria-label="待入手空印章">
+    <circle cx="20" cy="20" r="18" fill="none" stroke="#B3261E" stroke-width="0.6" stroke-dasharray="2 2"/>
+    <text x="20" y="23" text-anchor="middle" font-size="6.5" fill="#B3261E" font-family="var(--sans)">待入手</text>
+  </svg>
+`;
 
-      return `
-        <article 
-          class="pokedex-card ${isDup ? 'is-duplicate' : ''} ${!isCarOwned ? 'opacity-90 bg-zinc-50/40' : ''}"
-          onclick="openCarDetail('${car.id}')"
-          title="點擊查看詳細資料"
-        >
-          <!-- 車輛展示舞台 (手機黃金比例 16:11 均勻展台) -->
-          <div class="car-stage aspect-[16/11] p-3">
-            <span class="absolute top-2 left-2 compendium-badge z-10 font-mono">
-              ${car.displayNumber || car.id}
-            </span>
-            <div class="absolute top-2 right-2 flex flex-col items-end gap-1 z-10">
-              ${statusBadgeHtml}
-            </div>
-            
-            ${stageContentHtml}
+let LIST = [];
+
+function card(c) {
+  const o = isOwned(c);
+  const dup = Boolean(c.isDuplicate);
+  const total = (c.boxed || 0) + (c.loose || 0);
+  const num = c.displayNumber || c.id;
+  return `
+    <div class="card ${o ? 'o' : 'u'}" onclick="openCarDetail('${c.id}')">
+      <div class="fr">
+        <span class="id">${num}</span>
+        ${o ? SEAL('seal') : '<span class="tag">待入手</span>'}
+        ${im(c)}
+      </div>
+      <div class="nm">${title(c)}</div>
+      <div class="m">
+        ${o ? `<span class="s">✓ 盒 ${c.boxed || 0}・散 ${c.loose || 0}</span>${dup ? `<span class="dupt">重複 ×${total}</span>` : ''}` : `<span class="s">待入手</span><span>${has(c.releaseDate) ? c.releaseDate : ''}</span>`}
+      </div>
+    </div>
+  `;
+}
+
+function render() {
+  if (sf) {
+    sf.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === st.s));
+  }
+  if (cf) {
+    cf.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === st.c));
+  }
+  LIST = [];
+  let page = 4;
+  if (!chs) return;
+  const html = CH.map((c, i) => {
+    if (st.c !== 'all' && st.c !== c[0]) return '';
+    const all = D.filter(x => x.category === c[0]);
+    const L = all.filter(x => (st.s === 'all' || (st.s === 'own') === isOwned(x)) && (!st.q || (x.id + (x.displayNumber || '') + (x.name || '') + (x.jpName || '')).toLowerCase().includes(st.q.toLowerCase())));
+    if (!L.length && (st.q || st.s !== 'all')) return '';
+    LIST.push(...L);
+    const pick = all.find(x => isOwned(x) && getCarImg(x) && x.id !== (HERO ? HERO.id : '')) || all.find(x => getCarImg(x)) || all[0];
+    const o = all.filter(isOwned).length;
+    const p = page;
+    page += 2;
+    return `
+      <section class="ch" id="ch-${c[0]}">
+        <div class="sp">
+          <div class="num">
+            <span class="cap">CH.${pad(i + 1)}</span>
+            <span class="cap">P.${pad(p)}</span>
           </div>
-
-          <!-- 卡片文字資訊 -->
-          <div class="p-3 flex flex-col justify-between flex-grow bg-white">
-            <div>
-              <div class="flex items-center justify-between gap-1 mb-1">
-                <span class="tag-badge ${catBadgeClass} text-[9px] py-0 px-1.5">
-                  ${car.categoryName.replace('系列', '')}
-                </span>
-                <span class="text-[10px] text-zinc-400 font-mono truncate max-w-[58%]">
-                  ${releaseLabel}
-                </span>
-              </div>
-              <h2 class="text-xs sm:text-sm font-bold text-zinc-900 leading-snug line-clamp-2">
-                ${mainTitle}
-              </h2>
-              <div class="text-[10.5px] text-zinc-500 font-mono truncate mt-0.5">
-                ${subTitle}
-              </div>
-              ${relatedNoteHtml}
-            </div>
-
-            <div class="mt-2 pt-2 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-500">
-              <span class="font-mono text-[10px] text-zinc-500">
-                盒裝 ${car.boxed} ・ 散車 ${car.loose}
-              </span>
-              <span class="font-bold ${isCarOwned ? 'text-zinc-900' : 'text-zinc-400'} shrink-0 text-[10.5px]">
-                ${isCarOwned ? `持有 ${total} 台` : '未購入'}
-              </span>
-            </div>
+          <h3>${c[1]}</h3>
+          <div class="en">${c[2]}</div>
+          <div class="fig" onclick="openCarDetail('${pick.id}')">
+            ${im(pick)}
           </div>
-        </article>
-      `;
-    }
-
-    // 產生清單卡片 (List Card - 完整顯示發售時間與官方名)
-    function generateListCardHtml(car) {
-      const isCarOwned = Boolean(car.owned !== false && (car.boxed + car.loose) > 0);
-      const isDup = Boolean(car.isDuplicate);
-      const total = car.boxed + car.loose;
-
-      let catBadgeClass = 'tag-cars';
-      if (car.category === 'cars_non_tomica') catBadgeClass = 'tag-non-tomica';
-      if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
-      if (car.category === 'general') catBadgeClass = 'tag-general';
-      if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
-
-      let imagesDualHtml = '';
-      if (car.images && car.images.length > 0) {
-        imagesDualHtml = `
-          <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-2 my-2.5">
-            ${car.images.map(img => `
-              <div 
-                class="car-stage aspect-[16/11] rounded-xl border border-zinc-200/90 shadow-2xs cursor-zoom-in"
-                onclick="event.stopPropagation(); openLightbox('${img.url}', '${car.name} - ${img.label}')"
-              >
-                <img 
-                  src="${img.url}" 
-                  referrerpolicy="no-referrer"
-                  alt="${car.name}" 
-                  class="p-2.5"
-                  loading="lazy"
-                  onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 select-none\'><span class=\'text-2xl\'>📷</span><span class=\'text-xs font-bold tracking-wider\'>暫無官方圖</span></div>';"
-                >
-                <span class="absolute bottom-1.5 right-1.5 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-xs pointer-events-none">
-                  ${img.label}
-                </span>
-              </div>
-            `).join('')}
+          <div class="figcap">
+            <span>${pick.displayNumber || pick.id}・${title(pick)}</span>
+            <span>本章精選</span>
           </div>
-        `;
-      } else if (car.category === 'cars_non_tomica') {
-        imagesDualHtml = `
-          <div class="car-stage aspect-[16/11] rounded-xl border border-amber-200/90 shadow-2xs flex flex-col items-center justify-center bg-amber-50/60 text-amber-800 gap-1 my-2.5 p-3 text-center">
-            <span class="text-2xl">⚡</span>
-            <span class="text-xs font-bold tracking-tight">非 Tomica・暫無官方 Tomica 圖</span>
-            <span class="text-[10px] text-amber-600/80 font-mono">（美泰兒／正版授權車模）</span>
-          </div>
-        `;
-      } else {
-        imagesDualHtml = `
-          <div class="car-stage aspect-[16/11] rounded-xl border border-zinc-200/90 shadow-2xs flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 my-2.5">
-            <span class="text-2xl">📷</span>
-            <span class="text-xs font-bold tracking-wider">暫無官方圖</span>
-          </div>
-        `;
-      }
-
-      const hasChinese = car.name && car.name !== '官方未載明' && car.name !== car.jpName;
-      const mainTitle = hasChinese ? car.name : car.jpName;
-      const releaseText = (car.releaseDate && car.releaseDate !== '官方未載明') ? car.releaseDate : '官方未載明';
-
-      return `
-        <article class="pokedex-card p-4 sm:p-5 ${isDup ? 'is-duplicate' : ''} ${!isCarOwned ? 'opacity-90 bg-zinc-50/40' : ''}" onclick="openCarDetail('${car.id}')">
-          <div class="flex items-start justify-between gap-2 mb-1">
-            <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="compendium-badge font-mono">
-                ${car.displayNumber || car.id}
-              </span>
-              <span class="tag-badge ${catBadgeClass}">
-                ${car.categoryName}
-              </span>
-              ${isCarOwned ? `<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">已購入</span>` : `<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 font-bold">未購入</span>`}
-              ${isDup ? `<span class="tag-badge tag-dup">⚠️ 重複收藏款</span>` : ''}
-            </div>
-
-            <div class="text-right shrink-0">
-              <span class="text-xs font-bold ${isCarOwned ? 'text-zinc-900' : 'text-zinc-400'}">
-                ${isCarOwned ? `持有 ${total} 台` : '未購入'}
-              </span>
-              <div class="text-[10px] text-zinc-500 font-mono">
-                盒裝 ${car.boxed} ・ 散車 ${car.loose}
-              </div>
-            </div>
-          </div>
-
-          <h2 class="text-base sm:text-lg font-bold text-zinc-950 mt-1 mb-0.5 leading-snug">
-            ${mainTitle}
-          </h2>
-          <div class="text-xs text-zinc-500 font-mono mb-2">
-            ${car.jpName}
-          </div>
-
-          <!-- 官方展示圖 -->
-          ${imagesDualHtml}
-
-          <!-- 同名不同號或同號已購入關聯註記 -->
-          ${car.relatedOwnedNote ? `
-            <div class="my-2 text-xs text-amber-900 bg-amber-50/90 rounded-lg p-2.5 border border-amber-200 font-medium leading-relaxed">
-              💡 ${car.relatedOwnedNote}
-            </div>
-          ` : ''}
-
-          <!-- 考證與詳細資訊 -->
-          <div class="mt-2.5 pt-2.5 border-t border-zinc-100 flex flex-col gap-1.5 text-xs text-zinc-600">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="font-bold text-zinc-700">官方發售時間：</span>
-              <span class="text-zinc-800 font-mono font-medium">${releaseText}</span>
-              <span class="text-zinc-400">｜</span>
-              <span class="font-bold text-zinc-700">原型考證：</span>
-              <span class="bg-zinc-100 px-2 py-0.5 rounded text-zinc-700 font-mono">${car.prototype || '官方特規原創'}</span>
-            </div>
-            <div class="leading-relaxed text-zinc-700 mt-1">
-              ${car.description}
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    function evidenceLinksHtml(car) {
-      const urls = Array.isArray(car.evidenceUrls) ? car.evidenceUrls : [];
-      const links = urls.filter(u => typeof u === 'string' && u.startsWith('https://')).map(u => {
-        const safe = u.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-        let label = safe;
-        try { label = new URL(u).host.replace(/^www\./, ''); } catch (err) { label = safe; }
-        return `<a href="${safe}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline" title="${safe}">${label}</a>`;
-      });
-      if (!links.length) return '';
-      return `
-          <div class="flex items-start justify-between gap-3">
-            <span class="text-zinc-500 shrink-0">來源依據</span>
-            <span class="font-medium text-right leading-relaxed">${links.join('<span class="text-zinc-300"> · </span>')}</span>
-          </div>`;
-    }
-
-    // 展開圖鑑沉浸式單車詳情抽屜
-    function openCarDetail(carId) {
-      const car = CARS_DATABASE.find(c => c.id === carId);
-      if (!car) return;
-
-      const isDup = Boolean(car.isDuplicate);
-      const total = car.boxed + car.loose;
-
-      let catBadgeClass = 'tag-cars';
-      if (car.category === 'cars_non_tomica') catBadgeClass = 'tag-non-tomica';
-      if (car.category === 'toystory') catBadgeClass = 'tag-toystory';
-      if (car.category === 'general') catBadgeClass = 'tag-general';
-      if (car.category === 'other_disney') catBadgeClass = 'tag-disney';
-
-      let modalImagesHtml = '';
-      if (car.images && car.images.length > 0) {
-        modalImagesHtml = `
-          <div class="grid ${car.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3 my-4">
-            ${car.images.map(img => `
-              <div 
-                class="car-stage aspect-[16/11] rounded-2xl border border-zinc-200 cursor-zoom-in"
-                onclick="openLightbox('${img.url}', '${car.name} - ${img.label}')"
-              >
-                <img src="${img.url}" alt="${car.name}" class="p-3" loading="lazy">
-                <span class="absolute bottom-2 right-2 bg-black/75 text-white text-[10px] px-2 py-0.5 rounded-full font-medium">
-                  ${img.label}
-                </span>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      } else if (car.category === 'cars_non_tomica') {
-        modalImagesHtml = `
-          <div class="car-stage aspect-[16/11] rounded-2xl border border-amber-200 flex flex-col items-center justify-center bg-amber-50/60 text-amber-800 gap-1 my-4 p-4 text-center">
-            <span class="text-3xl">⚡</span>
-            <span class="text-sm font-bold tracking-tight">非 Tomica・暫無官方 Tomica 圖</span>
-            <span class="text-xs text-amber-600/80 font-mono">（美泰兒／正版授權車模）</span>
-          </div>
-        `;
-      } else {
-        modalImagesHtml = `
-          <div class="car-stage aspect-[16/11] rounded-2xl border border-zinc-200 flex flex-col items-center justify-center bg-zinc-100 text-zinc-400 gap-1 my-4">
-            <span class="text-3xl">📷</span>
-            <span class="text-sm font-bold tracking-wider">暫無官方圖</span>
-          </div>
-        `;
-      }
-
-        const isCarOwned = Boolean(car.owned !== false && (car.boxed + car.loose) > 0);
-        const releaseText = (car.releaseDate && car.releaseDate !== '官方未載明') ? car.releaseDate : '官方未載明';
-        const handbookBlurb = car.handbookBlurbZh || car.characterEasterEggZh || car.description;
-        const hasChinese = car.name && car.name !== '官方未載明' && car.name !== car.jpName;
-        const mainTitle = hasChinese ? car.name : car.jpName;
-
-        let buyAdviceHtml = '';
-        if (!isCarOwned) {
-          if (car.relatedOwnedNote) {
-            buyAdviceHtml = `
-              <div class="my-3 p-3.5 rounded-xl border bg-amber-50/90 border-amber-200 text-amber-950 text-xs leading-relaxed">
-                <div class="font-bold flex items-center gap-1.5 mb-1 text-amber-900">
-                  <span>💡 同名／同號已購入提醒：</span>
-                </div>
-                <div class="mb-1.5 font-semibold text-amber-900">${car.relatedOwnedNote}</div>
-                <div class="text-amber-800">此官方編號（<strong>${car.displayNumber || car.id}</strong>）尚未登錄購入；您另有同角色／同名不同號已購入（見上方註記）。若出外逛街或網購，請務必先確認盒上編號後再決定是否入手。</div>
-              </div>
-            `;
-          } else {
-            buyAdviceHtml = `
-              <div class="my-3 p-3.5 rounded-xl border bg-blue-50/80 border-blue-200 text-blue-950 text-xs leading-relaxed">
-                <div class="font-bold flex items-center gap-1.5 mb-1 text-blue-900">
-                  <span>🛒 官方收錄未購入車款：</span>
-                </div>
-                <div>官方編號 <strong>${car.displayNumber || car.id}</strong>，您尚未購入。出外逛街或網購時若價格合理，可放心入手擴充圖鑑！</div>
-              </div>
-            `;
-          }
-        } else if (isDup) {
-          buyAdviceHtml = `
-            <div class="my-3 p-3.5 rounded-xl border bg-red-50/80 border-red-200 text-red-900 text-xs leading-relaxed">
-              <div class="font-bold flex items-center gap-1 mb-1 text-red-700">
-                <span>🚫 重複持有警戒：切勿重複購買！</span>
-              </div>
-              <div>您已持有此車款共 <strong>${total} 台</strong>（盒裝 ×${car.boxed}、無盒 ×${car.loose}）。出外逛街或網購時請務必跳過此款！</div>
-            </div>
-          `;
-        } else if (total === 0) {
-          buyAdviceHtml = `
-            <div class="my-3 p-3.5 rounded-xl border bg-amber-50/80 border-amber-200 text-amber-900 text-xs leading-relaxed">
-              <div class="font-bold flex items-center gap-1 mb-1 text-amber-800">
-                <span>💡 收藏目錄在庫提醒：目前在庫 0 台</span>
-              </div>
-              <div>此車款已登錄於您的收藏目錄，但實體庫存目前為 0。若出外逛街或網購時遇到，可直接入手！</div>
-            </div>
-          `;
-        } else {
-          buyAdviceHtml = `
-            <div class="my-3 p-3.5 rounded-xl border bg-amber-50/80 border-amber-200 text-amber-900 text-xs leading-relaxed">
-              <div class="font-bold flex items-center gap-1 mb-1 text-amber-800">
-                <span>💡 採購庫存建議：</span>
-              </div>
-              <div>目前庫存持有 <strong>${total} 台</strong>（${car.boxed > 0 ? '盒裝全新' : '無盒散車'}）。若在實體店遇到便宜盒裝款可考慮補盒，否則無須再買。</div>
-            </div>
-          `;
-        }
-
-        detailModalContent.innerHTML = `
-        <div class="flex items-center gap-2 mb-2 flex-wrap pr-8">
-          <span class="compendium-badge text-sm font-mono">${car.displayNumber || car.id}</span>
-          <span class="tag-badge ${catBadgeClass}">${car.categoryName}</span>
-          ${isCarOwned ? `<span class="tag-badge bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">已購入</span>` : `<span class="tag-badge bg-zinc-100 text-zinc-500 border border-zinc-200 font-bold">未購入</span>`}
-          ${isDup ? `<span class="tag-badge tag-dup">⚠️ 重複持有 ${total} 台</span>` : ''}
+          <p class="quote">${c[3]}</p>
         </div>
-
-        <h2 class="text-xl font-extrabold text-zinc-950 leading-snug">
-          ${mainTitle}
-        </h2>
-        <p class="text-xs text-zinc-500 font-mono mb-2">
-          ${car.jpName}
-        </p>
-
-        <!-- 圖片區塊 -->
-        ${modalImagesHtml}
-
-        <!-- 採購避坑警報 -->
-        ${buyAdviceHtml}
-
-        <!-- 規格資訊清單 -->
-        <div class="bg-zinc-50 rounded-xl p-3.5 my-3 text-xs space-y-2 border border-zinc-200/80">
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">官方編號</span>
-            <span class="font-semibold text-zinc-800 font-mono">${car.displayNumber || car.id}</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">官方發售日期</span>
-            <div class="text-right">
-              <span class="font-semibold text-zinc-800 font-mono">${releaseText}</span>
-              ${car.sourceTier ? `<span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-zinc-200/80 text-zinc-700 font-medium">${car.sourceTier}${car.confidence ? ' (' + car.confidence + ')' : ''}</span>` : ''}
-            </div>
-          </div>
-          ${evidenceLinksHtml(car)}
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">原型車款</span>
-            <span class="font-semibold text-zinc-800 text-right font-mono">${car.prototype || '官方特規原創'}</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-zinc-500">收藏實況</span>
-            <span class="font-bold text-zinc-900 font-mono">盒裝 ${car.boxed} ・ 散車 ${car.loose} (${isCarOwned ? '持有 ' + total + ' 台' : '未購入'})</span>
-          </div>
+        <div class="chp">
+          <span>本章收藏 ${o} / ${all.length}</span>
+          <span>${L.length} 款</span>
         </div>
+        <div class="grid">${L.map(card).join('')}</div>
+      </section>
+    `;
+  }).join('');
 
-        <!-- 典藏背景手冊與考究 (Section H: 角色彩蛋與專屬手冊介紹) -->
-        <div class="mt-3 pt-3 border-t border-zinc-100 text-xs text-zinc-700 leading-relaxed">
-          <div class="font-bold text-zinc-900 mb-1.5 flex items-center gap-1.5">
-            <span>【官方收錄手冊詳細介紹】</span>
-            ${car.characterEasterEggZh ? '<span class="tag-badge bg-amber-50 text-amber-800 border border-amber-200 text-[10px] py-0 px-1.5 font-bold">🍎 角色彩蛋</span>' : ''}
-          </div>
-          <p class="mb-2 whitespace-pre-line leading-relaxed text-zinc-800 bg-zinc-50/80 p-3 rounded-xl border border-zinc-200/60">${handbookBlurb}</p>
-        </div>
-      `;
+  chs.innerHTML = html || '<p class="empty">找不到符合的車款。</p>';
+}
+render();
 
-        detailModalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+const tbu = () => {
+  if (tb && coverSec) {
+    tb.classList.toggle('show', window.scrollY > coverSec.offsetHeight * 0.8);
+  }
+};
+window.addEventListener('scroll', tbu, { passive: true });
+tbu();
+
+function goSearch(focusFilter) {
+  if (findSec) {
+    findSec.scrollIntoView({ behavior: 'smooth' });
+    if (!focusFilter && q) {
+      setTimeout(() => q.focus({ preventScroll: true }), 350);
     }
+  }
+}
 
-    function closeCarDetail() {
-      detailModalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
+let cur = -1, retY = 0;
+const dt = document.getElementById('dt');
+const dPos = document.getElementById('dPos');
+const dStg = document.getElementById('dStg');
+const dBody = document.getElementById('dBody');
+
+function openCarDetail(id) {
+  let i = LIST.findIndex(c => c.id === id);
+  if (i < 0) {
+    LIST = D.slice();
+    i = D.findIndex(c => c.id === id);
+  }
+  cur = i;
+  retY = window.scrollY;
+  fillDetail();
+  if (dt) dt.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCarDetail() {
+  if (dt) dt.classList.remove('open');
+  document.body.style.overflow = '';
+  window.scrollTo(0, retY);
+}
+
+function stepDetail(d) {
+  if (!LIST.length) return;
+  cur = (cur + d + LIST.length) % LIST.length;
+  fillDetail();
+}
+
+function fillDetail() {
+  if (!dt || cur < 0 || cur >= LIST.length) return;
+  const c = LIST[cur];
+  const o = isOwned(c);
+  dt.className = 'dt open ' + (o ? 'o' : 'u');
+  if (dPos) dPos.textContent = `${pad(cur + 1)} / ${LIST.length}`;
+  if (dStg) dStg.innerHTML = im(c) + (o ? SEAL('bigseal', true) : EMPTY);
+
+  const rows = [
+    ['編號', c.displayNumber || c.id],
+    ['發售日', has(c.releaseDate) ? c.releaseDate : null],
+    ['系列', c.categoryName],
+    ['盒裝', (o || c.boxed) ? (c.boxed || 0) + ' 台' : null],
+    ['散車', (o || c.loose) ? (c.loose || 0) + ' 台' : null],
+    ['狀態', o ? '<span style="color:#1E6B4F">✓ 已入手</span>' : '<span style="color:#B3261E">待入手</span>']
+  ].filter(r => r[1] != null);
+
+  if (dBody) {
+    dBody.innerHTML = `
+      <span class="cap">${c.displayNumber || c.id}</span>
+      <h4>${title(c)}</h4>
+      ${has(c.jpName) && c.jpName !== title(c) ? `<div class="jp">${c.jpName}</div>` : ''}
+      ${c.isDuplicate ? '<div class="dupt" style="margin-top:4px">重複收藏 ×' + ((c.boxed || 0) + (c.loose || 0)) + '</div>' : ''}
+      <dl class="dl">
+        ${rows.map(r => `<div><dt>${r[0]}</dt><dd style="margin:0">${r[1]}</dd></div>`).join('')}
+      </dl>
+      <div class="pn">
+        <button onclick="stepDetail(-1)">← 上一台</button>
+        <button onclick="stepDetail(1)">下一台 →</button>
+      </div>
+    `;
+  }
+  const s = dStg ? dStg.querySelector('.bigseal') : null;
+  if (s && o) {
+    s.style.animation = 'none';
+    s.offsetWidth;
+    s.style.animation = '';
+  }
+}
+
+let touchStartX = null;
+if (dt) {
+  dt.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  dt.addEventListener('touchend', e => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 60) {
+      stepDetail(dx < 0 ? 1 : -1);
     }
+    touchStartX = null;
+  });
+}
 
-    // 展開 / 關閉系列選單抽屜
-    function openSeriesDrawer() {
-      // 同步當前勾選狀態到抽屜的 Checkbox
-      catCheckCars.checked = selectedCategories.has('cars_tomica');
-      if (catCheckNonTomica) catCheckNonTomica.checked = selectedCategories.has('cars_non_tomica');
-      catCheckToy.checked = selectedCategories.has('toystory');
-      catCheckGeneral.checked = selectedCategories.has('general');
-      catCheckDisney.checked = selectedCategories.has('other_disney');
-      checkOnlyDuplicates.checked = filterOnlyDuplicates;
+window.addEventListener('keydown', e => {
+  if (!dt || !dt.classList.contains('open')) return;
+  if (e.key === 'Escape') closeCarDetail();
+  if (e.key === 'ArrowRight') stepDetail(1);
+  if (e.key === 'ArrowLeft') stepDetail(-1);
+});
 
-      seriesDrawerOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+window.openCarDetail = openCarDetail;
+window.closeCarDetail = closeCarDetail;
+window.openD = openCarDetail;
+window.closeD = closeCarDetail;
+window.step = stepDetail;
+window.stepDetail = stepDetail;
+window.goSearch = goSearch;
+window.switchMainTab = setTab;
+window.renderCompendium = render;
+window.renderWeeklyTracker = renderWk;
+window.CARS_DATABASE = CARS_DATABASE;
+window.WEEKLY_PICKS_DATA = WEEKLY_PICKS_DATA;
+</script>
 
-    function closeSeriesDrawer() {
-      seriesDrawerOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
 
-    // 套用抽屜選單中的系列設定
-    function applySeriesSelection() {
-      selectedCategories.clear();
-      if (catCheckCars.checked) selectedCategories.add('cars_tomica');
-      if (catCheckNonTomica && catCheckNonTomica.checked) selectedCategories.add('cars_non_tomica');
-      if (catCheckToy.checked) selectedCategories.add('toystory');
-      if (catCheckGeneral.checked) selectedCategories.add('general');
-      if (catCheckDisney.checked) selectedCategories.add('other_disney');
-
-      // 若一個都沒勾選，自動全選容錯處理
-      if (selectedCategories.size === 0) {
-        selectedCategories.add('cars_tomica');
-        selectedCategories.add('cars_non_tomica');
-        selectedCategories.add('toystory');
-        selectedCategories.add('general');
-        selectedCategories.add('other_disney');
-      }
-
-      filterOnlyDuplicates = checkOnlyDuplicates.checked;
-
-      closeSeriesDrawer();
-      renderCompendium();
-    }
-
-    // 即時搜尋庫存警報條更新 (高精度編號比對)
-    function updateCheckerAlert(query, filtered) {
-      if (!query) {
-        checkerAlertBanner.classList.add('hidden');
-        return;
-      }
-
-      checkerAlertBanner.classList.remove('hidden');
-
-      if (filtered.length === 0) {
-        checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-zinc-100 border border-zinc-300 text-zinc-900 font-medium';
-        checkerAlertBanner.innerHTML = `
-          <div class="font-bold text-zinc-800 flex items-center gap-1.5 text-sm mb-1">
-            <span>🔍 找不到這個編號。可能是尚未收錄的絕版或輸入有誤。</span>
-          </div>
-          <div class="text-[11px] text-zinc-500">建議嘗試搜尋主編號（如 C-37、C-14、SP）或角色日文名（如 プレジデント、メーター）。</div>
-        `;
-        return;
-      }
-
-      // 檢查是否有多款同編號 (例如 C-14, C-3)
-      const ownedMatches = filtered.filter(c => c.owned !== false);
-      const unownedMatches = filtered.filter(c => c.owned === false);
-
-      if (ownedMatches.length > 0 && unownedMatches.length > 0) {
-        checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-blue-50 border border-blue-200 text-blue-950 font-medium';
-        checkerAlertBanner.innerHTML = `
-          <div class="font-bold text-blue-900 flex items-center gap-1 text-sm mb-1">
-            <span>ℹ️ 官方重用編號：找到 ${filtered.length} 款相符車款</span>
-          </div>
-          <div>其中 <strong>${ownedMatches.length} 款已購入</strong>、<strong>${unownedMatches.length} 款未購入</strong>。請比對下方卡片官方日文品名與車型。</div>
-        `;
-      } else if (ownedMatches.length > 0) {
-        const topMatch = ownedMatches[0];
-        const isDup = Boolean(topMatch.isDuplicate);
-        const total = topMatch.boxed + topMatch.loose;
-        if (isDup) {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-red-100 border border-red-300 text-red-950 font-medium';
-          checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-red-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>🚫 重複庫存警示：您已擁有此車款！</span>
-            </div>
-            <div>庫存比對成功：<strong>${topMatch.displayNumber || topMatch.id} ${topMatch.name}</strong>（${topMatch.jpName}），發售時間：<strong>${topMatch.releaseDate || '官方未載明'}</strong>。已收藏 <strong>${total} 台</strong>（盒裝 ${topMatch.boxed}、散車 ${topMatch.loose}），<span class="underline font-bold">現場請勿重複購買！</span></div>
-          `;
-        } else {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-amber-50 border border-amber-300 text-amber-950 font-medium';
-          checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-amber-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>⚠️ 採購提醒：已有此車款（${topMatch.boxed > 0 ? '原盒 1 台' : '無盒 1 台'}）</span>
-            </div>
-            <div>庫存比對成功：<strong>${topMatch.displayNumber || topMatch.id} ${topMatch.name}</strong>（${topMatch.jpName}），發售時間：<strong>${topMatch.releaseDate || '官方未載明'}</strong>。若現場看到便宜原盒可考慮補盒，否則建議跳過。</div>
-          `;
-        }
-      } else {
-        // 全為未購入品項
-        const noteMatch = unownedMatches.find(c => c.relatedOwnedNote);
-        const topUnowned = noteMatch || unownedMatches[0];
-        if (topUnowned.relatedOwnedNote) {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-amber-50 border border-amber-300 text-amber-950 font-medium';
-          checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-amber-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>💡 同名／同號車款關聯提示</span>
-            </div>
-            <div class="mb-1 font-semibold text-amber-900">${topUnowned.relatedOwnedNote}</div>
-            <div>官方編號 <strong>${topUnowned.displayNumber || topUnowned.id}</strong>（${topUnowned.jpName}）此款您尚未購入。請核對盒上編號與所附註記後再決定是否採購。</div>
-          `;
-        } else {
-          checkerAlertBanner.className = 'rounded-xl p-3 text-xs leading-relaxed transition-all shadow-sm bg-emerald-50 border border-emerald-300 text-emerald-950 font-medium';
-          checkerAlertBanner.innerHTML = `
-            <div class="font-bold text-emerald-800 flex items-center gap-1.5 text-sm mb-1">
-              <span>🎉 採購綠燈：查無持有紀錄（未購入）！</span>
-            </div>
-            <div>官方編號 <strong>${topUnowned.displayNumber || topUnowned.id}</strong>（${topUnowned.jpName}），發售時間：<strong>${topUnowned.releaseDate || '官方未載明'}</strong>。您<strong>尚未購入此款</strong>，現場若價格合適可放心入手擴充圖鑑！</div>
-          `;
-        }
-      }
-    }
-
-    // Lightbox 大圖檢視
-    function openLightbox(url, caption) {
-      lightboxImg.src = url;
-      lightboxCaption.textContent = caption || '';
-      lightboxOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      lightboxOverlay.classList.remove('active');
-      lightboxImg.src = '';
-      if (!detailModalOverlay.classList.contains('active') && !seriesDrawerOverlay.classList.contains('active')) {
-        document.body.style.overflow = '';
-      }
-    }
-
-    // 事件監聽綁定
-    mainTabOfficial.addEventListener('click', () => switchMainTab('official'));
-    mainTabOwned.addEventListener('click', () => switchMainTab('collection'));
-    mainTabWeekly.addEventListener('click', () => switchMainTab('weekly'));
-
-    resetWeeklySearchBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      searchQuery = '';
-      clearSearchBtn.classList.add('hidden');
-      renderWeeklyTracker();
-      searchInput.focus();
-    });
-
-    searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      if (searchQuery.trim()) {
-        clearSearchBtn.classList.remove('hidden');
-      } else {
-        clearSearchBtn.classList.add('hidden');
-      }
-
-      if (currentMainTab === 'weekly') {
-        renderWeeklyTracker();
-      } else {
-        renderCompendium();
-      }
-    });
-
-    clearSearchBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      searchQuery = '';
-      clearSearchBtn.classList.add('hidden');
-      if (currentMainTab === 'weekly') {
-        renderWeeklyTracker();
-      } else {
-        renderCompendium();
-      }
-      searchInput.focus();
-    });
-
-    resetSearchBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      searchQuery = '';
-      clearSearchBtn.classList.add('hidden');
-      selectedCategories = new Set(['cars_tomica', 'cars_non_tomica', 'toystory', 'general', 'other_disney']);
-      filterOnlyDuplicates = false;
-      renderCompendium();
-    });
-
-    // 購入狀態篩選快籤切換 (已購入 / 全目錄 / 未購入)
-    function updateOwnershipPillStyles() {
-      filterOwnedBtn.className = filterOwnership === 'owned' 
-        ? 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs'
-        : 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
-      filterAllBtn.className = filterOwnership === 'all'
-        ? 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs'
-        : 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
-      filterUnownedBtn.className = filterOwnership === 'unowned'
-        ? 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition bg-white text-zinc-900 shadow-2xs'
-        : 'px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10.5px] sm:text-xs font-bold transition text-zinc-600 hover:text-zinc-900';
-    }
-
-    filterOwnedBtn.addEventListener('click', () => {
-      filterOwnership = 'owned';
-      updateOwnershipPillStyles();
-      renderCompendium();
-    });
-
-    filterAllBtn.addEventListener('click', () => {
-      filterOwnership = 'all';
-      updateOwnershipPillStyles();
-      renderCompendium();
-    });
-
-    filterUnownedBtn.addEventListener('click', () => {
-      filterOwnership = 'unowned';
-      updateOwnershipPillStyles();
-      renderCompendium();
-    });
-
-    // 視角切換
-    viewGridBtn.addEventListener('click', () => {
-      currentViewMode = 'grid';
-      viewGridBtn.classList.add('active');
-      viewListBtn.classList.remove('active');
-      renderCompendium();
-    });
-
-    viewListBtn.addEventListener('click', () => {
-      currentViewMode = 'list';
-      viewListBtn.classList.add('active');
-      viewGridBtn.classList.remove('active');
-      renderCompendium();
-    });
-
-    // 系列選單抽屜操作
-    openSeriesDrawerBtn.addEventListener('click', openSeriesDrawer);
-    closeSeriesDrawerBtn.addEventListener('click', closeSeriesDrawer);
-    seriesDrawerOverlay.addEventListener('click', closeSeriesDrawer);
-    applySeriesDrawerBtn.addEventListener('click', applySeriesSelection);
-
-    resetAllSeriesBtn.addEventListener('click', () => {
-      catCheckCars.checked = true;
-      if (catCheckNonTomica) catCheckNonTomica.checked = true;
-      catCheckToy.checked = true;
-      catCheckGeneral.checked = true;
-      catCheckDisney.checked = true;
-      checkOnlyDuplicates.checked = false;
-    });
-
-    // 快捷預設按鈕
-    presetAllBtn.addEventListener('click', () => {
-      catCheckCars.checked = true;
-      if (catCheckNonTomica) catCheckNonTomica.checked = true;
-      catCheckToy.checked = true;
-      catCheckGeneral.checked = true;
-      catCheckDisney.checked = true;
-      checkOnlyDuplicates.checked = false;
-    });
-
-    presetCarsBtn.addEventListener('click', () => {
-      catCheckCars.checked = true;
-      if (catCheckNonTomica) catCheckNonTomica.checked = false;
-      catCheckToy.checked = false;
-      catCheckGeneral.checked = false;
-      catCheckDisney.checked = false;
-      checkOnlyDuplicates.checked = false;
-    });
-
-    if (presetNonTomicaBtn) {
-      presetNonTomicaBtn.addEventListener('click', () => {
-        catCheckCars.checked = false;
-        if (catCheckNonTomica) catCheckNonTomica.checked = true;
-        catCheckToy.checked = false;
-        catCheckGeneral.checked = false;
-        catCheckDisney.checked = false;
-        checkOnlyDuplicates.checked = false;
-      });
-    }
-
-    presetToyBtn.addEventListener('click', () => {
-      catCheckCars.checked = false;
-      if (catCheckNonTomica) catCheckNonTomica.checked = false;
-      catCheckToy.checked = true;
-      catCheckGeneral.checked = false;
-      catCheckDisney.checked = false;
-      checkOnlyDuplicates.checked = false;
-    });
-
-    presetGeneralBtn.addEventListener('click', () => {
-      catCheckCars.checked = false;
-      if (catCheckNonTomica) catCheckNonTomica.checked = false;
-      catCheckToy.checked = false;
-      catCheckGeneral.checked = true;
-      catCheckDisney.checked = false;
-      checkOnlyDuplicates.checked = false;
-    });
-
-    presetDisneyBtn.addEventListener('click', () => {
-      catCheckCars.checked = false;
-      if (catCheckNonTomica) catCheckNonTomica.checked = false;
-      catCheckToy.checked = false;
-      catCheckGeneral.checked = false;
-      catCheckDisney.checked = true;
-      checkOnlyDuplicates.checked = false;
-    });
-
-    // Bento 快捷卡片點擊
-    bentoCardCars.addEventListener('click', () => {
-      selectedCategories = new Set(['cars_tomica']);
-      filterOnlyDuplicates = false;
-      renderCompendium();
-    });
-
-    if (bentoCardNonTomica) {
-      bentoCardNonTomica.addEventListener('click', () => {
-        selectedCategories = new Set(['cars_non_tomica']);
-        filterOnlyDuplicates = false;
-        renderCompendium();
-      });
-    }
-
-    bentoCardToy.addEventListener('click', () => {
-      selectedCategories = new Set(['toystory']);
-      filterOnlyDuplicates = false;
-      renderCompendium();
-    });
-
-    bentoCardDisney.addEventListener('click', () => {
-      selectedCategories = new Set(['general', 'other_disney']);
-      filterOnlyDuplicates = false;
-      renderCompendium();
-    });
-
-    bentoCardDup.addEventListener('click', () => {
-      filterOnlyDuplicates = !filterOnlyDuplicates;
-      renderCompendium();
-    });
-
-    // 快捷過濾標籤列點擊
-    if (quickFilterAllBtn) {
-      quickFilterAllBtn.addEventListener('click', () => {
-        selectedCategories = new Set(['cars_tomica', 'cars_non_tomica', 'toystory', 'general', 'other_disney']);
-        filterOnlyDuplicates = false;
-        renderCompendium();
-      });
-      quickFilterCarsBtn.addEventListener('click', () => {
-        selectedCategories = new Set(['cars_tomica']);
-        filterOnlyDuplicates = false;
-        renderCompendium();
-      });
-      quickFilterNonTomicaBtn.addEventListener('click', () => {
-        selectedCategories = new Set(['cars_non_tomica']);
-        filterOnlyDuplicates = false;
-        renderCompendium();
-      });
-      quickFilterToyBtn.addEventListener('click', () => {
-        selectedCategories = new Set(['toystory']);
-        filterOnlyDuplicates = false;
-        renderCompendium();
-      });
-      quickFilterOtherBtn.addEventListener('click', () => {
-        selectedCategories = new Set(['general', 'other_disney']);
-        filterOnlyDuplicates = false;
-        renderCompendium();
-      });
-    }
-
-    // 單車詳情彈窗關閉
-    closeModalBtn.addEventListener('click', closeCarDetail);
-    detailModalOverlay.addEventListener('click', closeCarDetail);
-
-    // 鍵盤 ESC 支援
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeLightbox();
-        closeCarDetail();
-        closeSeriesDrawer();
-      }
-    });
-
-    // 快速置頂浮動按鈕
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 260) {
-        floatingTopBtn.classList.add('visible');
-      } else {
-        floatingTopBtn.classList.remove('visible');
-      }
-    }, { passive: true });
-
-    floatingTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 啟動圖鑑
-    initStatistics();
-
-    // 檢查網址 Hash 以決定起始選單
-    const initialHash = window.location.hash.toLowerCase();
-    if (initialHash === '#weekly') {
-      switchMainTab('weekly');
-    } else if (initialHash === '#collection' || initialHash === '#owned') {
-      switchMainTab('collection');
-    } else {
-      switchMainTab('official');
-    }
-    renderCompendium();
-    window.CARS_DATABASE = CARS_DATABASE;
-    window.WEEKLY_PICKS_DATA = WEEKLY_PICKS_DATA;
-  </script>
-
-  <script>
+<script>
     // 拍照對照：辨識與比對都在這支瀏覽器裡。照片不 fetch、不進永久儲存。
     (function () {
       var TESSERACT_SRC = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
