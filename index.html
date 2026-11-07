@@ -261,6 +261,9 @@
       justify-content: center;
       padding: 0 8px;
       color: var(--ink);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     /* Sections */
@@ -301,6 +304,9 @@
       border: 0;
       margin: 0;
       font-weight: 500;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
       transition: background 0.15s, color 0.15s;
     }
     .seg button.on {
@@ -351,6 +357,8 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .flab {
       font-size: 11px;
@@ -380,6 +388,8 @@
       display: inline-flex;
       align-items: center;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
       white-space: nowrap;
     }
     .chip i {
@@ -1317,7 +1327,7 @@
 <body>
   <!-- 頂部吸頂工具列 (捲動過封面約 80% 後浮現) -->
   <header class="tb" id="tb">
-    <div class="tt">Tomica 小車圖鑑<i id="tbp">91/188</i></div>
+    <div class="tt">Tomica 小車圖鑑<i id="tbp">91/187</i></div>
     <button id="tbSearchBtn" onclick="goSearch()" aria-label="搜尋">🔍 搜尋</button>
     <button id="tbFilterBtn" onclick="goSearch(1)" aria-label="篩選">篩選</button>
     <button id="tbCamBtn" aria-label="拍照對照" onclick="document.getElementById('photoCheckOpenBtn').click()">📷</button>
@@ -1331,7 +1341,7 @@
       <span class="cap">VOL. 2026・P.01</span>
     </div>
     <h1>Tomica<br>小車圖鑑<small>A catalogue of little cars</small></h1>
-    <div class="hero" id="heroCard" onclick="openCarDetail(HERO.id)" title="查看主角車小檔案">
+    <div class="hero" id="heroCard" onclick="openCarDetail(window.HERO ? window.HERO.id : 'C-01')" title="查看主角車小檔案">
       <img id="heroImg" alt="閃電麥坤（標準型）">
       <div class="lab">
         <b id="heroNo">No.C-1</b>
@@ -1344,8 +1354,8 @@
       <div><b id="s3">51</b><span>散車</span></div>
     </div>
     <div class="peek">
-      <a href="#toc">目錄 CONTENTS ↓</a>
-      <a href="#findSec">🔍 搜尋・篩選</a>
+      <a href="#toc" onclick="if (typeof setTab === 'function' && window.st && window.st.t === 'week') { setTab('all', true); }">目錄 CONTENTS ↓</a>
+      <a href="#findSec" onclick="if (typeof setTab === 'function' && window.st && window.st.t === 'week') { setTab('all', true); }">🔍 搜尋・篩選</a>
     </div>
   </section>
 
@@ -1356,9 +1366,9 @@
       <span class="cap">P.02 INDEX</span>
     </div>
     <nav class="seg" id="seg">
-      <button id="mainTabOfficial" data-t="all" class="on">全部車款</button>
-      <button id="mainTabOwned" data-t="mine">我的收藏</button>
-      <button id="mainTabWeekly" data-t="week">每週新品</button>
+      <button id="mainTabOfficial" data-t="all" class="on" onclick="setTab('all', true)">全部車款</button>
+      <button id="mainTabOwned" data-t="mine" onclick="setTab('mine', true)">我的收藏</button>
+      <button id="mainTabWeekly" data-t="week" onclick="setTab('week', true)">每週新品</button>
     </nav>
     <div class="sbox">
       <label class="sfield">
@@ -1882,6 +1892,7 @@ const WEEKLY_PICKS_DATA = {
   ],
   "verifiedDateTaipei": "2026-11-07"
 };
+window.WEEKLY_PICKS_DATA = WEEKLY_PICKS_DATA;
 
     // 核心車輛資料庫 (官方發售總車款目錄 167 款: 63 款既有收藏 + 104 款官方未購入車款)
     // 注入原始完整無缺資料庫
@@ -7961,6 +7972,12 @@ if (tocL) {
 }
 
 const st = { s: 'all', c: 'all', q: '', t: 'all' };
+let LIST = [];
+let cur = -1, retY = 0;
+window.CARS_DATABASE = CARS_DATABASE;
+window.WEEKLY_PICKS_DATA = typeof WEEKLY_PICKS_DATA !== 'undefined' ? WEEKLY_PICKS_DATA : {};
+window.HERO = HERO;
+window.st = st;
 
 if (sf) {
   sf.innerHTML = [
@@ -8000,16 +8017,19 @@ if (cf) {
 if (q) {
   q.oninput = () => {
     st.q = q.value.trim();
-    render();
-    if (st.t === 'week') renderWk();
+    if (st.t === 'week') {
+      renderWk();
+    } else {
+      render();
+    }
   };
 }
 
 function setTab(tab, updateHash) {
-  st.t = tab;
+  st.t = tab || 'all';
   if (seg) {
     seg.querySelectorAll('button').forEach(x => {
-      x.classList.toggle('on', x.dataset.t === tab);
+      x.classList.toggle('on', x.dataset.t === st.t);
     });
   }
   const isWeek = st.t === 'week';
@@ -8026,42 +8046,53 @@ function setTab(tab, updateHash) {
 
   if (st.t === 'mine') {
     st.s = 'own';
-    if (updateHash) window.location.hash = 'collection';
+    if (updateHash && window.location.hash !== '#collection') {
+      window.location.hash = 'collection';
+    }
   } else if (st.t === 'all') {
     st.s = 'all';
-    if (updateHash) window.location.hash = 'official';
+    if (updateHash && window.location.hash !== '#official') {
+      window.location.hash = 'official';
+    }
   } else if (st.t === 'week') {
-    if (updateHash) window.location.hash = 'weekly';
+    if (updateHash && window.location.hash !== '#weekly') {
+      window.location.hash = 'weekly';
+    }
   }
-  render();
-  if (isWeek) renderWk();
+  if (isWeek) {
+    renderWk();
+  } else {
+    render();
+  }
 }
 
 if (seg) {
   seg.onclick = e => {
     const b = e.target.closest('button');
-    if (!b) return;
+    if (!b || !b.dataset.t) return;
     setTab(b.dataset.t, true);
   };
 }
 
 function syncFromHash() {
-  const hash = window.location.hash.replace(/^#/, '');
+  const hash = (window.location.hash || '').replace(/^#/, '');
   if (hash === 'weekly') {
     setTab('week', false);
   } else if (hash === 'collection') {
     setTab('mine', false);
   } else if (hash === 'official') {
     setTab('all', false);
+  } else if (hash.startsWith('ch-')) {
+    if (st.t === 'week') setTab('all', false);
   }
 }
 window.addEventListener('hashchange', syncFromHash);
-syncFromHash();
 
 function renderWk() {
   if (!wkL) return;
-  const E = (window.WEEKLY_PICKS_DATA && window.WEEKLY_PICKS_DATA.entries) || (window.WEEKLY && window.WEEKLY.entries) || [];
-  const events = (window.WEEKLY_PICKS_DATA && window.WEEKLY_PICKS_DATA.events) || [];
+  const wpData = (typeof WEEKLY_PICKS_DATA !== 'undefined' ? WEEKLY_PICKS_DATA : null) || window.WEEKLY_PICKS_DATA || window.WEEKLY || {};
+  const E = wpData.entries || [];
+  const events = wpData.events || [];
   const qq = (st.q || '').toLowerCase();
   const L = E.filter(e => !qq || ((e.displayNumber || '') + (e.nameZh || '') + (e.nameJp || '') + (e.sku || '')).toLowerCase().includes(qq));
 
@@ -8162,8 +8193,6 @@ const EMPTY = `
   </svg>
 `;
 
-let LIST = [];
-
 function card(c) {
   const o = isOwned(c);
   const dup = Boolean(c.isDuplicate);
@@ -8235,7 +8264,6 @@ function render() {
 
   chs.innerHTML = html || '<p class="empty">找不到符合的車款。</p>';
 }
-render();
 
 const tbu = () => {
   if (tb && coverSec) {
@@ -8246,6 +8274,9 @@ window.addEventListener('scroll', tbu, { passive: true });
 tbu();
 
 function goSearch(focusFilter) {
+  if (st.t === 'week') {
+    setTab('all', true);
+  }
   if (findSec) {
     findSec.scrollIntoView({ behavior: 'smooth' });
     if (!focusFilter && q) {
@@ -8254,7 +8285,6 @@ function goSearch(focusFilter) {
   }
 }
 
-let cur = -1, retY = 0;
 const dt = document.getElementById('dt');
 const dPos = document.getElementById('dPos');
 const dStg = document.getElementById('dStg');
@@ -8448,6 +8478,16 @@ window.renderCompendium = render;
 window.renderWeeklyTracker = renderWk;
 window.CARS_DATABASE = CARS_DATABASE;
 window.WEEKLY_PICKS_DATA = WEEKLY_PICKS_DATA;
+window.st = st;
+window.HERO = HERO;
+
+// 頁面初始化：依據 hash 或預設全部車款渲染
+const curHash = (window.location.hash || '').replace(/^#/, '');
+if (curHash === 'weekly' || curHash === 'collection' || curHash === 'official') {
+  syncFromHash();
+} else {
+  render();
+}
 </script>
 
 
