@@ -7719,23 +7719,25 @@ const CARS_DATABASE = [
     "keywords": "降臨曆 2025 アドベントカレンダー2025 聖誕節 倒數日曆 麥坤 脫線 聖誕帽 SET-ADVENT2025 限定生產",
     "images": [
       {
-        "url": "tomica_official_images/SET-ADVENT2025_official.jpg",
-        "label": "🌟 官方高清展示圖"
+        "url": "tomica_official_images/SET-ADVENT2025_card.png",
+        "label": "使用者提供的網路截圖，包裝標示2025限定版"
+      },
+      {
+        "url": "tomica_official_images/SET-ADVENT2025_cropped.png",
+        "label": "包裝外盒原比例（使用者提供網路截圖，出處信心low）"
       }
     ],
-    "description": "【2025 限定生產聖誕降臨曆套組】Takara Tomy 官方正版（JAN: 4904810959595）！盒身內含 24 格聖誕倒數驚喜，正面展開為大型遊玩賽道地圖。套組內附 2 款專屬限定 Tomica 合金車：綠精靈帽版閃電麥坤與聖誕帽版脫線（藏家已購入全新盒裝全套 1 盒）。",
+    "description": "【2025 限定生產聖誕降臨曆套組】包裝標示 2025 限定版（JAN: 4904810959595）。盒身內含 24 格聖誕倒數驚喜，正面展開為大型遊玩賽道地圖。套組內附 2 款專屬限定 Tomica 合金車：綠精靈帽版閃電麥坤與聖誕帽版脫線（藏家已購入全新盒裝全套 1 盒）。",
     "owned": true,
     "displayNumber": "限定套組",
     "registryKey": "SET_advent2025",
-    "notes": "Takara Tomy 2025年9月發售限定生產商品；建議售價 4,950 日圓（含稅）；內含 2 台限定特仕 Cars Tomica。",
-    "sourceTier": "Official",
-    "confidence": "high",
-    "verifiedAt": "2026-10-28",
+    "notes": "圖片來源：使用者提供的網路截圖，包裝標示2025限定版；原始URL未知，未獨立證實官方出處，出處信心low，影像內2025標示明確。Takara Tomy 2025年9月發售限定生產套組；內含 2 台限定特仕 Cars Tomica。",
+    "imageSourceNote": "使用者提供的網路截圖，包裝標示2025限定版（出處信心low）",
+    "sourceTier": "UserProvided",
+    "confidence": "low",
+    "verifiedAt": "2026-11-07",
     "releaseDatePrecision": "month",
-    "evidenceUrls": [
-      "https://www.takaratomy.co.jp/products/tomica/new/2509.htm",
-      "https://www.takaratomy.co.jp/products/disney/cars/"
-    ]
+    "evidenceUrls": []
   },
   {
     "id": "SET-ADVENT2026",
@@ -8290,7 +8292,15 @@ function fillDetail() {
   const total = (c.boxed || 0) + (c.loose || 0);
   dt.className = 'dt open ' + (o ? 'o' : 'u');
   if (dPos) dPos.textContent = `${pad(cur + 1)} / ${LIST.length}`;
-  if (dStg) dStg.innerHTML = im(c) + (o ? SEAL('bigseal', true) : EMPTY);
+  const imgList = (c.images && c.images.length > 0) ? c.images : (c.img ? [{url: c.img, label: ''}] : []);
+  const primaryDetailImg = (imgList.length > 1 && imgList[1].url) ? imgList[1].url : (imgList[0] ? imgList[0].url : '');
+  let stageHtml = (primaryDetailImg ? `<img id="dtMainImg" src="${primaryDetailImg}" alt="${title(c)}">` : `<span class="noimg" style="font-size:12px;color:#a8a29e">暫無官方圖</span>`) + (o ? SEAL('bigseal', true) : EMPTY);
+  if (imgList.length > 1) {
+    stageHtml += `<div class="dt-img-tabs" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:3;background:rgba(255,255,255,0.92);padding:3px 8px;border-radius:999px;border:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,0.06)">` +
+      imgList.map((img, idx) => `<button type="button" onclick="document.getElementById('dtMainImg').src='${img.url}';this.parentElement.querySelectorAll('button').forEach(b=>b.style.fontWeight='normal');this.style.fontWeight='600';" style="font-size:11px;padding:2px 8px;border:none;background:none;cursor:pointer;color:var(--ink);font-weight:${img.url===primaryDetailImg?'600':'400'};">${idx===0?'4:3卡片':'原盒詳情'}</button>`).join('') +
+      `</div>`;
+  }
+  if (dStg) dStg.innerHTML = stageHtml;
 
   const handbookBlurb = c.handbookBlurbZh || c.characterEasterEggZh || c.description;
 
@@ -8347,7 +8357,7 @@ function fillDetail() {
     ['系列歸屬', c.categoryName],
     ['庫存實況', o ? `盒裝 ${c.boxed || 0} 台・散車 ${c.loose || 0} 台（共 ${total} 台）` : '待入手（未購入）'],
     ['收藏狀態', o ? '<span style="color:#1E6B4F;font-weight:600">✓ 已入手</span>' : '<span style="color:#B3261E;font-weight:600">待入手</span>'],
-    evidenceLinksHtml(c) ? ['來源依據', evidenceLinksHtml(c)] : null
+    evidenceLinksHtml(c) ? ['來源依據', evidenceLinksHtml(c)] : (c.imageSourceNote ? ['圖片來源', c.imageSourceNote] : null)
   ].filter(r => r != null);
 
   const displayNote = (c.notes || '')

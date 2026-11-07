@@ -14,3 +14,4 @@ audit_screenshots_*/
 scripts/cdp_audit.py
 scripts/test_render.py
 scripts/update_mobile_and_newitems.py
+scripts/verify_*.py
